@@ -1,0 +1,1 @@
+mongoimport --db attp --collection games --file  "$pwd\atpplayers.json"
