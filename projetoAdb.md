@@ -12,7 +12,7 @@ count: 1308835
 * Hand:  mão dominante, backhand
 * LinkPlayer:  link para a página do jogador
 * Tournament : nome do torneio
-* Location : cidade, pais do torneio
+* Location : cidade, pais do torneio (atencao q US está [sitio, estado, U.S.A])
 * Date: periodo de tempo do jogo (AAAA.MM.DD - AAAA.MM.DD) ( pode-se tartar mas n vai ajudar nas perguntas)
 * GameRound: fase do jogo (pode-se tratar mas n vai ajudar nas perguntas)
 * GameRank: ATP Rankings do jogo? (int)
