@@ -348,7 +348,7 @@ db.countries.insertMany([{"id":4,"alpha2":"af","alpha3":"afg","name":"Afghanista
 {"id":716,"alpha2":"zw","alpha3":"zwe","name":"Zimbabwe"}])
 
 var countries = db.countries.find().toArray().map((e) => {return e.name})
-
+//tournaments
 db.games.aggregate([
   {
     $group: {
