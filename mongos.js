@@ -372,7 +372,9 @@ db.games.aggregate([
     $addFields: {
       countryStandart: {$function: {
         body: function(country, countries) {
-        if(country == "USA" || country == "U.S.A") return "United States of America"
+
+if(country == "USA" || country == "U.S.A") return "United States of America"
+// the next part is here beacuse this fucntion is isolated, and it's way easier than argument them
 // fastest-levenshtein - (c) 2020 Kasper Unn Weihe
 var peq = new Uint32Array(0x10000);
 var myers_32 = function (a, b) {
