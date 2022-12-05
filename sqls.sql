@@ -1,10 +1,5 @@
 use aluno_105289_atpp;
 -- countries
-CREATE TABLE `Countries`(
-    `id` char(2) NOT NULL primary key,
-    `name` VARCHAR(255) NOT NULL
-);
-
 CREATE TABLE `Games`(
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `winnerId` INT NOT NULL,
@@ -36,7 +31,7 @@ ALTER TABLE
 CREATE TABLE `Players`(
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `name` INT NOT NULL,
-    `bornCountry` INT NOT NULL,
+    `bornCountry` CHAR(2) NOT NULL,
     `domHand` TINYINT NOT NULL,
     `backhand` TINYINT NOT NULL,
     `gamesUrl` VARCHAR(255) NOT NULL
@@ -55,14 +50,12 @@ CREATE TABLE `BackHand`(
 );
 ALTER TABLE
     `BackHand` ADD PRIMARY KEY `backhand_id_primary`(`id`);
-CREATE TABLE `AKACountries`(
-    `CountryId` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    `Alt` VARCHAR(255) NOT NULL
+CREATE TABLE `Countries`(
+    `id` INT NOT NULL,
+    `name` VARCHAR(255) NOT NULL
 );
 ALTER TABLE
-    `AKACountries` ADD PRIMARY KEY `akacountries_countryid_primary`(`CountryId`);
-ALTER TABLE
-    `AKACountries` ADD PRIMARY KEY `akacountries_alt_primary`(`Alt`);
+    `Countries` ADD PRIMARY KEY `countries_id_primary`(`id`);
 ALTER TABLE
     `Games` ADD CONSTRAINT `games_tournamentid_foreign` FOREIGN KEY(`tournamentId`) REFERENCES `Tournaments`(`id`);
 ALTER TABLE
@@ -79,3 +72,40 @@ ALTER TABLE
     `Players` ADD CONSTRAINT `players_domhand_foreign` FOREIGN KEY(`domHand`) REFERENCES `DomHand`(`id`);
 ALTER TABLE
     `Tournaments` ADD CONSTRAINT `tournaments_country_foreign` FOREIGN KEY(`country`) REFERENCES `Countries`(`id`);
+-- 1
+-- select c.name,
+--        count(distinct t.id) as Tournaments,
+--        count(g.id) as Games,
+--        (select count(p.id) as Players from Players p left join Countries c on p.bornCountry = c.id) as Players
+-- from games g
+--     left join Tournaments t on g.tournamentId = t.id
+--     left join Countries c on t.country = c.id
+-- group by t.country
+
+select C.name, count(t.id) Tournaments, count(g.id) as Games, count(p.id) as Players from Countries C
+    right join Players P on C.id = P.bornCountry
+    right join Tournaments T on C.id = T.country
+    right join Games G on T.id = G.tournamentId
+group by C.id;
+
+-- 2
+select P.name, count(GW.id) as wins, count(GW.id)*100/count(*) as winPer from Players P
+    right join Games GW on GW.winnerId = P.id
+    right join Games GL on GL.looserId = P.id
+group by P.id
+order by winPer
+limit 10;
+
+-- 3
+select P.name, count(GW.id) as wins, count(GW.id)*100/count(*) as winPer from Players P
+    right join Games GW on GW.winnerId = P.id
+    right join Games GL on GL.looserId = P.id
+where
+    P.domHand = (select dh.id from DomHand dh where lower(dh.name) like '%left%' limit 1)
+    and GL.tournamentId in
+        (select * from Tournaments T where lower(T.name) REGEXP 'us open|australian open|roland garros|wimbledon')
+group by P.id
+order by winPer
+limit 10;
+
+-- 4

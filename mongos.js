@@ -59,4 +59,5 @@ db.games.aggregate([
   },{
     $out: "players"
   }
-]); //falta os oponents
+]); //falta os oponent
+s
