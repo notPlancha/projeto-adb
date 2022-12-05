@@ -48,7 +48,6 @@ db.games.aggregate([
     }
   },{
     $project:{
-      _id: false,
       playerName: "$_id.playerName",
       country: {$arrayElemAt: ["$_id.born", -1]},
       height: "$_id.height",
