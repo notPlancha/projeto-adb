@@ -1,1 +1,1 @@
-mongoimport --db attp --collection games --file  "$pwd\data\atpplayers.json"
+mongoimport --db atp --collection games --file  "$pwd\data\atpplayers.json"
