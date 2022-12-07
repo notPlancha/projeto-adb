@@ -112,7 +112,7 @@ limit 10;
 select P.name, count(G.id) as GamesWon from Games G
     left join Players P on G.winnerId = P.id
     left join Tournaments T on G.tournamentId = T.id
-where T.ground = (select Gr.id from Grounds where lower(Gr.name) like '%hard%' limit 1)
+where T.ground = (select Gr.id from Grounds Gr where lower(Gr.name) like '%hard%' limit 1)
 group by P.id
 order by GamesWon
 limit 5

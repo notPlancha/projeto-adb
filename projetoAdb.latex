@@ -71,6 +71,16 @@
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -84,6 +94,7 @@
 % get rid of language-specific shorthands (see #6817):
 \let\LanguageShortHands\languageshorthands
 \def\languageshorthands#1{}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -98,13 +109,116 @@
   pdfcreator={LaTeX via pandoc}}
 
 \title{TODO titulo}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Trabalho elaborado no âmbito da Unidade Curricular de
+Armazenamento para Big Data do 2º ano da Licenciatura de Ciência de
+Dados do Instituto Universitário de Lisboa ISCTE}
 \author{André Plancha; 105289 \and Another Author; Num}
-\date{2017-02-20}
+\date{07/16/2020}
 
 \begin{document}
 \maketitle
 
-Hello world!
+\hypertarget{introduuxe7uxe3o}{%
+\section{Introdução}\label{introduuxe7uxe3o}}
+
+A Associação de Tenistas Profissionais (\emph{ATP}) é um órgão de ténis
+profisional masculino, organizando torneios do desporto globalmente. A
+organização contém na sua base de dados um conjunto de jogos e jogadores
+que participaram em torneios pelo menos desde 1914, e incluem todos os
+grandes torneios do circuito masculino, incluindo os torneios de Grand
+Slam. O objetivo deste trabalho será limpar e preparar os dados de um
+modelo não-relacional para um modelo-relacional, para que possa ser
+utilizado em análises posteriores.
+
+\hypertarget{importauxe7uxe3o-dos-dados}{%
+\section{Importação dos dados}\label{importauxe7uxe3o-dos-dados}}
+
+Para o nosso projeto voi-nos provisionado o ficheiro
+\emph{atpplayers.json}, que contém os jogos feito pelos jogadores. Para
+importar este ficheiro, foi utilizado o comando \emph{mongoimport}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{mongoimport} \KeywordTok{\textasciigrave{}}
+    \ExtensionTok{{-}{-}db}\NormalTok{ atp }\KeywordTok{\textasciigrave{}}
+    \ExtensionTok{{-}{-}collection}\NormalTok{ games }\KeywordTok{\textasciigrave{}}
+    \ExtensionTok{{-}{-}file}  \StringTok{"}\VariableTok{$pwd}\StringTok{\textbackslash{}data\textbackslash{}atpplayers.json"}
+\end{Highlighting}
+\end{Shaded}
+
+Isto significa que foi criada uma base de dados chamada \emph{atp}, e
+uma coleção chamada \emph{games}, que contém os dados do ficheiro
+\emph{atpplayers.json}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{use atp}\OperatorTok{;}
+\NormalTok{db}\OperatorTok{.}\AttributeTok{games}\OperatorTok{.}\FunctionTok{find}\NormalTok{(\{\}}\OperatorTok{,}\NormalTok{ \{}\DataTypeTok{\_id}\OperatorTok{:}\DecValTok{0}\NormalTok{\})}\OperatorTok{.}\FunctionTok{limit}\NormalTok{(}\DecValTok{5}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\toprule()
+\endhead
+\textbf{Born} & Belgrade, Serbia & Belgrade, Serbia & Belgrade, Serbia &
+Belgrade, Serbia & Belgrade, Serbia \\
+\textbf{Date} & 2022.02.21 - 2022.02.26 & 2021.08.30 - 2021.09.12 &
+2021.11.15 - 2021.11.21 & 2021.08.30 - 2021.09.12 & 2021.11.01 -
+2021.11.07 \\
+\textbf{GameRank} & 26 & 145 & 5 & 121 & \\
+\textbf{GameRound} & Round of 16 & Round of 128 & Round Robin & Round of
+64 & Round of 64 \\
+\textbf{Ground} & Hard & Hard & Hard & Hard & Hard \\
+\textbf{Hand} & Right-Handed, Two-Handed Backhand & Right-Handed,
+Two-Handed Backhand & Right-Handed, Two-Handed Backhand & Right-Handed,
+Two-Handed Backhand & Right-Handed, Two-Handed Backhand \\
+\textbf{Height} & 188 & 188 & 188 & 188 & 188 \\
+\textbf{Location} & Dubai, U.A.E. & New York, NY, U.S.A. & Turin, Italy
+& New York, NY, U.S.A. & Paris, France \\
+\textbf{Oponent} & Karen Khachanov & Holger Rune & Andrey Rublev &
+Tallon Griekspoor & bye \\
+\textbf{PlayerName} & Novak Djokovic & Novak Djokovic & Novak Djokovic &
+Novak Djokovic & Novak Djokovic \\
+\textbf{Prize} & \$2,794,840 & \$27,200,000 & \$7,250,000 & \$27,200,000
+& �5,207,405 \\
+\textbf{Score} & 63 76 & 61 67, 62 61 & 63 62 & 62 63 62 & null \\
+\textbf{Tournament} & Dubai & US Open & Nitto ATP Finals & US Open & ATP
+Masters 1000 Paris \\
+\textbf{WL} & W & W & W & W & \\
+\bottomrule()
+\end{longtable}
+
+\scriptsize nota: Foi retirado a coluna LinkPlayer para melhor
+visualização \normalsize
+
+\hypertarget{info-dump-todo-tratar-e-tirar-antes-de-entregar}{%
+\section{Info dump (TODO tratar e tirar antes de
+entregar)}\label{info-dump-todo-tratar-e-tirar-antes-de-entregar}}
+
+count: 1308835 \#\# colunas * PlayerName: Nome do jogador * Born: onde o
+jogador nasceu (cidade, pais) * Height: altura do jogador (cm) * Hand:
+mão dominante, backhand * LinkPlayer: link para a página do jogador *
+Tournament : nome do torneio * Location : cidade, pais do torneio
+(atencao q US está {[}sitio, estado, U.S.A{]}) * Date: periodo de tempo
+do jogo (AAAA.MM.DD - AAAA.MM.DD) ( pode-se tartar mas n vai ajudar nas
+perguntas) * GameRound: fase do jogo (pode-se tratar mas n vai ajudar
+nas perguntas) * GameRank: ATP Rankings do jogo? (int) * WL: vitoria ou
+derrota (W ou L) * Opponent: nome do oponente * Score: resultado do jogo
+(set scores); Este campo é mais compicado, mas pra as perguntas n é
+preciso desenvolver (ou entender) \# Exemplo de uso do codigo (TODO
+tirar dps)
 
 \begin{Shaded}
 \begin{Highlighting}[]
