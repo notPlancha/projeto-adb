@@ -2,7 +2,7 @@
 title: "TODO titulo"
 subtitle: "Trabalho elaborado no âmbito da Unidade Curricular de Armazenamento para Big Data do 2º ano da Licenciatura de Ciência de Dados do Instituto Universitário de Lisboa ISCTE"
 author: [André Plancha; 105289, Another Author; Num]
-date: "07/16/2020"
+date: "07/12/2022"
 header-includes:
 - \usepackage[a4paper, total={6in, 8in}]{geometry}
 
@@ -45,32 +45,56 @@ db.games.find({}, {_id:0}).limit(5);
 \scriptsize nota: Foi retirado a coluna LinkPlayer para melhor visualização
 \normalsize
 
+A coleção contém 15 colunas:
+* PlayerName: Nome do jogador do jogo
+* Born: Onde este jogador nasceu (cidade, pais)
+* Height: Altura deste jogador (cm)
+* Hand: A mão dominante do jogador, e o tipo de _backhand_ que utiliza
+* LinkPlayer: link para a página do jogador em atptour.com
+* Tournament: nome do torneio do jogo
+* Location : A cidade e país onde o torneio foi realizado
+* Date: Periodo de tempo do torneio
+* GameRound: fase do jogo no torneio
+* GameRank: _ATP Rankings_ do jogo
+* WL: Vitoria ou Derrota (W ou L)
+* Opponent: Nome do Oponente
+* Score: Sets do jogo
 
+# Preparar dos dados
+Para preparar os dados, nós planeámos transformar a nossa coleção em coleções diferentes, de forma a representar o modelo relacionar, para facilitar a sua transição. Para isso, desenhámos o nosso diagrama do modelo relacional pretendido:
 
+![Diagrama do modelo relacional](figures/sqlDiagram.png)
 
-# Info dump (TODO tratar e tirar antes de entregar)
-count: 1308835
-## colunas
-* PlayerName: Nome do jogador
-* Born: onde o jogador nasceu (cidade, pais)
-* Height: altura do jogador (cm)
-* Hand:  mão dominante, backhand
-* LinkPlayer:  link para a página do jogador
-* Tournament : nome do torneio
-* Location : cidade, pais do torneio (atencao q US está [sitio, estado, U.S.A])
-* Date: periodo de tempo do jogo (AAAA.MM.DD - AAAA.MM.DD) ( pode-se tartar mas n vai ajudar nas perguntas)
-* GameRound: fase do jogo (pode-se tratar mas n vai ajudar nas perguntas)
-* GameRank: ATP Rankings do jogo? (int)
-* WL: vitoria ou derrota (W ou L)
-* Opponent: nome do oponente
-* Score: resultado do jogo (set scores); Este campo é mais compicado, mas pra as perguntas n é preciso desenvolver (ou entender)
-# Exemplo de uso do codigo (TODO tirar dps)
+Antes de começar a transformar os dados, foi necessário verificar a integridade deles. 
+
+Primeiro, verificámos se a coluna _Born_ e _Location_ mantinha o formato "cidade, pais" para todos os jogadores. Mais precisamente, como para os nóssos propósitos, apenas precisamos do país, verificámos se os países estavam sempre no final da string.
 ```javascript
-db.collection.find({}).pretty()
-
+db.games.aggregate([
+  {
+    $match: {
+      Born: {$not:/,/}
+    }
+  },
+  {
+    $group:{
+      _id:"$Born"
+    }
+  },{
+    $sample:{size:10}
+  }
+]);
 ```
+| \_id |
+| :--- |
+| Jeju |
+| Subiaco |
+| Alatri |
+| Verona |
+| Cordoba |
+| Calgary |
+| Santa Monica |
+| Wiesbaden |
+| La Paz |
+| Donetsk |
 
-
-```sql
-select * from table where x=2;
-```
+Perante os resultados, podemos verificar que existem jogadores cujo país não está no final da string. Para resolver este problema, foi-se adicionado manualmente os países destas cidades, de forma a poder analisar o pais de origem dos jogadores. O mesmo é observável para a coluna _Location_. Adicionalmente, os países não encontravam consistência; por exemplo, "U.S.A." e "USA" eram usados para representar os Estados Unidos. Para resolver este problema, mudámos manualmente os países para o formato "alpha2", de acordo com o [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1).

@@ -81,6 +81,19 @@
 % Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -203,34 +216,28 @@ Masters 1000 Paris \\
 \scriptsize nota: Foi retirado a coluna LinkPlayer para melhor
 visualização \normalsize
 
-\hypertarget{info-dump-todo-tratar-e-tirar-antes-de-entregar}{%
-\section{Info dump (TODO tratar e tirar antes de
-entregar)}\label{info-dump-todo-tratar-e-tirar-antes-de-entregar}}
+A coleção contém 15 colunas: * PlayerName: Nome do jogador do jogo *
+Born: Onde este jogador nasceu (cidade, pais) * Height: Altura deste
+jogador (cm) * Hand: A mão dominante do jogador, e o tipo de
+\emph{backhand} que utiliza * LinkPlayer: link para a página do jogador
+em atptour.com * Tournament: nome do torneio do jogo * Location : A
+cidade e país onde o torneio foi realizado * Date: Periodo de tempo do
+torneio * GameRound: fase do jogo no torneio * GameRank: \emph{ATP
+Rankings} do jogo * WL: Vitoria ou Derrota (W ou L) * Opponent: Nome do
+Oponente * Score: Sets do jogo
 
-count: 1308835 \#\# colunas * PlayerName: Nome do jogador * Born: onde o
-jogador nasceu (cidade, pais) * Height: altura do jogador (cm) * Hand:
-mão dominante, backhand * LinkPlayer: link para a página do jogador *
-Tournament : nome do torneio * Location : cidade, pais do torneio
-(atencao q US está {[}sitio, estado, U.S.A{]}) * Date: periodo de tempo
-do jogo (AAAA.MM.DD - AAAA.MM.DD) ( pode-se tartar mas n vai ajudar nas
-perguntas) * GameRound: fase do jogo (pode-se tratar mas n vai ajudar
-nas perguntas) * GameRank: ATP Rankings do jogo? (int) * WL: vitoria ou
-derrota (W ou L) * Opponent: nome do oponente * Score: resultado do jogo
-(set scores); Este campo é mais compicado, mas pra as perguntas n é
-preciso desenvolver (ou entender) \# Exemplo de uso do codigo (TODO
-tirar dps)
+\hypertarget{preparar-dos-dados}{%
+\section{Preparar dos dados}\label{preparar-dos-dados}}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{db}\OperatorTok{.}\AttributeTok{collection}\OperatorTok{.}\FunctionTok{find}\NormalTok{(\{\})}\OperatorTok{.}\FunctionTok{pretty}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
+Para preparar os dados, nós planeámos transformar a nossa coleção em
+coleções diferentes, de forma a representar o modelo relacionar, para
+facilitar a sua transição. Para isso, desenhámos o nosso diagrama do
+modelo relacional pretendido:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{select} \OperatorTok{*} \KeywordTok{from} \KeywordTok{table} \KeywordTok{where}\NormalTok{ x}\OperatorTok{=}\DecValTok{2}\NormalTok{;}
-\end{Highlighting}
-\end{Shaded}
-
+\begin{figure}
+\centering
+\includegraphics{figures/sqlDiagram.png}
+\caption{Diagrama do modelo relacional}
+\end{figure}
 
 \end{document}
