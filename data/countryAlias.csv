@@ -1,261 +1,268 @@
-country,alias
-Buenos Aires,Argentina
-ARG,Argentina
-ARG,Argentina
-Arg.,Argentina
-Aregnt,Argentina
-Adelaide,Australia
-Devonport,Australia
-Victoria,Australia
-AUS,Australia
-Tasmania,Australia
-Portschach,Austria
-Aut.,Austria
-San Salvador,Bahamas
-Bahrain,Bahrain
-Bangladesh,Bangladesh
-Barbados,Barbados
-Belarus,Belarus
-Belgium,Belgium
-Liege,Belgium
-Bermuda,Bermuda
-Minsk,Bielorussia
-Bolivia,Bolivia
-Santa Cruz de la Sie,Bolivia
-Bolivia/Chile,Bolivia/Chile
-Bosnia,Bosnia and Herzegovina
-Bosnia &amp; Herzegovina,Bosnia and Herzegovina
-Botwana,Botswana
-Guarulhos,Brasil
-Salvador,Brasil
-BRA,Brazil
-Braz,Brazil
-Rio de Janeiro,Brazil
-Brazi,Brazil
-Brazil,Brazil
-Bahia,Brazil
-Florianapolis,Brazil
-Brasilia,Brazil
-Brunei,Brunei
-Bulgaria,Bulgaria
-Burundi,Burundi
-Cambodia,Camboja
-Ontaria,Canada
-ALberta,Canada
-Calgary,Canada
-Canda,Canada
-Salinas,Cape green
-Santiago,Chile
-Chinese Taipei,China
-Nanjing,China
-Chinese Taip,China
-Chinese Ta,China
-Villavicencio,Colombia
-COL,Colombia
-Columbia,Colombia
-Col,Colombia
-Abidjan,Costa Marfim
-Crotia,Crotia
-Havana,Cuba
-Ciudad de Habana,Cuba
-Czechoslovakia,Czech republic
-Czech Rep.,Czech republic
-CZE,Czech Rrepublic
-DEN.,Denmark
-Denmark,Denmark
-Santo Domingo,Dominic Republic
-D.R.,Dominican Republic
-Domincan Republic,Dominican Republic
-Dominican Republic,Dominican Republic
-Sharm El Sheikh,Egypt
-Eygpt,Egypt
-Egpyt,Egypt
-UK,England
-Britain,England
-Great Britain,England
-AL,England
-GBR,England
-London,England
-Guayaquil,Equador
-Fiji Island,Fiji
-Finland,Finland
-New Caledoni,France
-New Caledonia,France
-Aix-en-Provence,France
-Reunion Island,France
-Bourg-en-Bresse,France
-Toulouse,France
-Monaco,France
-France,France
-Guadeloupe,France
-Forbach,France
-Lesser Antilles,France
-Pau,France
-Ajaccio,Frnace
-Achim,Germany
-Braunschweig,Germany
-Accra,Ghana
-Guatemala City,Guatemala
-GUA,Guatemala
-Haiti,Haiti
-Honduras,Honduras
-Hong Kong,Hong Kong
-HKG,Hong Kong
-Hunary,Hungary
-Hu,Hungary
-Hungary,Hungary
-Kolkata,Indoia
-Surabaya,Indonesia
-INA,Indonesia
-Jakarta,Indonesia
-Tehran,Iran
-Dublin,Ireland
-Isra,Israel
-ISR,Israel
-Ramat Hasharon,Israel
-Hasharon,Israel
-Sardinia,Italy
-Alatri,Italy
-Ita,Italy
-Reggio Calabria,Italy
-Ancona,Italy
-CIV,Ivory Coast
-Abidjan,Ivory Coast
-Jamaica,Jamaica
-Japan,Japan
-Jordan,Jordan
-Aktau,Kazachistan
-Almaty,Kazachistan
-AN SUNG,Korea
-Laos,Laos
-Latvia,Latvia
-Lebanon,Lebanon
-Angleur,Liege,Belgium
-Lithuania,Lithuania
-Luxembourg,Luxembourg
-Esch/Alzette,Luxemburg
-Mondorf-Les-Bains,Luxemburg
-Esch-sur-Alzette,Luxemburg
-Macedona,Macedonia
-Antananarivo,Madagascar
-Kuala Lampur,Malaysia
-MAS,Malaysia
-Acapulco,Mexico
-Mexico City,Mexico
-Mexica,Mexico
-Toluca,Mexico
-Moldovia,Moldova
-Casablanca,Morocco
-Namibia,Namibia
-Alphen aan den Rijn,Netherlands
-NED,Netherlands
-s-Hertogenbosch,Netherlands
-Netherlands,Netherlands
-The Nethe,Netherlands
-The Netherlands,Netherlands
-Elndhoven,Netherlands
-The Hague,Netherlands
-Dutch Antil,Netherlands Antilles
-Dutch Anti,Netherlands Antilles
-NZL,New Zealand
-New Zealan,New Zealand
-New Zealand,New Zealand
-NZ,New Zealand
-Nicaragua,Nicaragua
-Nigeria,Nigeria
-Norway,Norway
-Pacific Oceania,Pacific Oceania
-Lahore,Pakistan
-Pakistan,Pakistan
-Panama,Panama
-Paraguay,Paraguay
-Peru,Peru
-Guam,Philipines
-Manila,Philipines
-Manilla,Philipines
-Phillipines,Philippines
-Philippines,Philippines
-PHI,Philippines
-Poland,Poland
-Estoril,Portugal
-Faro,Portugal
-Portugal,Portugal
-Doha,Qatar
-Bucharest,Romania
-Romania,Romania
-Constanta,Romenia
-Moscow,Russia
-Russia,Russia
-Korolev,Russia
-Rwanda,Rwanda
-SCG,Serbia
-Yug.,Serbia
-Serbia &amp; Montenegro,Serbia
-SErgia &amp; M,Serbia
-Belgrade,Serbia
-Bratislava,Slovakia
-Presov,Slovakia
-Slovak,Slovakia
-Slovak Republic,Slovakia
-Slovak,Slovakia
-Slovkia,Slovakia
-Portoroz,Slovenia
-Solvenia,Solvenia
-Pretoria,South Africa
-SA,South Africa
-South Africa,South Africa
-Johannesburg,South Africa
-South,South Africa
-Polokwane,South Africa
-Nelspruit,South Africa
-Anseong,South Korea
-Korea,South Korea
-Andong,South Korea
-Melilla,Spain
-Algemesi,Spain
-Barcelona,Spain
-ApAizaco,Spain
-Valldoreix,Spain
-Palma de Mallorca,Spain
-Adeje,SPain
-Bakio,Spain
-Neuchatel,Switzerland
-Switz.,Switzerland
-Taipei,Taiwan
-TPE,Taiwan
-Taiwan,Taiwan
-Kaohsiung,Taiwan
-Tajikistan,Tajikistan
-Bangkok,Thailand
-Thailand,Thailand
-THA,Thailand
-TBA,To be announced
-TBC,To be confirmed
-TBD,To be determined
-Togo,Togo
-TRI,Trinidad and Tobago
-Tunis,Tunisia
-Tunisia,Tunisia
-Monastir,Tunisia
-Antalya,Turkey
-Turkey,Turkey
-Novaya Kakhovka,Ukraine
-Montevideo,Uruguay
-URU,Uruguay
-U.S.A.,USA
-U.S.A,USA
-Delray Beach,USA
-Alexandria,USA
-OK,USA
-Texas,USA
-Puerto Rico,USA
-AR,USA
-ALtadena,USA
-Tashkent,Uzbekistan
-Venezeuela,Venezuela
-Lara,Venezuela
-Venezuela,Venezuela
-Vietnam,Vietnam
-Yugoslavia,Yugoslavia
-Harare,Zimbabwe
-Zimbabwe,Zimbabwe
+country,alias,Code
+Buenos Aires,Argentina,AR
+ARG,Argentina,AR
+ARG,Argentina,AR
+Arg.,Argentina,AR
+Aregnt,Argentina,AR
+Adelaide,Australia,AU
+Devonport,Australia,AU
+Victoria,Australia,AU
+AUS,Australia,AU
+Tasmania,Australia,AU
+Portschach,Austria,AT
+Aut.,Austria,AT
+San Salvador,Bahamas,BS
+Bahrain,Bahrain,BH
+Bangladesh,Bangladesh,BD
+Barbados,Barbados,BB
+Belarus,Belarus,BY
+Belgium,Belgium,BE
+Liege,Belgium,BE
+Bermuda,Bermuda,BM
+Minsk,Belarus,BY
+Bolivia,Bolivia,BO
+Santa Cruz de la Sie,Bolivia,BO
+Bolivia/Chile,Bolivia/Chile,BO/CL
+Bosnia,Bosnia and Herzegovina,BA
+Bosnia &amp; Herzegovina,Bosnia and Herzegovina,BA
+Botwana,Botswana,BW
+Guarulhos,Brasil,BR
+Salvador,Brasil,BR
+BRA,Brazil,BR
+Braz,Brazil,BR
+Rio de Janeiro,Brazil,BR
+Brazi,Brazil,BR
+Brazil,Brazil,BR
+Bahia,Brazil,BR
+Florianapolis,Brazil,BR
+Brasilia,Brazil,BR
+Brunei,Brunei,BN
+Bulgaria,Bulgaria,BG
+Burundi,Burundi,BI
+Cambodia,Cambodia,KH
+Ontaria,Canada,CA
+ALberta,Canada,CA
+Calgary,Canada,CA
+Canda,Canada,CA
+Salinas,Cape Verde,CV
+Santiago,Chile,CL
+Chinese Taipei,China,CN
+Nanjing,China,CN
+Chinese Taip,China,CN
+Chinese Ta,China,CN
+Villavicencio,Colombia,CO
+COL,Colombia,CO
+Columbia,Colombia,CO
+Col,Colombia,CO
+Abidjan,CÃ´te d'Ivoire,CI
+Crotia,Croatia,HR
+Havana,Cuba,CU
+Ciudad de Habana,Cuba,CU
+Czechoslovakia,Czech republic,CZ
+Czech Rep.,Czech republic,CZ
+CZE,Czech Rrepublic,CZ
+DEN.,Denmark,DK
+Denmark,Denmark,DK
+Santo Domingo,Dominican Republic,DO
+D.R.,Dominican Republic,DO
+Domincan Republic,Dominican Republic,DO
+Dominican Republic,Dominican Republic,DO
+Sharm El Sheikh,Egypt,EG
+Eygpt,Egypt,EG
+Egpyt,Egypt,EG
+UK,United Kingdom,GB
+Britain,United Kingdom,GB
+Great Britain,United Kingdom,GB
+AL,United Kingdom,GB
+GBR,United Kingdom,GB
+London,United Kingdom,GB
+Guayaquil,Equador,EC
+Fiji Island,Fiji,FJ
+Finland,Finland,FI
+New Caledoni,France,FR
+New Caledonia,France,FR
+Aix-en-Provence,France,FR
+Reunion Island,France,FR
+Bourg-en-Bresse,France,FR
+Toulouse,France,FR
+Monaco,France,FR
+France,France,FR
+Guadeloupe,France,FR
+Forbach,France,FR
+Lesser Antilles,France,FR
+Pau,France,FR
+Ajaccio,France,FR
+Achim,Germany,DE
+Braunschweig,Germany,DE
+Accra,Ghana,GH
+Guatemala City,Guatemala,GT
+GUA,Guatemala,GT
+Haiti,Haiti,HT
+Honduras,Honduras,HN
+Hong Kong,Hong Kong,HK
+HKG,Hong Kong,HK
+Hunary,Hungary,HU
+Hu,Hungary,HU
+Hungary,Hungary,HU
+Kolkata,India,IN
+Surabaya,Indonesia,ID
+INA,Indonesia,ID
+Jakarta,Indonesia,ID
+Tehran,Iran,IR
+Dublin,Ireland,IE
+Isra,Israel,IL
+ISR,Israel,IL
+Ramat Hasharon,Israel,IL
+Hasharon,Israel,IL
+Sardinia,Italy,IT
+Alatri,Italy,IT
+Ita,Italy,IT
+Reggio Calabria,Italy,IT
+Ancona,Italy,IT
+CIV,CÃ´te d'Ivoire,CI
+Abidjan,CÃ´te d'Ivoire,CI
+Jamaica,Jamaica,JM
+Japan,Japan,JP
+Jordan,Jordan,JO
+Aktau,Kazachstan,KZ
+Almaty,Kazachstan,KZ
+AN SUNG,South Korea,KR
+Laos,Laos,LA
+Latvia,Latvia,LV
+Lebanon,Lebanon,LB
+Angleur,Liege,Belgium,BE
+Lithuania,Lithuania,LT
+Luxembourg,Luxembourg,LU
+Esch/Alzette,Luxemburg,LU
+Mondorf-Les-Bains,Luxemburg,LU
+Esch-sur-Alzette,Luxemburg,LU
+Macedona,North Macedonia,MK
+Antananarivo,Madagascar,MG
+Kuala Lampur,Malaysia,MY
+MAS,Malaysia,MY
+Acapulco,Mexico,MX
+Mexico City,Mexico,MX
+Mexica,Mexico,MX
+Toluca,Mexico,MX
+Moldovia,Moldova,MD
+Casablanca,Morocco,MA
+Namibia,Namibia,NA
+Alphen aan den Rijn,Netherlands,NL
+NED,Netherlands,NL
+s-Hertogenbosch,Netherlands,NL
+Netherlands,Netherlands,NL
+The Nethe,Netherlands,NL
+The Netherlands,Netherlands,NL
+Elndhoven,Netherlands,NL
+The Hague,Netherlands,NL
+Dutch Antil,Netherlands Antilles,-----------------------------------------Não há
+Dutch Anti,Netherlands Antilles,------------------------------------------Não há
+NZL,New Zealand,NZ
+New Zealan,New Zealand,NZ
+New Zealand,New Zealand,NZ
+NZ,New Zealand,NZ
+Nicaragua,Nicaragua,NI
+Nigeria,Nigeria,NG
+Norway,Norway,NO
+Pacific Oceania,Pacific Oceania,------------------------------------------(Região)
+Lahore,Pakistan,PK
+Pakistan,Pakistan,PK
+Panama,Panama,PA
+Paraguay,Paraguay,PY
+Peru,Peru,PE
+Guam,Philipines,PH
+Manila,Philipines,PH
+Manilla,Philipines,PH
+Phillipines,Philippines,PH
+Philippines,Philippines,PH
+PHI,Philippines,PH
+Poland,Poland,PL
+Estoril,Portugal,PT
+Faro,Portugal,PT
+Portugal,Portugal,PT
+Doha,Qatar,QA
+Bucharest,Romania,RO
+Romania,Romania,RO
+Constanta,Romania,RO
+Moscow,Russia,RU
+Russia,Russia,RU
+Korolev,Russia,RU
+Rwanda,Rwanda,RW
+SCG,Serbia,RS
+Yug.,Serbia,RS
+Serbia &amp; Montenegro,Serbia,RS
+SErgia &amp; M,Serbia,RS
+Belgrade,Serbia,RS
+Bratislava,Slovakia,SK
+Presov,Slovakia,SK
+Slovak,Slovakia,SK
+Slovak Republic,Slovakia,SK
+Slovak,Slovakia,SK
+Slovkia,Slovakia,SK
+Portoroz,Slovenia,SI
+Solvenia,Solvenia,SI
+Pretoria,South Africa,ZA
+SA,South Africa,ZA
+South Africa,South Africa,ZA
+Johannesburg,South Africa,ZA
+South,South Africa,ZA
+Polokwane,South Africa,ZA
+Nelspruit,South Africa,ZA
+Anseong,South Korea,KR
+Korea,South Korea,KR
+Andong,South Korea,KR
+Melilla,Spain,ES
+Algemesi,Spain,ES
+Barcelona,Spain,ES
+ApAizaco,Spain,ES
+Valldoreix,Spain,ES
+Palma de Mallorca,Spain,ES
+Adeje,SPain,ES
+Bakio,Spain,ES
+Neuchatel,Switzerland,CH
+Switz.,Switzerland,CH
+Taipei,Taiwan,TW
+TPE,Taiwan,TW
+Taiwan,Taiwan,TW
+Kaohsiung,Taiwan,TW
+Tajikistan,Tajikistan,TJ
+Bangkok,Thailand,TH
+Thailand,Thailand,TH
+THA,meter o mesmo?
+TBA,To be announced,--------------------------------------------meter o mesmo?
+TBC,To be confirmed,--------------------------------------------meter o mesmo?
+TBD,To be determined,--------------------------------------------meter o mesmo?
+Togo,Togo,TG
+TRI,Trinidad and Tobago,TT
+Tunis,Tunisia,TN
+Tunisia,Tunisia,TN
+Monastir,Tunisia,TN
+Antalya,Turkey,TR
+Turkey,Turkey,TR
+Novaya Kakhovka,Ukraine,UA
+Montevideo,Uruguay,UY
+URU,Uruguay,UY
+U.S.A.,USA,US
+U.S.A,USA,US
+Delray Beach,USA,US
+Alexandria,USA,US
+OK,USA,US
+Texas,USA,US
+Puerto Rico,USA,US
+AR,USA,US
+ALtadena,USA,US
+Tashkent,Uzbekistan,UZ
+Venezeuela,Venezuela,VE
+Lara,Venezuela,VE
+Venezuela,Venezuela,VE
+Vietnam,Vietnam,VN
+Wales,United Kingdom,GB
+Wellington,New Zealand,NZ
+West Perth,Australia,AU
+Wetzlar,Germany,DE
+Willemstad,Curaçao,CW
+Wrocklaw,Poland,PL
+Wuhan,China,CN
+Yugoslavia,Yugoslavia,-----------------------------------------------------(Região)
+Harare,Zimbabwe,ZW
+Zimbabwe,Zimbabwe,ZW
