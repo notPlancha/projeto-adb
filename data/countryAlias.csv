@@ -1,9 +1,9 @@
-country,alias
+country,alias,code
 Abidjan,CÃ´te d'Ivoire,CI
 Acapulco,Mexico,MX
 Accra,Ghana,GH
 Achim,Germany,DE
-Adeje,SPain,ES
+Adeje,Spain,ES
 Adelaide,Australia,AU
 Aix-en-Provence,France,FR
 Ajaccio,France,FR
@@ -176,7 +176,7 @@ NZ,New Zealand,NZ
 NZL,New Zealand,NZ
 OK,USA,US
 Ontaria,Canada,CA
-Pacific Oceania,Pacific Oceania,------------------------------------------(Região)
+Pacific Oceania,Pacific Oceania,PO
 Pakistan,Pakistan,PK
 Palma de Mallorca,Spain,ES
 Panama,Panama,PA
@@ -228,9 +228,9 @@ Taiwan,Taiwan,TW
 Tajikistan,Tajikistan,TJ
 Tashkent,Uzbekistan,UZ
 Tasmania,Australia,AU
-TBA,To be announced,--------------------------------------------meter o mesmo?
-TBC,To be confirmed,--------------------------------------------meter o mesmo?
-TBD,To be determined,--------------------------------------------meter o mesmo?
+TBA,To be announced,
+TBC,To be confirmed,
+TBD,To be determined,
 Tehran,Iran,IR
 Texas,USA,US
 THA,meter o mesmo?

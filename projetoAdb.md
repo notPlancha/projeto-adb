@@ -99,4 +99,70 @@ db.games.aggregate([
 
 Perante os resultados, podemos verificar que existem jogadores cujo país não está no final da string. Para resolver este problema, foi-se adicionado manualmente os países destas cidades, de forma a poder analisar o pais de origem dos jogadores. O mesmo é observável para a coluna _Location_. Adicionalmente, os países não encontravam consistência; por exemplo, "U.S.A." e "USA" eram usados para representar os Estados Unidos. Logo, foi necessário unificar os países, de forma a que todos os países fossem representados da mesma forma. Para isso, foi criado um ficheiro _countryAlias.csv_, o que associava o código do país com o nome do pais na base de dados.
 
+```csv
+San Salvador,Bahamas,BS
+Santa Cruz de la Sie,Bolivia,BO
+Santiago,Chile,CL
+Santo Domingo,Dominican Republic,DO
+Sardinia,Italy,IT
+SCG,Serbia,RS
+Serbia &amp; Montenegro,Serbia,RS
+SErgia &amp; M,Serbia,RS
+Sharm El Sheikh,Egypt,EG
+Slovak,Slovakia,SK
+...
+```
+A partir deste ficheiro, cada pais pode ser associado o seu código usando a pipeline "$lookup" quando for feita a exportação destes dados, depois de importar o ficheiro para a base de dados.
+
+```bash
+mongoimport --db atp --collection countryAlias --type csv --headerline --file .\data\countryAlias.csv
+```
+De forma a gfarantir que todos os países sejam representados no resultado final, ao exportar as coleções, vai ser também importada para o modelo relacional países não representados na base de dados.
+
+Outra verivicação que fizemos foi verificar os vários grupos: as colunas _Ground_, _Hand_, e _WL_.
+
 ```javascript
+db.games.distinct("Ground");
+```
+| result |
+| :--- |
+|  |
+| Carpet |
+| Clay |
+| Grass |
+| Hard |
+
+```javascript 
+db.games.distinct("Hand");
+```
+| result |
+| :--- |
+| Ambidextrous, Two-Handed Backhand |
+| Left-Handed, One-Handed Backhand |
+| Left-Handed, Two-Handed Backhand |
+| Left-Handed, Unknown Backhand |
+| Right-Handed, One-Handed Backhand |
+| Right-Handed, Two-Handed Backhand |
+| Right-Handed, Unknown Backhand |
+| null |
+    
+```javascript
+db.games.distinct("WL");
+```
+
+| result |
+| :--- |
+|  |
+| L |
+| W |
+
+Como podemos observar, a coluna _Ground_ e _WL_ têm valores nulos, e a coluna _Hand_ tem valores "null". 
+Verificou-se que nestas na primeira e última colunas, a base de dados não contem informação suficiente para verificar poder completar estas colunas, mas não devem interferir com os resultados devido ao pequeno número de casos. Na coluna _WL_, os valores são nulos sem oponentes, ou seja, jogos não jogados. Foi assim decidido não tratar estes casos e filtrar estes ao exportar a coleção.
+
+Ainda assim, decimos separar a _Hand_ em duas colunas, porque vai ser útil para a análise futura.
+
+# Criação das coleções
+
+Para a nossa criação das coleções, vai ser usada primariamente a função _aggregate_ do MongoDB. Esta função permite executar várias _pipelines_ de operações sobre os dados, e é muito útil para a criação de coleções, devido à sua flexibilidade e ao seu desempenho. Em cada uma destas, a _pipeline_ "$out" é usada para exportar os dados da _query_ para uma nova coleção.
+
+## Criação da coleção _Player_
