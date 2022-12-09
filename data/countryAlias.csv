@@ -76,8 +76,8 @@ Constanta,Romania,RO
 country,alias,Code
 Crotia,Croatia,HR
 CZE,Czech Rrepublic,CZ
-Czech Rep.,Czech republic,CZ
-Czechoslovakia,Czech republic,CZ
+Czech Rep.,Czech Republic,CZ
+Czechoslovakia,Czech Republic,CZ
 D.R.,Dominican Republic,DO
 Delray Beach,USA,US
 DEN.,Denmark,DK
@@ -265,7 +265,7 @@ Wuhan,China,CN
 Yug.,Serbia,RS
 Yugoslavia,Yugoslavia,YU
 Zimbabwe,Zimbabwe,ZW
- ,
+ , 
 Apizaco,Mexico
 Argentin,Argentina
 Argentina,Argentina
@@ -343,37 +343,37 @@ Busto Arsizio,Italy
 CA,USA
 CA USA,USA
 CHINA,China
-CO,
-CT,
-CZE,
-Cagayan de Oro City,
-Calgary,
-Calhoun,
-California,
-Camboda,
-Campbelltown,
-Campinas,
-Campobasso,
-Canada,
-Canda,
-Capital Federal,
-Caracas,
-Carcassonne,
-Cartago,
-Casalmaggiore,
-Chandler Arizona,
-Changhwa,
-Chascom�s,
-Chelmsford,
-Chennai,
-Chernivtsi,
-Chichester,
-Chile,
-China,
-Chinese Taipei,
-Chisinau,
-Chunghua,
-Chur,
+CO,USA
+CT,USA
+CZE,Czech Republic
+Cagayan de Oro City,Philippines
+Calgary,Canada
+Calhoun,USA
+California,USA
+Camboda,Cambodia
+Campbelltown,Australia
+Campinas,Brazil
+Campobasso,Italy
+Canada,Canada
+Canda,Canada
+Capital Federal,Argentina
+Caracas,Venezuela
+Carcassonne,France
+Cartago,Tunisia
+Casalmaggiore,Italy
+Chandler Arizona,USA
+Changhwa,Taiwan
+Chascom�s,Argentina-------------------------------------------?=ú
+Chelmsford,United Kingdom
+Chennai,India
+Chernivtsi,Ukraine
+Chichester,United Kingdom
+Chile,Chile
+China,China
+Chinese Taipei,Taiwan
+Chisinau,Moldova
+Chunghua,Taiwan
+Chur,Switzerland
 Ciri�,
 Ciudad Aut�noma de Buenos,
 Ciutadella de Menorca,
