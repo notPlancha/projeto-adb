@@ -15,7 +15,7 @@ Alexandria,USA,US
 Algemesi,Spain,ES
 Almaty,Kazachstan,KZ
 Alphen aan den Rijn,Netherlands,NL
-ALtadena,USA,US
+Altadena,USA,US
 AN SUNG,South Korea,KR
 Ancona,Italy,IT
 Andong,South Korea,KR
@@ -23,8 +23,7 @@ Liege,Belgium,BE
 Anseong,South Korea,KR
 Antalya,Turkey,TR
 Antananarivo,Madagascar,MG
-ApAizaco,Spain,ES
-Apizaco,Mexico
+Apizaco,Mexico,MX
 AR,USA,US
 Aregnt,Argentina,AR
 ARG,Argentina,AR
@@ -53,14 +52,11 @@ Bahrain,Bahrain,BH
 Baja,Hungary
 Bakio,Spain,ES
 Balcarce,Argentina
-Bangkok,Thailand
 Bangkok,Thailand,TH
 Bangladesh,Bangladesh,BD
 Barakovichi,Belarus
-Barbados,Barbados
 Barbados,Barbados,BB
 Barbastro,Spain
-Barcelona,Spain
 Barcelona,Spain,ES
 Barquisimeto,Venezeuela
 BASTIA,France
@@ -68,9 +64,7 @@ Bayonne,France
 Belarus,Belarus,BY
 Belarus,Belarus
 Belfast,Ireland
-Belgium,Belgium
 Belgium,Belgium,BE
-Belgrade,Serbia
 Belgrade,Serbia,RS
 Belo Horizonte,Brazil
 Bengaluru,India
@@ -84,13 +78,11 @@ Birmingham,United Kingdom
 Blaricum,Netherlands
 Boca Raton,USA
 Bogota,Colombia
-Bolivia,Bolivia
 Bolivia,Bolivia,BO
 Bolivia/Chile,Bolivia/Chile,BO/CL
 Bologna,Italy
 Bonn,Germany
 Bordeaux,France
-Bosnia,Bosnia and Herzegovina
 Bosnia,Bosnia and Herzegovina,BA
 Bosnia & Herzegovina,Bosnia and Herzegovina
 Bosnia &amp; Herzegovina,Bosnia and Herzegovina,BA
@@ -104,14 +96,11 @@ BRA,Brazil,BR
 Bradenton,USA
 Bragado,Argentina
 Brasil,Brazil
-Brasilia,Brazil
 Brasilia,Brazil,BR
-Bratislava,Slovakia
 Bratislava,Slovakia,SK
 Braunschweig,Germany,DE
 Braz,Brazil,BR
 Brazi,Brazil,BR
-Brazil,Brazil
 Brazil,Brazil,BR
 Bree,Belgium
 Bremen,Germany
@@ -122,22 +111,16 @@ Britain,United Kingdom,GB
 Brno,Czech Republic
 Brunei,Brunei,BN
 Bucharest,Romania,RO
-Bucharest,Romania
 Bucuresti,Romania
 Budapest,Hungary
-Buenos Aires,Argentina
-Buenos aires,Argentina
 Buenos Aires,Argentina,AR
 Bulgaria,Bulgaria,BG
-Bulgaria,Bulgaria
 Burgos,Spain
-Burundi,Burundi
 Burundi,Burundi,BI
 Busto Arsizio,Italy
 CA,USA
 CA USA,USA
 Cagayan de Oro City,Philippines
-Calgary,Canada
 Calgary,Canada,CA
 Calhoun,USA
 California,USA
@@ -148,7 +131,6 @@ Campinas,Brazil
 Campobasso,Italy
 Canada,Canada
 Canda,Canada,CA
-Canda,Canada
 Capital Federal,Argentina
 Caracas,Venezuela
 Carcassonne,France
@@ -163,17 +145,15 @@ Chelmsford,United Kingdom
 Chennai,India
 Chernivtsi,Ukraine
 Chichester,United Kingdom
-chile,
+chile,Chile
 Chile,Chile
-China,China
 CHINA,China
-Chinese Ta,China,CN
-Chinese Taip,China,CN
-Chinese Taipei,China,CN
-Chinese Taipei,Taiwan
-Chisinau,Moldova
-Chunghua,Taiwan
-Chur,Switzerland
+Chinese Ta,Taiwan,
+Chinese Taip,Taiwan,
+Chinese Taipei,Taiwan,
+Chisinau,Moldova,
+Chunghua,Taiwan,
+Chur,Switzerland,
 Ciri�,Italy----------------------------------------------------?=é
 Ciudad Aut�noma de Buenos,Argentina----------------------------?=ó
 Ciudad de Habana,Cuba,CU
@@ -182,7 +162,6 @@ CIV,CÃ´te d'Ivoire,CI
 Civitavecchia,Italy
 Clichy,France
 CO,USA
-Col,Colombia,CO
 COL,Colombia,CO
 Colchester,United Kingdom
 Cologne,Germany
@@ -196,8 +175,6 @@ Constanta,Romania
 Cordoba,Spain
 Corrientes,Argentina
 Costa Rica,Costa Rica
-country,alias,code
-country,alias,Code
 Crimea,----------------------------------------------------------------------
 Croatia,Croatia
 Crotia,Croatia,HR
@@ -209,15 +186,12 @@ Curacao,Curaçao
 Curitiba,Brazil
 Cyprus,Cyprus
 Cz Republic,Czech Republic
-CZE,Czech Republic
 CZE,Czech Rrepublic,CZ
 Czech Rep.,Czech Republic,CZ
-Czech Rep.,Czech Republic
 Czech Repbulic,Czech Republic
 Czech Republic,Czech Republic
 Czech.,Czech Republic
 Czechoslovakia,Czech Republic,CZ
-Czechoslovakia,-----------------------------------------------------------------------------
 C�rdoba,Spain------------------------------------------------?=ó
 C�ret,France--------------------------------------------------?=é
 D.C.,USA
@@ -229,20 +203,18 @@ DC,USA
 Delhi,India
 Delray Beach,USA,US
 DEN.,Denmark,DK
-Denmark,Denmark
 Denmark,Denmark,DK
 Des Moines,USA
 Devonport,Australia,AU
 Diest,Belgium
 Dimitrovgrad,Bulgaria
 Dirksland,The Netherlands
-dnepropetrovsk,
+dnepropetrovsk,Ukraine
 Dnepropetrovsk,Ukraine
 Does Moines,USA
 Doha,Qatar,QA
 Domincan Republic,Dominican Republic,DO
 Dominican Rep.,Dominican Republic
-Dominican Republic,Domincan Republic
 Dominican Republic,Dominican Republic,DO
 Donetsk,Ukraine
 Dubai,United Arab Emirates
@@ -258,7 +230,6 @@ Dutch Antil,Netherlands Antilles,-----------------------------------------Não h
 Ecuador,Ecuador
 Edenvale,South Africa
 Egpyt,Egypt,EG
-Egypt,Egypt
 Eksj�,Sweden--------------------------------------------------?=ö
 El Salvador,El Salvador
 Elche,Spain
@@ -278,7 +249,6 @@ Eygpt,Egypt,EG
 Fargo,USA
 Faro,Portugal,PT
 Fiji Island,Fiji,FJ
-Finland,Finland
 Finland,Finland,FI
 FL,USA
 Flawil,Switzerland
@@ -288,7 +258,6 @@ Florida,USA
 Forbach,France,FR
 Forchheim,Germany
 Formia,Italy
-France,France
 France,France,FR
 Frauenfeld,Switzerland
 Frederiksberg,Denmark
@@ -306,7 +275,6 @@ Gatchina,Russia
 Gauteng,South Africa
 GBR,United Kingdom,GB
 Geneva,Switzerland,
-Geneva,Switzerland
 Genova,Italy
 Gent,Belgium
 Georgia,Georgia
@@ -320,38 +288,31 @@ Gothenburg,Sweden
 Grand Bahamas,The Bahamas
 Graz,Austria
 Great Britain,United Kingdom,GB
-Great Britain, United Kingdom
 Greece,Greece
 Greenbrae,USA
 Grenoble,France
 Groningen,The Netherlands
 Gr�felfing,----------------------------------------------------------
 GUA,Guatemala,GT
-Guadeloupe,France
 Guadeloupe,France,FR
 Guam,Philipines,PH
 Guarulhos,Brasil,BR
 Guastalla,Italy
 Guatemala,Guatemala
 Guatemala City,Guatemala,GT
-Guatemala City,Guatemala
-Guayaquil,Ecuador
 Guayaquil,Equador,EC
 Guimaraes,Portugal
 Haarlem,The Netherlands
 Hackensack,USA
 Haifa,Israel
-Haiti,Haiti
 Haiti,Haiti,HT
 Hall in Tirol,Austria
 Hamburg,Germany
 Hampstead,United Kingdom
-Harare,Zimbabwe
 Harare,Zimbabwe,ZW
 Hasharon,Israel,IL
 Hatfield,United Kingdom
 Havana,Cuba,CU
-Havana,Cuba
 HEILONGJIANG,China
 Helsinki,
 Hershey,
@@ -365,7 +326,6 @@ Hodon�n,
 Holland,
 Holtsville,
 Honduras,Honduras,HN
-Hong Kong,
 Hong Kong,Hong Kong,HK
 Hoorn,
 Hradec Kr�lov�,
@@ -374,7 +334,6 @@ Humboldt,
 Hunan,
 Hunary,Hungary,HU
 Hungary,Hungary,HU
-Hungary,
 Hyderabad,
 Hyogo,
 Hyougo,
@@ -406,16 +365,14 @@ Ivory Coast,
 Izmir,
 Jakarta,Indonesia,ID
 Jamaica,Jamaica,JM
-Japan,
 Japan,Japan,JP
 Jeju,
 Jerez de la frontera,
 Jiangsu,
-Johanesburg,
+Johanesburg,South Africa,ZA
 Johannesburg,South Africa,ZA
 Jordan,Jordan,JO
 Kalamazoo,
-Kanagawa,
 kanagawa,
 Kaohsiung,Taiwan,TW
 Karlskrona,
@@ -426,16 +383,13 @@ Kenya,
 Khanpur Khurd,Jhajjar,Haryana,
 Kharkiv,
 Kiev,Ukraine,
-Kiev,
 KINGSTON UPON THAMES,
 Kinshasa,
 Klagenfurt,
 Klatovy,
 Kolin,
-Kolkata,
 Kolkata,India,IN
 Korea,South Korea,KR
-Korea,
 Korea (South),
 Korolev,Russia,RU
 Kristianstad,
@@ -457,7 +411,6 @@ Las Palmas,
 Latvia,
 Latvia,Latvia,LV
 Le Pont-De-Beauvoisin,
-Lebanon,
 Lebanon,Lebanon,LB
 Leeds,
 Lelystad,
@@ -473,13 +426,11 @@ Lisboa,
 Lisbon,
 Lithonia GA,
 Lithuania,Lithuania,LT
-Lithuania,
 Li�ge,
 LODZ,
 Lodz,
 Loma linda,
 London,United Kingdom,GB
-London,
 Londrina- Paran�,
 Longjumeau,
 Longueuil,
@@ -487,7 +438,6 @@ Lons le saunier,
 Lugano,
 Lund,
 Luxembourg,Luxembourg,LU
-Luxembourg,
 Lyon,
 L�beck,
 MA,
@@ -517,7 +467,7 @@ Mendoza,
 Merlo,
 Messina,
 Mexica,Mexico,MX
-Mexico,
+Mexico,Mexico,MX
 Mexico City,Mexico,MX
 MI,
 Miami,
@@ -525,7 +475,6 @@ Michigan,
 Milano,
 Mineola,
 Minsk,Belarus,BY
-Minsk,
 MN,
 MO,
 Moldova,
@@ -564,7 +513,6 @@ NC,
 NED,Netherlands,NL
 Nelspruit,South Africa,ZA
 Netherlands,Netherlands,NL
-Netherlands,
 Neuchatel,Switzerland,CH
 Neuilly-sur-Seine,
 New Caledoni,France,FR
@@ -576,13 +524,11 @@ New York City,
 New York New York,
 New Zealan,New Zealand,NZ
 New Zealand,New Zealand,NZ
-New Zealand,
 Newcastle upon Tyne,
 Newmarket,
 Newport,
 Nicaragua,Nicaragua,NI
 Nigeria,Nigeria,NG
-Nigeria,
 NIMES,
 nishinomiya,
 NJ,
@@ -590,7 +536,6 @@ Nogent sur marne,
 Norfolk,
 North Carolina,
 North-Ossetia,
-Norway,
 Norway,Norway,NO
 Norwich,
 Nottingham,
@@ -630,13 +575,11 @@ Pacific Oceania,Pacific Oceania,PO
 Paderborn,
 Pakistan,
 Pakistan,Pakistan,PK
-Palma de Mallorca,
 Palma de Mallorca,Spain,ES
 Palo Alto,
 Pamplona,
 Panama,Panama,PA
 Paraguay,Paraguay,PY
-Paraguay,
 PARIS,
 Paris,
 Pau,France,FR
@@ -654,7 +597,6 @@ Pesaro,
 Pescara,
 Petach Tikva,
 PHI,Philippines,PH
-Philippines,
 Philippines,Philippines,PH
 Phillipines,Philippines,PH
 Pilar,
@@ -664,7 +606,6 @@ Pitesti,
 Plains,Tasmania,Aust.,
 Ploiesti,
 Poland,Poland,PL
-Poland,
 Polokwane,South Africa,ZA
 Port au Prince,
 Port Elizabeth,
@@ -676,18 +617,15 @@ Portoroz,Slovenia,SI
 Portschach,Austria,AT
 Portschach am Worthersee,
 Portugal,Portugal,PT
-Portugal,
 Pouillon,
 Prague,
 Presov,Slovakia,SK
 Pretoria,South Africa,ZA
-Pretoria,
 Priemysl,
 Princeton,
 Princeton NJ,
 Providencia,
 Puerto Plata,
-Puerto Rico,
 Puerto Rico,USA,US
 Pune,
 Punta Arenas,
@@ -708,7 +646,6 @@ Rio de Janeiro,Brazil,BR
 Rm Valcea,
 Roeselare,
 Roma,
-Romania,
 Romania,Romania,RO
 Rome,
 Rostov-on-Don,
@@ -720,7 +657,6 @@ RSA,
 Rueil-Malmaison,
 Rumania,
 Russia,Russia,RU
-Russia,
 Rwanda,Rwanda,RW
 s-Hertogenbosch,Netherlands,NL
 S.A. Australia,
@@ -750,7 +686,7 @@ San Salvador,The Bahamas,BS
 San Sebastian,
 Sanremo,
 Sant Carles de la Rapita,
-Sant Carters de la Rapita,Spai,
+Sant Carters de la Rapita,Spain,
 Santa Ana,
 Santa Cruz,
 Santa Cruz de Bezana,
@@ -758,12 +694,9 @@ Santa Cruz de la Sie,Bolivia,BO
 Santa Cruz do Sul,
 Santa Fe,
 Santa Monica,
-Santiago,
 Santiago,Chile,CL
 Santiago De Los Caballeros,
-Santo Domingo,
 Santo Domingo,Dominican Republic,DO
-Sao paulo,
 Sao Paulo,
 Sarajevo,
 Sardinia,Italy,IT
@@ -788,11 +721,8 @@ Siauliai,
 sichuan suining,
 Singapore,
 Sliven,
-Slovak,
-Slovak,Slovakia,SK
 Slovak,Slovakia,SK
 Slovak Republic,Slovakia,SK
-Slovak Republic,
 Slovakia,
 Slovenia,
 Slovkia,Slovakia,SK
@@ -800,7 +730,6 @@ Sofia,
 Solvenia,Solvenia,SI
 South,South Africa,ZA
 South Africa,South Africa,ZA
-South Africa,
 South Australia,
 South Korea,
 Spain,
@@ -834,18 +763,14 @@ Taganrog,
 Tahiti,
 Tainan,
 Taipei,Taiwan,TW
-Taipei,
 Taipei City,
 Taiwan,Taiwan,TW
-Taiwan,
 Tajikistan,Tajikistan,TJ
 Tallinn,
 Tampico,
 Tartu,
 Tarzana,
 Tashkent,Uzbekistan,UZ
-Tashkent,
-Tasmania,Australia,
 Tasmania,Australia,AU
 Taunton,
 TBA,To be announced,
@@ -856,27 +781,22 @@ Tekirdag,
 Temirtau,
 Tennessee,
 Texas,USA,US
-Texas,
 THA,meter o mesmo?
-Thailand,
 Thailand,Thailand,TH
 The Hague,Netherlands,NL
 The Nethe,Netherlands,NL
-The Netherlands,
 The Netherlands,Netherlands,NL
 Tianjin,
 tianjin,
 TN,
 Toamasina,
 Togo,Togo,TG
-Togo,
 Tokyo,
 Toluca,Mexico,MX
 Tomaszow Mazowiecki,
 Tomsk,
 torino,
 Toulon,
-Toulouse,
 Toulouse,France,FR
 Toyama,
 TPE,Taiwan,TW
@@ -889,17 +809,13 @@ Trinidad,
 Trnava,
 Tulsa,
 Tunis,Tunisia,TN
-Tunisia,
 Tunisia,Tunisia,TN
 Turin,
-Turkey,
 Turkey,Turkey,TR
 Turku,
 TX,
 T�bingen,
-U.S.A,
 U.S.A,USA,US
-U.S.A.,
 U.S.A.,USA,US
 Ufa,
 UK,United Kingdom,GB
@@ -921,15 +837,12 @@ Vancouver,
 VARNA,
 Venezeuela,Venezuela,VE
 Venezuela,Venezuela,VE
-Venezuela,
 Vercelli,
 Verona,
 Verviers,
 vicenza,
 Victoria,Australia,AU
-Victoria,
 Vienna,
-Vietnam,
 Vietnam,Vietnam,VN
 Villa Gesell,
 Villa Maria Cordoba,
@@ -949,7 +862,6 @@ warsaw,
 Warszawa,
 Wasserburg am Inn,
 Weiden in der Oberpfalz,
-Wellington,
 Wellington,New Zealand,NZ
 West Palm Beach,
 West Perth,Australia,AU
@@ -957,7 +869,6 @@ Wetzlar,Germany,DE
 WI,
 Wiesbaden,
 Wil,
-Willemstad,
 Willemstad,Curaçao,CW
 Windhoek,
 Winnipeg,Canada,
@@ -966,7 +877,6 @@ Woluwe St Lambert,
 Wr.Neustadt,
 Wrocklaw,Poland,PL
 Wroclaw,
-Wuhan,
 Wuhan,China,CN
 WV,
 Xin jiang,
@@ -976,10 +886,8 @@ Yokohama,
 YOKOHAMA,
 Yug.,Serbia,RS
 Yugoslavia,Yugoslavia,YU
-Yugoslavia,
 Zagreb,
 Zambia,
 Zielona Gora,
-Zimbabwe,
 Zimbabwe,Zimbabwe,ZW
 �stringen,
