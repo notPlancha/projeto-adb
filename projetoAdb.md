@@ -18,7 +18,7 @@ Para o nosso projeto voi-nos provisionado o ficheiro _atpplayers.json_, que cont
 mongoimport `
     --db atp `
     --collection games `
-    --file  "$pwd\data\atpplayers.json"
+    --file  ".\data\atpplayers.json"
 ```
 Isto significa que foi criada uma base de dados chamada _atp_, e uma coleção chamada _games_, que contém os dados do ficheiro _atpplayers.json_.
 
@@ -58,7 +58,7 @@ A coleção contém 15 colunas:
 * GameRound: fase do jogo no torneio
 * GameRank: _ATP Rankings_ do jogo
 * WL: Vitoria ou Derrota (W ou L)
-* Opponent: Nome do Oponente
+* Oponent: Nome do Oponente
 * Score: Sets do jogo
 
 # Preparar dos dados
@@ -100,24 +100,38 @@ Perante os resultados, podemos verificar que existem jogadores cujo país não e
 ```csv
 alias,country,code
 ...
-San Salvador,Bahamas,BS
-Santa Cruz de la Sie,Bolivia,BO
-Santiago,Chile,CL
-Santo Domingo,Dominican Republic,DO
-Sardinia,Italy,IT
-SCG,Serbia,RS
-Serbia &amp; Montenegro,Serbia,RS
-SErgia &amp; M,Serbia,RS
-Sharm El Sheikh,Egypt,EG
-Slovak,Slovakia,SK
+U.S.A,USA,US
+U.S.A.,USA,US
+Ufa,Russia,RU
+UK,United Kingdom,GB
+Ukraine,Ukraine,UA
+United Arab Emirates,United Arab Emirates,AE
+Urbino,Italy,IT
+URU,Uruguay,UY
+Uruguaiana,Brazil,BR
+Uruguay,Uruguay,UY
 ...
 ```
 A partir deste ficheiro, cada pais pode ser associado o seu código usando a pipeline "$lookup" quando for feita a exportação destes dados, depois de importar o ficheiro para a base de dados.
 
 ```bash
-mongoimport --db atp --collection countryAlias --type csv --headerline --file .\data\countryAlias.csv
+mongoimport `
+    --db atp `
+    --collection countryAliases `
+    --type csv `
+    --headerline `
+    --file ".\data\countryAlias.csv"
 ```
-De forma a gfarantir que todos os países sejam representados no resultado final, ao exportar as coleções, vai ser também importada para o modelo relacional países não representados na base de dados.
+De forma a garantir que todos os países sejam representados no resultado final, ao exportar as coleções, vai ser também importada países não representados na base de dados. O _countryCodes.csv_ pode ser encontrado em [datahub.io/core/country-list](https://pkgstore.datahub.io/core/country-list/data_csv/data/d7c9d7cfb42cb69f4422dec222dbbaa8/data_csv.csv).
+
+```bash
+mongoimport `
+    --db atp `
+    --collection countryCodes `
+    --type csv `
+    --headerline `
+    --file ".\data\countryCodes.csv"
+```
 
 Outra verivicação que fizemos foi verificar os vários grupos: as colunas _Ground_, _Hand_, e _WL_.
 
@@ -181,6 +195,7 @@ db.games.aggregate([
     }
   },{
     $project:{
+      _id:0,
       playerName: "$_id.playerName",
       country: {$arrayElemAt: ["$_id.born", -1]},
       height: "$_id.height",
@@ -189,26 +204,34 @@ db.games.aggregate([
       backhand: {$arrayElemAt: ["$_id.hand", 1]}
     }
   },{
+    $set: {
+      backhand: {$cond: [{$eq: ["$backhand", "Unknown Backhand"]}, null, "$backhand"]},
+      domHand: {$cond: [{$eq: ["$domHand", "null"]}, null, "$domHand"]},
+      height: {$cond: [{$eq: ["$height", "NA"]}, null, "$height"]},
+      country: {$cond: [{$eq: ["$country", ""]}, null, "$country"]}
+    }
+  },{
     $out: "players"
   }
 ]);
 ```
 
-Para a criação da coleção _Player_, foi usada a pipeline "$group" para para agrupar os dados de cada jogador, e a pipeline "$project" para tornar os dados mais legíveis e exportáveis. Para o pais do jogador, como o país está sempre no fim da string, ou após uma virgula ou sozinha, foi usada a pipeline "$split" e "$arrayElemAt" para selecionar o último elemento do array. Para a mão dominante e o tipo de backhand, foi usada a mesma técnica, separando a mão dominante da backhand.
+Para a criação da coleção _Player_, foi usada a pipeline "$group" para para agrupar os dados de cada jogador, e a pipeline "$project" para tornar os dados mais legíveis e exportáveis. Para o pais do jogador, como o país está sempre no fim da string, ou após uma virgula ou sozinha, foi usada a pipeline "$split" e "$arrayElemAt" para selecionar o último elemento do array. Para a mão dominante e o tipo de backhand, foi usada a mesma técnica, separando a mão dominante da backhand. Por último, foram-se uniformizados os valores nulos e vazios, de forma a estar consistente.
 
 ```javascript
-db.players.find({}, {_id:0, linkPlayer: 0}).limit(5)
+db.players.find({}, {_id:0, linkPlayer: 0}).limit(5);
 ```
 | backhand | country | domHand | height | playerName |
 | :--- | :--- | :--- | :--- | :--- |
-| Two-Handed Backhand | South Africa | Left-Handed | 188 | Cameron Norrie |
-| Unknown Backhand | Germany | Left-Handed | 196 | Andreas Lesch |
-| Unknown Backhand |  | Right-Handed | NA | Ran Xu |
-| null |  | null | NA | Olivier Le Jeune |
-| null |  | null | NA | Luka Todorovic |
+| Two-Handed Backhand | Spain | Left-Handed | 173 | Carlos Sanchez Jover |
+| null | null | null | null | Guillaume Dermiens |
+| null | null | Right-Handed | 0 | Salahaddine Adbib |
+| null | Bremen | Right-Handed | 175 | Valentino Pest |
+| null | null | null | null | Iphton Louis |
 
 
-Nota-se que alguns jogadores não têm país, mão dominante ou backhand, e que alguns jogadores não têm altura registada. Estes casos estão consistentes com a coleção original.
+
+Nota-se que alguns jogadores não têm país, mão dominante, backhand, out altura registada. Estes casos estão consistentes com a coleção original.
 
 Esta coleção não inclui os oponentes, porque estes vão ser tratados ao exportar os dados, com base na coleção _matches_.
 
@@ -228,6 +251,7 @@ db.games.aggregate([
     }
   },{
     $project: {
+      _id: 0,
       tournament: "$_id.tournament",
       country: {$arrayElemAt: ["$_id.location", -1]},
       date: "$_id.date",
@@ -237,12 +261,12 @@ db.games.aggregate([
   },{
     $out: "tournaments"
   }
-])
+]);
 ```
 A coleção _tournaments_ é criada de forma semelhante ao _players_, com um semelhante resultado.
 
 ```javascript
-db.tournaments.find({}, {_id:0}).limit(5)
+db.tournaments.find({}, {_id:0}).limit(5);
 ```
 | country | date | ground | prize | tournament |
 | :--- | :--- | :--- | :--- | :--- |
@@ -287,12 +311,12 @@ db.games.aggregate([
   }, {
     $out: "matches"
   }
-])
+]);
 ```
 Este processo continua com a semelhança, adicionando a pipeline "$match" para filtrar os jogos sem oponentes, e a pipeline "$set" para criar as colunas _winner_ e _loser_. É adicionado a pipeline "$match" é usada para filtrar os jogos não jogados, e a pipeline "$cond", o que nos deixa escrever uma condição que decide sobre o vencedor e o perdedor. A pipeline "$sets" garante que os nossos jogos repitidos são realmente repetidos, sendo que um score de, por exemplo, "67 72 25" seria igual a um score de "76 27 52", devido à natureza da coluna; esta vai incluir as varias formas como a coluna se encontra nos vários jogos repetidos.
 
 ```javascript
-db.matches.find({}, {_id:0}).limit(5)
+db.matches.find({}, {_id:0}).limit(5);
 ```
 | | | | | | |
 | :- | :- | :- | :- | :- | :- |
@@ -304,31 +328,122 @@ db.matches.find({}, {_id:0}).limit(5)
 | **tournament** | 's-Hertogenbosch | 's-Hertogenbosch | 's-Hertogenbosch | 's-Hertogenbosch | 's-Hertogenbosch |
 | **winner** | Alexander Nonnekes | Bart Beks | Gilles Elseneer | Jordan Kerr | Marcin Matkowski |
 
-## Criação da coleção _countryAliases_
+## Tratamento de colunas individuais
 
-Para a criação desta coleção, vai ser importada o csv previamente referido.
-
-```bash
-mongoimport `
-    --db atp `
-    --collection countryAliases `
-    --type csv `
-    --headerline `
-    --file "$pwd\data\countryAlias.csv"
-```
+### Países nos jogadores e torneis
+Até este momento, temos duas (2) coleções que referiam aos paises dos jogadores e dos torneios: _countryAliases_ e _countryCodes_. Vamos juntar estas duas coleções, de forma a incluir códigos de paises não representados na base de dados.
 
 ```javascript
-db.countryAliases.find({}, {_id:0}).limit(8)
+db.countryCodes.aggregate([
+  {
+    $project:{
+      _id: 0,
+      alias: "$Name",
+      code: "$Code",
+      country: "$Name"
+    }
+  },{
+    $unionWith: {
+      coll: "countryAliases",
+      pipeline: [
+        {
+          $project:{
+            _id: 0
+          }
+        }
+      ]
+    }
+  },{
+    $out: "countryAliases"
+  }
+]);
 ```
-| country        | code | alias      |
-|:---------------| :--- |:-----------|
-| Mexico         | MX | Acapulco   |
-| CÃ´te d'Ivoire | CI | Abidjan    |
-| France         | FR | Ajaccio    |
-| United Kingdom | GB | AL         |
-| Italy          | IT | Alatri     |
-| Kazachstan     | KZ | Aktau      |
-| Canada         | CA | ALberta    |
-| USA            | US | Alexandria |
 
-Aqui, a coluna _alias_ é usada para referenciar os países/cidades como estãp nas coleções e mudar para o código do país.
+Com estas duas juntas, vai ser adicionado um campo _countryCode_ a cada documento da coleção _players_ e _tournaments_, com base no campo _country_, com a ajuda da _pipeline_ "$lookup".
+
+Aqui, a coluna _alias_ é usada para referenciar os países/cidades como estão nas coleções e mudar para o código do país.
+
+Para mudar os paises nas bds executámos o seguinte:
+
+```javascript
+db.players.aggregate([
+  {
+    $lookup:{
+      from: "countryAliases",
+      localField: "country",
+      foreignField: "alias",
+      as: "alias"
+    }
+   },{
+   $set: {
+    countryCode: {$arrayElemAt: ["$alias.code", 0]},
+    alias: {$arrayElemAt: ["$alias.alias", 0]},
+    country: {$arrayElemAt: ["$alias.country", 0]},
+   }
+  },
+  {$out: "players"}
+]);
+db.players.find({}, {_id:0}).limit(5);
+```
+| alias | backhand | country | countryCode | domHand | height | playerName |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Spain | One-Handed Backhand | Spain | ES | Right-Handed | 183 | David Marrero |
+| null | Unknown Backhand | null | null | Right-Handed | null | Zoran Mihailovic |
+| null | null | null | null | null | null | Guillaume Dermiens |
+| null | Unknown Backhand | null | null | Right-Handed | null | Vince Mackey |
+| Germany | One-Handed Backhand | Germany | DE | Right-Handed | 191 | Alex Calatrava |
+
+
+
+```javascript
+db.tournaments.aggregate([
+  {
+    $lookup:{
+      from: "countryAliases",
+      localField: "country",
+      foreignField: "alias",
+      as: "alias"
+    }
+   },{
+   $set: {
+    countryCode: {$arrayElemAt: ["$alias.code", 0]},
+    alias: {$arrayElemAt: ["$alias.alias", 0]},
+    country: {$arrayElemAt: ["$alias.country", 0]},
+   }
+  },
+  {$out: "tournaments"}
+]);
+db.tournaments.find({}, {_id:0}).limit(5);
+```
+| | | | | | |
+| :- | :- | :- | :- | :- | :- |
+| **alias** | Scotland | Croatia | England | Belgium | Japan |
+| **country** | United Kingdom | Croatia | United Kingdom | Belgium | Japan |
+| **countryCode** | GB | HR | GB | BE | JP |
+| **date** | 2000.05.15 - 2000.05.21 | 2013.08.19 - 2013.08.25 | 1999.09.13 - 1999.09.19 | 1997.07.21 - 1997.07.27 | 2017.09.11 - 2017.09.17 |
+| **ground** | Clay | Clay | Clay | Clay | Hard |
+| **prize** | $25,000 | $10,000 | $375,000 | $75,000 |  |
+| **tournament** | Edinburgh | Croatia F8 | Bournemouth | Ostend | JPN vs. BRA WG Play-Off |
+
+### Players
+Aqui vamos adicionar os que n estavam TODO
+
+### DomHand e Backhand
+TODO
+
+### Países
+TODO
+
+### 
+# Exportação e importação dos dados
+
+Para exportar os dados, vamos usar o comando _mongoexport_.
+
+```bash
+mongoexport --db atp `
+--collection players `
+--out data\toSql\players.csv `
+--type csv `
+--fields playerName,height,domHand,backhand,countryCode `
+```
+TODO
