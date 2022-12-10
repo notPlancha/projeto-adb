@@ -1,28 +1,32 @@
+
 CREATE TABLE `Games`(
-    `winnerName` VARCHAR(255) NOT NULL primary key,
-    `winnerLinkId` CHAR(4) NOT NULL primary key,
-    `looserName` VARCHAR(255) NOT NULL primary key,
-    `looserLinkId` CHAR(4) NOT NULL primary key,
-    `tournamentDate` VARCHAR(255) NOT NULL primary key,
-    `tournamentName` VARCHAR(255) NOT NULL primary key,
-    `round` VARCHAR(255) NOT NULL primary key ,
-    `sets` VARCHAR(255) NOT NULL
+    `winnerName` VARCHAR(255) NOT NULL,
+    `winnerLinkId` CHAR(4) NOT NULL,
+    `looserName` VARCHAR(255) NOT NULL,
+    `looserLinkId` CHAR(4) NOT NULL,
+    `tournamentDate` VARCHAR(255) NOT NULL,
+    `tournamentName` VARCHAR(255) NOT NULL,
+    `round` VARCHAR(255) NOT NULL,
+    `sets` VARCHAR(255) NOT NULL,
+    primary key (`winnerName`,`winnerLinkId`,`looserName`,`looserLinkId`,`tournamentDate`,`tournamentName`,`round`)
 );
 CREATE TABLE `Grounds`(`name` VARCHAR(255) NOT NULL primary key );
 CREATE TABLE `Tournaments`(
-    `name` VARCHAR(255) NOT NULL primary key ,
-    `date` VARCHAR(255) NOT NULL primary key ,
+    `name` VARCHAR(255) NOT NULL,
+    `date` VARCHAR(255) NOT NULL,
     `countryId` CHAR(2) NOT NULL,
     `ground` VARCHAR(255) NULL,
-    `prize` VARCHAR(255) NULL
+    `prize` VARCHAR(255) NULL,
+    primary key (`name`,`date`)
 );
 CREATE TABLE `Players`(
-    `name` VARCHAR(255) NOT NULL primary key ,
-    `linkId` CHAR(4) NOT NULL DEFAULT '0000' primary key ,
+    `name` VARCHAR(255) NOT NULL ,
+    `linkId` CHAR(4) NOT NULL DEFAULT '0000',
     `bornCountryId` CHAR(2) NULL,
     `domHand` VARCHAR(255) NULL,
     `backhand` VARCHAR(255) NULL,
-    `height` INT NULL
+    `height` INT NULL,
+    primary key (`name`,`linkId`)
 );
 CREATE TABLE `DomHand`(`name` VARCHAR(255) NOT NULL);
 ALTER TABLE
@@ -44,3 +48,6 @@ ALTER TABLE
     `Tournaments` ADD CONSTRAINT `tournaments_countryid_foreign` FOREIGN KEY(`countryId`) REFERENCES `Countries`(`id`);
 ALTER TABLE
     `Players` ADD CONSTRAINT `players_borncountryid_foreign` FOREIGN KEY(`bornCountryId`) REFERENCES `Countries`(`id`);
+alter table `Games` add constraint `games_winnername_winnerlinkid_foreign` foreign key (`winnerName`,`winnerLinkId`) references `Players`(`name`,`linkId`);
+alter table `Games` add constraint `games_loosername_looserlinkid_foreign` foreign key (`looserName`,`looserLinkId`) references `Players`(`name`,`linkId`);
+alter table `Games` add constraint `games_tournamentdate_tournamentname_foreign` foreign key (`tournamentName`,`tournamentDate`) references `Tournaments`(`name`,`date`);
