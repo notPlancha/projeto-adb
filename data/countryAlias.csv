@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 country,alias,code
 Gr�felfing,----------------------------------------------------------
 Crimea,----------------------------------------------------------------------
@@ -25,6 +26,35 @@ Argentina,Argentina
 Argentin,Argentina
 Villa Maria Cordoba,Argentina
 Villa Gesell,Argentina
+=======
+alias,country,code
+Abidjan,CÃ´te d'Ivoire,CI
+Acapulco,Mexico,MX
+Accra,Ghana,GH
+Achim,Germany,DE
+Adeje,Spain,ES
+Adelaide,Australia,AU
+Aix-en-Provence,France,FR
+Ajaccio,France,FR
+Aktau,Kazachstan,KZ
+AL,United Kingdom,GB
+Alatri,Italy,IT
+ALberta,Canada,CA
+Alexandria,USA,US
+Algemesi,Spain,ES
+Almaty,Kazachstan,KZ
+Alphen aan den Rijn,Netherlands,NL
+Altadena,USA,US
+AN SUNG,South Korea,KR
+Ancona,Italy,IT
+Andong,South Korea,KR
+Liege,Belgium,BE
+Anseong,South Korea,KR
+Antalya,Turkey,TR
+Antananarivo,Madagascar,MG
+Apizaco,Mexico,MX
+AR,USA,US
+>>>>>>> f8b1bc40511ffb5ca17de871cc900c4ca460a770
 Aregnt,Argentina,AR
 ARG,Argentina,AR
 Arg.,Argentina,AR

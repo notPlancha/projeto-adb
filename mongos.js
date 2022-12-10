@@ -76,10 +76,7 @@ db.games.aggregate([
     $out: "tournaments"
   }
 ])
-//games
-db.
-
-
+//players
 db.games.aggregate([
   {
     $group: {
