@@ -1,130 +1,97 @@
-<<<<<<< HEAD
 country,alias,code
 Gr�felfing,----------------------------------------------------------
 Crimea,----------------------------------------------------------------------
 Evpatoria,---------------------------------------------------------------------------------------
 Bridgetown,----------------------------------------------cidade:capital de barbados(independente) MAS na net diz q o jogador é dinamarquês
-oran,Algeria
-country,alias,code
-country,alias
-country,alias,code
-St. John's,Antigua and Barbuda
-Bahia Blanca,Argentina
-Balcarce,Argentina
-Bragado,Argentina
+oran,Algeria,DZ
+St. John's,Antigua and Barbuda,AG
+Bahia Blanca,Argentina,AR
+Balcarce,Argentina,AR
+Bragado,Argentina,AR
 Buenos Aires,Argentina,AR
-Capital Federal,Argentina
-Corrientes,Argentina
-Merlo,Argentina
-Humboldt,Argentina
-Rauch,Argentina
-La Plata,Argentina
-Mendoza,Argentina
-Mar del Palta,Argentina
-Marco Juarez,Argentina
-Argentina,Argentina
-Argentin,Argentina
-Villa Maria Cordoba,Argentina
-Villa Gesell,Argentina
-=======
-alias,country,code
-Abidjan,CÃ´te d'Ivoire,CI
-Acapulco,Mexico,MX
-Accra,Ghana,GH
-Achim,Germany,DE
-Adeje,Spain,ES
-Adelaide,Australia,AU
-Aix-en-Provence,France,FR
-Ajaccio,France,FR
-Aktau,Kazachstan,KZ
-AL,United Kingdom,GB
-Alatri,Italy,IT
-ALberta,Canada,CA
-Alexandria,USA,US
-Algemesi,Spain,ES
-Almaty,Kazachstan,KZ
-Alphen aan den Rijn,Netherlands,NL
-Altadena,USA,US
-AN SUNG,South Korea,KR
-Ancona,Italy,IT
-Andong,South Korea,KR
-Liege,Belgium,BE
-Anseong,South Korea,KR
-Antalya,Turkey,TR
-Antananarivo,Madagascar,MG
-Apizaco,Mexico,MX
-AR,USA,US
->>>>>>> f8b1bc40511ffb5ca17de871cc900c4ca460a770
+Capital Federal,Argentina,AR
+Corrientes,Argentina,AR
+Merlo,Argentina,AR
+Humboldt,Argentina,AR
+Rauch,Argentina,AR
+La Plata,Argentina,AR
+Mendoza,Argentina,AR
+Mar del Palta,Argentina,AR
+Marco Juarez,Argentina,AR
+Argentina,Argentina,AR
+Argentin,Argentina,AR
+Villa Maria Cordoba,Argentina,AR
+Villa Gesell,Argentina,AR
 Aregnt,Argentina,AR
 ARG,Argentina,AR
 Arg.,Argentina,AR
-Pilar,Argentina
+Pilar,Argentina,AR
 Chascom�s,Argentina-------------------------------------------?=ú
 Ciudad Aut�noma de Buenos,Argentina----------------------------?=ó
-Armenia,Armenia
-Yerevan,Armenia
-Melbourne,Australia
+Armenia,Armenia,AM
+Yerevan,Armenia,AM
+Melbourne,Australia,AU
 Victoria,Australia,AU
 West Perth,Australia,AU
 Devonport,Australia,AU
 AUS,Australia,AU
-Aust..,Australia
-Port Pirie,Australia
-Brisbane,Australia
-Sydney,Australia
-Subiaco,Australia
-St Kilda East,Australia
-Monto,Australia
+Aust..,Australia,AU
+Port Pirie,Australia,AU
+Brisbane,Australia,AU
+Sydney,Australia,AU
+Subiaco,Australia,AU
+St Kilda East,Australia,AU
+Monto,Australia,AU
 Adelaide,Australia,AU
-Port Lincoln,Australia
-S.A. Australia,Australia
-Gold Coast,Australia
-Campbelltown,Australia
-South Australia,Australia
-Australia,Australia
+Port Lincoln,Australia,AU
+S.A. Australia,Australia,AU
+Gold Coast,Australia,AU
+Campbelltown,Australia,AU
+South Australia,Australia,AU
+Australia,Australia,AU
 Tasmania,Australia,AU
-Traralgon,Australia
-Perth,Australia
-Austria,Austria
-Wr.Neustadt,Austria
-Schwaz,Austria
-Graz,Austria
+Traralgon,Australia,AU
+Perth,Australia,AU
+Austria,Austria,AT
+Wr.Neustadt,Austria,AT
+Schwaz,Austria,AT
+Graz,Austria,AT
 Aut.,Austria,AT
-Linz,Austria
-Klagenfurt,Austria
-Hall in Tirol,Austria
-Portschach am Worthersee,Austria
-Vienna,Austria
+Linz,Austria,AT
+Klagenfurt,Austria,AT
+Hall in Tirol,Austria,AT
+Portschach am Worthersee,Austria,AT
+Vienna,Austria,AT
 Portschach,Austria,AT
 Bahrain,Bahrain,BH
 Bangladesh,Bangladesh,BD
 Barbados,Barbados,BB
 Belarus,Belarus,BY
 Minsk,Belarus,BY
-Belarus,Belarus
-Barakovichi,Belarus
-Vilvoorde,Belgium
-leuven,Belgium
-Diest,Belgium
+Belarus,Belarus,BY
+Barakovichi,Belarus,BY
+Vilvoorde,Belgium,BE
+leuven,Belgium,BE
+Diest,Belgium,BE
 Liege,Belgium,BE
-Bree,Belgium
-Gent,Belgium
-Woluwe St Lambert,Belgium
-Namur,Belgium
+Bree,Belgium,BE
+Gent,Belgium,BE
+Woluwe St Lambert,Belgium,BE
+Namur,Belgium,BE
 Belgium,Belgium,BE
-Verviers,Belgium
+Verviers,Belgium,BE
 Liege,Belgium,BE
-Roeselare,Belgium
+Roeselare,Belgium,BE
 Li�ge,Belgium----------------------------------------------?=è
 Bermuda,Bermuda,BM
-La Paz,Bolivia
+La Paz,Bolivia,BO
 Santa Cruz de la Sie,Bolivia,BO
-Trinidad,Bolivia
+Trinidad,Bolivia,BO
 Bolivia,Bolivia,BO
 Bolivia/Chile,Bolivia/Chile,BO/CL
-Bosnia-Herzegovina,Bosnia and Herzegovina
-Sarajevo,Bosnia and Herzegovina
-Bosnia & Herzegovina,Bosnia and Herzegovina
+Bosnia-Herzegovina,Bosnia and Herzegovina,BA
+Sarajevo,Bosnia and Herzegovina,BA
+Bosnia & Herzegovina,Bosnia and Herzegovina,BA
 Bosnia,Bosnia and Herzegovina,BA
 Bosnia &amp; Herzegovina,Bosnia and Herzegovina,BA
 Botwana,Botswana,BW
@@ -135,341 +102,341 @@ Brazil,Brazil,BR
 Rio de Janeiro,Brazil,BR
 Braz,Brazil,BR
 Brasilia,Brazil,BR
-Curitiba,Brazil
-Mato Grosso,Brazil
-Brasil,Brazil
-Sao Paulo,Brazil
+Curitiba,Brazil,BR
+Mato Grosso,Brazil,BR
+Brasil,Brazil,BR
+Sao Paulo,Brazil,BR
 BRA,Brazil,BR
 Bahia,Brazil,BR
-Pernambuco,Brazil
-Belo Horizonte,Brazil
-Campinas,Brazil
-Uruguaiana,Brazil
-Santa Cruz do Sul,Brazil
-Sertaozinho,Brazil
-Porto Alegre,Brazil
+Pernambuco,Brazil,BR
+Belo Horizonte,Brazil,BR
+Campinas,Brazil,BR
+Uruguaiana,Brazil,BR
+Santa Cruz do Sul,Brazil,BR
+Sertaozinho,Brazil,BR
+Porto Alegre,Brazil,BR
 Florianapolis,Brazil,BR
 S�o Paulo,Brazil---------------------------------------------?=ã
 Londrina- Paran�,Brazil--------------------------------------?=á
 S�o Bernardo do Campo,Brazil---------------------------------?=ã
 Brunei,Brunei,BN
 Bulgaria,Bulgaria,BG
-Asenovgrad,Bulgaria
-Sliven,Bulgaria
-VARNA,Bulgaria
-Sofia,Bulgaria
-Dimitrovgrad,Bulgaria
-Gitega,Burundi
+Asenovgrad,Bulgaria,BG
+Sliven,Bulgaria,BG
+VARNA,Bulgaria,BG
+Sofia,Bulgaria,BG
+Dimitrovgrad,Bulgaria,BG
+Gitega,Burundi,BI
 Burundi,Burundi,BI
-Camboda,Cambodia
+Camboda,Cambodia,KH
 Cambodia,Cambodia,KH
-Vancouver,Canada
-Longueuil,Canada
+Vancouver,Canada,CA
+Longueuil,Canada,CA
 Canda,Canada,CA
-Canada,Canada
+Canada,Canada,CA
 Calgary,Canada,CA
 ALberta,Canada,CA
-Saskatchewan,Canada,
+Saskatchewan,Canada,CA
 Ontaria,Canada,CA
-Montreal,Canada
-Oakville,Canada
-Winnipeg,Canada,
+Montreal,Canada,Ca
+Oakville,Canada,Ca
+Winnipeg,Canada,CA
 Salinas,Cape Verde,CV
-chile,Chile
-Providencia,Chile
+chile,Chile,CL
+Providencia,Chile,CL
 Santiago,Chile,CL
-Chile,Chile
-Iquique,Chile
-Punta Arenas,Chile
-Shanghai,China
-Hunan,China
-CHINA,China
-tianjin,China
-sichuan suining,China
-Tianjin,China
+Chile,Chile,CL
+Iquique,Chile,CL
+Punta Arenas,Chile,CL
+Shanghai,China,CN
+Hunan,China,CN
+CHINA,China,CN
+tianjin,China,CN
+sichuan suining,China,CN
+Tianjin,China,CN
 Nanjing,China,CN
 Wuhan,China,CN
-Fuzhou,China,
-HEILONGJIANG,China
-Jiangsu,China
-Dalian,China
-Xin jiang,China
-Colombia,Colombia
-Pereira,Colombia
+Fuzhou,China,CN
+HEILONGJIANG,China,CN
+Jiangsu,China,CN
+Dalian,China,CN
+Xin jiang,China,CN
+Colombia,Colombia,CO
+Pereira,Colombia,CO
 Columbia,Colombia,CO
-Bogota,Colombia
+Bogota,Colombia,CO
 Villavicencio,Colombia,CO
 COL,Colombia,CO
-Costa Rica,Costa Rica
-Split,Croatia
-split,Croatia
+Costa Rica,Costa Rica,CR
+Split,Croatia,HR
+split,Croatia,HR
 Crotia,Croatia,HR
-Croatia,Croatia
-Zagreb,Croatia
+Croatia,Croatia,HR
+Zagreb,Croatia,HR
 Ciudad de Habana,Cuba,CU
 Havana,Cuba,CU
-Cuba,Cuba
-Curacao,Curaçao
+Cuba,Cuba,CU
+Curacao,Curaçao,CW
 Willemstad,Curaçao,CW
-Cyprus,Cyprus
-Moravska Trebova,Czech Republic
-Brno,Czech Republic
-Ostrava,Czech Republic
-Valasske Mezirici,Czech Republic
-Ostrov,Czech Republic
-Cz Republic,Czech Republic
-Klatovy,Czech Republic
+Cyprus,Cyprus,CY
+Moravska Trebova,Czech Republic,CZ
+Brno,Czech Republic,CZ
+Ostrava,Czech Republic,CZ
+Valasske Mezirici,Czech Republic,CZ
+Ostrov,Czech Republic,CZ
+Cz Republic,Czech Republic,CZ
+Klatovy,Czech Republic,CZ
 Czech Rep.,Czech Republic,CZ
-Czech Repbulic,Czech Republic
-Czech Republic,Czech Republic
-Czech.,Czech Republic
-Marianske Lazne,Czech Republic,
-Prague,Czech Republic
-Kolin,Czech Republic
-Pilsen,Czech Republic
+Czech Repbulic,Czech Republic,CZ
+Czech Republic,Czech Republic,CZ
+Czech.,Czech Republic,CZ
+Marianske Lazne,Czech Republic,CZ
+Prague,Czech Republic,CZ
+Kolin,Czech Republic,CZ
+Pilsen,Czech Republic,CZ
 Czechoslovakia,Czech Republic,CZ
 Hodon�n,Czech Republic----------------------------------?=í
 Hradec Kr�lov�,Czech Republic--------------------------?=á   e   ?=é
-CZE,Czech Rrepublic,CZ
-Ivory Coast,CÃ´te d'Ivoire
+CZE,Czech Republic,CZ
+Ivory Coast,CÃ´te d'Ivoire,CI
 Abidjan,CÃ´te d'Ivoire,CI
 CIV,CÃ´te d'Ivoire,CI
-Kinshasa,Democratic Republic of the Congo
+Kinshasa,Democratic Republic of the Congo,CG
 Denmark,Denmark,DK
-Frederiksberg,Denmark
+Frederiksberg,Denmark,DK
 DEN.,Denmark,DK
 Santo Domingo,Dominican Republic,DO
-Puerto Plata,Dominican Republic
+Puerto Plata,Dominican Republic,DO
 D.R.,Dominican Republic,DO
-Dominican Rep.,Dominican Republic
+Dominican Rep.,Dominican Republic,DO
 Domincan Republic,Dominican Republic,DO
-Santiago De Los Caballeros,Dominican Republic
+Santiago De Los Caballeros,Dominican Republic,DO
 Dominican Republic,Dominican Republic,DO
-Ecuador,Ecuador
-Quito,Ecuador
+Ecuador,Ecuador,EC
+Quito,Ecuador,EC
 Egpyt,Egypt,EG
 Eygpt,Egypt,EG
 Sharm El Sheikh,Egypt,EG
-El Salvador,El Salvador
-Guayaquil,Equador,EC
-Tartu,Estonia
-Estonia,Estonia
-Tallinn,Estonia
+El Salvador,El Salvador,SV
+Guayaquil,Ecuador,EC
+Tartu,Estonia,EE
+Estonia,Estonia,EE
+Tallinn,Estonia,EE
 Fiji Island,Fiji,FJ
-Turku,Finland
+Turku,Finland,FI
 Finland,Finland,FI
-Helsinki,Finland
+Helsinki,Finland,FI
 Hyvink��,Finland-------------------------------------?=ä    e   ?=ä
-Paris,France
+Paris,France,FR
 Pau,France,FR
-Strasbourg,France
+Strasbourg,France,FR
 Ajaccio,France,FR
-Carcassonne,France
-carhaix plougher,France
-BREST,France
+Carcassonne,France,FR
+carhaix plougher,France,FR
+BREST,France,FR
 Aix-en-Provence,France,FR
-Schoelcher,France
-Saint-Nazaire,France
-La Roche-sur-Yon,France
-Le Pont-De-Beauvoisin,France
-Nogent sur marne,France
-Pouillon,France
-NIMES,France
+Schoelcher,France,FR
+Saint-Nazaire,France,FR
+La Roche-sur-Yon,France,FR
+Le Pont-De-Beauvoisin,France,FR
+Nogent sur marne,France,FR
+Pouillon,France,FR
+NIMES,France,FR
 Lesser Antilles,France,FR
 New Caledonia,France,FR
-Saint-julien-en-genevois,France
+Saint-julien-en-genevois,France,FR
 New Caledoni,France,FR
-Neuilly-sur-Seine,France
-Saint Jean de Maurienne,France
-REIMS,France
-Sucy En Brie,France
-Suresnes,France
-Saint Etienne,France
+Neuilly-sur-Seine,France,FR
+Saint Jean de Maurienne,France,FR
+REIMS,France,FR
+Sucy En Brie,France,FR
+Suresnes,France,FR
+Saint Etienne,France,FR
 Bourg-en-Bresse,France,FR
-Levallois,France
+Levallois,France,FR
 Forbach,France,FR
-Villeurbanne,France
-Rennes,France
+Villeurbanne,France,FR
+Rennes,France,FR
 France,France,FR
-Boulogne-Sur-Mer,France
+Boulogne-Sur-Mer,France,FR
 Reunion Island,France,FR
-Frejus,France
-Montpellier,France
-Villeneuve saint Georges,France
-Bordeaux,France
+Frejus,France,FR
+Montpellier,France,FR
+Villeneuve saint Georges,France,FR
+Bordeaux,France,FR
 Guadeloupe,France,FR
-PARIS,France
-Tahiti,France
-Clichy,France
-Saint Denis Reunion,France
-Biarritz,France
-Martigues,France
-Marseille,France
-Rueil-Malmaison,France
-Grenoble,France
-Dunkerque,France
-Toulon,France
-Longjumeau,France
+PARIS,France,FR
+Tahiti,France,FR
+Clichy,France,FR
+Saint Denis Reunion,France,FR
+Biarritz,France,FR
+Martigues,France,FR
+Marseille,France,FR
+Rueil-Malmaison,France,FR
+Grenoble,France,FR
+Dunkerque,France,FR
+Toulon,France,FR
+Longjumeau,France,FR
 Toulouse,France,FR
-Lons le saunier,France
-Lyon,France
-Bayonne,France
-BASTIA,France
-Gonesse,France
+Lons le saunier,France,FR
+Lyon,France,FR
+Bayonne,France,FR
+BASTIA,France,FR
+Gonesse,France,FR
 Noum�a,France------------------------------------------------------?=é
 C�ret,France--------------------------------------------------?=é
 S�vres,France------------------------------------------------?=è
-Georgia,Georgia
-Bergisch - Gladbach,Germany
-Berlin,Germany
-Rheinfelden,Germany
-Bad Hersfeld,Germany
-Traunstein,Germany
-GER,Germany
-Germany,Germany
-Aschaffenburg,Germany
-Friedrichshafen,Germany
-Forchheim,Germany
-Muenster,Germany
-Wasserburg am Inn,Germany
-Munich,Germany
+Georgia,Georgia,GE
+Bergisch - Gladbach,Germany,DE
+Berlin,Germany,DE
+Rheinfelden,Germany,DE
+Bad Hersfeld,Germany,DE
+Traunstein,Germany,DE
+GER,Germany,DE
+Germany,Germany,DE
+Aschaffenburg,Germany,DE
+Friedrichshafen,Germany,DE
+Forchheim,Germany,DE
+Muenster,Germany,DE
+Wasserburg am Inn,Germany,DE
+Munich,Germany,DE
 Braunschweig,Germany,DE
-Essen,Germany
-Bonn,Germany
-Rotenburg,Germany
+Essen,Germany,DE
+Bonn,Germany,DE
+Rotenburg,Germany,DE
 Wetzlar,Germany,DE
-Wiesbaden,Germany
-Hamburg,Germany
-Nuremberg,Germany
-Nurtingen,Germany
-Bremen,Germany
-Paderborn,Germany
-Duisburg,Germany
-Duesseldorf,Germany
-Starnberg,Germany
-schwaebisch hall,Germany
-Weiden in der Oberpfalz,Germany
-Itzehoe,Germany
+Wiesbaden,Germany,DE
+Hamburg,Germany,DE
+Nuremberg,Germany,DE
+Nurtingen,Germany,DE
+Bremen,Germany,DE
+Paderborn,Germany,DE
+Duisburg,Germany,DE
+Duesseldorf,Germany,DE
+Starnberg,Germany,DE
+schwaebisch hall,Germany,DE
+Weiden in der Oberpfalz,Germany,DE
+Itzehoe,Germany,DE
 Achim,Germany,DE
-Reutlingen,Germany
-Cologne,Germany
-Rumania,Germany
+Reutlingen,Germany,DE
+Cologne,Germany,DE
+Rumania,Germany,DE
 T�bingen,Germany-------------------------------------------------?=ü
 �stringen,Germany-----------------------------------------------?=Ö
 L�beck,Germany------------------------------------------?=ü
 M�nchengladbach,Germany--------------------------------------?=ö
 Accra,Ghana,GH
-Greece,Greece
+Greece,Greece,GR
 GUA,Guatemala,GT
-Guatemala,Guatemala
+Guatemala,Guatemala,GT
 Guatemala City,Guatemala,GT
-Port au Prince,Haiti
+Port au Prince,Haiti,HT
 Haiti,Haiti,HT
 Honduras,Honduras,HN
 Hong Kong,Hong Kong,HK
 HKG,Hong Kong,HK
 Hunary,Hungary,HU
 Hu,Hungary,HU
-Baja,Hungary
-Budapest,Hungary
+Baja,Hungary,HU
+Budapest,Hungary,HU
 Hungary,Hungary,HU
-Chennai,India
-Mumbai,India
-Delhi,India
+Chennai,India,IN
+Mumbai,India,IN
+Delhi,India,IN
 Kolkata,India,IN
-India,India
-Mysore,India
-Bengaluru,India
-MUMBAI,India
-Hyderabad,India
-Pune,India
-Visakhapatnam,India
+India,India,IN
+Mysore,India,IN
+Bengaluru,India,IN
+MUMBAI,India,IN
+Hyderabad,India,IN
+Pune,India,IN
+Visakhapatnam,India,IN
 INA,Indonesia,ID
-Samosir Island,Indonesia
-Indonesia,Indonesia
+Samosir Island,Indonesia,ID
+Indonesia,Indonesia,ID
 Surabaya,Indonesia,ID
 Jakarta,Indonesia,ID
-Esfahan,Iran
+Esfahan,Iran,IR
 Tehran,Iran,IR
-Iran,Iran
-Belfast,Ireland
-dublin,Ireland
-IL,Ireland
+Iran,Iran,IR
+Belfast,Ireland,IE
+dublin,Ireland,IE
+IL,Ireland,IE
 Dublin,Ireland,IE
-Ireland,Ireland
-Haifa,Israel
+Ireland,Ireland,IE
+Haifa,Israel,IL
 Hasharon,Israel,IL
 ISR,Israel,IL
 Isra,Israel,IL
 Ramat Hasharon,Israel,IL
-Petach Tikva,Israel
-Israel,Israel
+Petach Tikva,Israel,IL
+Israel,Israel,IL
 Reggio Calabria,Italy,IT
-Perugia,Italy
-vicenza,Italy
-Verona,Italy
-Cuneo,Italy
-Vercelli,Italy
-Milano,Italy
-Ravenna,Italy
-Roma,Italy
-Urbino,Italy
-Monterotondo,Italy
-Turin,Italy
-Trieste,Italy
-Novara,Italy
-Casalmaggiore,Italy
-Erice,Italy
-Macerata,Italy
-torino,Italy
-Rome,Italy
-Messina,Italy
+Perugia,Italy,IT
+vicenza,Italy,IT
+Verona,Italy,IT
+Cuneo,Italy,IT
+Vercelli,Italy,IT
+Milano,Italy,IT
+Ravenna,Italy,IT
+Roma,Italy,IT
+Urbino,Italy,IT
+Monterotondo,Italy,IT
+Turin,Italy,IT
+Trieste,Italy,IT
+Novara,Italy,IT
+Casalmaggiore,Italy,IT
+Erice,Italy,IT
+Macerata,Italy,IT
+torino,Italy,IT
+Rome,Italy,IT
+Messina,Italy,IT
 Ancona,Italy,IT
-Rimini,Italy
-Florence,Italy
-Rovato (Brescia),Italy
-San Benedetto del Tronto,Italy
-Rovereto,Italy
-Busto Arsizio,Italy
-L Aquila,Italy
+Rimini,Italy,IT
+Florence,Italy,IT
+Rovato (Brescia),Italy,IT
+San Benedetto del Tronto,Italy,IT
+Rovereto,Italy,IT
+Busto Arsizio,Italy,IT
+L Aquila,Italy,IT
 Alatri,Italy,IT
-Como,Italy
-Campobasso,Italy
-Monselice,Italy
-Formia,Italy
-Civitavecchia,Italy
-Guastalla,Italy
-Italy,Italy
-Pescara,Italy
-Licata,Italy
-Genova,Italy
-Pisa,Italy
-Bologna,Italy
+Como,Italy,IT
+Campobasso,Italy,IT
+Monselice,Italy,IT
+Formia,Italy,IT
+Civitavecchia,Italy,IT
+Guastalla,Italy,IT
+Italy,Italy,IT
+Pescara,Italy,IT
+Licata,Italy,IT
+Genova,Italy,IT
+Pisa,Italy,IT
+Bologna,Italy,IT
 Ita,Italy,IT
-Pesaro,Italy
-Sanremo,Italy
+Pesaro,Italy,IT
+Sanremo,Italy,IT
 Sardinia,Italy,IT
 Ciri�,Italy----------------------------------------------------?=é
 Jamaica,Jamaica,JM
-nishinomiya,Japan
-Osaka,Japan
-Nagoya,Japan
-Hyougo,Japan
-Yokohama,Japan
-fukuoka,Japan
-Yamagata,Japan
-Saitma,Japan
-YOKOHAMA,Japan
-Tokyo,Japan
-Ishikawa,Japan
-Toyama,Japan
-kanagawa,Japan
-Fukushima,Japan
-Shizuoka,Japan
+nishinomiya,Japan,JP
+Osaka,Japan,JP
+Nagoya,Japan,JP
+Hyougo,Japan,JP
+Yokohama,Japan,JP
+fukuoka,Japan,JP
+Yamagata,Japan,JP
+Saitma,Japan,JP
+YOKOHAMA,Japan,JP
+Tokyo,Japan,JP
+Ishikawa,Japan,JP
+Toyama,Japan,JP
+kanagawa,Japan,JP
+Fukushima,Japan,JP
+Shizuoka,Japan,JP
 Japan,Japan,JP
-Hyogo,Japan
-Okayama,Japan
-Osaka Japan,Japan
+Hyogo,Japan,JP
+Okayama,Japan,JP
+Osaka Japan,Japan,JP
 Khanpur Khurd,Jhajjar,Haryana,
 Jordan,Jordan,JO
 Aktau,Kazachstan,KZ
