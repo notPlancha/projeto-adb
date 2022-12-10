@@ -1,72 +1,46 @@
 CREATE TABLE `Games`(
-    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    `winnerId` INT NOT NULL,
-    `looserId` INT NOT NULL,
-    `tournamentId` INT NOT NULL,
-    `round` VARCHAR(255) NOT NULL,
-    `rank` INT NOT NULL,
-    `score` VARCHAR(255) NOT NULL
+    `winnerName` VARCHAR(255) NOT NULL primary key,
+    `winnerLinkId` CHAR(4) NOT NULL primary key,
+    `looserName` VARCHAR(255) NOT NULL primary key,
+    `looserLinkId` CHAR(4) NOT NULL primary key,
+    `tournamentDate` VARCHAR(255) NOT NULL primary key,
+    `tournamentName` VARCHAR(255) NOT NULL primary key,
+    `round` VARCHAR(255) NOT NULL primary key ,
+    `sets` VARCHAR(255) NOT NULL
 );
-ALTER TABLE
-    `Games` ADD PRIMARY KEY `games_id_primary`(`id`);
-CREATE TABLE `Grounds`(
-    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(255) NOT NULL
-);
-ALTER TABLE
-    `Grounds` ADD PRIMARY KEY `grounds_id_primary`(`id`);
+CREATE TABLE `Grounds`(`name` VARCHAR(255) NOT NULL primary key );
 CREATE TABLE `Tournaments`(
-    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(255) NOT NULL,
-    `country` CHAR(2) NOT NULL,
-    `date` VARCHAR(255) NOT NULL,
-    `ground` INT NOT NULL
+    `name` VARCHAR(255) NOT NULL primary key ,
+    `date` VARCHAR(255) NOT NULL primary key ,
+    `countryId` CHAR(2) NOT NULL,
+    `ground` VARCHAR(255) NULL,
+    `prize` VARCHAR(255) NULL
 );
-ALTER TABLE
-    `Tournaments` ADD PRIMARY KEY `tournaments_id_primary`(`id`);
-ALTER TABLE
-    `Tournaments` ADD UNIQUE `tournaments_name_unique`(`name`);
 CREATE TABLE `Players`(
-    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    `name` INT NOT NULL,
-    `bornCountry` CHAR(2) NOT NULL,
-    `domHand` TINYINT NOT NULL,
-    `backhand` TINYINT NOT NULL,
-    `gamesUrl` VARCHAR(255) NOT NULL
+    `name` VARCHAR(255) NOT NULL primary key ,
+    `linkId` CHAR(4) NOT NULL DEFAULT '0000' primary key ,
+    `bornCountryId` CHAR(2) NULL,
+    `domHand` VARCHAR(255) NULL,
+    `backhand` VARCHAR(255) NULL,
+    `height` INT NULL
 );
+CREATE TABLE `DomHand`(`name` VARCHAR(255) NOT NULL);
 ALTER TABLE
-    `Players` ADD PRIMARY KEY `players_id_primary`(`id`);
-CREATE TABLE `DomHand`(
-    `id` TINYINT UNSIGNED NOT NULL COMMENT '1,2,3',
-    `name` VARCHAR(255) NOT NULL
-);
+    `DomHand` ADD PRIMARY KEY `domhand_name_primary`(`name`);
+CREATE TABLE `BackHand`(`name` VARCHAR(255) NOT NULL);
 ALTER TABLE
-    `DomHand` ADD PRIMARY KEY `domhand_id_primary`(`id`);
-CREATE TABLE `BackHand`(
-    `id` TINYINT UNSIGNED NOT NULL COMMENT '0, 1, 2',
-    `name` VARCHAR(255) NOT NULL
-);
-ALTER TABLE
-    `BackHand` ADD PRIMARY KEY `backhand_id_primary`(`id`);
+    `BackHand` ADD PRIMARY KEY `backhand_name_primary`(`name`);
 CREATE TABLE `Countries`(
-    `id` CHAR(2) NOT NULL,
+    `id` CHAR(2) NOT NULL primary key ,
     `name` VARCHAR(255) NOT NULL
 );
 ALTER TABLE
-    `Countries` ADD PRIMARY KEY `countries_id_primary`(`id`);
+    `Players` ADD CONSTRAINT `players_backhand_foreign` FOREIGN KEY(`backhand`) REFERENCES `BackHand`(`name`);
 ALTER TABLE
-    `Games` ADD CONSTRAINT `games_tournamentid_foreign` FOREIGN KEY(`tournamentId`) REFERENCES `Tournaments`(`id`);
+    `Players` ADD CONSTRAINT `players_domhand_foreign` FOREIGN KEY(`domHand`) REFERENCES `DomHand`(`name`);
 ALTER TABLE
-    `Tournaments` ADD CONSTRAINT `tournaments_ground_foreign` FOREIGN KEY(`ground`) REFERENCES `Grounds`(`id`);
+    `Tournaments` ADD CONSTRAINT `tournaments_ground_foreign` FOREIGN KEY(`ground`) REFERENCES `Grounds`(`name`);
 ALTER TABLE
-    `Players` ADD CONSTRAINT `players_backhand_foreign` FOREIGN KEY(`backhand`) REFERENCES `BackHand`(`id`);
+    `Tournaments` ADD CONSTRAINT `tournaments_countryid_foreign` FOREIGN KEY(`countryId`) REFERENCES `Countries`(`id`);
 ALTER TABLE
-    `Games` ADD CONSTRAINT `games_looserid_foreign` FOREIGN KEY(`looserId`) REFERENCES `Players`(`id`);
-ALTER TABLE
-    `Games` ADD CONSTRAINT `games_winnerid_foreign` FOREIGN KEY(`winnerId`) REFERENCES `Players`(`id`);
-ALTER TABLE
-    `Players` ADD CONSTRAINT `players_borncountry_foreign` FOREIGN KEY(`bornCountry`) REFERENCES `Countries`(`id`);
-ALTER TABLE
-    `Players` ADD CONSTRAINT `players_domhand_foreign` FOREIGN KEY(`domHand`) REFERENCES `DomHand`(`id`);
-ALTER TABLE
-    `Tournaments` ADD CONSTRAINT `tournaments_country_foreign` FOREIGN KEY(`country`) REFERENCES `Countries`(`id`);
+    `Players` ADD CONSTRAINT `players_borncountryid_foreign` FOREIGN KEY(`bornCountryId`) REFERENCES `Countries`(`id`);

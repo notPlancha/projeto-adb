@@ -13,7 +13,7 @@ header-includes:
 A Associação de Tenistas Profissionais (_ATP_) é um órgão de ténis profisional masculino, organizando torneios do desporto globalmente. A organização contém na sua base de dados um conjunto de jogos e jogadores que participaram em torneios pelo menos desde 1914, e incluem todos os grandes torneios do circuito masculino, incluindo os torneios de Grand Slam. O objetivo deste trabalho será limpar e preparar os dados de um modelo não-relacional para um modelo-relacional, para que possa ser utilizado em análises posteriores.
 
 # Importação dos dados
-Para o nosso projeto voi-nos provisionado o ficheiro _atpplayers.json_, que contém os jogos feito pelos jogadores. Para importar este ficheiro, foi utilizado o comando _mongoimport_:
+Para o nosso projeto voi-nos provisionado o ficheiro _atpplayers.json_, que contém os jogos feito pelos jogadores. Para importar este ficheiro, foi utilizado o comando `mongoimport`:
 ```bash
 mongoimport `
     --db atp `
@@ -112,7 +112,7 @@ Uruguaiana,Brazil,BR
 Uruguay,Uruguay,UY
 ...
 ```
-A partir deste ficheiro, cada pais pode ser associado o seu código usando a pipeline "$lookup" quando for feita a exportação destes dados, depois de importar o ficheiro para a base de dados.
+A partir deste ficheiro, cada pais pode ser associado o seu código usando a _pipeline_ `$lookup` quando for feita a exportação destes dados, depois de importar o ficheiro para a base de dados.
 
 ```bash
 mongoimport `
@@ -177,17 +177,18 @@ Ainda assim, decimos separar a _Hand_ em duas colunas, porque vai ser útil para
 
 # Criação das coleções
 
-Para a nossa criação das coleções, vai ser usada primariamente a função _aggregate_ do MongoDB. Esta função permite executar várias _pipelines_ de operações sobre os dados, e é muito útil para a criação de coleções, devido à sua flexibilidade e ao seu desempenho. Em cada uma destas, a _pipeline_ "$out" é usada para exportar os dados da _query_ para uma nova coleção.
+Para a nossa criação das coleções, vai ser usada primariamente a função `aggregate` do MongoDB. Esta função permite executar várias _pipelines_ de operações sobre os dados, e é muito útil para a criação de coleções, devido à sua flexibilidade e ao seu desempenho. Em cada uma destas, a _pipeline_ "$out" é usada para exportar os dados da _query_ para uma nova coleção.
 
 ## Criação da coleção _Player_
 
 ```
+
 db.games.aggregate([
   {
     $group: {
       _id:{
-        hand: {$split: ["$Hand", ", "]},
-        born: {$split: ["$Born", ", "]},
+        hand: {$split: ["$Hand", ","]},
+        born: {$split: ["$Born", ","]},
         height: "$Height",
         linkPlayer: "$LinkPlayer",
         playerName: "$PlayerName"
@@ -199,16 +200,17 @@ db.games.aggregate([
       playerName: "$_id.playerName",
       country: {$arrayElemAt: ["$_id.born", -1]},
       height: "$_id.height",
-      linkPlayer: "$_id.linkPlayer",
+      linkPlayer: {$split: ["$_id.linkPlayer", "/"]},
       domHand: {$arrayElemAt: ["$_id.hand", 0]},
       backhand: {$arrayElemAt: ["$_id.hand", 1]}
     }
   },{
     $set: {
-      backhand: {$cond: [{$eq: ["$backhand", "Unknown Backhand"]}, null, "$backhand"]},
-      domHand: {$cond: [{$eq: ["$domHand", "null"]}, null, "$domHand"]},
+      backhand: {$cond: [{$eq: ["$backhand", "Unknown Backhand"]}, null, {$trim: {input: "$backhand"}}]},
+      domHand: {$cond: [{$eq: ["$domHand", "null"]}, null, {$trim: {input: "$domHand"}}]},
       height: {$cond: [{$eq: ["$height", "NA"]}, null, "$height"]},
-      country: {$cond: [{$eq: ["$country", ""]}, null, "$country"]}
+      country: {$cond: [{$eq: ["$country", ""]}, null, {$trim: {input: "$country"}}]},
+      linkId: {$arrayElemAt: ["$linkPlayer", 6]}
     }
   },{
     $out: "players"
@@ -216,7 +218,7 @@ db.games.aggregate([
 ]);
 ```
 
-Para a criação da coleção _Player_, foi usada a pipeline "$group" para para agrupar os dados de cada jogador, e a pipeline "$project" para tornar os dados mais legíveis e exportáveis. Para o pais do jogador, como o país está sempre no fim da string, ou após uma virgula ou sozinha, foi usada a pipeline "$split" e "$arrayElemAt" para selecionar o último elemento do array. Para a mão dominante e o tipo de backhand, foi usada a mesma técnica, separando a mão dominante da backhand. Por último, foram-se uniformizados os valores nulos e vazios, de forma a estar consistente.
+Para a criação da coleção _Player_, foi usada a _pipeline_ `$group` para para agrupar os dados de cada jogador, e a pipeline `$project` para tornar os dados mais legíveis e exportáveis. Para o pais do jogador, como o país está sempre no fim da string, ou após uma virgula ou sozinha, foi usada a pipeline `$split` e `$arrayElemAt` para selecionar o último elemento do array. Para a mão dominante e o tipo de backhand, foi usada a mesma técnica, separando a mão dominante da backhand. Por último, foram-se uniformizados os valores nulos e vazios, de forma a estar consistente.
 
 ```javascript
 db.players.find({}, {_id:0, linkPlayer: 0}).limit(5);
@@ -313,7 +315,7 @@ db.games.aggregate([
   }
 ]);
 ```
-Este processo continua com a semelhança, adicionando a pipeline "$match" para filtrar os jogos sem oponentes, e a pipeline "$set" para criar as colunas _winner_ e _loser_. É adicionado a pipeline "$match" é usada para filtrar os jogos não jogados, e a pipeline "$cond", o que nos deixa escrever uma condição que decide sobre o vencedor e o perdedor. A pipeline "$sets" garante que os nossos jogos repitidos são realmente repetidos, sendo que um score de, por exemplo, "67 72 25" seria igual a um score de "76 27 52", devido à natureza da coluna; esta vai incluir as varias formas como a coluna se encontra nos vários jogos repetidos.
+Este processo continua com a semelhança, adicionando a _pipeline_ `$match` para filtrar os jogos sem oponentes, e a _pipeline_ `$set` para criar as colunas _winner_ e _loser_. É adicionado a pipeline `$match` é usada para filtrar os jogos não jogados, e a _pipeline_ `$cond`, o que nos deixa escrever uma condição que decide sobre o vencedor e o perdedor. A _pipeline_ `$sets` garante que os nossos jogos repitidos são realmente repetidos, sendo que um score de, por exemplo, "67 72 25" seria igual a um score de "76 27 52", devido à natureza da coluna; esta vai incluir as varias formas como a coluna se encontra nos vários jogos repetidos.
 
 ```javascript
 db.matches.find({}, {_id:0}).limit(5);
@@ -330,7 +332,7 @@ db.matches.find({}, {_id:0}).limit(5);
 
 ## Tratamento de colunas individuais
 
-### Países nos jogadores e torneis
+### Países
 Até este momento, temos duas (2) coleções que referiam aos paises dos jogadores e dos torneios: _countryAliases_ e _countryCodes_. Vamos juntar estas duas coleções, de forma a incluir códigos de paises não representados na base de dados.
 
 ```javascript
@@ -359,11 +361,11 @@ db.countryCodes.aggregate([
 ]);
 ```
 
-Com estas duas juntas, vai ser adicionado um campo _countryCode_ a cada documento da coleção _players_ e _tournaments_, com base no campo _country_, com a ajuda da _pipeline_ "$lookup".
+Com estas duas juntas, vai ser adicionado um campo _countryCode_ a cada documento da coleção _players_ e _tournaments_, com base no campo _country_, com a ajuda da _pipeline_ `$lookup`.
 
 Aqui, a coluna _alias_ é usada para referenciar os países/cidades como estão nas coleções e mudar para o código do país.
 
-Para mudar os paises nas bds executámos o seguinte:
+Para mudar os paises nas coleções executámos os comandos seguintes:
 
 ```javascript
 db.players.aggregate([
@@ -425,19 +427,113 @@ db.tournaments.find({}, {_id:0}).limit(5);
 | **prize** | $25,000 | $10,000 | $375,000 | $75,000 |  |
 | **tournament** | Edinburgh | Croatia F8 | Bournemouth | Ostend | JPN vs. BRA WG Play-Off |
 
-### Players
-Aqui vamos adicionar os que n estavam TODO
+### Players não incluídos
+Aqui vai ser adicionado os jogadores não incluídos na coleção original _games_.
+```javascript
+db.matches.aggregate([
+  {
+    $lookup:{
+      from: "players",
+      localField: "winner",
+      foreignField: "playerName",
+      as: "winnerInfo"
+    }
+  },{
+    $lookup:{
+      from: "players",
+      localField: "loser",
+      foreignField: "playerName",
+      as: "loserInfo"
+    }
+  },{
+    $project:{
+      _id: 0,
+      winner: 1,
+      loser: 1,
+      countWinner: { $size: "$winnerInfo" },
+      countLooser: { $size: "$loserInfo" }
+    }
+  },{
+    $match: {
+      $or: [
+        {countWinner: 0},
+        {countLooser: 0}
+      ]
+    }
+  },{
+    $project: {
+      player: {$cond: [{$eq: ["$countWinner", 0]}, "$winner", "$loser"]}
+    }
+  },
+  {
+    $group: {
+      _id: "$player",
+      count: {$sum: 1}
+    }
+  },{
+    $out: "missingPlayers"
+  }
+]);
+db.missingPlayers.find().limit(5);
+```
+| \_id | count |
+| :--- | :--- |
+| Bertrand Tinck | 5 |
+| Mateo Etchevarne | 1 |
+| Guillermo Torres Garcia | 1 |
+| Marco Linconir | 4 |
+| Hai-Yun Tan | 11 |
 
-### DomHand e Backhand
-TODO
+Esta _query_ primeiro vai verificar os players que estão na coleção _players_ e depois vai agrupar por nome de jogador e contar o número de vezes que não aparece. O resultado é guardado na coleção _missingPlayers_. A seguir, vamos adicionar estes os jogadores à coleção _players_, usando o `$unionWith`.
 
-### Países
-TODO
+```javascript
+db.players.aggregate([
+  {
+    $unionWith: {
+      coll: "missingPlayers"
+    }
+  },
+  {
+    $out: "players"
+  }
+]);
+```
 
-### 
+### domHand, backhand e ground
+Aqui vamos criar as coleções _domHands_, _backhands_, e _grounds_ de forma a incluí-las mais facilmente no esquema relacional.
+```javascript
+db.players.aggregate([
+  {
+    $group: {
+      _id: "$domHand"
+    }
+  },{
+    $out: "domHands"
+  }
+]);
+db.players.aggregate([
+  {
+    $group: {
+      _id: "$backhand"
+    }
+  },{
+    $out: "backhands"
+  }
+]);
+db.tournaments.aggregate([
+  {
+    $group: {
+      _id: "$ground"
+    }
+  },{
+    $out: "grounds"
+  }
+]);
+```
+
 # Exportação e importação dos dados
 
-Para exportar os dados, vamos usar o comando _mongoexport_.
+Para exportar os dados, vamos usar o comando `mongoexport`.
 
 ```bash
 mongoexport --db atp `
