@@ -1,7 +1,7 @@
 ---
 title: "TODO titulo"
 subtitle: "Trabalho elaborado no âmbito da Unidade Curricular de Armazenamento para Big Data do 2º ano da Licenciatura de Ciência de Dados do Instituto Universitário de Lisboa ISCTE"
-author: [André Plancha; 105289, Another Author; Num]
+author: [André Plancha; 105289, Afonso Silva;105208, Tomas Ribeiro;105220]
 date: "07/12/2022"
 header-includes:
 - \usepackage[a4paper, total={6in, 8in}]{geometry}
