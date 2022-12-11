@@ -64,7 +64,7 @@ A coleção contém 15 colunas:
 # Preparar dos dados
 Para preparar os dados, nós planeámos transformar a nossa coleção em coleções diferentes, de forma a representar o modelo relacionar, para facilitar a sua transição. Para isso, desenhámos o nosso diagrama do modelo relacional pretendido:
 
-![Diagrama do modelo relacional](figures/sqlDiagram.png)
+![Diagrama do modelo relacional](figures/sqlDiagramOld.png)
 
 Antes de começar a transformar os dados, foi necessário verificar a integridade deles. 
 
@@ -94,8 +94,6 @@ db.games.aggregate([
 | Cordoba |
 
 Perante os resultados, podemos verificar que existem jogadores cujo país não está no final da string. Para resolver este problema, foi-se adicionado manualmente os países destas cidades, de forma a poder analisar o pais de origem dos jogadores. O mesmo é observável para a coluna _Location_. Adicionalmente, os países não encontravam consistência; por exemplo, "U.S.A." e "USA" eram usados para representar os Estados Unidos. Logo, foi necessário unificar os países, de forma a que todos os países fossem representados da mesma forma. Para isso, foi criado um ficheiro _countryAlias.csv_, o que associava o código do país com o nome do pais na base de dados. O ficheiro estará disponível no repositório do projeto, e em anexo na submissão.
-
-```javascript
 
 ```csv
 alias,country,code
@@ -182,7 +180,6 @@ Para a nossa criação das coleções, vai ser usada primariamente a função `a
 ## Criação da coleção _Player_
 
 ```
-
 db.games.aggregate([
   {
     $group: {
@@ -246,7 +243,7 @@ db.games.aggregate([
       _id: {
         tournament: "$Tournament",
         location: {$split: ["$Location", ", "]},
-        date: "$Date",
+        date: "$Date", //TODO perguntar se é preciso tratar
         ground: "$Ground",
         prize: "$Prize"
       }
@@ -257,7 +254,7 @@ db.games.aggregate([
       tournament: "$_id.tournament",
       country: {$arrayElemAt: ["$_id.location", -1]},
       date: "$_id.date",
-      ground: "$_id.ground",
+      ground: {$cond: [{$eq: ["$_id.ground", ""]}, null, "$_id.ground"]},
       prize: "$_id.prize"
     }
   },{
@@ -290,12 +287,22 @@ db.games.aggregate([
   {
     $set: {
       winner: {$cond: [{$eq: ["$WL", "W"]}, "$PlayerName", "$Oponent"]},
-      loser: {$cond: [{$eq: ["$WL", "W"]}, "$Oponent", "$PlayerName"]}
+      loser: {$cond: [{$eq: ["$WL", "W"]}, "$Oponent", "$PlayerName"]},
+      winnerLink: {$cond: [
+        {$eq: ["$WL", "W"]},
+        {$split: ["$LinkPlayer", "/"]},
+        null
+      ]},
+      looserLink: {$cond: [
+        {$eq: ["$WL", "W"]},
+        null, 
+        {$split: ["$LinkPlayer", "/"]}
+      ]}
     }
   },
   {
     $group: {
-      _id:["$Tournament", "$GameRound", "$Date", "$winner", "$loser", ],
+      _id:["$Tournament", "$GameRound", "$Date", "$winner", "$loser", {$arrayElemAt: ["$winnerLink", 6]}, {$arrayElemAt: ["$looserLink", 6]}],
       count: {$sum: 1},
       sets: {$push:"$Score"}
     }
@@ -307,6 +314,8 @@ db.games.aggregate([
       date: {$arrayElemAt: ["$_id", 2]},
       winner: {$arrayElemAt: ["$_id", 3]},
       loser: {$arrayElemAt: ["$_id", 4]},
+      winnerLinkId: {$arrayElemAt: ["$_id", 5]},
+      loserLinkId: {$arrayElemAt: ["$_id", 6]},
       count: true,
       sets: true
     }
@@ -316,19 +325,85 @@ db.games.aggregate([
 ]);
 ```
 Este processo continua com a semelhança, adicionando a _pipeline_ `$match` para filtrar os jogos sem oponentes, e a _pipeline_ `$set` para criar as colunas _winner_ e _loser_. É adicionado a pipeline `$match` é usada para filtrar os jogos não jogados, e a _pipeline_ `$cond`, o que nos deixa escrever uma condição que decide sobre o vencedor e o perdedor. A _pipeline_ `$sets` garante que os nossos jogos repitidos são realmente repetidos, sendo que um score de, por exemplo, "67 72 25" seria igual a um score de "76 27 52", devido à natureza da coluna; esta vai incluir as varias formas como a coluna se encontra nos vários jogos repetidos.
-
 ```javascript
 db.matches.find({}, {_id:0}).limit(5);
 ```
 | | | | | | |
 | :- | :- | :- | :- | :- | :- |
-| **count** | 2 | 2 | 2 | 2 | 2 |
+| **count** | 1 | 1 | 1 | 1 | 1 |
 | **date** | 2007.06.18 - 2007.06.24 | 2007.06.18 - 2007.06.24 | 2007.06.18 - 2007.06.24 | 2007.06.18 - 2007.06.24 | 2007.06.18 - 2007.06.24 |
 | **gameRound** | 1st Round Qualifying | 1st Round Qualifying | 1st Round Qualifying | 1st Round Qualifying | 1st Round Qualifying |
-| **loser** | Sven Swinnen | Xander Spong | Martijn Van Haasteren | Patrick Eichenberger | Dustin Brown |
-| **sets** | \["36 46", "63 64"\] | \["57 06", "75 60"\] | \["57 63 26", "75 36 62"\] | \["63 67,  63", "36 76,  36"\] | \["67,  26", "76,  62"\] |
+| **loser** | Sven Swinnen | Sven Swinnen | Xander Spong | Xander Spong | Martijn Van Haasteren |
+| **loserLinkId** | sh51 | null | si97 | null | v473 |
+| **sets** | \["36 46"\] | \["63 64"\] | \["57 06"\] | \["75 60"\] | \["57 63 26"\] |
 | **tournament** | 's-Hertogenbosch | 's-Hertogenbosch | 's-Hertogenbosch | 's-Hertogenbosch | 's-Hertogenbosch |
-| **winner** | Alexander Nonnekes | Bart Beks | Gilles Elseneer | Jordan Kerr | Marcin Matkowski |
+| **winner** | Alexander Nonnekes | Alexander Nonnekes | Bart Beks | Bart Beks | Gilles Elseneer |
+| **winnerLinkId** | null | n425 | null | b547 | null |
+
+Depois deste processo, como um dos linksId está necessariamente vazio devido ao formato original da coleção, vai ser necessário inserir os ids, conforme a coleção _Players_. Esta pesquisa vai ser apenas uma estimativa, devido à genuina falta de informação, mas a diferença não deve implicar os nossos resultados, pois existem poucos jogadores com o mesmo nome.
+
+```javascript
+db.matches.aggregate([
+  {
+    $match: {
+      winnerLinkId: null
+    }
+  },
+  {
+    $lookup:{
+      from: "players",
+      localField: "winner",
+      foreignField: "playerName",
+      as: "winnerInfo"
+    }
+  },{
+    $set:{
+      winnerLinkId: {$arrayElemAt: ["$winnerInfo.linkId", 0]}
+    }
+  },{
+    $project: {
+      winnerInfo: false
+    }
+  },{
+    $merge: {
+      into: "matches",
+      on: "_id",
+      whenMatched: "replace",
+      whenNotMatched: "fail"
+    }
+  }
+]);
+db.matches.aggregate([
+  {
+    $match: {
+      loserLinkId: null
+    }
+  },
+  {
+    $lookup:{
+      from: "players",
+      localField: "loser",
+      foreignField: "playerName",
+      as: "loserInfo"
+    }
+  },{
+    $set:{
+      loserLinkId: {$arrayElemAt: ["$loserInfo.linkId", 0]}
+    }
+  },{
+    $project: {
+      loserInfo: false
+    }
+  },{
+    $merge: {
+      into: "matches",
+      on: "_id",
+      whenMatched: "replace",
+      whenNotMatched: "fail"
+    }
+  }
+]);
+```
 
 ## Tratamento de colunas individuais
 
@@ -427,6 +502,28 @@ db.tournaments.find({}, {_id:0}).limit(5);
 | **prize** | $25,000 | $10,000 | $375,000 | $75,000 |  |
 | **tournament** | Edinburgh | Croatia F8 | Bournemouth | Ostend | JPN vs. BRA WG Play-Off |
 
+
+Por último, de forma a transferir os países para o modelo relacional, vamos substituir a coleção _countryCodes_ pelos códigos de países, incluindo aqueles não presentes anteriormente. Como unimos as duas coleções previamente, basta agrupar por código de país e nome.
+
+```javascript
+db.countryAliases.aggregate([
+  {
+    $group:{
+      _id: ["$code", "$country"],
+      alias: {$push: "$alias"}
+    }
+    },{
+        $project:{
+            _id: 0,
+            code: {$arrayElemAt: ["$_id", 0]},
+            country: {$arrayElemAt: ["$_id", 1]},
+            alias: 1
+        }
+        },{
+        $out: "countryCodes"
+    }
+]);
+```
 ### Players não incluídos
 Aqui vai ser adicionado os jogadores não incluídos na coleção original _games_.
 ```javascript
@@ -507,7 +604,7 @@ db.players.aggregate([
     $group: {
       _id: "$domHand"
     }
-  },{
+  },{$match: {_id: {$ne: null}}},{
     $out: "domHands"
   }
 ]);
@@ -516,7 +613,7 @@ db.players.aggregate([
     $group: {
       _id: "$backhand"
     }
-  },{
+  },{$match: {_id: {$ne: null}}},{
     $out: "backhands"
   }
 ]);
@@ -525,7 +622,7 @@ db.tournaments.aggregate([
     $group: {
       _id: "$ground"
     }
-  },{
+  },{$match: {_id: {$ne: null}}},{
     $out: "grounds"
   }
 ]);
@@ -534,7 +631,7 @@ db.tournaments.aggregate([
 # Exportação e importação dos dados
 
 Para exportar os dados, vamos usar o comando `mongoexport`.
-
+TODO
 ```bash
 mongoexport --db atp `
 --collection players `

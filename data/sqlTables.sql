@@ -7,8 +7,8 @@ CREATE TABLE `Games`(
     `tournamentDate` VARCHAR(255) NOT NULL,
     `tournamentName` VARCHAR(255) NOT NULL,
     `round` VARCHAR(255) NOT NULL,
-    `sets` VARCHAR(255) NOT NULL,
-    primary key (`winnerName`,`winnerLinkId`,`looserName`,`looserLinkId`,`tournamentDate`,`tournamentName`,`round`)
+    `score` VARCHAR(255) NOT NULL,
+    primary key (`winnerName`,`winnerLinkId`,`looserName`,`looserLinkId`,`tournamentDate`,`tournamentName`, `round`)
 );
 CREATE TABLE `Grounds`(`name` VARCHAR(255) NOT NULL primary key );
 CREATE TABLE `Tournaments`(

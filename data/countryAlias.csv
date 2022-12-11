@@ -27,6 +27,7 @@ Devon, United Kingdom,GB
 oran,Algeria,DZ
 Andorra,Andorra,AD
 St. John's,Antigua and Barbuda,AG
+Aregnt,Argentina,AR
 ARG,Argentina,AR
 Arg.,Argentina,AR
 Argentin,Argentina,AR
@@ -47,13 +48,13 @@ Mendoza,Argentina,AR
 Marco Juarez,Argentina,AR
 Villa Gesell,Argentina,AR
 Mar del Palta,Argentina,AR
-Aregnt,Argentina,AR
+Chascom�s,Argentina,AR
 Argent,Argentina,AR
 Balcarce,Argentina,AR
-Chascom�s,Argentina,AR
-Yerevan,Armenia,DZ
-Armenia,Armenia,DZ
+Yerevan,Armenia,AM
+Armenia,Armenia,AM
 Aruba,Aruba,AW
+AUS,Australia,AU
 Monto,Australia,AU
 West Perth,Australia,AU
 Tasmania,Australia,AU
@@ -71,31 +72,31 @@ Australia,Australia,AU
 St Kilda East,Australia,AU
 Aust..,Australia,AU
 Devonport,Australia,AU
-AUS,Australia,AU
+S.A. Australia,Australia,AU
 Subiaco,Australia,AU
 Victoria,Australia,AU
 South Australia,Australia,AU
 Campbelltown,Australia,AU
-S.A. Australia,Australia,AU
+Vienna,Austria,AT
 Linz,Austria,AT
 Austria,Austria,AT
 Aut.,Austria,AT
 Hall in Tirol,Austria,AT
 Portschach,Austria,AT
 Portschach am Worthersee,Austria,AT
-Vienna,Austria,AT
+Schwaz,Austria,AT
 Graz,Austria,AT
 Wr.Neustadt,Austria,AT
 Klagenfurt,Austria,AT
-Schwaz,Austria,AT
 Azerbaijan,Azerbaijan,AZ
 Bahrain,Bahrain,BH
 Bangladesh,Bangladesh,BD
 Barbados,Barbados,BB
+Barakovichi,Belarus,BY
 Minsk,Belarus,BY
 Belarus,Belarus,BY
 Belarus,Belarus,BY
-Barakovichi,Belarus,BY
+Namur,Belgium,BE
 Woluwe St Lambert,Belgium,BE
 Angleur - Liege,Belgium,BE
 Li�ge,Belgium,BE
@@ -107,23 +108,23 @@ Vilvoorde,Belgium,BE
 Diest,Belgium,BE
 leuven,Belgium,BE
 Bree,Belgium,BE
-Namur,Belgium,BE
-Verviers,Belgium,BE
 Gent,Belgium,BE
+Verviers,Belgium,BE
 Bermuda,Bermuda,BM
 Bolivia,Bolivia,BO
 Santa Cruz de la Sie,Bolivia,BO
 La Paz,Bolivia,BO
 Trinidad,Bolivia,BO
-Bolivia/Chile,Bolivia/Chile,BO/CL
+Bosnia,Bosnia and Herzegovina,BA
+Bosnia & Herzegovina,Bosnia and Herzegovina,BA
 Bosnia &amp; Herzegovina,Bosnia and Herzegovina,BA
 Sarajevo,Bosnia and Herzegovina,BA
-Bosnia & Herzegovina,Bosnia and Herzegovina,BA
 Bosnia-Herzegovina,Bosnia and Herzegovina,BA
-Bosnia,Bosnia and Herzegovina,BA
 Botwana,Botswana,BW
-Salvador,Brasil,BR
-Guarulhos,Brasil,BR
+Porto Alegre,Brazil,BR
+Brazil,Brazil,BR
+Salvador,Brazil,BR
+Guarulhos,Brazil,BR
 Rio de Janeiro,Brazil,BR
 Londrina- Paran�,Brazil,BR
 Campinas,Brazil,BR
@@ -131,7 +132,7 @@ Belo Horizonte,Brazil,BR
 Brasilia,Brazil,BR
 Sao Paulo,Brazil,BR
 Sertaozinho,Brazil,BR
-Brazil,Brazil,BR
+Santa Cruz do Sul,Brazil,BR
 Brazi,Brazil,BR
 Brasil,Brazil,BR
 S�o Paulo,Brazil,BR
@@ -144,77 +145,73 @@ Curitiba,Brazil,BR
 Uruguaiana,Brazil,BR
 Mato Grosso,Brazil,BR
 BRA,Brazil,BR
-Santa Cruz do Sul,Brazil,BR
-Porto Alegre,Brazil,BR
 Brunei,Brunei,BN
+Sofia,Bulgaria,BG
+Bulgaria,Bulgaria,BG
 Sliven,Bulgaria,BG
 VARNA,Bulgaria,BG
 Dimitrovgrad,Bulgaria,BG
-Bulgaria,Bulgaria,BG
-Sofia,Bulgaria,BG
 Asenovgrad,Bulgaria,BG
 Burundi,Burundi,BI
 Gitega,Burundi,BI
-Cambodia,Cambodia,KH
 Camboda,Cambodia,KH
+Cambodia,Cambodia,KH
 Cameroon,Cameroon,CM
+Canada,Canada,CA
+Calgary,Canada,CA
 Ontaria,Canada,CA
 Montreal,Canada,CA
 Alberta,Canada,CA
 Canda,Canada,CA
-Calgary,Canada,CA
+Oakville,Canada,CA
 Vancouver,Canada,CA
 Saskatchewan,Canada,CA
 Longueuil,Canada,CA
 Winnipeg,Canada,CA
-Oakville,Canada,CA
-Canada,Canada,CA
 ALberta,Canada,CA
 Salinas,Cape Verde,CV
 Caribbean,Caribbean,CB
+Bolivia/Chile,Chile,CL
+chile,Chile,CL
 Santiago,Chile,CL
 Chile,Chile,CL
 Providencia,Chile,CL
 Punta Arenas,Chile,CL
 Iquique,Chile,CL
-chile,Chile,CL
+Fuzhou,China,CN
 HEILONGJIANG,China,CN
 Hunan,China,CN
 sichuan suining,China,CN
 CHINA,China,CN
 Wuhan,China,CN
 Nanjing,China,CN
-Fuzhou,China,CN
+Dalian,China,CN
 Shanghai,China,CN
 tianjin,China,CN
 Tianjin,China,CN
 China,China,CN
 Xin jiang,China,CN
 Jiangsu,China,CN
-Dalian,China,CN
+Colombia,Colombia,CO
 COL,Colombia,CO
 Bogota,Colombia,CO
 Columbia,Colombia,CO
 Pereira,Colombia,CO
 Villavicencio,Colombia,CO
 Col,Colombia,CO
-Colombia,Colombia,CO
 Costa Rica,Costa Rica,CR
-alias,country,code
-alias,country,code
-alias,country,code
-Crotia,Croatia,HR
 Zagreb,Croatia,HR
 Croatia,Croatia,HR
 split,Croatia,HR
 Split,Croatia,HR
+Crotia,Croatia,HR
 Havana,Cuba,CU
 Cuba,Cuba,CU
 Ciudad de Habana,Cuba,CU
-Dutch Antil,Curaçao,CW
 Curacao,Curaçao,CW
 Dutch Anti,Curaçao,CW
-Willemstad,Curaçau,CW
+Willemstad,Curaçao,CW
+Dutch Antil,Curaçao,CW
 Cyprus,Cyprus,CY
 Klatovy,Czech Republic,CZ
 Czech Republic,Czech Republic,CZ
@@ -235,12 +232,12 @@ Ostrov,Czech Republic,CZ
 Hodon�n,Czech Republic,Cz
 Marianske Lazne,Czech Republic,CZ
 Brno,Czech Republic,CZ
-CZE,Czech Rrepublic,CZ
+CZE,Czech Republic,CZ
 Kinshasa,Democratic Republic of the Congo,CD
-Denmark,Denmark,DK
 DEN.,Denmark,DK
 Frederiksberg,Denmark,DK
 Bridgetown,Denmark,DK
+Denmark,Denmark,DK
 Dominican Rep.,Dominican Republic,DO
 Dominican Republic,Dominican Republic,DO
 Santiago De Los Caballeros,Dominican Republic,DO
@@ -251,18 +248,18 @@ D.R.,Dominican Republic,DO
 Quito,Ecuador,EC
 Guayaquil,Ecuador,EC
 Ecuador,Ecuador,EC
-Eygpt,Egypt,EG
 Egpyt,Egypt,EG
 Sharm El Sheikh,Egypt,EG
+Eygpt,Egypt,EG
 El Salvador,El Salvador,SV
 Tartu,Estonia,EE
 Tallinn,Estonia,EE
 Estonia,Estonia,EE
 Fiji Island,Fiji,FJ
-Hyvink��,Finland,FI
 Helsinki,Finland,FI
 Turku,Finland,FI
 Finland,Finland,FI
+Hyvink��,Finland,FI
 Forbach,France,FR
 S�vres,France,FR
 Pau,France,FR
@@ -365,19 +362,19 @@ schwaebisch hall,Germany,DE
 Friedrichshafen,Germany,DE
 Accra,Ghana,GH
 Greece,Greece,GR
-Guatemala,Guatemala,GT
 Guatemala City,Guatemala,GT
 GUA,Guatemala,GT
-Port au Prince,Haiti,HT
+Guatemala,Guatemala,GT
 Haiti,Haiti,HT
+Port au Prince,Haiti,HT
 Honduras,Honduras,HN
-HKG,Hong Kong,HK
 Hong Kong,Hong Kong,HK
-Budapest,Hungary,HU
+HKG,Hong Kong,HK
 Hu,Hungary,HU
 Hungary,Hungary,HU
 Hunary,Hungary,HU
 Baja,Hungary,HU
+Budapest,Hungary,HU
 Haryana,India,IN
 Chennai,India,IN
 India,India,IN
@@ -390,26 +387,26 @@ Pune,India,IN
 Hyderabad,India,IN
 Mysore,India,IN
 Delhi,India,IN
-Samosir Island,Indonesia,ID
 Surabaya,Indonesia,ID
 Jakarta,Indonesia,ID
 INA,Indonesia,ID
 Indonesia,Indonesia,ID
-Esfahan,Iran,IR
+Samosir Island,Indonesia,ID
 Tehran,Iran,IR
 Iran,Iran,IR
+Esfahan,Iran,IR
 dublin,Ireland,IE
 IL,Ireland,IE
 Ireland,Ireland,IE
 Dublin,Ireland,IE
 Belfast,Ireland,IE
-Israel,Israel,IL
 Isra,Israel,IL
 Petach Tikva,Israel,IL
 Ramat Hasharon,Israel,IL
 ISR,Israel,IL
 Haifa,Israel,IL
 Hasharon,Israel,IL
+Israel,Israel,IL
 Rovereto,Italy,IT
 Italy,Italy,IT
 Campobasso,Italy,IT
@@ -456,9 +453,9 @@ Sardinia,Italy,IT
 torino,Italy,IT
 Turin,Italy,IT
 Pisa,Italy,IT
-Abidjan,Ivory Coast,CI
 Ivory Coast,Ivory Coast,CI
 CIV,Ivory Coast,CI
+Abidjan,Ivory Coast,CI
 Jamaica,Jamaica,JM
 Osaka,Japan,JP
 Tokyo,Japan,JP
@@ -490,16 +487,16 @@ Kyrgyzstan,Kyrgyzstan,KG
 Laos,Laos,LA
 Latvia,Latvia,LV
 Lebanon,Lebanon,LB
-Lithuania,Lithuania,LT
 Siauliai,Lithuania,LT
 Vilnius,Lithuania,LT
-Luxembourg,Luxembourg,LU
+Lithuania,Lithuania,LT
+Luxembourg,Luxemburg,LU
 Esch/Alzette,Luxemburg,LU
 Mondorf-Les-Bains,Luxemburg,LU
 Esch-sur-Alzette,Luxemburg,LU
-Antananarivo,Madagascar,MG
 Toamasina,Madagascar,MG
 Madagascar,Madagascar,MG
+Antananarivo,Madagascar,MG
 MAS,Malaysia,MY
 Malaysia,Malaysia,MY
 Kuala Lampur,Malaysia,MY
@@ -514,15 +511,15 @@ Tampico,Mexico,MX
 Acapulco,Mexico,MX
 Mexico City,Mexico,MX
 Queretaro,Mexico,MX
-Moldova,Moldova,MD
 Chisinau,Moldova,MD
 Moldovia,Moldova,MD
+Moldova,Moldova,MD
 Monaco,Monaco,MC
 Montenegro,Montenegro,ME
-Casablanca,Morocco,MA
 Morocco,Morocco,MA
-Windhoek,Namibia,NA
+Casablanca,Morocco,MA
 Namibia,Namibia,NA
+Windhoek,Namibia,NA
 Alphen aan den Rijn,Netherlands,NL
 Waalwijk,Netherlands,NL
 Groningen,Netherlands,NL
@@ -561,8 +558,8 @@ Pakistan,Pakistan,PK
 Lahore,Pakistan,PK
 Panama,Panama,PA
 Paraguay,Paraguay,PY
-Lima,Peru,PE
 Peru,Peru,PE
+Lima,Peru,PE
 Guam,Philippines,PH
 Manila,Philippines,PH
 PHI,Philippines,PH
@@ -641,11 +638,11 @@ Bratislava,Slovakia,SK
 Presov,Slovakia,SK
 Slovak Republic,Slovakia,SK
 Slovak,Slovakia,SK
-Slovenia,Slovenia,SI
 Trbovlje,Slovenia,SI
 maribor,Slovenia,SI
 Portoroz,Slovenia,SI
-Solvenia,Solvenia,SI
+Solvenia,Slovenia,SI
+Slovenia,Slovenia,SI
 Gauteng,South Africa,ZA
 Polokwane,South Africa,ZA
 SA,South Africa,ZA
@@ -736,9 +733,9 @@ Kaohsiung,Taiwan,TW
 Taiwan,Taiwan,TW
 New Taipei City,Taiwan,TW
 Tajikistan,Tajikistan,TJ
-Thailand,Thailand,TH
 Bangkok,Thailand,TH
 THA,Thailand,TH
+Thailand,Thailand,TH
 Bahamas,The Bahamas,BS
 San Salvador,The Bahamas,BS
 Grand Bahamas,The Bahamas,BS
@@ -747,10 +744,10 @@ TBC,To be confirmed,TBC
 TBD,To be determined,TBD
 Togo,Togo,TG
 TRI,Trinidad and Tobago,TT
-Tunisia,Tunisia,TN
 Tunis,Tunisia,TN
 Cartago,Tunisia,TN
 Monastir,Tunisia,TN
+Tunisia,Tunisia,TN
 Antalya,Turkey,TR
 Turkey,Turkey,TR
 Istanbul,Turkey,TR
@@ -767,9 +764,9 @@ Kyiv,Ukraine,UA
 Kiev,Ukraine,UA
 Kharkiv,Ukraine,UA
 Chernivtsi,Ukraine,UA
-U.A.E.,United Arab Emirates,AE
 Dubai,United Arab Emirates,AE
 United Arab Emirates,United Arab Emirates,AE
+U.A.E.,United Arab Emirates,AE
 Leeds,United Kingdom,GB
 Norfolk,United Kingdom,GB
 Norwich,United Kingdom,GB
@@ -801,12 +798,12 @@ Newmarket,United Kingdom,GB
 Birmingham,United Kingdom,GB
 Penrith,United Kingdom,GB
 AL,United Kingdom,GB
-Montevideo,Uruguay,UY
 Paysand�,Uruguay,UY
 Uruguay,Uruguay,UY
 Uraguay,Uruguay,UY
 Urugay,Uruguay,UY
 URU,Uruguay,UY
+Montevideo,Uruguay,UY
 PA U.S.A.,USA,US
 Irvington,USA,US
 Murrieta,USA,US
@@ -922,11 +919,11 @@ OR,USA,US
 WA,USA,US
 Newport,USA,US
 USA,USA,US
-Nukus,Uzbekistan,UZ
 Tashkent,Uzbekistan,UZ
 Uzbekistan,Uzbekistan,UZ
 Namangan,Uzbekistan,UZ
 Uzb.,Uzbekistan,UZ
+Nukus,Uzbekistan,UZ
 Venezeuela,Venezuela,VE
 Venezuela,Venezuela,VE
 Barquisimeto,Venezuela,VE
@@ -935,5 +932,5 @@ Lara,Venezuela,VE
 Vietnam,Vietnam,VN
 Yugoslavia,Yugoslavia,YU
 Zambia,Zambia,ZM
-Zimbabwe,Zimbabwe,ZW
 Harare,Zimbabwe,ZW
+Zimbabwe,Zimbabwe,ZW

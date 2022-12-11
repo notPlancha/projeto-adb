@@ -101,3 +101,38 @@ db.games.aggregate([
     $out: "players"
   }
 ]); //falta os oponent
+db.countryAliases.aggregate([
+  {$group:{_id: [$code, $country],
+      alias: {$push: "$alias"}
+    }
+    },{
+        $project:{
+            _id: 0,
+            code: "$_id.0",
+            country: "$_id.1",
+            alias: 1
+        }
+        },{
+    $out: "countryCodes"
+   }
+]);
+db.countryAliases.aggregate([
+  {
+    $group: {
+      _id: {
+        code: "$code",
+        country: "$country"
+      },
+      alias: {$push: "$alias"}
+    }
+  },{
+    $project: {
+      _id: 0,
+      code: "$_id.code",
+      country: "$_id.country",
+      alias: 1
+    }
+  },{
+    $out: "countryCodes"
+  }
+])
