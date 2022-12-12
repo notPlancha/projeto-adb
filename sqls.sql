@@ -6,20 +6,23 @@ CREATE TABLE `Games`(
     `winnerLinkId` CHAR(4) NOT NULL,
     `looserName` VARCHAR(255) NOT NULL,
     `looserLinkId` CHAR(4) NOT NULL,
-    `tournamentDate` VARCHAR(255) NOT NULL,
+    `start_date` date NOT NULL,
+    `end_date` date NOT NULL
     `tournamentName` VARCHAR(255) NOT NULL,
     `round` VARCHAR(255) NOT NULL,
     `score` VARCHAR(255) NOT NULL,
+
     primary key (`winnerName`,`winnerLinkId`,`looserName`,`looserLinkId`,`tournamentDate`,`tournamentName`, `round`)
 );
 CREATE TABLE `Grounds`(`name` VARCHAR(255) NOT NULL primary key );
 CREATE TABLE `Tournaments`(
     `name` VARCHAR(255) NOT NULL,
-    `date` VARCHAR(255) NOT NULL,
     `countryId` CHAR(2) NOT NULL,
     `ground` VARCHAR(255) NULL,
     `prize` VARCHAR(255) NULL,
-    primary key (`name`,`date`)
+    `start_date` date NOT NULL,
+    `end_date` date NOT NULL,
+    primary key (`name`,`start_date`,`end_date`)
 );
 CREATE TABLE `Players`(
     `name` VARCHAR(255) NOT NULL ,
