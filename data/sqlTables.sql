@@ -25,7 +25,7 @@ CREATE TABLE `Players`(
     `bornCountryId` CHAR(2) NULL,
     `domHand` VARCHAR(255) NULL,
     `backhand` VARCHAR(255) NULL,
-    `height` INT NULL,
+    `height` INT not null default 0,
     primary key (`name`,`linkId`)
 );
 CREATE TABLE `DomHand`(`name` VARCHAR(255) NOT NULL);

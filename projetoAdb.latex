@@ -118,7 +118,7 @@
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
   pdftitle={TODO titulo},
-  pdfauthor={André Plancha; 105289; Another Author; Num},
+  pdfauthor={André Plancha; 105289; Afonso Silva; 105208; Tomas Ribeiro; 105220},
   pdflang={pt-pt},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
@@ -133,7 +133,8 @@
 \subtitle{Trabalho elaborado no âmbito da Unidade Curricular de
 Armazenamento para Big Data do 2º ano da Licenciatura de Ciência de
 Dados do Instituto Universitário de Lisboa ISCTE}
-\author{André Plancha; 105289 \and Another Author; Num}
+\author{André Plancha; 105289 \and Afonso Silva; 105208 \and Tomas
+Ribeiro; 105220}
 \date{07/12/2022}
 
 \begin{document}
@@ -156,14 +157,14 @@ utilizado em análises posteriores.
 
 Para o nosso projeto voi-nos provisionado o ficheiro
 \emph{atpplayers.json}, que contém os jogos feito pelos jogadores. Para
-importar este ficheiro, foi utilizado o comando \emph{mongoimport}:
+importar este ficheiro, foi utilizado o comando \texttt{mongoimport}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \ExtensionTok{mongoimport} \KeywordTok{\textasciigrave{}}
     \ExtensionTok{{-}{-}db}\NormalTok{ atp }\KeywordTok{\textasciigrave{}}
     \ExtensionTok{{-}{-}collection}\NormalTok{ games }\KeywordTok{\textasciigrave{}}
-    \ExtensionTok{{-}{-}file}  \StringTok{"}\VariableTok{$pwd}\StringTok{\textbackslash{}data\textbackslash{}atpplayers.json"}
+    \ExtensionTok{{-}{-}file}  \StringTok{".\textbackslash{}data\textbackslash{}atpplayers.json"}
 \end{Highlighting}
 \end{Shaded}
 
@@ -225,7 +226,7 @@ jogador (cm) * Hand: A mão dominante do jogador, e o tipo de
 em atptour.com * Tournament: nome do torneio do jogo * Location : A
 cidade e país onde o torneio foi realizado * Date: Periodo de tempo do
 torneio * GameRound: fase do jogo no torneio * GameRank: \emph{ATP
-Rankings} do jogo * WL: Vitoria ou Derrota (W ou L) * Opponent: Nome do
+Rankings} do jogo * WL: Vitoria ou Derrota (W ou L) * Oponent: Nome do
 Oponente * Score: Sets do jogo
 
 \hypertarget{preparar-dos-dados}{%
@@ -296,37 +297,53 @@ disponível no repositório do projeto, e em anexo na submissão.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-
-\VerbatimStringTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}csv}
-\VerbatimStringTok{alias,country,code}
-\VerbatimStringTok{...}
-\VerbatimStringTok{San Salvador,Bahamas,BS}
-\VerbatimStringTok{Santa Cruz de la Sie,Bolivia,BO}
-\VerbatimStringTok{Santiago,Chile,CL}
-\VerbatimStringTok{Santo Domingo,Dominican Republic,DO}
-\VerbatimStringTok{Sardinia,Italy,IT}
-\VerbatimStringTok{SCG,Serbia,RS}
-\VerbatimStringTok{Serbia \&amp; Montenegro,Serbia,RS}
-\VerbatimStringTok{SErgia \&amp; M,Serbia,RS}
-\VerbatimStringTok{Sharm El Sheikh,Egypt,EG}
-\VerbatimStringTok{Slovak,Slovakia,SK}
-\VerbatimStringTok{...}
+\NormalTok{alias,country,code}
+\NormalTok{...}
+\NormalTok{U.S.A,USA,US}
+\NormalTok{U.S.A.,USA,US}
+\NormalTok{Ufa,Russia,RU}
+\NormalTok{UK,United Kingdom,GB}
+\NormalTok{Ukraine,Ukraine,UA}
+\NormalTok{United Arab Emirates,United Arab Emirates,AE}
+\NormalTok{Urbino,Italy,IT}
+\NormalTok{URU,Uruguay,UY}
+\NormalTok{Uruguaiana,Brazil,BR}
+\NormalTok{Uruguay,Uruguay,UY}
+\NormalTok{...}
 \end{Highlighting}
 \end{Shaded}
 
 A partir deste ficheiro, cada pais pode ser associado o seu código
-usando a pipeline ``\$lookup'' quando for feita a exportação destes
-dados, depois de importar o ficheiro para a base de dados.
+usando a \emph{pipeline} \texttt{\$lookup} quando for feita a exportação
+destes dados, depois de importar o ficheiro para a base de dados.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ExtensionTok{mongoimport} \AttributeTok{{-}{-}db}\NormalTok{ atp }\AttributeTok{{-}{-}collection}\NormalTok{ countryAlias }\AttributeTok{{-}{-}type}\NormalTok{ csv }\AttributeTok{{-}{-}headerline} \AttributeTok{{-}{-}file}\NormalTok{ .}\DataTypeTok{\textbackslash{}d}\NormalTok{ata}\DataTypeTok{\textbackslash{}c}\NormalTok{ountryAlias.csv}
+\ExtensionTok{mongoimport} \KeywordTok{\textasciigrave{}}
+    \ExtensionTok{{-}{-}db}\NormalTok{ atp }\KeywordTok{\textasciigrave{}}
+    \ExtensionTok{{-}{-}collection}\NormalTok{ countryAliases }\KeywordTok{\textasciigrave{}}
+    \ExtensionTok{{-}{-}type}\NormalTok{ csv }\KeywordTok{\textasciigrave{}}
+    \ExtensionTok{{-}{-}headerline} \KeywordTok{\textasciigrave{}}
+    \ExtensionTok{{-}{-}file} \StringTok{".\textbackslash{}data\textbackslash{}countryAlias.csv"}
 \end{Highlighting}
 \end{Shaded}
 
-De forma a gfarantir que todos os países sejam representados no
-resultado final, ao exportar as coleções, vai ser também importada para
-o modelo relacional países não representados na base de dados.
+De forma a garantir que todos os países sejam representados no resultado
+final, ao exportar as coleções, vai ser também importada países não
+representados na base de dados. O \emph{countryCodes.csv} pode ser
+encontrado em
+\href{https://pkgstore.datahub.io/core/country-list/data_csv/data/d7c9d7cfb42cb69f4422dec222dbbaa8/data_csv.csv}{datahub.io/core/country-list}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{mongoimport} \KeywordTok{\textasciigrave{}}
+    \ExtensionTok{{-}{-}db}\NormalTok{ atp }\KeywordTok{\textasciigrave{}}
+    \ExtensionTok{{-}{-}collection}\NormalTok{ countryCodes }\KeywordTok{\textasciigrave{}}
+    \ExtensionTok{{-}{-}type}\NormalTok{ csv }\KeywordTok{\textasciigrave{}}
+    \ExtensionTok{{-}{-}headerline} \KeywordTok{\textasciigrave{}}
+    \ExtensionTok{{-}{-}file} \StringTok{".\textbackslash{}data\textbackslash{}countryCodes.csv"}
+\end{Highlighting}
+\end{Shaded}
 
 Outra verivicação que fizemos foi verificar os vários grupos: as colunas
 \emph{Ground}, \emph{Hand}, e \emph{WL}.
@@ -405,7 +422,7 @@ ser útil para a análise futura.
 \section{Criação das coleções}\label{criauxe7uxe3o-das-coleuxe7uxf5es}}
 
 Para a nossa criação das coleções, vai ser usada primariamente a função
-\emph{aggregate} do MongoDB. Esta função permite executar várias
+\texttt{aggregate} do MongoDB. Esta função permite executar várias
 \emph{pipelines} de operações sobre os dados, e é muito útil para a
 criação de coleções, devido à sua flexibilidade e ao seu desempenho. Em
 cada uma destas, a \emph{pipeline} ``\$out'' é usada para exportar os
@@ -415,45 +432,66 @@ dados da \emph{query} para uma nova coleção.
 \subsection{\texorpdfstring{Criação da coleção
 \emph{Player}}{Criação da coleção Player}}\label{criauxe7uxe3o-da-coleuxe7uxe3o-player}}
 
-\begin{verbatim}
-db.games.aggregate([
-  {
-    $group: {
-      _id:{
-        hand: {$split: ["$Hand", ", "]},
-        born: {$split: ["$Born", ", "]},
-        height: "$Height",
-        linkPlayer: "$LinkPlayer",
-        playerName: "$PlayerName"
-      }
-    }
-  },{
-    $project:{
-      playerName: "$_id.playerName",
-      country: {$arrayElemAt: ["$_id.born", -1]},
-      height: "$_id.height",
-      linkPlayer: "$_id.linkPlayer",
-      domHand: {$arrayElemAt: ["$_id.hand", 0]},
-      backhand: {$arrayElemAt: ["$_id.hand", 1]}
-    }
-  },{
-    $out: "players"
-  }
-]);
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{db}\OperatorTok{.}\AttributeTok{games}\OperatorTok{.}\FunctionTok{aggregate}\NormalTok{([}
+\NormalTok{  \{}
+    \DataTypeTok{$group}\OperatorTok{:}\NormalTok{ \{}
+      \DataTypeTok{\_id}\OperatorTok{:}\NormalTok{\{}
+        \DataTypeTok{hand}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$split}\OperatorTok{:}\NormalTok{ [}\StringTok{"$Hand"}\OperatorTok{,} \StringTok{","}\NormalTok{]\}}\OperatorTok{,}
+        \DataTypeTok{born}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$split}\OperatorTok{:}\NormalTok{ [}\StringTok{"$Born"}\OperatorTok{,} \StringTok{","}\NormalTok{]\}}\OperatorTok{,}
+        \DataTypeTok{height}\OperatorTok{:} \StringTok{"$Height"}\OperatorTok{,}
+        \DataTypeTok{linkPlayer}\OperatorTok{:} \StringTok{"$LinkPlayer"}\OperatorTok{,}
+        \DataTypeTok{playerName}\OperatorTok{:} \StringTok{"$PlayerName"}
+\NormalTok{      \}}
+\NormalTok{    \}}
+\NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}
+    \DataTypeTok{$project}\OperatorTok{:}\NormalTok{\{}
+      \DataTypeTok{\_id}\OperatorTok{:}\DecValTok{0}\OperatorTok{,}
+      \DataTypeTok{playerName}\OperatorTok{:} \StringTok{"$\_id.playerName"}\OperatorTok{,}
+      \DataTypeTok{country}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$\_id.born"}\OperatorTok{,} \OperatorTok{{-}}\DecValTok{1}\NormalTok{]\}}\OperatorTok{,}
+      \DataTypeTok{height}\OperatorTok{:} \StringTok{"$\_id.height"}\OperatorTok{,}
+      \DataTypeTok{linkPlayer}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$split}\OperatorTok{:}\NormalTok{ [}\StringTok{"$\_id.linkPlayer"}\OperatorTok{,} \StringTok{"/"}\NormalTok{]\}}\OperatorTok{,}
+      \DataTypeTok{domHand}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$\_id.hand"}\OperatorTok{,} \DecValTok{0}\NormalTok{]\}}\OperatorTok{,}
+      \DataTypeTok{backhand}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$\_id.hand"}\OperatorTok{,} \DecValTok{1}\NormalTok{]\}}
+\NormalTok{    \}}
+\NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}
+    \DataTypeTok{$set}\OperatorTok{:}\NormalTok{ \{}
+      \DataTypeTok{backhand}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$cond}\OperatorTok{:}\NormalTok{ [}
+\NormalTok{        \{}\DataTypeTok{$eq}\OperatorTok{:}\NormalTok{ [}\StringTok{"$backhand"}\OperatorTok{,} \StringTok{"Unknown Backhand"}\NormalTok{]\}}\OperatorTok{,} 
+        \KeywordTok{null}\OperatorTok{,} 
+\NormalTok{        \{}\DataTypeTok{$trim}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{input}\OperatorTok{:} \StringTok{"$backhand"}\NormalTok{\}\}}
+\NormalTok{      ]\}}\OperatorTok{,}
+      \DataTypeTok{domHand}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$cond}\OperatorTok{:}\NormalTok{ [}
+\NormalTok{        \{}\DataTypeTok{$eq}\OperatorTok{:}\NormalTok{ [}\StringTok{"$domHand"}\OperatorTok{,} \StringTok{"null"}\NormalTok{]\}}\OperatorTok{,} 
+        \KeywordTok{null}\OperatorTok{,} 
+\NormalTok{        \{}\DataTypeTok{$trim}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{input}\OperatorTok{:} \StringTok{"$domHand"}\NormalTok{\}\}}
+\NormalTok{      ]\}}\OperatorTok{,}
+      \DataTypeTok{height}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$cond}\OperatorTok{:}\NormalTok{ [\{}\DataTypeTok{$eq}\OperatorTok{:}\NormalTok{ [}\StringTok{"$height"}\OperatorTok{,} \StringTok{"NA"}\NormalTok{]\}}\OperatorTok{,} \KeywordTok{null}\OperatorTok{,} \StringTok{"$height"}\NormalTok{]\}}\OperatorTok{,}
+      \DataTypeTok{country}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$cond}\OperatorTok{:}\NormalTok{ [\{}\DataTypeTok{$eq}\OperatorTok{:}\NormalTok{ [}\StringTok{"$country"}\OperatorTok{,} \StringTok{""}\NormalTok{]\}}\OperatorTok{,} \KeywordTok{null}\OperatorTok{,}\NormalTok{ \{}\DataTypeTok{$trim}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{input}\OperatorTok{:} \StringTok{"$country"}\NormalTok{\}\}]\}}\OperatorTok{,}
+      \DataTypeTok{linkId}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$linkPlayer"}\OperatorTok{,} \DecValTok{6}\NormalTok{]\}}
+\NormalTok{    \}}
+\NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}
+    \DataTypeTok{$out}\OperatorTok{:} \StringTok{"players"}
+\NormalTok{  \}}
+\NormalTok{])}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
 
-Para a criação da coleção \emph{Player}, foi usada a pipeline
-``\(group" para para agrupar os dados de cada jogador, e a pipeline "\)project''
-para tornar os dados mais legíveis e exportáveis. Para o pais do
-jogador, como o país está sempre no fim da string, ou após uma virgula
-ou sozinha, foi usada a pipeline ``\(split" e "\)arrayElemAt'' para
-selecionar o último elemento do array. Para a mão dominante e o tipo de
-backhand, foi usada a mesma técnica, separando a mão dominante da
-backhand.
+Para a criação da coleção \emph{Player}, foi usada a \emph{pipeline}
+\texttt{\$group} para para agrupar os dados de cada jogador, e a
+pipeline \texttt{\$project} para tornar os dados mais legíveis e
+exportáveis. Para o pais do jogador, como o país está sempre no fim da
+string, ou após uma virgula ou sozinha, foi usada a pipeline
+\texttt{\$split} e \texttt{\$arrayElemAt} para selecionar o último
+elemento do array. Para a mão dominante e o tipo de backhand, foi usada
+a mesma técnica, separando a mão dominante da backhand. Por último,
+foram-se uniformizados os valores nulos e vazios, de forma a estar
+consistente.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{db}\OperatorTok{.}\AttributeTok{players}\OperatorTok{.}\FunctionTok{find}\NormalTok{(\{\}}\OperatorTok{,}\NormalTok{ \{}\DataTypeTok{\_id}\OperatorTok{:}\DecValTok{0}\OperatorTok{,} \DataTypeTok{linkPlayer}\OperatorTok{:} \DecValTok{0}\NormalTok{\})}\OperatorTok{.}\FunctionTok{limit}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\NormalTok{db}\OperatorTok{.}\AttributeTok{players}\OperatorTok{.}\FunctionTok{find}\NormalTok{(\{\}}\OperatorTok{,}\NormalTok{ \{}\DataTypeTok{\_id}\OperatorTok{:}\DecValTok{0}\OperatorTok{,} \DataTypeTok{linkPlayer}\OperatorTok{:} \DecValTok{0}\NormalTok{\})}\OperatorTok{.}\FunctionTok{limit}\NormalTok{(}\DecValTok{5}\NormalTok{)}\OperatorTok{;}
 \end{Highlighting}
 \end{Shaded}
 
@@ -477,18 +515,17 @@ playerName
 \end{minipage} \\
 \midrule()
 \endhead
-Two-Handed Backhand & South Africa & Left-Handed & 188 & Cameron
-Norrie \\
-Unknown Backhand & Germany & Left-Handed & 196 & Andreas Lesch \\
-Unknown Backhand & & Right-Handed & NA & Ran Xu \\
-null & & null & NA & Olivier Le Jeune \\
-null & & null & NA & Luka Todorovic \\
+Two-Handed Backhand & Spain & Left-Handed & 173 & Carlos Sanchez
+Jover \\
+null & null & null & null & Guillaume Dermiens \\
+null & null & Right-Handed & 0 & Salahaddine Adbib \\
+null & Bremen & Right-Handed & 175 & Valentino Pest \\
+null & null & null & null & Iphton Louis \\
 \bottomrule()
 \end{longtable}
 
-Nota-se que alguns jogadores não têm país, mão dominante ou backhand, e
-que alguns jogadores não têm altura registada. Estes casos estão
-consistentes com a coleção original.
+Nota-se que alguns jogadores não têm país, mão dominante, backhand, out
+altura registada. Estes casos estão consistentes com a coleção original.
 
 Esta coleção não inclui os oponentes, porque estes vão ser tratados ao
 exportar os dados, com base na coleção \emph{matches}.
@@ -505,23 +542,24 @@ exportar os dados, com base na coleção \emph{matches}.
       \DataTypeTok{\_id}\OperatorTok{:}\NormalTok{ \{}
         \DataTypeTok{tournament}\OperatorTok{:} \StringTok{"$Tournament"}\OperatorTok{,}
         \DataTypeTok{location}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$split}\OperatorTok{:}\NormalTok{ [}\StringTok{"$Location"}\OperatorTok{,} \StringTok{", "}\NormalTok{]\}}\OperatorTok{,}
-        \DataTypeTok{date}\OperatorTok{:} \StringTok{"$Date"}\OperatorTok{,}
+        \DataTypeTok{date}\OperatorTok{:} \StringTok{"$Date"}\OperatorTok{,} \CommentTok{//}\AlertTok{TODO}\CommentTok{ perguntar se é preciso tratar}
         \DataTypeTok{ground}\OperatorTok{:} \StringTok{"$Ground"}\OperatorTok{,}
         \DataTypeTok{prize}\OperatorTok{:} \StringTok{"$Prize"}
 \NormalTok{      \}}
 \NormalTok{    \}}
 \NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}
     \DataTypeTok{$project}\OperatorTok{:}\NormalTok{ \{}
+      \DataTypeTok{\_id}\OperatorTok{:} \DecValTok{0}\OperatorTok{,}
       \DataTypeTok{tournament}\OperatorTok{:} \StringTok{"$\_id.tournament"}\OperatorTok{,}
       \DataTypeTok{country}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$\_id.location"}\OperatorTok{,} \OperatorTok{{-}}\DecValTok{1}\NormalTok{]\}}\OperatorTok{,}
       \DataTypeTok{date}\OperatorTok{:} \StringTok{"$\_id.date"}\OperatorTok{,}
-      \DataTypeTok{ground}\OperatorTok{:} \StringTok{"$\_id.ground"}\OperatorTok{,}
+      \DataTypeTok{ground}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$cond}\OperatorTok{:}\NormalTok{ [\{}\DataTypeTok{$eq}\OperatorTok{:}\NormalTok{ [}\StringTok{"$\_id.ground"}\OperatorTok{,} \StringTok{""}\NormalTok{]\}}\OperatorTok{,} \KeywordTok{null}\OperatorTok{,} \StringTok{"$\_id.ground"}\NormalTok{]\}}\OperatorTok{,}
       \DataTypeTok{prize}\OperatorTok{:} \StringTok{"$\_id.prize"}
 \NormalTok{    \}}
 \NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}
     \DataTypeTok{$out}\OperatorTok{:} \StringTok{"tournaments"}
 \NormalTok{  \}}
-\NormalTok{])}
+\NormalTok{])}\OperatorTok{;}
 \end{Highlighting}
 \end{Shaded}
 
@@ -530,7 +568,7 @@ A coleção \emph{tournaments} é criada de forma semelhante ao
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{db}\OperatorTok{.}\AttributeTok{tournaments}\OperatorTok{.}\FunctionTok{find}\NormalTok{(\{\}}\OperatorTok{,}\NormalTok{ \{}\DataTypeTok{\_id}\OperatorTok{:}\DecValTok{0}\NormalTok{\})}\OperatorTok{.}\FunctionTok{limit}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\NormalTok{db}\OperatorTok{.}\AttributeTok{tournaments}\OperatorTok{.}\FunctionTok{find}\NormalTok{(\{\}}\OperatorTok{,}\NormalTok{ \{}\DataTypeTok{\_id}\OperatorTok{:}\DecValTok{0}\NormalTok{\})}\OperatorTok{.}\FunctionTok{limit}\NormalTok{(}\DecValTok{5}\NormalTok{)}\OperatorTok{;}
 \end{Highlighting}
 \end{Shaded}
 
@@ -562,12 +600,22 @@ Japan & 2017.09.11 - 2017.09.17 & Hard & & JPN vs.~BRA WG Play-Off \\
 \NormalTok{  \{}
     \DataTypeTok{$set}\OperatorTok{:}\NormalTok{ \{}
       \DataTypeTok{winner}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$cond}\OperatorTok{:}\NormalTok{ [\{}\DataTypeTok{$eq}\OperatorTok{:}\NormalTok{ [}\StringTok{"$WL"}\OperatorTok{,} \StringTok{"W"}\NormalTok{]\}}\OperatorTok{,} \StringTok{"$PlayerName"}\OperatorTok{,} \StringTok{"$Oponent"}\NormalTok{]\}}\OperatorTok{,}
-      \DataTypeTok{loser}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$cond}\OperatorTok{:}\NormalTok{ [\{}\DataTypeTok{$eq}\OperatorTok{:}\NormalTok{ [}\StringTok{"$WL"}\OperatorTok{,} \StringTok{"W"}\NormalTok{]\}}\OperatorTok{,} \StringTok{"$Oponent"}\OperatorTok{,} \StringTok{"$PlayerName"}\NormalTok{]\}}
+      \DataTypeTok{loser}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$cond}\OperatorTok{:}\NormalTok{ [\{}\DataTypeTok{$eq}\OperatorTok{:}\NormalTok{ [}\StringTok{"$WL"}\OperatorTok{,} \StringTok{"W"}\NormalTok{]\}}\OperatorTok{,} \StringTok{"$Oponent"}\OperatorTok{,} \StringTok{"$PlayerName"}\NormalTok{]\}}\OperatorTok{,}
+      \DataTypeTok{winnerLink}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$cond}\OperatorTok{:}\NormalTok{ [}
+\NormalTok{        \{}\DataTypeTok{$eq}\OperatorTok{:}\NormalTok{ [}\StringTok{"$WL"}\OperatorTok{,} \StringTok{"W"}\NormalTok{]\}}\OperatorTok{,}
+\NormalTok{        \{}\DataTypeTok{$split}\OperatorTok{:}\NormalTok{ [}\StringTok{"$LinkPlayer"}\OperatorTok{,} \StringTok{"/"}\NormalTok{]\}}\OperatorTok{,}
+        \KeywordTok{null}
+\NormalTok{      ]\}}\OperatorTok{,}
+      \DataTypeTok{looserLink}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$cond}\OperatorTok{:}\NormalTok{ [}
+\NormalTok{        \{}\DataTypeTok{$eq}\OperatorTok{:}\NormalTok{ [}\StringTok{"$WL"}\OperatorTok{,} \StringTok{"W"}\NormalTok{]\}}\OperatorTok{,}
+        \KeywordTok{null}\OperatorTok{,} 
+\NormalTok{        \{}\DataTypeTok{$split}\OperatorTok{:}\NormalTok{ [}\StringTok{"$LinkPlayer"}\OperatorTok{,} \StringTok{"/"}\NormalTok{]\}}
+\NormalTok{      ]\}}
 \NormalTok{    \}}
 \NormalTok{  \}}\OperatorTok{,}
 \NormalTok{  \{}
     \DataTypeTok{$group}\OperatorTok{:}\NormalTok{ \{}
-      \DataTypeTok{\_id}\OperatorTok{:}\NormalTok{[}\StringTok{"$Tournament"}\OperatorTok{,} \StringTok{"$GameRound"}\OperatorTok{,} \StringTok{"$Date"}\OperatorTok{,} \StringTok{"$winner"}\OperatorTok{,} \StringTok{"$loser"}\OperatorTok{,}\NormalTok{ ]}\OperatorTok{,}
+      \DataTypeTok{\_id}\OperatorTok{:}\NormalTok{[}\StringTok{"$Tournament"}\OperatorTok{,} \StringTok{"$GameRound"}\OperatorTok{,} \StringTok{"$Date"}\OperatorTok{,} \StringTok{"$winner"}\OperatorTok{,} \StringTok{"$loser"}\OperatorTok{,}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$winnerLink"}\OperatorTok{,} \DecValTok{6}\NormalTok{]\}}\OperatorTok{,}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$looserLink"}\OperatorTok{,} \DecValTok{6}\NormalTok{]\}]}\OperatorTok{,}
       \DataTypeTok{count}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$sum}\OperatorTok{:} \DecValTok{1}\NormalTok{\}}\OperatorTok{,}
       \DataTypeTok{sets}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$push}\OperatorTok{:}\StringTok{"$Score"}\NormalTok{\}}
 \NormalTok{    \}}
@@ -579,31 +627,33 @@ Japan & 2017.09.11 - 2017.09.17 & Hard & & JPN vs.~BRA WG Play-Off \\
       \DataTypeTok{date}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$\_id"}\OperatorTok{,} \DecValTok{2}\NormalTok{]\}}\OperatorTok{,}
       \DataTypeTok{winner}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$\_id"}\OperatorTok{,} \DecValTok{3}\NormalTok{]\}}\OperatorTok{,}
       \DataTypeTok{loser}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$\_id"}\OperatorTok{,} \DecValTok{4}\NormalTok{]\}}\OperatorTok{,}
+      \DataTypeTok{winnerLinkId}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$\_id"}\OperatorTok{,} \DecValTok{5}\NormalTok{]\}}\OperatorTok{,}
+      \DataTypeTok{loserLinkId}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$\_id"}\OperatorTok{,} \DecValTok{6}\NormalTok{]\}}\OperatorTok{,}
       \DataTypeTok{count}\OperatorTok{:} \KeywordTok{true}\OperatorTok{,}
       \DataTypeTok{sets}\OperatorTok{:} \KeywordTok{true}
 \NormalTok{    \}}
 \NormalTok{  \}}\OperatorTok{,}\NormalTok{ \{}
     \DataTypeTok{$out}\OperatorTok{:} \StringTok{"matches"}
 \NormalTok{  \}}
-\NormalTok{])}
+\NormalTok{])}\OperatorTok{;}
 \end{Highlighting}
 \end{Shaded}
 
-Este processo continua com a semelhança, adicionando a pipeline
-``\(match" para filtrar os jogos sem oponentes, e a pipeline "\)set''
-para criar as colunas \emph{winner} e \emph{loser}. É adicionado a
-pipeline
-``\(match" é usada para filtrar os jogos não jogados, e a pipeline "\)cond'',
-o que nos deixa escrever uma condição que decide sobre o vencedor e o
-perdedor. A pipeline ``\$sets'' garante que os nossos jogos repitidos
-são realmente repetidos, sendo que um score de, por exemplo, ``67 72
-25'' seria igual a um score de ``76 27 52'', devido à natureza da
-coluna; esta vai incluir as varias formas como a coluna se encontra nos
-vários jogos repetidos.
+Este processo continua com a semelhança, adicionando a \emph{pipeline}
+\texttt{\$match} para filtrar os jogos sem oponentes, e a
+\emph{pipeline} \texttt{\$set} para criar as colunas \emph{winner} e
+\emph{loser}. É adicionado a pipeline \texttt{\$match} é usada para
+filtrar os jogos não jogados, e a \emph{pipeline} \texttt{\$cond}, o que
+nos deixa escrever uma condição que decide sobre o vencedor e o
+perdedor. A \emph{pipeline} \texttt{\$sets} garante que os nossos jogos
+repitidos são realmente repetidos, sendo que um score de, por exemplo,
+``67 72 25'' seria igual a um score de ``76 27 52'', devido à natureza
+da coluna; esta vai incluir as varias formas como a coluna se encontra
+nos vários jogos repetidos.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{db}\OperatorTok{.}\AttributeTok{matches}\OperatorTok{.}\FunctionTok{find}\NormalTok{(\{\}}\OperatorTok{,}\NormalTok{ \{}\DataTypeTok{\_id}\OperatorTok{:}\DecValTok{0}\NormalTok{\})}\OperatorTok{.}\FunctionTok{limit}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\NormalTok{db}\OperatorTok{.}\AttributeTok{matches}\OperatorTok{.}\FunctionTok{find}\NormalTok{(\{\}}\OperatorTok{,}\NormalTok{ \{}\DataTypeTok{\_id}\OperatorTok{:}\DecValTok{0}\NormalTok{\})}\OperatorTok{.}\FunctionTok{limit}\NormalTok{(}\DecValTok{5}\NormalTok{)}\OperatorTok{;}
 \end{Highlighting}
 \end{Shaded}
 
@@ -616,62 +666,428 @@ vários jogos repetidos.
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}@{}}
 \toprule()
 \endhead
-\textbf{count} & 2 & 2 & 2 & 2 & 2 \\
+\textbf{count} & 1 & 1 & 1 & 1 & 1 \\
 \textbf{date} & 2007.06.18 - 2007.06.24 & 2007.06.18 - 2007.06.24 &
 2007.06.18 - 2007.06.24 & 2007.06.18 - 2007.06.24 & 2007.06.18 -
 2007.06.24 \\
 \textbf{gameRound} & 1st Round Qualifying & 1st Round Qualifying & 1st
 Round Qualifying & 1st Round Qualifying & 1st Round Qualifying \\
-\textbf{loser} & Sven Swinnen & Xander Spong & Martijn Van Haasteren &
-Patrick Eichenberger & Dustin Brown \\
-\textbf{sets} & {[}``36 46'', ``63 64''{]} & {[}``57 06'', ``75 60''{]}
-& {[}``57 63 26'', ``75 36 62''{]} & {[}``63 67, 63'', ``36 76, 36''{]}
-& {[}``67, 26'', ``76, 62''{]} \\
+\textbf{loser} & Sven Swinnen & Sven Swinnen & Xander Spong & Xander
+Spong & Martijn Van Haasteren \\
+\textbf{loserLinkId} & sh51 & null & si97 & null & v473 \\
+\textbf{sets} & {[}``36 46''{]} & {[}``63 64''{]} & {[}``57 06''{]} &
+{[}``75 60''{]} & {[}``57 63 26''{]} \\
 \textbf{tournament} & 's-Hertogenbosch & 's-Hertogenbosch &
 's-Hertogenbosch & 's-Hertogenbosch & 's-Hertogenbosch \\
-\textbf{winner} & Alexander Nonnekes & Bart Beks & Gilles Elseneer &
-Jordan Kerr & Marcin Matkowski \\
+\textbf{winner} & Alexander Nonnekes & Alexander Nonnekes & Bart Beks &
+Bart Beks & Gilles Elseneer \\
+\textbf{winnerLinkId} & null & n425 & null & b547 & null \\
 \bottomrule()
 \end{longtable}
 
-\hypertarget{criauxe7uxe3o-da-coleuxe7uxe3o-countryaliases}{%
-\subsection{\texorpdfstring{Criação da coleção
-\emph{countryAliases}}{Criação da coleção countryAliases}}\label{criauxe7uxe3o-da-coleuxe7uxe3o-countryaliases}}
-
-Para a criação desta coleção, vai ser importada o csv previamente
-referido.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\ExtensionTok{mongoimport} \KeywordTok{\textasciigrave{}}
-    \ExtensionTok{{-}{-}db}\NormalTok{ atp }\KeywordTok{\textasciigrave{}}
-    \ExtensionTok{{-}{-}collection}\NormalTok{ countryAliases }\KeywordTok{\textasciigrave{}}
-    \ExtensionTok{{-}{-}type}\NormalTok{ csv }\KeywordTok{\textasciigrave{}}
-    \ExtensionTok{{-}{-}headerline} \KeywordTok{\textasciigrave{}}
-    \ExtensionTok{{-}{-}file} \StringTok{"}\VariableTok{$pwd}\StringTok{\textbackslash{}data\textbackslash{}countryAlias.csv"}
-\end{Highlighting}
-\end{Shaded}
+Depois deste processo, como um dos linksId está necessariamente vazio
+devido ao formato original da coleção, vai ser necessário inserir os
+ids, conforme a coleção \emph{Players}. Esta pesquisa vai ser apenas uma
+estimativa, devido à genuina falta de informação, mas a diferença não
+deve implicar os nossos resultados, pois existem poucos jogadores com o
+mesmo nome.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{db}\OperatorTok{.}\AttributeTok{countryAliases}\OperatorTok{.}\FunctionTok{find}\NormalTok{(\{\}}\OperatorTok{,}\NormalTok{ \{}\DataTypeTok{\_id}\OperatorTok{:}\DecValTok{0}\NormalTok{\})}\OperatorTok{.}\FunctionTok{limit}\NormalTok{(}\DecValTok{8}\NormalTok{)}
+\NormalTok{db}\OperatorTok{.}\AttributeTok{matches}\OperatorTok{.}\FunctionTok{aggregate}\NormalTok{([}
+\NormalTok{  \{}
+    \DataTypeTok{$match}\OperatorTok{:}\NormalTok{ \{}
+      \DataTypeTok{winnerLinkId}\OperatorTok{:} \KeywordTok{null}
+\NormalTok{    \}}
+\NormalTok{  \}}\OperatorTok{,}
+\NormalTok{  \{}
+    \DataTypeTok{$lookup}\OperatorTok{:}\NormalTok{\{}
+      \DataTypeTok{from}\OperatorTok{:} \StringTok{"players"}\OperatorTok{,}
+      \DataTypeTok{localField}\OperatorTok{:} \StringTok{"winner"}\OperatorTok{,}
+      \DataTypeTok{foreignField}\OperatorTok{:} \StringTok{"playerName"}\OperatorTok{,}
+      \DataTypeTok{as}\OperatorTok{:} \StringTok{"winnerInfo"}
+\NormalTok{    \}}
+\NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}
+    \DataTypeTok{$set}\OperatorTok{:}\NormalTok{\{}
+      \DataTypeTok{winnerLinkId}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$winnerInfo.linkId"}\OperatorTok{,} \DecValTok{0}\NormalTok{]\}}
+\NormalTok{    \}}
+\NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}
+    \DataTypeTok{$project}\OperatorTok{:}\NormalTok{ \{}
+      \DataTypeTok{winnerInfo}\OperatorTok{:} \KeywordTok{false}
+\NormalTok{    \}}
+\NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}
+    \DataTypeTok{$merge}\OperatorTok{:}\NormalTok{ \{}
+      \DataTypeTok{into}\OperatorTok{:} \StringTok{"matches"}\OperatorTok{,}
+      \DataTypeTok{on}\OperatorTok{:} \StringTok{"\_id"}\OperatorTok{,}
+      \DataTypeTok{whenMatched}\OperatorTok{:} \StringTok{"replace"}\OperatorTok{,}
+      \DataTypeTok{whenNotMatched}\OperatorTok{:} \StringTok{"fail"}
+\NormalTok{    \}}
+\NormalTok{  \}}
+\NormalTok{])}\OperatorTok{;}
+\NormalTok{db}\OperatorTok{.}\AttributeTok{matches}\OperatorTok{.}\FunctionTok{aggregate}\NormalTok{([}
+\NormalTok{  \{}
+    \DataTypeTok{$match}\OperatorTok{:}\NormalTok{ \{}
+      \DataTypeTok{loserLinkId}\OperatorTok{:} \KeywordTok{null}
+\NormalTok{    \}}
+\NormalTok{  \}}\OperatorTok{,}
+\NormalTok{  \{}
+    \DataTypeTok{$lookup}\OperatorTok{:}\NormalTok{\{}
+      \DataTypeTok{from}\OperatorTok{:} \StringTok{"players"}\OperatorTok{,}
+      \DataTypeTok{localField}\OperatorTok{:} \StringTok{"loser"}\OperatorTok{,}
+      \DataTypeTok{foreignField}\OperatorTok{:} \StringTok{"playerName"}\OperatorTok{,}
+      \DataTypeTok{as}\OperatorTok{:} \StringTok{"loserInfo"}
+\NormalTok{    \}}
+\NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}
+    \DataTypeTok{$set}\OperatorTok{:}\NormalTok{\{}
+      \DataTypeTok{loserLinkId}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$loserInfo.linkId"}\OperatorTok{,} \DecValTok{0}\NormalTok{]\}}
+\NormalTok{    \}}
+\NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}
+    \DataTypeTok{$project}\OperatorTok{:}\NormalTok{ \{}
+      \DataTypeTok{loserInfo}\OperatorTok{:} \KeywordTok{false}
+\NormalTok{    \}}
+\NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}
+    \DataTypeTok{$merge}\OperatorTok{:}\NormalTok{ \{}
+      \DataTypeTok{into}\OperatorTok{:} \StringTok{"matches"}\OperatorTok{,}
+      \DataTypeTok{on}\OperatorTok{:} \StringTok{"\_id"}\OperatorTok{,}
+      \DataTypeTok{whenMatched}\OperatorTok{:} \StringTok{"replace"}\OperatorTok{,}
+      \DataTypeTok{whenNotMatched}\OperatorTok{:} \StringTok{"fail"}
+\NormalTok{    \}}
+\NormalTok{  \}}
+\NormalTok{])}\OperatorTok{;}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{longtable}[]{@{}lll@{}}
+\hypertarget{tratamento-de-colunas-individuais}{%
+\subsection{Tratamento de colunas
+individuais}\label{tratamento-de-colunas-individuais}}
+
+\hypertarget{pauxedses}{%
+\subsubsection{Países}\label{pauxedses}}
+
+Até este momento, temos duas (2) coleções que referiam aos paises dos
+jogadores e dos torneios: \emph{countryAliases} e \emph{countryCodes}.
+Vamos juntar estas duas coleções, de forma a incluir códigos de paises
+não representados na base de dados.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{db}\OperatorTok{.}\AttributeTok{countryCodes}\OperatorTok{.}\FunctionTok{aggregate}\NormalTok{([}
+\NormalTok{  \{}
+    \DataTypeTok{$project}\OperatorTok{:}\NormalTok{\{}
+      \DataTypeTok{\_id}\OperatorTok{:} \DecValTok{0}\OperatorTok{,}
+      \DataTypeTok{alias}\OperatorTok{:} \StringTok{"$Name"}\OperatorTok{,}
+      \DataTypeTok{code}\OperatorTok{:} \StringTok{"$Code"}\OperatorTok{,}
+      \DataTypeTok{country}\OperatorTok{:} \StringTok{"$Name"}
+\NormalTok{    \}}
+\NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}
+    \DataTypeTok{$unionWith}\OperatorTok{:}\NormalTok{ \{}
+      \DataTypeTok{coll}\OperatorTok{:} \StringTok{"countryAliases"}\OperatorTok{,}
+      \DataTypeTok{pipeline}\OperatorTok{:}\NormalTok{ [}
+\NormalTok{        \{}
+          \DataTypeTok{$project}\OperatorTok{:}\NormalTok{\{}
+            \DataTypeTok{\_id}\OperatorTok{:} \DecValTok{0}
+\NormalTok{          \}}
+\NormalTok{        \}}
+\NormalTok{      ]}
+\NormalTok{    \}}
+\NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}
+    \DataTypeTok{$out}\OperatorTok{:} \StringTok{"countryAliases"}
+\NormalTok{  \}}
+\NormalTok{])}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+Com estas duas juntas, vai ser adicionado um campo \emph{countryCode} a
+cada documento da coleção \emph{players} e \emph{tournaments}, com base
+no campo \emph{country}, com a ajuda da \emph{pipeline}
+\texttt{\$lookup}.
+
+Aqui, a coluna \emph{alias} é usada para referenciar os países/cidades
+como estão nas coleções e mudar para o código do país.
+
+Para mudar os paises nas coleções executámos os comandos seguintes:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{db}\OperatorTok{.}\AttributeTok{players}\OperatorTok{.}\FunctionTok{aggregate}\NormalTok{([}
+\NormalTok{  \{}
+    \DataTypeTok{$lookup}\OperatorTok{:}\NormalTok{\{}
+      \DataTypeTok{from}\OperatorTok{:} \StringTok{"countryAliases"}\OperatorTok{,}
+      \DataTypeTok{localField}\OperatorTok{:} \StringTok{"country"}\OperatorTok{,}
+      \DataTypeTok{foreignField}\OperatorTok{:} \StringTok{"alias"}\OperatorTok{,}
+      \DataTypeTok{as}\OperatorTok{:} \StringTok{"alias"}
+\NormalTok{    \}}
+\NormalTok{   \}}\OperatorTok{,}\NormalTok{\{}
+   \DataTypeTok{$set}\OperatorTok{:}\NormalTok{ \{}
+    \DataTypeTok{countryCode}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$alias.code"}\OperatorTok{,} \DecValTok{0}\NormalTok{]\}}\OperatorTok{,}
+    \DataTypeTok{alias}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$alias.alias"}\OperatorTok{,} \DecValTok{0}\NormalTok{]\}}\OperatorTok{,}
+    \DataTypeTok{country}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$alias.country"}\OperatorTok{,} \DecValTok{0}\NormalTok{]\}}\OperatorTok{,}
+\NormalTok{   \}}
+\NormalTok{  \}}\OperatorTok{,}
+\NormalTok{  \{}\DataTypeTok{$out}\OperatorTok{:} \StringTok{"players"}\NormalTok{\}}
+\NormalTok{])}\OperatorTok{;}
+\NormalTok{db}\OperatorTok{.}\AttributeTok{players}\OperatorTok{.}\FunctionTok{find}\NormalTok{(\{\}}\OperatorTok{,}\NormalTok{ \{}\DataTypeTok{\_id}\OperatorTok{:}\DecValTok{0}\NormalTok{\})}\OperatorTok{.}\FunctionTok{limit}\NormalTok{(}\DecValTok{5}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}@{}}
 \toprule()
-alias & code & country \\
+\begin{minipage}[b]{\linewidth}\raggedright
+alias
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+backhand
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+country
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+countryCode
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+domHand
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+height
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+playerName
+\end{minipage} \\
 \midrule()
 \endhead
-Mexico & MX & Acapulco \\
-CÃ´te d'Ivoire & CI & Abidjan \\
-France & FR & Ajaccio \\
-United Kingdom & GB & AL \\
-Italy & IT & Alatri \\
-Kazachstan & KZ & Aktau \\
-Canada & CA & ALberta \\
-USA & US & Alexandria \\
+Spain & One-Handed Backhand & Spain & ES & Right-Handed & 183 & David
+Marrero \\
+null & Unknown Backhand & null & null & Right-Handed & null & Zoran
+Mihailovic \\
+null & null & null & null & null & null & Guillaume Dermiens \\
+null & Unknown Backhand & null & null & Right-Handed & null & Vince
+Mackey \\
+Germany & One-Handed Backhand & Germany & DE & Right-Handed & 191 & Alex
+Calatrava \\
 \bottomrule()
 \end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{db}\OperatorTok{.}\AttributeTok{tournaments}\OperatorTok{.}\FunctionTok{aggregate}\NormalTok{([}
+\NormalTok{  \{}
+    \DataTypeTok{$lookup}\OperatorTok{:}\NormalTok{\{}
+      \DataTypeTok{from}\OperatorTok{:} \StringTok{"countryAliases"}\OperatorTok{,}
+      \DataTypeTok{localField}\OperatorTok{:} \StringTok{"country"}\OperatorTok{,}
+      \DataTypeTok{foreignField}\OperatorTok{:} \StringTok{"alias"}\OperatorTok{,}
+      \DataTypeTok{as}\OperatorTok{:} \StringTok{"alias"}
+\NormalTok{    \}}
+\NormalTok{   \}}\OperatorTok{,}\NormalTok{\{}
+   \DataTypeTok{$set}\OperatorTok{:}\NormalTok{ \{}
+    \DataTypeTok{countryCode}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$alias.code"}\OperatorTok{,} \DecValTok{0}\NormalTok{]\}}\OperatorTok{,}
+    \DataTypeTok{alias}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$alias.alias"}\OperatorTok{,} \DecValTok{0}\NormalTok{]\}}\OperatorTok{,}
+    \DataTypeTok{country}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$alias.country"}\OperatorTok{,} \DecValTok{0}\NormalTok{]\}}\OperatorTok{,}
+\NormalTok{   \}}
+\NormalTok{  \}}\OperatorTok{,}
+\NormalTok{  \{}\DataTypeTok{$out}\OperatorTok{:} \StringTok{"tournaments"}\NormalTok{\}}
+\NormalTok{])}\OperatorTok{;}
+\NormalTok{db}\OperatorTok{.}\AttributeTok{tournaments}\OperatorTok{.}\FunctionTok{find}\NormalTok{(\{\}}\OperatorTok{,}\NormalTok{ \{}\DataTypeTok{\_id}\OperatorTok{:}\DecValTok{0}\NormalTok{\})}\OperatorTok{.}\FunctionTok{limit}\NormalTok{(}\DecValTok{5}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\toprule()
+\endhead
+\textbf{alias} & Scotland & Croatia & England & Belgium & Japan \\
+\textbf{country} & United Kingdom & Croatia & United Kingdom & Belgium &
+Japan \\
+\textbf{countryCode} & GB & HR & GB & BE & JP \\
+\textbf{date} & 2000.05.15 - 2000.05.21 & 2013.08.19 - 2013.08.25 &
+1999.09.13 - 1999.09.19 & 1997.07.21 - 1997.07.27 & 2017.09.11 -
+2017.09.17 \\
+\textbf{ground} & Clay & Clay & Clay & Clay & Hard \\
+\textbf{prize} & \$25,000 & \$10,000 & \$375,000 & \$75,000 & \\
+\textbf{tournament} & Edinburgh & Croatia F8 & Bournemouth & Ostend &
+JPN vs.~BRA WG Play-Off \\
+\bottomrule()
+\end{longtable}
+
+Por último, de forma a transferir os países para o modelo relacional,
+vamos substituir a coleção \emph{countryCodes} pelos códigos de países,
+incluindo aqueles não presentes anteriormente. Como unimos as duas
+coleções previamente, basta agrupar por código de país e nome.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{db}\OperatorTok{.}\AttributeTok{countryAliases}\OperatorTok{.}\FunctionTok{aggregate}\NormalTok{([}
+\NormalTok{  \{}
+    \DataTypeTok{$group}\OperatorTok{:}\NormalTok{\{}
+      \DataTypeTok{\_id}\OperatorTok{:}\NormalTok{ [}\StringTok{"$code"}\OperatorTok{,} \StringTok{"$country"}\NormalTok{]}\OperatorTok{,}
+      \DataTypeTok{alias}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$push}\OperatorTok{:} \StringTok{"$alias"}\NormalTok{\}}
+\NormalTok{    \}}
+\NormalTok{    \}}\OperatorTok{,}\NormalTok{\{}
+        \DataTypeTok{$project}\OperatorTok{:}\NormalTok{\{}
+            \DataTypeTok{\_id}\OperatorTok{:} \DecValTok{0}\OperatorTok{,}
+            \DataTypeTok{code}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$\_id"}\OperatorTok{,} \DecValTok{0}\NormalTok{]\}}\OperatorTok{,}
+            \DataTypeTok{country}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$\_id"}\OperatorTok{,} \DecValTok{1}\NormalTok{]\}}\OperatorTok{,}
+            \DataTypeTok{alias}\OperatorTok{:} \DecValTok{1}
+\NormalTok{        \}}
+\NormalTok{        \}}\OperatorTok{,}\NormalTok{\{}
+        \DataTypeTok{$out}\OperatorTok{:} \StringTok{"countryCodes"}
+\NormalTok{    \}}
+\NormalTok{])}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{players-nuxe3o-incluuxeddos}{%
+\subsubsection{Players não
+incluídos}\label{players-nuxe3o-incluuxeddos}}
+
+Aqui vai ser adicionado os jogadores não incluídos na coleção original
+\emph{games}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{db}\OperatorTok{.}\AttributeTok{matches}\OperatorTok{.}\FunctionTok{aggregate}\NormalTok{([}
+\NormalTok{  \{}
+    \DataTypeTok{$lookup}\OperatorTok{:}\NormalTok{\{}
+      \DataTypeTok{from}\OperatorTok{:} \StringTok{"players"}\OperatorTok{,}
+      \DataTypeTok{localField}\OperatorTok{:} \StringTok{"winner"}\OperatorTok{,}
+      \DataTypeTok{foreignField}\OperatorTok{:} \StringTok{"playerName"}\OperatorTok{,}
+      \DataTypeTok{as}\OperatorTok{:} \StringTok{"winnerInfo"}
+\NormalTok{    \}}
+\NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}
+    \DataTypeTok{$lookup}\OperatorTok{:}\NormalTok{\{}
+      \DataTypeTok{from}\OperatorTok{:} \StringTok{"players"}\OperatorTok{,}
+      \DataTypeTok{localField}\OperatorTok{:} \StringTok{"loser"}\OperatorTok{,}
+      \DataTypeTok{foreignField}\OperatorTok{:} \StringTok{"playerName"}\OperatorTok{,}
+      \DataTypeTok{as}\OperatorTok{:} \StringTok{"loserInfo"}
+\NormalTok{    \}}
+\NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}
+    \DataTypeTok{$project}\OperatorTok{:}\NormalTok{\{}
+      \DataTypeTok{\_id}\OperatorTok{:} \DecValTok{0}\OperatorTok{,}
+      \DataTypeTok{winner}\OperatorTok{:} \DecValTok{1}\OperatorTok{,}
+      \DataTypeTok{loser}\OperatorTok{:} \DecValTok{1}\OperatorTok{,}
+      \DataTypeTok{countWinner}\OperatorTok{:}\NormalTok{ \{ }\DataTypeTok{$size}\OperatorTok{:} \StringTok{"$winnerInfo"}\NormalTok{ \}}\OperatorTok{,}
+      \DataTypeTok{countLooser}\OperatorTok{:}\NormalTok{ \{ }\DataTypeTok{$size}\OperatorTok{:} \StringTok{"$loserInfo"}\NormalTok{ \}}
+\NormalTok{    \}}
+\NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}
+    \DataTypeTok{$match}\OperatorTok{:}\NormalTok{ \{}
+      \DataTypeTok{$or}\OperatorTok{:}\NormalTok{ [}
+\NormalTok{        \{}\DataTypeTok{countWinner}\OperatorTok{:} \DecValTok{0}\NormalTok{\}}\OperatorTok{,}
+\NormalTok{        \{}\DataTypeTok{countLooser}\OperatorTok{:} \DecValTok{0}\NormalTok{\}}
+\NormalTok{      ]}
+\NormalTok{    \}}
+\NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}
+    \DataTypeTok{$project}\OperatorTok{:}\NormalTok{ \{}
+      \DataTypeTok{player}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$cond}\OperatorTok{:}\NormalTok{ [\{}\DataTypeTok{$eq}\OperatorTok{:}\NormalTok{ [}\StringTok{"$countWinner"}\OperatorTok{,} \DecValTok{0}\NormalTok{]\}}\OperatorTok{,} \StringTok{"$winner"}\OperatorTok{,} \StringTok{"$loser"}\NormalTok{]\}}
+\NormalTok{    \}}
+\NormalTok{  \}}\OperatorTok{,}
+\NormalTok{  \{}
+    \DataTypeTok{$group}\OperatorTok{:}\NormalTok{ \{}
+      \DataTypeTok{\_id}\OperatorTok{:} \StringTok{"$player"}\OperatorTok{,}
+      \DataTypeTok{count}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$sum}\OperatorTok{:} \DecValTok{1}\NormalTok{\}}
+\NormalTok{    \}}
+\NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}
+    \DataTypeTok{$out}\OperatorTok{:} \StringTok{"missingPlayers"}
+\NormalTok{  \}}
+\NormalTok{])}\OperatorTok{;}
+\NormalTok{db}\OperatorTok{.}\AttributeTok{missingPlayers}\OperatorTok{.}\FunctionTok{find}\NormalTok{()}\OperatorTok{.}\FunctionTok{limit}\NormalTok{(}\DecValTok{5}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule()
+\_id & count \\
+\midrule()
+\endhead
+Bertrand Tinck & 5 \\
+Mateo Etchevarne & 1 \\
+Guillermo Torres Garcia & 1 \\
+Marco Linconir & 4 \\
+Hai-Yun Tan & 11 \\
+\bottomrule()
+\end{longtable}
+
+Esta \emph{query} primeiro vai verificar os players que estão na coleção
+\emph{players} e depois vai agrupar por nome de jogador e contar o
+número de vezes que não aparece. O resultado é guardado na coleção
+\emph{missingPlayers}. A seguir, vamos adicionar estes os jogadores à
+coleção \emph{players}, usando o \texttt{\$unionWith}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{db}\OperatorTok{.}\AttributeTok{players}\OperatorTok{.}\FunctionTok{aggregate}\NormalTok{([}
+\NormalTok{  \{}
+    \DataTypeTok{$unionWith}\OperatorTok{:}\NormalTok{ \{}
+      \DataTypeTok{coll}\OperatorTok{:} \StringTok{"missingPlayers"}
+\NormalTok{    \}}
+\NormalTok{  \}}\OperatorTok{,}
+\NormalTok{  \{}
+    \DataTypeTok{$out}\OperatorTok{:} \StringTok{"players"}
+\NormalTok{  \}}
+\NormalTok{])}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{domhand-backhand-e-ground}{%
+\subsubsection{domHand, backhand e
+ground}\label{domhand-backhand-e-ground}}
+
+Aqui vamos criar as coleções \emph{domHands}, \emph{backhands}, e
+\emph{grounds} de forma a incluí-las mais facilmente no esquema
+relacional.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{db}\OperatorTok{.}\AttributeTok{players}\OperatorTok{.}\FunctionTok{aggregate}\NormalTok{([}
+\NormalTok{  \{}
+    \DataTypeTok{$group}\OperatorTok{:}\NormalTok{ \{}
+      \DataTypeTok{\_id}\OperatorTok{:} \StringTok{"$domHand"}
+\NormalTok{    \}}
+\NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}\DataTypeTok{$match}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{\_id}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$ne}\OperatorTok{:} \KeywordTok{null}\NormalTok{\}\}\}}\OperatorTok{,}\NormalTok{\{}
+    \DataTypeTok{$out}\OperatorTok{:} \StringTok{"domHands"}
+\NormalTok{  \}}
+\NormalTok{])}\OperatorTok{;}
+\NormalTok{db}\OperatorTok{.}\AttributeTok{players}\OperatorTok{.}\FunctionTok{aggregate}\NormalTok{([}
+\NormalTok{  \{}
+    \DataTypeTok{$group}\OperatorTok{:}\NormalTok{ \{}
+      \DataTypeTok{\_id}\OperatorTok{:} \StringTok{"$backhand"}
+\NormalTok{    \}}
+\NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}\DataTypeTok{$match}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{\_id}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$ne}\OperatorTok{:} \KeywordTok{null}\NormalTok{\}\}\}}\OperatorTok{,}\NormalTok{\{}
+    \DataTypeTok{$out}\OperatorTok{:} \StringTok{"backhands"}
+\NormalTok{  \}}
+\NormalTok{])}\OperatorTok{;}
+\NormalTok{db}\OperatorTok{.}\AttributeTok{tournaments}\OperatorTok{.}\FunctionTok{aggregate}\NormalTok{([}
+\NormalTok{  \{}
+    \DataTypeTok{$group}\OperatorTok{:}\NormalTok{ \{}
+      \DataTypeTok{\_id}\OperatorTok{:} \StringTok{"$ground"}
+\NormalTok{    \}}
+\NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}\DataTypeTok{$match}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{\_id}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$ne}\OperatorTok{:} \KeywordTok{null}\NormalTok{\}\}\}}\OperatorTok{,}\NormalTok{\{}
+    \DataTypeTok{$out}\OperatorTok{:} \StringTok{"grounds"}
+\NormalTok{  \}}
+\NormalTok{])}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{exportauxe7uxe3o-e-importauxe7uxe3o-dos-dados}{%
+\section{Exportação e importação dos
+dados}\label{exportauxe7uxe3o-e-importauxe7uxe3o-dos-dados}}
+
+Para exportar os dados, vamos usar o comando \texttt{mongoexport}. TODO
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{mongoexport} \AttributeTok{{-}{-}db}\NormalTok{ atp }\KeywordTok{\textasciigrave{}}
+\ExtensionTok{{-}{-}collection}\NormalTok{ players }\KeywordTok{\textasciigrave{}}
+\ExtensionTok{{-}{-}out}\NormalTok{ data}\DataTypeTok{\textbackslash{}t}\NormalTok{oSql}\DataTypeTok{\textbackslash{}p}\NormalTok{layers.csv }\KeywordTok{\textasciigrave{}}
+\ExtensionTok{{-}{-}type}\NormalTok{ csv }\KeywordTok{\textasciigrave{}}
+\ExtensionTok{{-}{-}fields}\NormalTok{ playerName,height,domHand,backhand,countryCode }\KeywordTok{\textasciigrave{}}
+\end{Highlighting}
+\end{Shaded}
+
+TODO
 
 \end{document}

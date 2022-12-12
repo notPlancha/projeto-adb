@@ -1,5 +1,5 @@
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
+#Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+#iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
 scoop bucket add main
 scoop bucket add extras
 scoop install tectonic
