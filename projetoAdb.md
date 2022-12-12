@@ -1,7 +1,7 @@
 ---
 title: "TODO titulo"
 subtitle: "Trabalho elaborado no âmbito da Unidade Curricular de Armazenamento para Big Data do 2º ano da Licenciatura de Ciência de Dados do Instituto Universitário de Lisboa ISCTE"
-author: [André Plancha; 105289, Afonso Silva; 105208, Tomas Ribeiro; 105220]
+author: [André Plancha; 105289, Afonso Silva;105208, Tomas Ribeiro;105220]
 date: "07/12/2022"
 header-includes:
 - \usepackage[a4paper, total={6in, 8in}]{geometry}
@@ -13,7 +13,7 @@ header-includes:
 A Associação de Tenistas Profissionais (_ATP_) é um órgão de ténis profisional masculino, organizando torneios do desporto globalmente. A organização contém na sua base de dados um conjunto de jogos e jogadores que participaram em torneios pelo menos desde 1914, e incluem todos os grandes torneios do circuito masculino, incluindo os torneios de Grand Slam. O objetivo deste trabalho será limpar e preparar os dados de um modelo não-relacional para um modelo-relacional, para que possa ser utilizado em análises posteriores.
 
 # Importação dos dados
-Para o nosso projeto voi-nos provisionado o ficheiro _atpplayers.json_, que contém os jogos feito pelos jogadores. Para importar este ficheiro, foi utilizado o comando `mongoimport`:
+Para o nosso projeto foi-nos provisionado o ficheiro _atpplayers.json_, que contém os jogos feito pelos jogadores. Para importar este ficheiro, foi utilizado o comando `mongoimport`:
 ```bash
 mongoimport `
     --db atp `
@@ -68,7 +68,7 @@ Para preparar os dados, nós planeámos transformar a nossa coleção em coleç�
 
 Antes de começar a transformar os dados, foi necessário verificar a integridade deles. 
 
-Primeiro, verificámos se a coluna _Born_ e _Location_ mantinha o formato "cidade, pais" para todos os jogadores. Mais precisamente, como para os nóssos propósitos, apenas precisamos do país, verificámos se os países estavam sempre no final da string.
+Primeiro, verificámos se a coluna _Born_ e _Location_ mantinha o formato "cidade, pais" para todos os jogadores. Mais precisamente, como para os nossos propósitos, apenas precisamos do país, verificámos se os países estavam sempre no final da string.
 ```javascript
 db.games.aggregate([
   {
@@ -93,7 +93,7 @@ db.games.aggregate([
 | Verona |
 | Cordoba |
 
-Perante os resultados, podemos verificar que existem jogadores cujo país não está no final da string. Para resolver este problema, foi-se adicionado manualmente os países destas cidades, de forma a poder analisar o pais de origem dos jogadores. O mesmo é observável para a coluna _Location_. Adicionalmente, os países não encontravam consistência; por exemplo, "U.S.A." e "USA" eram usados para representar os Estados Unidos. Logo, foi necessário unificar os países, de forma a que todos os países fossem representados da mesma forma. Para isso, foi criado um ficheiro _countryAlias.csv_, o que associava o código do país com o nome do pais na base de dados. O ficheiro estará disponível no repositório do projeto, e em anexo na submissão.
+Perante os resultados, podemos verificar que existem jogadores cujo país não está no final da string. Para resolver este problema, foi-se adicionado manualmente os países destas cidades, de forma a poder analisar o país de origem dos jogadores. O mesmo é observável para a coluna _Location_. Adicionalmente, os países não encontravam consistência; por exemplo, "U.S.A." e "USA" eram usados para representar os Estados Unidos. Logo, foi necessário unificar os países, de forma a que todos os países fossem representados da mesma forma. Para isso, foi criado um ficheiro _countryAlias.csv_, o que associava o código do país com o nome do pais na base de dados. O ficheiro estará disponível no repositório do projeto, e em anexo na submissão.
 
 ```csv
 alias,country,code
@@ -131,7 +131,7 @@ mongoimport `
     --file ".\data\countryCodes.csv"
 ```
 
-Outra verivicação que fizemos foi verificar os vários grupos: as colunas _Ground_, _Hand_, e _WL_.
+Outra verificação que fizemos foi verificar os vários grupos: as colunas _Ground_, _Hand_, e _WL_.
 
 ```javascript
 db.games.distinct("Ground");
@@ -239,7 +239,7 @@ db.players.find({}, {_id:0, linkPlayer: 0}).limit(5);
 
 
 
-Nota-se que alguns jogadores não têm país, mão dominante, backhand, out altura registada. Estes casos estão consistentes com a coleção original.
+Nota-se que alguns jogadores não têm país, mão dominante, backhand, ou altura registada. Estes casos estão consistentes com a coleção original.
 
 Esta coleção não inclui os oponentes, porque estes vão ser tratados ao exportar os dados, com base na coleção _matches_.
 

@@ -118,7 +118,7 @@
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
   pdftitle={TODO titulo},
-  pdfauthor={André Plancha; 105289; Afonso Silva; 105208; Tomas Ribeiro; 105220},
+  pdfauthor={André Plancha; 105289; Another Author; Num},
   pdflang={pt-pt},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
@@ -133,8 +133,7 @@
 \subtitle{Trabalho elaborado no âmbito da Unidade Curricular de
 Armazenamento para Big Data do 2º ano da Licenciatura de Ciência de
 Dados do Instituto Universitário de Lisboa ISCTE}
-\author{André Plancha; 105289 \and Afonso Silva; 105208 \and Tomas
-Ribeiro; 105220}
+\author{André Plancha; 105289 \and Another Author; Num}
 \date{07/12/2022}
 
 \begin{document}
@@ -155,7 +154,7 @@ utilizado em análises posteriores.
 \hypertarget{importauxe7uxe3o-dos-dados}{%
 \section{Importação dos dados}\label{importauxe7uxe3o-dos-dados}}
 
-Para o nosso projeto voi-nos provisionado o ficheiro
+Para o nosso projeto foi-nos provisionado o ficheiro
 \emph{atpplayers.json}, que contém os jogos feito pelos jogadores. Para
 importar este ficheiro, foi utilizado o comando \texttt{mongoimport}:
 
@@ -239,7 +238,7 @@ modelo relacional pretendido:
 
 \begin{figure}
 \centering
-\includegraphics{figures/sqlDiagram.png}
+\includegraphics{figures/sqlDiagramOld.png}
 \caption{Diagrama do modelo relacional}
 \end{figure}
 
@@ -248,7 +247,7 @@ integridade deles.
 
 Primeiro, verificámos se a coluna \emph{Born} e \emph{Location} mantinha
 o formato ``cidade, pais'' para todos os jogadores. Mais precisamente,
-como para os nóssos propósitos, apenas precisamos do país, verificámos
+como para os nossos propósitos, apenas precisamos do país, verificámos
 se os países estavam sempre no final da string.
 
 \begin{Shaded}
@@ -286,7 +285,7 @@ Cordoba \\
 Perante os resultados, podemos verificar que existem jogadores cujo país
 não está no final da string. Para resolver este problema, foi-se
 adicionado manualmente os países destas cidades, de forma a poder
-analisar o pais de origem dos jogadores. O mesmo é observável para a
+analisar o país de origem dos jogadores. O mesmo é observável para a
 coluna \emph{Location}. Adicionalmente, os países não encontravam
 consistência; por exemplo, ``U.S.A.'' e ``USA'' eram usados para
 representar os Estados Unidos. Logo, foi necessário unificar os países,
@@ -432,6 +431,7 @@ dados da \emph{query} para uma nova coleção.
 \subsection{\texorpdfstring{Criação da coleção
 \emph{Player}}{Criação da coleção Player}}\label{criauxe7uxe3o-da-coleuxe7uxe3o-player}}
 
+<<<<<<< HEAD
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{db}\OperatorTok{.}\AttributeTok{games}\OperatorTok{.}\FunctionTok{aggregate}\NormalTok{([}
@@ -477,6 +477,34 @@ dados da \emph{query} para uma nova coleção.
 \NormalTok{])}\OperatorTok{;}
 \end{Highlighting}
 \end{Shaded}
+=======
+\begin{verbatim}
+db.games.aggregate([
+  {
+    $group: {
+      _id:{
+        hand: {$split: ["$Hand", ", "]},
+        born: {$split: ["$Born", ", "]},
+        height: "$Height",
+        linkPlayer: "$LinkPlayer",
+        playerName: "$PlayerName"
+      }
+    }
+  },{
+    $project:{
+      playerName: "$_id.playerName",
+      country: {$arrayElemAt: ["$_id.born", -1]},
+      height: "$_id.height",
+      linkPlayer: "$_id.linkPlayer",
+      domHand: {$arrayElemAt: ["$_id.hand", 0]},
+      backhand: {$arrayElemAt: ["$_id.hand", 1]}
+    }
+  },{
+    $out: "players"
+  }
+]);
+\end{verbatim}
+>>>>>>> 86241290bf08a08fc9607272d63c0f91b568fa8f
 
 Para a criação da coleção \emph{Player}, foi usada a \emph{pipeline}
 \texttt{\$group} para para agrupar os dados de cada jogador, e a
@@ -696,82 +724,8 @@ estimativa, devido à genuina falta de informação, mas a diferença não
 deve implicar os nossos resultados, pois existem poucos jogadores com o
 mesmo nome.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{db}\OperatorTok{.}\AttributeTok{matches}\OperatorTok{.}\FunctionTok{aggregate}\NormalTok{([}
-\NormalTok{  \{}
-    \DataTypeTok{$match}\OperatorTok{:}\NormalTok{ \{}
-      \DataTypeTok{winnerLinkId}\OperatorTok{:} \KeywordTok{null}
-\NormalTok{    \}}
-\NormalTok{  \}}\OperatorTok{,}
-\NormalTok{  \{}
-    \DataTypeTok{$lookup}\OperatorTok{:}\NormalTok{\{}
-      \DataTypeTok{from}\OperatorTok{:} \StringTok{"players"}\OperatorTok{,}
-      \DataTypeTok{localField}\OperatorTok{:} \StringTok{"winner"}\OperatorTok{,}
-      \DataTypeTok{foreignField}\OperatorTok{:} \StringTok{"playerName"}\OperatorTok{,}
-      \DataTypeTok{as}\OperatorTok{:} \StringTok{"winnerInfo"}
-\NormalTok{    \}}
-\NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}
-    \DataTypeTok{$set}\OperatorTok{:}\NormalTok{\{}
-      \DataTypeTok{winnerLinkId}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$winnerInfo.linkId"}\OperatorTok{,} \DecValTok{0}\NormalTok{]\}}
-\NormalTok{    \}}
-\NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}
-    \DataTypeTok{$project}\OperatorTok{:}\NormalTok{ \{}
-      \DataTypeTok{winnerInfo}\OperatorTok{:} \KeywordTok{false}
-\NormalTok{    \}}
-\NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}
-    \DataTypeTok{$merge}\OperatorTok{:}\NormalTok{ \{}
-      \DataTypeTok{into}\OperatorTok{:} \StringTok{"matches"}\OperatorTok{,}
-      \DataTypeTok{on}\OperatorTok{:} \StringTok{"\_id"}\OperatorTok{,}
-      \DataTypeTok{whenMatched}\OperatorTok{:} \StringTok{"replace"}\OperatorTok{,}
-      \DataTypeTok{whenNotMatched}\OperatorTok{:} \StringTok{"fail"}
-\NormalTok{    \}}
-\NormalTok{  \}}
-\NormalTok{])}\OperatorTok{;}
-\NormalTok{db}\OperatorTok{.}\AttributeTok{matches}\OperatorTok{.}\FunctionTok{aggregate}\NormalTok{([}
-\NormalTok{  \{}
-    \DataTypeTok{$match}\OperatorTok{:}\NormalTok{ \{}
-      \DataTypeTok{loserLinkId}\OperatorTok{:} \KeywordTok{null}
-\NormalTok{    \}}
-\NormalTok{  \}}\OperatorTok{,}
-\NormalTok{  \{}
-    \DataTypeTok{$lookup}\OperatorTok{:}\NormalTok{\{}
-      \DataTypeTok{from}\OperatorTok{:} \StringTok{"players"}\OperatorTok{,}
-      \DataTypeTok{localField}\OperatorTok{:} \StringTok{"loser"}\OperatorTok{,}
-      \DataTypeTok{foreignField}\OperatorTok{:} \StringTok{"playerName"}\OperatorTok{,}
-      \DataTypeTok{as}\OperatorTok{:} \StringTok{"loserInfo"}
-\NormalTok{    \}}
-\NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}
-    \DataTypeTok{$set}\OperatorTok{:}\NormalTok{\{}
-      \DataTypeTok{loserLinkId}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$loserInfo.linkId"}\OperatorTok{,} \DecValTok{0}\NormalTok{]\}}
-\NormalTok{    \}}
-\NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}
-    \DataTypeTok{$project}\OperatorTok{:}\NormalTok{ \{}
-      \DataTypeTok{loserInfo}\OperatorTok{:} \KeywordTok{false}
-\NormalTok{    \}}
-\NormalTok{  \}}\OperatorTok{,}\NormalTok{\{}
-    \DataTypeTok{$merge}\OperatorTok{:}\NormalTok{ \{}
-      \DataTypeTok{into}\OperatorTok{:} \StringTok{"matches"}\OperatorTok{,}
-      \DataTypeTok{on}\OperatorTok{:} \StringTok{"\_id"}\OperatorTok{,}
-      \DataTypeTok{whenMatched}\OperatorTok{:} \StringTok{"replace"}\OperatorTok{,}
-      \DataTypeTok{whenNotMatched}\OperatorTok{:} \StringTok{"fail"}
-\NormalTok{    \}}
-\NormalTok{  \}}
-\NormalTok{])}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{tratamento-de-colunas-individuais}{%
-\subsection{Tratamento de colunas
-individuais}\label{tratamento-de-colunas-individuais}}
-
-\hypertarget{pauxedses}{%
-\subsubsection{Países}\label{pauxedses}}
-
-Até este momento, temos duas (2) coleções que referiam aos paises dos
-jogadores e dos torneios: \emph{countryAliases} e \emph{countryCodes}.
-Vamos juntar estas duas coleções, de forma a incluir códigos de paises
-não representados na base de dados.
+Para a criação desta coleção, vai ser importada o csv previamente
+referido.
 
 \begin{Shaded}
 \begin{Highlighting}[]
