@@ -64,7 +64,7 @@ db.games.aggregate([
       _id: {
         tournament: "$Tournament",
         location: {$split: ["$Location", ", "]},
-        date: "$Date", //TODO tratar
+        date: {$split: ["$Date", " - "],
         ground: "$Ground",
         prize: "$Prize"
       }
@@ -74,7 +74,8 @@ db.games.aggregate([
       _id: 0,
       tournament: "$_id.tournament",
       country: {$arrayElemAt: ["$_id.location", -1]},
-      date: "$_id.date",
+      start_date: {$arrayElemAt: ["$_id.date", 0]},
+      end_date: {$arrayElemAt: ["$_id.date", -1]},
       ground: {$cond: [{$eq: ["$_id.ground", ""]}, null, "$_id.ground"]},
       prize: "$_id.prize"
     }
