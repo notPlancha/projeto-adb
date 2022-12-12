@@ -1,7 +1,7 @@
 ---
 title: "TODO titulo"
 subtitle: "Trabalho elaborado no âmbito da Unidade Curricular de Armazenamento para Big Data do 2º ano da Licenciatura de Ciência de Dados do Instituto Universitário de Lisboa ISCTE"
-author: [André Plancha; 105289, Afonso Silva;105208, Tomás Ribeiro;105220]
+author: [André Plancha; 105289, Afonso Silva;105208, Tomas Ribeiro;105220]
 date: "07/12/2022"
 header-includes:
 - \usepackage[a4paper, total={6in, 8in}]{geometry}
@@ -64,7 +64,7 @@ A coleção contém 15 colunas:
 # Preparar dos dados
 Para preparar os dados, nós planeámos transformar a nossa coleção em coleções diferentes, de forma a representar o modelo relacionar, para facilitar a sua transição. Para isso, desenhámos o nosso diagrama do modelo relacional pretendido:
 
-![Diagrama do modelo relacional](figures/sqlDiagramOld.png)
+![Diagrama do modelo relacional](figures/sqlDiagram.png)
 
 Antes de começar a transformar os dados, foi necessário verificar a integridade deles. 
 
@@ -179,7 +179,7 @@ Para a nossa criação das coleções, vai ser usada primariamente a função `a
 
 ## Criação da coleção _Player_
 
-```
+```javascript
 db.games.aggregate([
   {
     $group: {
@@ -203,9 +203,17 @@ db.games.aggregate([
     }
   },{
     $set: {
-      backhand: {$cond: [{$eq: ["$backhand", "Unknown Backhand"]}, null, {$trim: {input: "$backhand"}}]},
-      domHand: {$cond: [{$eq: ["$domHand", "null"]}, null, {$trim: {input: "$domHand"}}]},
-      height: {$cond: [{$eq: ["$height", "NA"]}, null, "$height"]},
+      backhand: {$cond: [
+        {$eq: ["$backhand", "Unknown Backhand"]}, 
+        null, 
+        {$trim: {input: "$backhand"}}
+      ]},
+      domHand: {$cond: [
+        {$eq: ["$domHand", "null"]}, 
+        null, 
+        {$trim: {input: "$domHand"}}
+      ]},
+      height: {$cond: [{$eq: ["$height", "NA"]}, 0, "$height"]},
       country: {$cond: [{$eq: ["$country", ""]}, null, {$trim: {input: "$country"}}]},
       linkId: {$arrayElemAt: ["$linkPlayer", 6]}
     }
@@ -220,13 +228,14 @@ Para a criação da coleção _Player_, foi usada a _pipeline_ `$group` para par
 ```javascript
 db.players.find({}, {_id:0, linkPlayer: 0}).limit(5);
 ```
-| backhand | country | domHand | height | playerName |
-| :--- | :--- | :--- | :--- | :--- |
-| Two-Handed Backhand | Spain | Left-Handed | 173 | Carlos Sanchez Jover |
-| null | null | null | null | Guillaume Dermiens |
-| null | null | Right-Handed | 0 | Salahaddine Adbib |
-| null | Bremen | Right-Handed | 175 | Valentino Pest |
-| null | null | null | null | Iphton Louis |
+| backhand | country | domHand | height | linkId | playerName |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| null | null | null | null | f363 | Roberto Fernandez |
+| Two-Handed Backhand | Bulgaria | Left-Handed | 183 | l950 | Alexandar Lazov |
+| null | null | null | null | k458 | Herve Karcher |
+| null | null | null | null | kb56 | Micke Kontinen |
+| Two-Handed Backhand | Japan | Right-Handed | 183 | u134 | Yasutaka Uchiyama |
+
 
 
 
@@ -460,7 +469,7 @@ db.players.aggregate([
   },
   {$out: "players"}
 ]);
-db.players.find({}, {_id:0}).limit(5);
+db.players.find({}, {_id:0, linkPlayer: 0}).limit(5);
 ```
 | alias | backhand | country | countryCode | domHand | height | playerName |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -630,8 +639,7 @@ db.tournaments.aggregate([
 
 # Exportação e importação dos dados
 
-Para exportar os dados, vamos usar o comando `mongoexport`.
-TODO
+Para exportar os dados, vamos usar o comando `mongoexport` para todas as coleções necessárias.
 ```bash
 mongoexport --db atp `
 --collection players `
@@ -639,4 +647,3 @@ mongoexport --db atp `
 --type csv `
 --fields playerName,height,domHand,backhand,countryCode `
 ```
-TODO
