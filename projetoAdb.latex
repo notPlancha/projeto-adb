@@ -467,7 +467,7 @@ dados da \emph{query} para uma nova coleção.
         \KeywordTok{null}\OperatorTok{,} 
 \NormalTok{        \{}\DataTypeTok{$trim}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{input}\OperatorTok{:} \StringTok{"$domHand"}\NormalTok{\}\}}
 \NormalTok{      ]\}}\OperatorTok{,}
-      \DataTypeTok{height}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$cond}\OperatorTok{:}\NormalTok{ [\{}\DataTypeTok{$eq}\OperatorTok{:}\NormalTok{ [}\StringTok{"$height"}\OperatorTok{,} \StringTok{"NA"}\NormalTok{]\}}\OperatorTok{,} \KeywordTok{null}\OperatorTok{,} \StringTok{"$height"}\NormalTok{]\}}\OperatorTok{,}
+      \DataTypeTok{height}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$cond}\OperatorTok{:}\NormalTok{ [\{}\DataTypeTok{$eq}\OperatorTok{:}\NormalTok{ [}\StringTok{"$height"}\OperatorTok{,} \StringTok{"NA"}\NormalTok{]\}}\OperatorTok{,} \DecValTok{0}\OperatorTok{,} \StringTok{"$height"}\NormalTok{]\}}\OperatorTok{,}
       \DataTypeTok{country}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$cond}\OperatorTok{:}\NormalTok{ [\{}\DataTypeTok{$eq}\OperatorTok{:}\NormalTok{ [}\StringTok{"$country"}\OperatorTok{,} \StringTok{""}\NormalTok{]\}}\OperatorTok{,} \KeywordTok{null}\OperatorTok{,}\NormalTok{ \{}\DataTypeTok{$trim}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{input}\OperatorTok{:} \StringTok{"$country"}\NormalTok{\}\}]\}}\OperatorTok{,}
       \DataTypeTok{linkId}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$linkPlayer"}\OperatorTok{,} \DecValTok{6}\NormalTok{]\}}
 \NormalTok{    \}}
@@ -496,11 +496,12 @@ consistente.
 \end{Shaded}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}@{}}
 \toprule()
 \begin{minipage}[b]{\linewidth}\raggedright
 backhand
@@ -511,16 +512,19 @@ domHand
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 height
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+linkId
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 playerName
 \end{minipage} \\
 \midrule()
 \endhead
-Two-Handed Backhand & Spain & Left-Handed & 173 & Carlos Sanchez
-Jover \\
-null & null & null & null & Guillaume Dermiens \\
-null & null & Right-Handed & 0 & Salahaddine Adbib \\
-null & Bremen & Right-Handed & 175 & Valentino Pest \\
-null & null & null & null & Iphton Louis \\
+null & null & null & null & f363 & Roberto Fernandez \\
+Two-Handed Backhand & Bulgaria & Left-Handed & 183 & l950 & Alexandar
+Lazov \\
+null & null & null & null & k458 & Herve Karcher \\
+null & null & null & null & kb56 & Micke Kontinen \\
+Two-Handed Backhand & Japan & Right-Handed & 183 & u134 & Yasutaka
+Uchiyama \\
 \bottomrule()
 \end{longtable}
 
@@ -826,7 +830,7 @@ Para mudar os paises nas coleções executámos os comandos seguintes:
 \NormalTok{  \}}\OperatorTok{,}
 \NormalTok{  \{}\DataTypeTok{$out}\OperatorTok{:} \StringTok{"players"}\NormalTok{\}}
 \NormalTok{])}\OperatorTok{;}
-\NormalTok{db}\OperatorTok{.}\AttributeTok{players}\OperatorTok{.}\FunctionTok{find}\NormalTok{(\{\}}\OperatorTok{,}\NormalTok{ \{}\DataTypeTok{\_id}\OperatorTok{:}\DecValTok{0}\NormalTok{\})}\OperatorTok{.}\FunctionTok{limit}\NormalTok{(}\DecValTok{5}\NormalTok{)}\OperatorTok{;}
+\NormalTok{db}\OperatorTok{.}\AttributeTok{players}\OperatorTok{.}\FunctionTok{find}\NormalTok{(\{\}}\OperatorTok{,}\NormalTok{ \{}\DataTypeTok{\_id}\OperatorTok{:}\DecValTok{0}\OperatorTok{,} \DataTypeTok{linkPlayer}\OperatorTok{:} \DecValTok{0}\NormalTok{\})}\OperatorTok{.}\FunctionTok{limit}\NormalTok{(}\DecValTok{5}\NormalTok{)}\OperatorTok{;}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1076,18 +1080,20 @@ relacional.
 \section{Exportação e importação dos
 dados}\label{exportauxe7uxe3o-e-importauxe7uxe3o-dos-dados}}
 
-Para exportar os dados, vamos usar o comando \texttt{mongoexport}. TODO
+Para exportar os dados, vamos usar o comando \texttt{mongoexport} para
+todas as coleções necessárias.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ExtensionTok{mongoexport} \AttributeTok{{-}{-}db}\NormalTok{ atp }\KeywordTok{\textasciigrave{}}
-\ExtensionTok{{-}{-}collection}\NormalTok{ players }\KeywordTok{\textasciigrave{}}
-\ExtensionTok{{-}{-}out}\NormalTok{ data}\DataTypeTok{\textbackslash{}t}\NormalTok{oSql}\DataTypeTok{\textbackslash{}p}\NormalTok{layers.csv }\KeywordTok{\textasciigrave{}}
-\ExtensionTok{{-}{-}type}\NormalTok{ csv }\KeywordTok{\textasciigrave{}}
-\ExtensionTok{{-}{-}fields}\NormalTok{ playerName,height,domHand,backhand,countryCode }\KeywordTok{\textasciigrave{}}
+\ExtensionTok{mongoexport} \AttributeTok{{-}{-}db}\OperatorTok{=}\NormalTok{atp }\AttributeTok{{-}{-}collection}\OperatorTok{=}\NormalTok{backhands }\AttributeTok{{-}{-}type}\OperatorTok{=}\NormalTok{csv }\AttributeTok{{-}{-}fields}\OperatorTok{=}\NormalTok{\_id }\AttributeTok{{-}{-}out}\OperatorTok{=}\NormalTok{.}\DataTypeTok{\textbackslash{}d}\NormalTok{ata}\DataTypeTok{\textbackslash{}e}\NormalTok{xports}\DataTypeTok{\textbackslash{}b}\NormalTok{ackhand.csv}
+\ExtensionTok{mongoexport} \AttributeTok{{-}{-}db}\OperatorTok{=}\NormalTok{atp }\AttributeTok{{-}{-}collection}\OperatorTok{=}\NormalTok{domHands }\AttributeTok{{-}{-}type}\OperatorTok{=}\NormalTok{csv }\AttributeTok{{-}{-}fields}\OperatorTok{=}\NormalTok{\_id }\AttributeTok{{-}{-}out}\OperatorTok{=}\NormalTok{.}\DataTypeTok{\textbackslash{}d}\NormalTok{ata}\DataTypeTok{\textbackslash{}e}\NormalTok{xports}\DataTypeTok{\textbackslash{}d}\NormalTok{omhand.csv}
+\ExtensionTok{mongoexport} \AttributeTok{{-}{-}db}\OperatorTok{=}\NormalTok{atp }\AttributeTok{{-}{-}collection}\OperatorTok{=}\NormalTok{grounds }\AttributeTok{{-}{-}type}\OperatorTok{=}\NormalTok{csv }\AttributeTok{{-}{-}fields}\OperatorTok{=}\NormalTok{\_id }\AttributeTok{{-}{-}out}\OperatorTok{=}\NormalTok{.}\DataTypeTok{\textbackslash{}d}\NormalTok{ata}\DataTypeTok{\textbackslash{}e}\NormalTok{xports}\DataTypeTok{\textbackslash{}g}\NormalTok{rounds.csv}
+\ExtensionTok{mongoexport} \AttributeTok{{-}{-}db}\OperatorTok{=}\NormalTok{atp }\AttributeTok{{-}{-}collection}\OperatorTok{=}\NormalTok{countryCodes }\AttributeTok{{-}{-}type}\OperatorTok{=}\NormalTok{csv }\AttributeTok{{-}{-}fields}\OperatorTok{=}\NormalTok{code,country }\AttributeTok{{-}{-}out}\OperatorTok{=}\NormalTok{.}\DataTypeTok{\textbackslash{}d}\NormalTok{ata}\DataTypeTok{\textbackslash{}e}\NormalTok{xports}\DataTypeTok{\textbackslash{}c}\NormalTok{ountries.csv}
+\ExtensionTok{mongoexport} \AttributeTok{{-}{-}db}\OperatorTok{=}\NormalTok{atp }\AttributeTok{{-}{-}collection}\OperatorTok{=}\NormalTok{matches }\AttributeTok{{-}{-}type}\OperatorTok{=}\NormalTok{csv }\AttributeTok{{-}{-}fields}\OperatorTok{=}\NormalTok{sets,winner,winnerLinkId,loser,loserLinkId,tournament,date,gameRound }\AttributeTok{{-}{-}out}\NormalTok{ .}\DataTypeTok{\textbackslash{}d}\NormalTok{ata}\DataTypeTok{\textbackslash{}e}\NormalTok{xports}\DataTypeTok{\textbackslash{}g}\NormalTok{ames.csv}
+\ExtensionTok{mongoexport} \AttributeTok{{-}{-}db}\OperatorTok{=}\NormalTok{atp }\AttributeTok{{-}{-}collection}\OperatorTok{=}\NormalTok{players }\AttributeTok{{-}{-}type}\OperatorTok{=}\NormalTok{csv }\AttributeTok{{-}{-}fields}\OperatorTok{=}\NormalTok{countryCode,domHand,backhand,height,playerName,linkId }\AttributeTok{{-}{-}out}\NormalTok{ .}\DataTypeTok{\textbackslash{}d}\NormalTok{ata}\DataTypeTok{\textbackslash{}e}\NormalTok{xports}\DataTypeTok{\textbackslash{}p}\NormalTok{layers.csv}
+\ExtensionTok{mongoexport} \AttributeTok{{-}{-}db}\OperatorTok{=}\NormalTok{atp }\AttributeTok{{-}{-}collection}\OperatorTok{=}\NormalTok{tournaments }\AttributeTok{{-}{-}type}\OperatorTok{=}\NormalTok{csv }\AttributeTok{{-}{-}fields}\OperatorTok{=}\NormalTok{countryCode,ground,prize,tournament,date }\AttributeTok{{-}{-}out}\NormalTok{ .}\DataTypeTok{\textbackslash{}d}\NormalTok{ata}\DataTypeTok{\textbackslash{}e}\NormalTok{xports}\DataTypeTok{\textbackslash{}t}\NormalTok{ournaments.csv}
 \end{Highlighting}
 \end{Shaded}
 
-TODO
 
 \end{document}
