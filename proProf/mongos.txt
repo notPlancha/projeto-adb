@@ -1,0 +1,6044 @@
+// attplayers collection name = games
+use atp;
+db.countryAliases.insertMany([
+  {
+    "alias": "Algeria",
+    "country": "Algeria",
+    "code": "DZ"
+  },
+  {
+    "alias": "Buenos aires",
+    "country": "Argentina",
+    "code": "AR"
+  },
+  {
+    "alias": "Aust.",
+    "country": "Austria",
+    "code": "AT"
+  },
+  {
+    "alias": "Sao paulo",
+    "country": "Brazil",
+    "code": "BR"
+  },
+  {
+    "alias": "China",
+    "country": "China",
+    "code": "CN"
+  },
+  {
+    "alias": "Egypt",
+    "country": "Egypt",
+    "code": "EG"
+  },
+  {
+    "alias": "Gabon",
+    "country": "Gabon",
+    "code": "GA"
+  },
+  {
+    "alias": "Ghana",
+    "country": "Ghana",
+    "code": "GH"
+  },
+  {
+    "alias": "Haryana",
+    "country": "India",
+    "code": "IN"
+  },
+  {
+    "alias": "Kanagawa",
+    "country": "Japan",
+    "code": "JP"
+  },
+  {
+    "alias": "Kuwait",
+    "country": "Kuwait",
+    "code": "KW"
+  },
+  {
+    "alias": "Malta",
+    "country": "Malta",
+    "code": "MT"
+  },
+  {
+    "alias": "Meixco",
+    "country": "Mexico",
+    "code": "MX"
+  },
+  {
+    "alias": "Mozambique",
+    "country": "Mozambique",
+    "code": "MZ"
+  },
+  {
+    "alias": "Myanmar",
+    "country": "Myanmar",
+    "code": "MM"
+  },
+  {
+    "alias": "Oman",
+    "country": "Oman",
+    "code": "OM"
+  },
+  {
+    "alias": "Qatar",
+    "country": "Qatar",
+    "code": "QA"
+  },
+  {
+    "alias": "Soviet Union",
+    "country": "Russia",
+    "code": "RU"
+  },
+  {
+    "alias": "Samoa",
+    "country": "Samoa",
+    "code": "WS"
+  },
+  {
+    "alias": "San Marino",
+    "country": "San Marino",
+    "code": "SM"
+  },
+  {
+    "alias": "Senegal",
+    "country": "Senegal",
+    "code": "SN"
+  },
+  {
+    "alias": "Slovak R",
+    "country": "Slovakia",
+    "code": "SK"
+  },
+  {
+    "alias": "Spain",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "Spai",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "Devon",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "oran",
+    "country": "Algeria",
+    "code": "DZ"
+  },
+  {
+    "alias": "Andorra",
+    "country": "Andorra",
+    "code": "AD"
+  },
+  {
+    "alias": "St. John's",
+    "country": "Antigua and Barbuda",
+    "code": "AG"
+  },
+  {
+    "alias": "Aregnt",
+    "country": "Argentina",
+    "code": "AR"
+  },
+  {
+    "alias": "ARG",
+    "country": "Argentina",
+    "code": "AR"
+  },
+  {
+    "alias": "Arg.",
+    "country": "Argentina",
+    "code": "AR"
+  },
+  {
+    "alias": "Argentin",
+    "country": "Argentina",
+    "code": "AR"
+  },
+  {
+    "alias": "Argentina",
+    "country": "Argentina",
+    "code": "AR"
+  },
+  {
+    "alias": "Bahia Blanca",
+    "country": "Argentina",
+    "code": "AR"
+  },
+  {
+    "alias": "Humboldt",
+    "country": "Argentina",
+    "code": "AR"
+  },
+  {
+    "alias": "Ciudad Aut�noma de Buenos",
+    "country": "Argentina",
+    "code": "AR"
+  },
+  {
+    "alias": "Merlo",
+    "country": "Argentina",
+    "code": "AR"
+  },
+  {
+    "alias": "Rauch",
+    "country": "Argentina",
+    "code": "AR"
+  },
+  {
+    "alias": "Corrientes",
+    "country": "Argentina",
+    "code": "AR"
+  },
+  {
+    "alias": "Pilar",
+    "country": "Argentina",
+    "code": "AR"
+  },
+  {
+    "alias": "Bragado",
+    "country": "Argentina",
+    "code": "AR"
+  },
+  {
+    "alias": "La Plata",
+    "country": "Argentina",
+    "code": "AR"
+  },
+  {
+    "alias": "Villa Maria Cordoba",
+    "country": "Argentina",
+    "code": "AR"
+  },
+  {
+    "alias": "Buenos Aires",
+    "country": "Argentina",
+    "code": "AR"
+  },
+  {
+    "alias": "Capital Federal",
+    "country": "Argentina",
+    "code": "AR"
+  },
+  {
+    "alias": "Mendoza",
+    "country": "Argentina",
+    "code": "AR"
+  },
+  {
+    "alias": "Marco Juarez",
+    "country": "Argentina",
+    "code": "AR"
+  },
+  {
+    "alias": "Villa Gesell",
+    "country": "Argentina",
+    "code": "AR"
+  },
+  {
+    "alias": "Mar del Palta",
+    "country": "Argentina",
+    "code": "AR"
+  },
+  {
+    "alias": "Chascom�s",
+    "country": "Argentina",
+    "code": "AR"
+  },
+  {
+    "alias": "Argent",
+    "country": "Argentina",
+    "code": "AR"
+  },
+  {
+    "alias": "Balcarce",
+    "country": "Argentina",
+    "code": "AR"
+  },
+  {
+    "alias": "Yerevan",
+    "country": "Armenia",
+    "code": "AM"
+  },
+  {
+    "alias": "Armenia",
+    "country": "Armenia",
+    "code": "AM"
+  },
+  {
+    "alias": "Aruba",
+    "country": "Aruba",
+    "code": "AW"
+  },
+  {
+    "alias": "AUS",
+    "country": "Australia",
+    "code": "AU"
+  },
+  {
+    "alias": "Monto",
+    "country": "Australia",
+    "code": "AU"
+  },
+  {
+    "alias": "West Perth",
+    "country": "Australia",
+    "code": "AU"
+  },
+  {
+    "alias": "Tasmania",
+    "country": "Australia",
+    "code": "AU"
+  },
+  {
+    "alias": "Brisbane",
+    "country": "Australia",
+    "code": "AU"
+  },
+  {
+    "alias": "Adelaide",
+    "country": "Australia",
+    "code": "AU"
+  },
+  {
+    "alias": "Gold Coast",
+    "country": "Australia",
+    "code": "AU"
+  },
+  {
+    "alias": "Traralgon",
+    "country": "Australia",
+    "code": "AU"
+  },
+  {
+    "alias": "Tasmania",
+    "country": "Australia",
+    "code": "AU"
+  },
+  {
+    "alias": "Port Lincoln",
+    "country": "Australia",
+    "code": "AU"
+  },
+  {
+    "alias": "Perth",
+    "country": "Australia",
+    "code": "AU"
+  },
+  {
+    "alias": "Sydney",
+    "country": "Australia",
+    "code": "AU"
+  },
+  {
+    "alias": "Port Pirie",
+    "country": "Australia",
+    "code": "AU"
+  },
+  {
+    "alias": "Melbourne",
+    "country": "Australia",
+    "code": "AU"
+  },
+  {
+    "alias": "Australia",
+    "country": "Australia",
+    "code": "AU"
+  },
+  {
+    "alias": "St Kilda East",
+    "country": "Australia",
+    "code": "AU"
+  },
+  {
+    "alias": "Aust..",
+    "country": "Australia",
+    "code": "AU"
+  },
+  {
+    "alias": "Devonport",
+    "country": "Australia",
+    "code": "AU"
+  },
+  {
+    "alias": "S.A. Australia",
+    "country": "Australia",
+    "code": "AU"
+  },
+  {
+    "alias": "Subiaco",
+    "country": "Australia",
+    "code": "AU"
+  },
+  {
+    "alias": "Victoria",
+    "country": "Australia",
+    "code": "AU"
+  },
+  {
+    "alias": "South Australia",
+    "country": "Australia",
+    "code": "AU"
+  },
+  {
+    "alias": "Campbelltown",
+    "country": "Australia",
+    "code": "AU"
+  },
+  {
+    "alias": "Vienna",
+    "country": "Austria",
+    "code": "AT"
+  },
+  {
+    "alias": "Linz",
+    "country": "Austria",
+    "code": "AT"
+  },
+  {
+    "alias": "Austria",
+    "country": "Austria",
+    "code": "AT"
+  },
+  {
+    "alias": "Aut.",
+    "country": "Austria",
+    "code": "AT"
+  },
+  {
+    "alias": "Hall in Tirol",
+    "country": "Austria",
+    "code": "AT"
+  },
+  {
+    "alias": "Portschach",
+    "country": "Austria",
+    "code": "AT"
+  },
+  {
+    "alias": "Portschach am Worthersee",
+    "country": "Austria",
+    "code": "AT"
+  },
+  {
+    "alias": "Schwaz",
+    "country": "Austria",
+    "code": "AT"
+  },
+  {
+    "alias": "Graz",
+    "country": "Austria",
+    "code": "AT"
+  },
+  {
+    "alias": "Wr.Neustadt",
+    "country": "Austria",
+    "code": "AT"
+  },
+  {
+    "alias": "Klagenfurt",
+    "country": "Austria",
+    "code": "AT"
+  },
+  {
+    "alias": "Azerbaijan",
+    "country": "Azerbaijan",
+    "code": "AZ"
+  },
+  {
+    "alias": "Bahrain",
+    "country": "Bahrain",
+    "code": "BH"
+  },
+  {
+    "alias": "Bangladesh",
+    "country": "Bangladesh",
+    "code": "BD"
+  },
+  {
+    "alias": "Barbados",
+    "country": "Barbados",
+    "code": "BB"
+  },
+  {
+    "alias": "Barakovichi",
+    "country": "Belarus",
+    "code": "BY"
+  },
+  {
+    "alias": "Minsk",
+    "country": "Belarus",
+    "code": "BY"
+  },
+  {
+    "alias": "Belarus",
+    "country": "Belarus",
+    "code": "BY"
+  },
+  {
+    "alias": "Belarus",
+    "country": "Belarus",
+    "code": "BY"
+  },
+  {
+    "alias": "Namur",
+    "country": "Belgium",
+    "code": "BE"
+  },
+  {
+    "alias": "Woluwe St Lambert",
+    "country": "Belgium",
+    "code": "BE"
+  },
+  {
+    "alias": "Angleur - Liege",
+    "country": "Belgium",
+    "code": "BE"
+  },
+  {
+    "alias": "Li�ge",
+    "country": "Belgium",
+    "code": "BE"
+  },
+  {
+    "alias": "Belgium",
+    "country": "Belgium",
+    "code": "BE"
+  },
+  {
+    "alias": "Liege",
+    "country": "Belgium",
+    "code": "BE"
+  },
+  {
+    "alias": "Roeselare",
+    "country": "Belgium",
+    "code": "BE"
+  },
+  {
+    "alias": "Liege",
+    "country": "Belgium",
+    "code": "BE"
+  },
+  {
+    "alias": "Vilvoorde",
+    "country": "Belgium",
+    "code": "BE"
+  },
+  {
+    "alias": "Diest",
+    "country": "Belgium",
+    "code": "BE"
+  },
+  {
+    "alias": "leuven",
+    "country": "Belgium",
+    "code": "BE"
+  },
+  {
+    "alias": "Bree",
+    "country": "Belgium",
+    "code": "BE"
+  },
+  {
+    "alias": "Gent",
+    "country": "Belgium",
+    "code": "BE"
+  },
+  {
+    "alias": "Verviers",
+    "country": "Belgium",
+    "code": "BE"
+  },
+  {
+    "alias": "Bermuda",
+    "country": "Bermuda",
+    "code": "BM"
+  },
+  {
+    "alias": "Bolivia",
+    "country": "Bolivia",
+    "code": "BO"
+  },
+  {
+    "alias": "Santa Cruz de la Sie",
+    "country": "Bolivia",
+    "code": "BO"
+  },
+  {
+    "alias": "La Paz",
+    "country": "Bolivia",
+    "code": "BO"
+  },
+  {
+    "alias": "Trinidad",
+    "country": "Bolivia",
+    "code": "BO"
+  },
+  {
+    "alias": "Bosnia",
+    "country": "Bosnia and Herzegovina",
+    "code": "BA"
+  },
+  {
+    "alias": "Bosnia & Herzegovina",
+    "country": "Bosnia and Herzegovina",
+    "code": "BA"
+  },
+  {
+    "alias": "Bosnia &amp; Herzegovina",
+    "country": "Bosnia and Herzegovina",
+    "code": "BA"
+  },
+  {
+    "alias": "Sarajevo",
+    "country": "Bosnia and Herzegovina",
+    "code": "BA"
+  },
+  {
+    "alias": "Bosnia-Herzegovina",
+    "country": "Bosnia and Herzegovina",
+    "code": "BA"
+  },
+  {
+    "alias": "Botwana",
+    "country": "Botswana",
+    "code": "BW"
+  },
+  {
+    "alias": "Porto Alegre",
+    "country": "Brazil",
+    "code": "BR"
+  },
+  {
+    "alias": "Brazil",
+    "country": "Brazil",
+    "code": "BR"
+  },
+  {
+    "alias": "Salvador",
+    "country": "Brazil",
+    "code": "BR"
+  },
+  {
+    "alias": "Guarulhos",
+    "country": "Brazil",
+    "code": "BR"
+  },
+  {
+    "alias": "Rio de Janeiro",
+    "country": "Brazil",
+    "code": "BR"
+  },
+  {
+    "alias": "Londrina- Paran�",
+    "country": "Brazil",
+    "code": "BR"
+  },
+  {
+    "alias": "Campinas",
+    "country": "Brazil",
+    "code": "BR"
+  },
+  {
+    "alias": "Belo Horizonte",
+    "country": "Brazil",
+    "code": "BR"
+  },
+  {
+    "alias": "Brasilia",
+    "country": "Brazil",
+    "code": "BR"
+  },
+  {
+    "alias": "Sao Paulo",
+    "country": "Brazil",
+    "code": "BR"
+  },
+  {
+    "alias": "Sertaozinho",
+    "country": "Brazil",
+    "code": "BR"
+  },
+  {
+    "alias": "Santa Cruz do Sul",
+    "country": "Brazil",
+    "code": "BR"
+  },
+  {
+    "alias": "Brazi",
+    "country": "Brazil",
+    "code": "BR"
+  },
+  {
+    "alias": "Brasil",
+    "country": "Brazil",
+    "code": "BR"
+  },
+  {
+    "alias": "S�o Paulo",
+    "country": "Brazil",
+    "code": "BR"
+  },
+  {
+    "alias": "Bahia",
+    "country": "Brazil",
+    "code": "BR"
+  },
+  {
+    "alias": "Braz",
+    "country": "Brazil",
+    "code": "BR"
+  },
+  {
+    "alias": "Florianapolis",
+    "country": "Brazil",
+    "code": "BR"
+  },
+  {
+    "alias": "Pernambuco",
+    "country": "Brazil",
+    "code": "BR"
+  },
+  {
+    "alias": "S�o Bernardo do Campo",
+    "country": "Brazil",
+    "code": "BR"
+  },
+  {
+    "alias": "Curitiba",
+    "country": "Brazil",
+    "code": "BR"
+  },
+  {
+    "alias": "Uruguaiana",
+    "country": "Brazil",
+    "code": "BR"
+  },
+  {
+    "alias": "Mato Grosso",
+    "country": "Brazil",
+    "code": "BR"
+  },
+  {
+    "alias": "BRA",
+    "country": "Brazil",
+    "code": "BR"
+  },
+  {
+    "alias": "Brunei",
+    "country": "Brunei",
+    "code": "BN"
+  },
+  {
+    "alias": "Sofia",
+    "country": "Bulgaria",
+    "code": "BG"
+  },
+  {
+    "alias": "Bulgaria",
+    "country": "Bulgaria",
+    "code": "BG"
+  },
+  {
+    "alias": "Sliven",
+    "country": "Bulgaria",
+    "code": "BG"
+  },
+  {
+    "alias": "VARNA",
+    "country": "Bulgaria",
+    "code": "BG"
+  },
+  {
+    "alias": "Dimitrovgrad",
+    "country": "Bulgaria",
+    "code": "BG"
+  },
+  {
+    "alias": "Asenovgrad",
+    "country": "Bulgaria",
+    "code": "BG"
+  },
+  {
+    "alias": "Burundi",
+    "country": "Burundi",
+    "code": "BI"
+  },
+  {
+    "alias": "Gitega",
+    "country": "Burundi",
+    "code": "BI"
+  },
+  {
+    "alias": "Camboda",
+    "country": "Cambodia",
+    "code": "KH"
+  },
+  {
+    "alias": "Cambodia",
+    "country": "Cambodia",
+    "code": "KH"
+  },
+  {
+    "alias": "Cameroon",
+    "country": "Cameroon",
+    "code": "CM"
+  },
+  {
+    "alias": "Canada",
+    "country": "Canada",
+    "code": "CA"
+  },
+  {
+    "alias": "Calgary",
+    "country": "Canada",
+    "code": "CA"
+  },
+  {
+    "alias": "Ontaria",
+    "country": "Canada",
+    "code": "CA"
+  },
+  {
+    "alias": "Montreal",
+    "country": "Canada",
+    "code": "CA"
+  },
+  {
+    "alias": "Alberta",
+    "country": "Canada",
+    "code": "CA"
+  },
+  {
+    "alias": "Canda",
+    "country": "Canada",
+    "code": "CA"
+  },
+  {
+    "alias": "Oakville",
+    "country": "Canada",
+    "code": "CA"
+  },
+  {
+    "alias": "Vancouver",
+    "country": "Canada",
+    "code": "CA"
+  },
+  {
+    "alias": "Saskatchewan",
+    "country": "Canada",
+    "code": "CA"
+  },
+  {
+    "alias": "Longueuil",
+    "country": "Canada",
+    "code": "CA"
+  },
+  {
+    "alias": "Winnipeg",
+    "country": "Canada",
+    "code": "CA"
+  },
+  {
+    "alias": "ALberta",
+    "country": "Canada",
+    "code": "CA"
+  },
+  {
+    "alias": "Salinas",
+    "country": "Cape Verde",
+    "code": "CV"
+  },
+  {
+    "alias": "Caribbean",
+    "country": "Caribbean",
+    "code": "CB"
+  },
+  {
+    "alias": "Bolivia/Chile",
+    "country": "Chile",
+    "code": "CL"
+  },
+  {
+    "alias": "chile",
+    "country": "Chile",
+    "code": "CL"
+  },
+  {
+    "alias": "Santiago",
+    "country": "Chile",
+    "code": "CL"
+  },
+  {
+    "alias": "Chile",
+    "country": "Chile",
+    "code": "CL"
+  },
+  {
+    "alias": "Providencia",
+    "country": "Chile",
+    "code": "CL"
+  },
+  {
+    "alias": "Punta Arenas",
+    "country": "Chile",
+    "code": "CL"
+  },
+  {
+    "alias": "Iquique",
+    "country": "Chile",
+    "code": "CL"
+  },
+  {
+    "alias": "Fuzhou",
+    "country": "China",
+    "code": "CN"
+  },
+  {
+    "alias": "HEILONGJIANG",
+    "country": "China",
+    "code": "CN"
+  },
+  {
+    "alias": "Hunan",
+    "country": "China",
+    "code": "CN"
+  },
+  {
+    "alias": "sichuan suining",
+    "country": "China",
+    "code": "CN"
+  },
+  {
+    "alias": "CHINA",
+    "country": "China",
+    "code": "CN"
+  },
+  {
+    "alias": "Wuhan",
+    "country": "China",
+    "code": "CN"
+  },
+  {
+    "alias": "Nanjing",
+    "country": "China",
+    "code": "CN"
+  },
+  {
+    "alias": "Dalian",
+    "country": "China",
+    "code": "CN"
+  },
+  {
+    "alias": "Shanghai",
+    "country": "China",
+    "code": "CN"
+  },
+  {
+    "alias": "tianjin",
+    "country": "China",
+    "code": "CN"
+  },
+  {
+    "alias": "Tianjin",
+    "country": "China",
+    "code": "CN"
+  },
+  {
+    "alias": "China",
+    "country": "China",
+    "code": "CN"
+  },
+  {
+    "alias": "Xin jiang",
+    "country": "China",
+    "code": "CN"
+  },
+  {
+    "alias": "Jiangsu",
+    "country": "China",
+    "code": "CN"
+  },
+  {
+    "alias": "Colombia",
+    "country": "Colombia",
+    "code": "CO"
+  },
+  {
+    "alias": "COL",
+    "country": "Colombia",
+    "code": "CO"
+  },
+  {
+    "alias": "Bogota",
+    "country": "Colombia",
+    "code": "CO"
+  },
+  {
+    "alias": "Columbia",
+    "country": "Colombia",
+    "code": "CO"
+  },
+  {
+    "alias": "Pereira",
+    "country": "Colombia",
+    "code": "CO"
+  },
+  {
+    "alias": "Villavicencio",
+    "country": "Colombia",
+    "code": "CO"
+  },
+  {
+    "alias": "Col",
+    "country": "Colombia",
+    "code": "CO"
+  },
+  {
+    "alias": "Costa Rica",
+    "country": "Costa Rica",
+    "code": "CR"
+  },
+  {
+    "alias": "Zagreb",
+    "country": "Croatia",
+    "code": "HR"
+  },
+  {
+    "alias": "Croatia",
+    "country": "Croatia",
+    "code": "HR"
+  },
+  {
+    "alias": "split",
+    "country": "Croatia",
+    "code": "HR"
+  },
+  {
+    "alias": "Split",
+    "country": "Croatia",
+    "code": "HR"
+  },
+  {
+    "alias": "Crotia",
+    "country": "Croatia",
+    "code": "HR"
+  },
+  {
+    "alias": "Havana",
+    "country": "Cuba",
+    "code": "CU"
+  },
+  {
+    "alias": "Cuba",
+    "country": "Cuba",
+    "code": "CU"
+  },
+  {
+    "alias": "Ciudad de Habana",
+    "country": "Cuba",
+    "code": "CU"
+  },
+  {
+    "alias": "Curacao",
+    "country": "Curaçao",
+    "code": "CW"
+  },
+  {
+    "alias": "Dutch Anti",
+    "country": "Curaçao",
+    "code": "CW"
+  },
+  {
+    "alias": "Willemstad",
+    "country": "Curaçao",
+    "code": "CW"
+  },
+  {
+    "alias": "Dutch Antil",
+    "country": "Curaçao",
+    "code": "CW"
+  },
+  {
+    "alias": "Cyprus",
+    "country": "Cyprus",
+    "code": "CY"
+  },
+  {
+    "alias": "Klatovy",
+    "country": "Czech Republic",
+    "code": "CZ"
+  },
+  {
+    "alias": "Czech Republic",
+    "country": "Czech Republic",
+    "code": "CZ"
+  },
+  {
+    "alias": "Ostrava",
+    "country": "Czech Republic",
+    "code": "CZ"
+  },
+  {
+    "alias": "Czech Repbulic",
+    "country": "Czech Republic",
+    "code": "CZ"
+  },
+  {
+    "alias": "Prague",
+    "country": "Czech Republic",
+    "code": "CZ"
+  },
+  {
+    "alias": "Czech.",
+    "country": "Czech Republic",
+    "code": "CZ"
+  },
+  {
+    "alias": "Czechoslovakia",
+    "country": "Czech Republic",
+    "code": "CZ"
+  },
+  {
+    "alias": "Hradec Kr�lov�",
+    "country": "Czech Republic",
+    "code": "CZ"
+  },
+  {
+    "alias": "Czech Repub",
+    "country": "Czech Republic",
+    "code": "CZ"
+  },
+  {
+    "alias": "Czech Rep.",
+    "country": "Czech Republic",
+    "code": "CZ"
+  },
+  {
+    "alias": "Valasske Mezirici",
+    "country": "Czech Republic",
+    "code": "CZ"
+  },
+  {
+    "alias": "Moravska Trebova",
+    "country": "Czech Republic",
+    "code": "CZ"
+  },
+  {
+    "alias": "Kolin",
+    "country": "Czech Republic",
+    "code": "CZ"
+  },
+  {
+    "alias": "Pilsen",
+    "country": "Czech Republic",
+    "code": "CZ"
+  },
+  {
+    "alias": "Cz Republic",
+    "country": "Czech Republic",
+    "code": "CZ"
+  },
+  {
+    "alias": "Ostrov",
+    "country": "Czech Republic",
+    "code": "CZ"
+  },
+  {
+    "alias": "Hodon�n",
+    "country": "Czech Republic",
+    "code": "CZ"
+  },
+  {
+    "alias": "Marianske Lazne",
+    "country": "Czech Republic",
+    "code": "CZ"
+  },
+  {
+    "alias": "Brno",
+    "country": "Czech Republic",
+    "code": "CZ"
+  },
+  {
+    "alias": "CZE",
+    "country": "Czech Republic",
+    "code": "CZ"
+  },
+  {
+    "alias": "Kinshasa",
+    "country": "Democratic Republic of the Congo",
+    "code": "CD"
+  },
+  {
+    "alias": "DEN.",
+    "country": "Denmark",
+    "code": "DK"
+  },
+  {
+    "alias": "Frederiksberg",
+    "country": "Denmark",
+    "code": "DK"
+  },
+  {
+    "alias": "Bridgetown",
+    "country": "Denmark",
+    "code": "DK"
+  },
+  {
+    "alias": "Denmark",
+    "country": "Denmark",
+    "code": "DK"
+  },
+  {
+    "alias": "Dominican Rep.",
+    "country": "Dominican Republic",
+    "code": "DO"
+  },
+  {
+    "alias": "Dominican Republic",
+    "country": "Dominican Republic",
+    "code": "DO"
+  },
+  {
+    "alias": "Santiago De Los Caballeros",
+    "country": "Dominican Republic",
+    "code": "DO"
+  },
+  {
+    "alias": "Puerto Plata",
+    "country": "Dominican Republic",
+    "code": "DO"
+  },
+  {
+    "alias": "Domincan Republic",
+    "country": "Dominican Republic",
+    "code": "DO"
+  },
+  {
+    "alias": "Santo Domingo",
+    "country": "Dominican Republic",
+    "code": "DO"
+  },
+  {
+    "alias": "D.R.",
+    "country": "Dominican Republic",
+    "code": "DO"
+  },
+  {
+    "alias": "Quito",
+    "country": "Ecuador",
+    "code": "EC"
+  },
+  {
+    "alias": "Guayaquil",
+    "country": "Ecuador",
+    "code": "EC"
+  },
+  {
+    "alias": "Ecuador",
+    "country": "Ecuador",
+    "code": "EC"
+  },
+  {
+    "alias": "Egpyt",
+    "country": "Egypt",
+    "code": "EG"
+  },
+  {
+    "alias": "Sharm El Sheikh",
+    "country": "Egypt",
+    "code": "EG"
+  },
+  {
+    "alias": "Eygpt",
+    "country": "Egypt",
+    "code": "EG"
+  },
+  {
+    "alias": "El Salvador",
+    "country": "El Salvador",
+    "code": "SV"
+  },
+  {
+    "alias": "Tartu",
+    "country": "Estonia",
+    "code": "EE"
+  },
+  {
+    "alias": "Tallinn",
+    "country": "Estonia",
+    "code": "EE"
+  },
+  {
+    "alias": "Estonia",
+    "country": "Estonia",
+    "code": "EE"
+  },
+  {
+    "alias": "Fiji Island",
+    "country": "Fiji",
+    "code": "FJ"
+  },
+  {
+    "alias": "Helsinki",
+    "country": "Finland",
+    "code": "FI"
+  },
+  {
+    "alias": "Turku",
+    "country": "Finland",
+    "code": "FI"
+  },
+  {
+    "alias": "Finland",
+    "country": "Finland",
+    "code": "FI"
+  },
+  {
+    "alias": "Hyvink��",
+    "country": "Finland",
+    "code": "FI"
+  },
+  {
+    "alias": "Forbach",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "S�vres",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Pau",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "France",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Schoelcher",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Toulon",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Frejus",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Noum�a",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Longjumeau",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Lons le saunier",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Nogent sur marne",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "NIMES",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Bourg-en-Bresse",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "New Caledonia",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Clichy",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Neuilly-sur-Seine",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Saint-Nazaire",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Suresnes",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Lyon",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Sucy En Brie",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Dunkerque",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Montpellier",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Guadeloupe",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Strasbourg",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Grenoble",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Saint Denis Reunion",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Saint Etienne",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Saint Jean de Maurienne",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Gonesse",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Reunion Island",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Villeurbanne",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Martigues",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Villeneuve saint Georges",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Marseille",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "REIMS",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "carhaix plougher",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Saint-julien-en-genevois",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Aix-en-Provence",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Boulogne-Sur-Mer",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "BASTIA",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Bayonne",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "C�ret",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Ajaccio",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Pouillon",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Rennes",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Toulouse",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Tahiti",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Levallois",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "BREST",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Biarritz",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Paris",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Rueil-Malmaison",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Le Pont-De-Beauvoisin",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "La Roche-sur-Yon",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "PARIS",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Bordeaux",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "New Caledoni",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Carcassonne",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Uriage",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Lesser Antilles",
+    "country": "France",
+    "code": "FR"
+  },
+  {
+    "alias": "Georgia",
+    "country": "Georgia",
+    "code": "GE"
+  },
+  {
+    "alias": "Achim",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Bonn",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Cologne",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Berlin",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Reutlingen",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Rheinfelden",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Itzehoe",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Rotenburg",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Traunstein",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Rumania",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "�stringen",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "T�bingen",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Weiden in der Oberpfalz",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Paderborn",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Bergisch - Gladbach",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Wiesbaden",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Bremen",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "L�beck",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Hamburg",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Essen",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Wetzlar",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Wasserburg am Inn",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Nurtingen",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Forchheim",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Duesseldorf",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Aschaffenburg",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Duisburg",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Nuremberg",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Braunschweig",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Starnberg",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Gr�felfing",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "GER",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Germany",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Bad Hersfeld",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Muenster",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Munich",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "M�nchengladbach",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "schwaebisch hall",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Friedrichshafen",
+    "country": "Germany",
+    "code": "DE"
+  },
+  {
+    "alias": "Accra",
+    "country": "Ghana",
+    "code": "GH"
+  },
+  {
+    "alias": "Greece",
+    "country": "Greece",
+    "code": "GR"
+  },
+  {
+    "alias": "Guatemala City",
+    "country": "Guatemala",
+    "code": "GT"
+  },
+  {
+    "alias": "GUA",
+    "country": "Guatemala",
+    "code": "GT"
+  },
+  {
+    "alias": "Guatemala",
+    "country": "Guatemala",
+    "code": "GT"
+  },
+  {
+    "alias": "Haiti",
+    "country": "Haiti",
+    "code": "HT"
+  },
+  {
+    "alias": "Port au Prince",
+    "country": "Haiti",
+    "code": "HT"
+  },
+  {
+    "alias": "Honduras",
+    "country": "Honduras",
+    "code": "HN"
+  },
+  {
+    "alias": "Hong Kong",
+    "country": "Hong Kong",
+    "code": "HK"
+  },
+  {
+    "alias": "HKG",
+    "country": "Hong Kong",
+    "code": "HK"
+  },
+  {
+    "alias": "Hu",
+    "country": "Hungary",
+    "code": "HU"
+  },
+  {
+    "alias": "Hungary",
+    "country": "Hungary",
+    "code": "HU"
+  },
+  {
+    "alias": "Hunary",
+    "country": "Hungary",
+    "code": "HU"
+  },
+  {
+    "alias": "Baja",
+    "country": "Hungary",
+    "code": "HU"
+  },
+  {
+    "alias": "Budapest",
+    "country": "Hungary",
+    "code": "HU"
+  },
+  {
+    "alias": "Haryana",
+    "country": "India",
+    "code": "IN"
+  },
+  {
+    "alias": "Chennai",
+    "country": "India",
+    "code": "IN"
+  },
+  {
+    "alias": "India",
+    "country": "India",
+    "code": "IN"
+  },
+  {
+    "alias": "Mumbai",
+    "country": "India",
+    "code": "IN"
+  },
+  {
+    "alias": "Bengaluru",
+    "country": "India",
+    "code": "IN"
+  },
+  {
+    "alias": "MUMBAI",
+    "country": "India",
+    "code": "IN"
+  },
+  {
+    "alias": "Kolkata",
+    "country": "India",
+    "code": "IN"
+  },
+  {
+    "alias": "Visakhapatnam",
+    "country": "India",
+    "code": "IN"
+  },
+  {
+    "alias": "Pune",
+    "country": "India",
+    "code": "IN"
+  },
+  {
+    "alias": "Hyderabad",
+    "country": "India",
+    "code": "IN"
+  },
+  {
+    "alias": "Mysore",
+    "country": "India",
+    "code": "IN"
+  },
+  {
+    "alias": "Delhi",
+    "country": "India",
+    "code": "IN"
+  },
+  {
+    "alias": "Surabaya",
+    "country": "Indonesia",
+    "code": "ID"
+  },
+  {
+    "alias": "Jakarta",
+    "country": "Indonesia",
+    "code": "ID"
+  },
+  {
+    "alias": "INA",
+    "country": "Indonesia",
+    "code": "ID"
+  },
+  {
+    "alias": "Indonesia",
+    "country": "Indonesia",
+    "code": "ID"
+  },
+  {
+    "alias": "Samosir Island",
+    "country": "Indonesia",
+    "code": "ID"
+  },
+  {
+    "alias": "Tehran",
+    "country": "Iran",
+    "code": "IR"
+  },
+  {
+    "alias": "Iran",
+    "country": "Iran",
+    "code": "IR"
+  },
+  {
+    "alias": "Esfahan",
+    "country": "Iran",
+    "code": "IR"
+  },
+  {
+    "alias": "dublin",
+    "country": "Ireland",
+    "code": "IE"
+  },
+  {
+    "alias": "IL",
+    "country": "Ireland",
+    "code": "IE"
+  },
+  {
+    "alias": "Ireland",
+    "country": "Ireland",
+    "code": "IE"
+  },
+  {
+    "alias": "Dublin",
+    "country": "Ireland",
+    "code": "IE"
+  },
+  {
+    "alias": "Belfast",
+    "country": "Ireland",
+    "code": "IE"
+  },
+  {
+    "alias": "Isra",
+    "country": "Israel",
+    "code": "IL"
+  },
+  {
+    "alias": "Petach Tikva",
+    "country": "Israel",
+    "code": "IL"
+  },
+  {
+    "alias": "Ramat Hasharon",
+    "country": "Israel",
+    "code": "IL"
+  },
+  {
+    "alias": "ISR",
+    "country": "Israel",
+    "code": "IL"
+  },
+  {
+    "alias": "Haifa",
+    "country": "Israel",
+    "code": "IL"
+  },
+  {
+    "alias": "Hasharon",
+    "country": "Israel",
+    "code": "IL"
+  },
+  {
+    "alias": "Israel",
+    "country": "Israel",
+    "code": "IL"
+  },
+  {
+    "alias": "Rovereto",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Italy",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Campobasso",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Vercelli",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Ita",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Monterotondo",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Civitavecchia",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "L Aquila",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Rome",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Genova",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "San Benedetto del Tronto",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Cuneo",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Trieste",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Messina",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Verona",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Bologna",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "vicenza",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Licata",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Milano",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Casalmaggiore",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Monselice",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Ancona",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Pescara",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Urbino",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Pesaro",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Perugia",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Guastalla",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Macerata",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Novara",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Sanremo",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Formia",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Ravenna",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Roma",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Rimini",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Alatri",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Erice",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Florence",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Ciri�",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Rovato (Brescia)",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Busto Arsizio",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Como",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Reggio Calabria",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Sardinia",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "torino",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Turin",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Pisa",
+    "country": "Italy",
+    "code": "IT"
+  },
+  {
+    "alias": "Ivory Coast",
+    "country": "Ivory Coast",
+    "code": "CI"
+  },
+  {
+    "alias": "CIV",
+    "country": "Ivory Coast",
+    "code": "CI"
+  },
+  {
+    "alias": "Abidjan",
+    "country": "Ivory Coast",
+    "code": "CI"
+  },
+  {
+    "alias": "Jamaica",
+    "country": "Jamaica",
+    "code": "JM"
+  },
+  {
+    "alias": "Osaka",
+    "country": "Japan",
+    "code": "JP"
+  },
+  {
+    "alias": "Tokyo",
+    "country": "Japan",
+    "code": "JP"
+  },
+  {
+    "alias": "Shizuoka",
+    "country": "Japan",
+    "code": "JP"
+  },
+  {
+    "alias": "Ishikawa",
+    "country": "Japan",
+    "code": "JP"
+  },
+  {
+    "alias": "Hyougo",
+    "country": "Japan",
+    "code": "JP"
+  },
+  {
+    "alias": "nishinomiya",
+    "country": "Japan",
+    "code": "JP"
+  },
+  {
+    "alias": "Yamagata",
+    "country": "Japan",
+    "code": "JP"
+  },
+  {
+    "alias": "Fukushima",
+    "country": "Japan",
+    "code": "JP"
+  },
+  {
+    "alias": "fukuoka",
+    "country": "Japan",
+    "code": "JP"
+  },
+  {
+    "alias": "Toyama",
+    "country": "Japan",
+    "code": "JP"
+  },
+  {
+    "alias": "Hyogo",
+    "country": "Japan",
+    "code": "JP"
+  },
+  {
+    "alias": "YOKOHAMA",
+    "country": "Japan",
+    "code": "JP"
+  },
+  {
+    "alias": "Okayama",
+    "country": "Japan",
+    "code": "JP"
+  },
+  {
+    "alias": "kanagawa",
+    "country": "Japan",
+    "code": "JP"
+  },
+  {
+    "alias": "Nagoya",
+    "country": "Japan",
+    "code": "JP"
+  },
+  {
+    "alias": "Osaka Japan",
+    "country": "Japan",
+    "code": "JP"
+  },
+  {
+    "alias": "Yokohama",
+    "country": "Japan",
+    "code": "JP"
+  },
+  {
+    "alias": "Saitma",
+    "country": "Japan",
+    "code": "JP"
+  },
+  {
+    "alias": "Japan",
+    "country": "Japan",
+    "code": "JP"
+  },
+  {
+    "alias": "Jordan",
+    "country": "Jordan",
+    "code": "JO"
+  },
+  {
+    "alias": "Aktau",
+    "country": "Kazakhstan",
+    "code": "KZ"
+  },
+  {
+    "alias": "Temirtau",
+    "country": "Kazakhstan",
+    "code": "KZ"
+  },
+  {
+    "alias": "Shymkent",
+    "country": "Kazakhstan",
+    "code": "KZ"
+  },
+  {
+    "alias": "Kazakhstan",
+    "country": "Kazakhstan",
+    "code": "KZ"
+  },
+  {
+    "alias": "Almaty",
+    "country": "Kazakhstan",
+    "code": "KZ"
+  },
+  {
+    "alias": "Kenya",
+    "country": "Kenya",
+    "code": "KE"
+  },
+  {
+    "alias": "Kyrgyzstan",
+    "country": "Kyrgyzstan",
+    "code": "KG"
+  },
+  {
+    "alias": "Laos",
+    "country": "Laos",
+    "code": "LA"
+  },
+  {
+    "alias": "Latvia",
+    "country": "Latvia",
+    "code": "LV"
+  },
+  {
+    "alias": "Lebanon",
+    "country": "Lebanon",
+    "code": "LB"
+  },
+  {
+    "alias": "Siauliai",
+    "country": "Lithuania",
+    "code": "LT"
+  },
+  {
+    "alias": "Vilnius",
+    "country": "Lithuania",
+    "code": "LT"
+  },
+  {
+    "alias": "Lithuania",
+    "country": "Lithuania",
+    "code": "LT"
+  },
+  {
+    "alias": "Luxembourg",
+    "country": "Luxemburg",
+    "code": "LU"
+  },
+  {
+    "alias": "Esch/Alzette",
+    "country": "Luxemburg",
+    "code": "LU"
+  },
+  {
+    "alias": "Mondorf-Les-Bains",
+    "country": "Luxemburg",
+    "code": "LU"
+  },
+  {
+    "alias": "Esch-sur-Alzette",
+    "country": "Luxemburg",
+    "code": "LU"
+  },
+  {
+    "alias": "Toamasina",
+    "country": "Madagascar",
+    "code": "MG"
+  },
+  {
+    "alias": "Madagascar",
+    "country": "Madagascar",
+    "code": "MG"
+  },
+  {
+    "alias": "Antananarivo",
+    "country": "Madagascar",
+    "code": "MG"
+  },
+  {
+    "alias": "MAS",
+    "country": "Malaysia",
+    "code": "MY"
+  },
+  {
+    "alias": "Malaysia",
+    "country": "Malaysia",
+    "code": "MY"
+  },
+  {
+    "alias": "Kuala Lampur",
+    "country": "Malaysia",
+    "code": "MY"
+  },
+  {
+    "alias": "Mali",
+    "country": "Mali",
+    "code": "ML"
+  },
+  {
+    "alias": "Mauritius",
+    "country": "Mauritius",
+    "code": "MU"
+  },
+  {
+    "alias": "Mexica",
+    "country": "Mexico",
+    "code": "MX"
+  },
+  {
+    "alias": "Mexico",
+    "country": "Mexico",
+    "code": "MX"
+  },
+  {
+    "alias": "Apizaco",
+    "country": "Mexico",
+    "code": "MX"
+  },
+  {
+    "alias": "Toluca",
+    "country": "Mexico",
+    "code": "MX"
+  },
+  {
+    "alias": "Saltillo",
+    "country": "Mexico",
+    "code": "MX"
+  },
+  {
+    "alias": "Tampico",
+    "country": "Mexico",
+    "code": "MX"
+  },
+  {
+    "alias": "Acapulco",
+    "country": "Mexico",
+    "code": "MX"
+  },
+  {
+    "alias": "Mexico City",
+    "country": "Mexico",
+    "code": "MX"
+  },
+  {
+    "alias": "Queretaro",
+    "country": "Mexico",
+    "code": "MX"
+  },
+  {
+    "alias": "Chisinau",
+    "country": "Moldova",
+    "code": "MD"
+  },
+  {
+    "alias": "Moldovia",
+    "country": "Moldova",
+    "code": "MD"
+  },
+  {
+    "alias": "Moldova",
+    "country": "Moldova",
+    "code": "MD"
+  },
+  {
+    "alias": "Monaco",
+    "country": "Monaco",
+    "code": "MC"
+  },
+  {
+    "alias": "Montenegro",
+    "country": "Montenegro",
+    "code": "ME"
+  },
+  {
+    "alias": "Morocco",
+    "country": "Morocco",
+    "code": "MA"
+  },
+  {
+    "alias": "Casablanca",
+    "country": "Morocco",
+    "code": "MA"
+  },
+  {
+    "alias": "Namibia",
+    "country": "Namibia",
+    "code": "NA"
+  },
+  {
+    "alias": "Windhoek",
+    "country": "Namibia",
+    "code": "NA"
+  },
+  {
+    "alias": "Alphen aan den Rijn",
+    "country": "Netherlands",
+    "code": "NL"
+  },
+  {
+    "alias": "Waalwijk",
+    "country": "Netherlands",
+    "code": "NL"
+  },
+  {
+    "alias": "Groningen",
+    "country": "Netherlands",
+    "code": "NL"
+  },
+  {
+    "alias": "The Netherlands",
+    "country": "Netherlands",
+    "code": "NL"
+  },
+  {
+    "alias": "Lelystad",
+    "country": "Netherlands",
+    "code": "NL"
+  },
+  {
+    "alias": "s-Hertogenbosch",
+    "country": "Netherlands",
+    "code": "NL"
+  },
+  {
+    "alias": "Rotterdam",
+    "country": "Netherlands",
+    "code": "NL"
+  },
+  {
+    "alias": "Netherlands",
+    "country": "Netherlands",
+    "code": "NL"
+  },
+  {
+    "alias": "Hoorn",
+    "country": "Netherlands",
+    "code": "NL"
+  },
+  {
+    "alias": "Haarlem",
+    "country": "Netherlands",
+    "code": "NL"
+  },
+  {
+    "alias": "The Hague",
+    "country": "Netherlands",
+    "code": "NL"
+  },
+  {
+    "alias": "Heythuysen",
+    "country": "Netherlands",
+    "code": "NL"
+  },
+  {
+    "alias": "Blaricum",
+    "country": "Netherlands",
+    "code": "NL"
+  },
+  {
+    "alias": "Holland",
+    "country": "Netherlands",
+    "code": "NL"
+  },
+  {
+    "alias": "The Nethe",
+    "country": "Netherlands",
+    "code": "NL"
+  },
+  {
+    "alias": "NED",
+    "country": "Netherlands",
+    "code": "NL"
+  },
+  {
+    "alias": "Utrecht",
+    "country": "Netherlands",
+    "code": "NL"
+  },
+  {
+    "alias": "Elndhoven",
+    "country": "Netherlands",
+    "code": "NL"
+  },
+  {
+    "alias": "Dirksland",
+    "country": "Netherlands",
+    "code": "NL"
+  },
+  {
+    "alias": "'s-Hertogenbosch",
+    "country": "Netherlands",
+    "code": "NL"
+  },
+  {
+    "alias": "New Zealan",
+    "country": "New Zealand",
+    "code": "NZ"
+  },
+  {
+    "alias": "Auckland",
+    "country": "New Zealand",
+    "code": "NZ"
+  },
+  {
+    "alias": "New Zealand",
+    "country": "New Zealand",
+    "code": "NZ"
+  },
+  {
+    "alias": "NZ",
+    "country": "New Zealand",
+    "code": "NZ"
+  },
+  {
+    "alias": "NZL",
+    "country": "New Zealand",
+    "code": "NZ"
+  },
+  {
+    "alias": "Wellington",
+    "country": "New Zealand",
+    "code": "NZ"
+  },
+  {
+    "alias": "New Plymouth",
+    "country": "New Zealand",
+    "code": "NZ"
+  },
+  {
+    "alias": "Nicaragua",
+    "country": "Nicaragua",
+    "code": "NI"
+  },
+  {
+    "alias": "Nigeria",
+    "country": "Nigeria",
+    "code": "NG"
+  },
+  {
+    "alias": "Macedona",
+    "country": "North Macedonia",
+    "code": "MK"
+  },
+  {
+    "alias": "Macedonia",
+    "country": "North Macedonia",
+    "code": "MK"
+  },
+  {
+    "alias": "Saipan",
+    "country": "Northern Mariana Islands",
+    "code": "MP"
+  },
+  {
+    "alias": "Norway",
+    "country": "Norway",
+    "code": "NO"
+  },
+  {
+    "alias": "Pacific Oceania",
+    "country": "Pacific Oceania",
+    "code": "PO"
+  },
+  {
+    "alias": "Pakistan",
+    "country": "Pakistan",
+    "code": "PK"
+  },
+  {
+    "alias": "Lahore",
+    "country": "Pakistan",
+    "code": "PK"
+  },
+  {
+    "alias": "Panama",
+    "country": "Panama",
+    "code": "PA"
+  },
+  {
+    "alias": "Paraguay",
+    "country": "Paraguay",
+    "code": "PY"
+  },
+  {
+    "alias": "Peru",
+    "country": "Peru",
+    "code": "PE"
+  },
+  {
+    "alias": "Lima",
+    "country": "Peru",
+    "code": "PE"
+  },
+  {
+    "alias": "Guam",
+    "country": "Philippines",
+    "code": "PH"
+  },
+  {
+    "alias": "Manila",
+    "country": "Philippines",
+    "code": "PH"
+  },
+  {
+    "alias": "PHI",
+    "country": "Philippines",
+    "code": "PH"
+  },
+  {
+    "alias": "Manilla",
+    "country": "Philippines",
+    "code": "PH"
+  },
+  {
+    "alias": "Phillipines",
+    "country": "Philippines",
+    "code": "PH"
+  },
+  {
+    "alias": "Cagayan de Oro City",
+    "country": "Philippines",
+    "code": "PH"
+  },
+  {
+    "alias": "Philippines",
+    "country": "Philippines",
+    "code": "PH"
+  },
+  {
+    "alias": "Wroclaw",
+    "country": "Poland",
+    "code": "PL"
+  },
+  {
+    "alias": "LODZ",
+    "country": "Poland",
+    "code": "PL"
+  },
+  {
+    "alias": "Priemysl",
+    "country": "Poland",
+    "code": "PL"
+  },
+  {
+    "alias": "Lodz",
+    "country": "Poland",
+    "code": "PL"
+  },
+  {
+    "alias": "warsaw",
+    "country": "Poland",
+    "code": "PL"
+  },
+  {
+    "alias": "Zielona Gora",
+    "country": "Poland",
+    "code": "PL"
+  },
+  {
+    "alias": "Warsaw",
+    "country": "Poland",
+    "code": "PL"
+  },
+  {
+    "alias": "Ostrow Wlkp",
+    "country": "Poland",
+    "code": "PL"
+  },
+  {
+    "alias": "Poland",
+    "country": "Poland",
+    "code": "PL"
+  },
+  {
+    "alias": "Tomaszow Mazowiecki",
+    "country": "Poland",
+    "code": "PL"
+  },
+  {
+    "alias": "Walbrzych",
+    "country": "Poland",
+    "code": "PL"
+  },
+  {
+    "alias": "Warszawa",
+    "country": "Poland",
+    "code": "PL"
+  },
+  {
+    "alias": "Wrocklaw",
+    "country": "Poland",
+    "code": "PL"
+  },
+  {
+    "alias": "Portugal",
+    "country": "Portugal",
+    "code": "PT"
+  },
+  {
+    "alias": "Guimaraes",
+    "country": "Portugal",
+    "code": "PT"
+  },
+  {
+    "alias": "Faro",
+    "country": "Portugal",
+    "code": "PT"
+  },
+  {
+    "alias": "Lisbon",
+    "country": "Portugal",
+    "code": "PT"
+  },
+  {
+    "alias": "Funchal",
+    "country": "Portugal",
+    "code": "PT"
+  },
+  {
+    "alias": "Montijo",
+    "country": "Portugal",
+    "code": "PT"
+  },
+  {
+    "alias": "Peniche",
+    "country": "Portugal",
+    "code": "PT"
+  },
+  {
+    "alias": "Porto",
+    "country": "Portugal",
+    "code": "PT"
+  },
+  {
+    "alias": "Lisboa",
+    "country": "Portugal",
+    "code": "PT"
+  },
+  {
+    "alias": "Oliveira de Azem�is",
+    "country": "Portugal",
+    "code": "PT"
+  },
+  {
+    "alias": "Estoril",
+    "country": "Portugal",
+    "code": "PT"
+  },
+  {
+    "alias": "Doha",
+    "country": "Qatar",
+    "code": "QA"
+  },
+  {
+    "alias": "Constanta",
+    "country": "Romania",
+    "code": "RO"
+  },
+  {
+    "alias": "Pitesti",
+    "country": "Romania",
+    "code": "RO"
+  },
+  {
+    "alias": "Romania",
+    "country": "Romania",
+    "code": "RO"
+  },
+  {
+    "alias": "Constanta",
+    "country": "Romania",
+    "code": "RO"
+  },
+  {
+    "alias": "Ploiesti",
+    "country": "Romania",
+    "code": "RO"
+  },
+  {
+    "alias": "Bacau",
+    "country": "Romania",
+    "code": "RO"
+  },
+  {
+    "alias": "Rm Valcea",
+    "country": "Romania",
+    "code": "RO"
+  },
+  {
+    "alias": "Bucuresti",
+    "country": "Romania",
+    "code": "RO"
+  },
+  {
+    "alias": "Cugir",
+    "country": "Romania",
+    "code": "RO"
+  },
+  {
+    "alias": "Iasi",
+    "country": "Romania",
+    "code": "RO"
+  },
+  {
+    "alias": "Bucharest",
+    "country": "Romania",
+    "code": "RO"
+  },
+  {
+    "alias": "Tomsk",
+    "country": "Russia",
+    "code": "RU"
+  },
+  {
+    "alias": "Crimea",
+    "country": "Russia",
+    "code": "RU"
+  },
+  {
+    "alias": "Rostov-on-Don",
+    "country": "Russia",
+    "code": "RU"
+  },
+  {
+    "alias": "Saint-Petersburg",
+    "country": "Russia",
+    "code": "RU"
+  },
+  {
+    "alias": "Korolev",
+    "country": "Russia",
+    "code": "RU"
+  },
+  {
+    "alias": "novosibirsk",
+    "country": "Russia",
+    "code": "RU"
+  },
+  {
+    "alias": "Evpatoria",
+    "country": "Russia",
+    "code": "RU"
+  },
+  {
+    "alias": "Kazan",
+    "country": "Russia",
+    "code": "RU"
+  },
+  {
+    "alias": "Gatchina",
+    "country": "Russia",
+    "code": "RU"
+  },
+  {
+    "alias": "Taganrog",
+    "country": "Russia",
+    "code": "RU"
+  },
+  {
+    "alias": "Ufa",
+    "country": "Russia",
+    "code": "RU"
+  },
+  {
+    "alias": "Orenbourg",
+    "country": "Russia",
+    "code": "RU"
+  },
+  {
+    "alias": "Penza",
+    "country": "Russia",
+    "code": "RU"
+  },
+  {
+    "alias": "MOSCOW",
+    "country": "Russia",
+    "code": "RU"
+  },
+  {
+    "alias": "North-Ossetia",
+    "country": "Russia",
+    "code": "RU"
+  },
+  {
+    "alias": "Samara",
+    "country": "Russia",
+    "code": "RU"
+  },
+  {
+    "alias": "Moscow",
+    "country": "Russia",
+    "code": "RU"
+  },
+  {
+    "alias": "Russia",
+    "country": "Russia",
+    "code": "RU"
+  },
+  {
+    "alias": "Rwanda",
+    "country": "Rwanda",
+    "code": "RW"
+  },
+  {
+    "alias": "Saudi Arabia",
+    "country": "Saudi Arabia",
+    "code": "SA"
+  },
+  {
+    "alias": "Belgrade",
+    "country": "Serbia",
+    "code": "RS"
+  },
+  {
+    "alias": "Yug.",
+    "country": "Serbia",
+    "code": "RS"
+  },
+  {
+    "alias": "Serbia",
+    "country": "Serbia",
+    "code": "RS"
+  },
+  {
+    "alias": "SErgia &amp; M",
+    "country": "Serbia",
+    "code": "RS"
+  },
+  {
+    "alias": "Serbia &amp; Montenegro",
+    "country": "Serbia",
+    "code": "RS"
+  },
+  {
+    "alias": "Novi Sad",
+    "country": "Serbia",
+    "code": "RS"
+  },
+  {
+    "alias": "SCG",
+    "country": "Serbia",
+    "code": "RS"
+  },
+  {
+    "alias": "Singapore",
+    "country": "Singapore",
+    "code": "SG"
+  },
+  {
+    "alias": "Slovkia",
+    "country": "Slovakia",
+    "code": "SK"
+  },
+  {
+    "alias": "Slovakia",
+    "country": "Slovakia",
+    "code": "SK"
+  },
+  {
+    "alias": "Trnava",
+    "country": "Slovakia",
+    "code": "SK"
+  },
+  {
+    "alias": "Bratislava",
+    "country": "Slovakia",
+    "code": "SK"
+  },
+  {
+    "alias": "Presov",
+    "country": "Slovakia",
+    "code": "SK"
+  },
+  {
+    "alias": "Slovak Republic",
+    "country": "Slovakia",
+    "code": "SK"
+  },
+  {
+    "alias": "Slovak",
+    "country": "Slovakia",
+    "code": "SK"
+  },
+  {
+    "alias": "Trbovlje",
+    "country": "Slovenia",
+    "code": "SI"
+  },
+  {
+    "alias": "maribor",
+    "country": "Slovenia",
+    "code": "SI"
+  },
+  {
+    "alias": "Portoroz",
+    "country": "Slovenia",
+    "code": "SI"
+  },
+  {
+    "alias": "Solvenia",
+    "country": "Slovenia",
+    "code": "SI"
+  },
+  {
+    "alias": "Slovenia",
+    "country": "Slovenia",
+    "code": "SI"
+  },
+  {
+    "alias": "Gauteng",
+    "country": "South Africa",
+    "code": "ZA"
+  },
+  {
+    "alias": "Polokwane",
+    "country": "South Africa",
+    "code": "ZA"
+  },
+  {
+    "alias": "SA",
+    "country": "South Africa",
+    "code": "ZA"
+  },
+  {
+    "alias": "Port Elizabeth",
+    "country": "South Africa",
+    "code": "ZA"
+  },
+  {
+    "alias": "Johanesburg",
+    "country": "South Africa",
+    "code": "ZA"
+  },
+  {
+    "alias": "Pretoria",
+    "country": "South Africa",
+    "code": "ZA"
+  },
+  {
+    "alias": "RSA",
+    "country": "South Africa",
+    "code": "ZA"
+  },
+  {
+    "alias": "South",
+    "country": "South Africa",
+    "code": "ZA"
+  },
+  {
+    "alias": "South Africa",
+    "country": "South Africa",
+    "code": "ZA"
+  },
+  {
+    "alias": "Durban",
+    "country": "South Africa",
+    "code": "ZA"
+  },
+  {
+    "alias": "Nelspruit",
+    "country": "South Africa",
+    "code": "ZA"
+  },
+  {
+    "alias": "South  Africa",
+    "country": "South Africa",
+    "code": "ZA"
+  },
+  {
+    "alias": "Johannesburg",
+    "country": "South Africa",
+    "code": "ZA"
+  },
+  {
+    "alias": "Edenvale",
+    "country": "South Africa",
+    "code": "ZA"
+  },
+  {
+    "alias": "Jeju",
+    "country": "South Korea",
+    "code": "KR"
+  },
+  {
+    "alias": "Anseong",
+    "country": "South Korea",
+    "code": "KR"
+  },
+  {
+    "alias": "Daejeon",
+    "country": "South Korea",
+    "code": "KR"
+  },
+  {
+    "alias": "Andong",
+    "country": "South Korea",
+    "code": "KR"
+  },
+  {
+    "alias": "Seoul",
+    "country": "South Korea",
+    "code": "KR"
+  },
+  {
+    "alias": "Suwon",
+    "country": "South Korea",
+    "code": "KR"
+  },
+  {
+    "alias": "Korea",
+    "country": "South Korea",
+    "code": "KR"
+  },
+  {
+    "alias": "Korea (South)",
+    "country": "South Korea",
+    "code": "KR"
+  },
+  {
+    "alias": "Gangwonto",
+    "country": "South Korea",
+    "code": "KR"
+  },
+  {
+    "alias": "Kyunggi-do",
+    "country": "South Korea",
+    "code": "KR"
+  },
+  {
+    "alias": "AN SUNG",
+    "country": "South Korea",
+    "code": "KR"
+  },
+  {
+    "alias": "South Korea",
+    "country": "South Korea",
+    "code": "KR"
+  },
+  {
+    "alias": "Ciutadella de Menorca",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "Pamplona",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "Valldoreix",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "Bakio",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "San Sebastian",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "Barbastro",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "Cordoba",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "Valencia",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "Barcelona",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "MADRID",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "Adeje",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "Jerez de la frontera",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "Melilla",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "Burgos",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "Spain",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "Leon",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "Las Palmas",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "Elche",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "Gijon",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "Palma de Mallorca",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "Sant Carters de la Rapita",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "Santa Cruz de Bezana",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "Sant Carles de la Rapita",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "Madrid",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "C�rdoba",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "Algemesi",
+    "country": "Spain",
+    "code": "ES"
+  },
+  {
+    "alias": "Sri Lanka",
+    "country": "Sri Lanka",
+    "code": "LK"
+  },
+  {
+    "alias": "Sudan",
+    "country": "Sudan",
+    "code": "SD"
+  },
+  {
+    "alias": "Suriname",
+    "country": "Suriname",
+    "code": "SR"
+  },
+  {
+    "alias": "Kristianstad",
+    "country": "Sweden",
+    "code": "SE"
+  },
+  {
+    "alias": "Hjo",
+    "country": "Sweden",
+    "code": "SE"
+  },
+  {
+    "alias": "Sweden",
+    "country": "Sweden",
+    "code": "SE"
+  },
+  {
+    "alias": "Karlskrona",
+    "country": "Sweden",
+    "code": "SE"
+  },
+  {
+    "alias": "Gothenburg",
+    "country": "Sweden",
+    "code": "SE"
+  },
+  {
+    "alias": "Stockholm",
+    "country": "Sweden",
+    "code": "SE"
+  },
+  {
+    "alias": "Lund",
+    "country": "Sweden",
+    "code": "SE"
+  },
+  {
+    "alias": "Eksj�",
+    "country": "Sweden",
+    "code": "SE"
+  },
+  {
+    "alias": "Frauenfeld",
+    "country": "Switzerland",
+    "code": "CH"
+  },
+  {
+    "alias": "Switzerland",
+    "country": "Switzerland",
+    "code": "CH"
+  },
+  {
+    "alias": "Geneva",
+    "country": "Switzerland",
+    "code": "CH"
+  },
+  {
+    "alias": "Neuchatel",
+    "country": "Switzerland",
+    "code": "CH"
+  },
+  {
+    "alias": "Flawil",
+    "country": "Switzerland",
+    "code": "CH"
+  },
+  {
+    "alias": "Wil",
+    "country": "Switzerland",
+    "code": "CH"
+  },
+  {
+    "alias": "Chur",
+    "country": "Switzerland",
+    "code": "CH"
+  },
+  {
+    "alias": "Noumea",
+    "country": "Switzerland",
+    "code": "CH"
+  },
+  {
+    "alias": "Switz.",
+    "country": "Switzerland",
+    "code": "CH"
+  },
+  {
+    "alias": "Bienne",
+    "country": "Switzerland",
+    "code": "CH"
+  },
+  {
+    "alias": "Bern",
+    "country": "Switzerland",
+    "code": "CH"
+  },
+  {
+    "alias": "Lugano",
+    "country": "Switzerland",
+    "code": "CH"
+  },
+  {
+    "alias": "Syria",
+    "country": "Syria",
+    "code": "SY"
+  },
+  {
+    "alias": "Chinese Taip",
+    "country": "Taiwan",
+    "code": "TW"
+  },
+  {
+    "alias": "TPE",
+    "country": "Taiwan",
+    "code": "TW"
+  },
+  {
+    "alias": "Changhwa",
+    "country": "Taiwan",
+    "code": "TW"
+  },
+  {
+    "alias": "Chinese Ta",
+    "country": "Taiwan",
+    "code": "TW"
+  },
+  {
+    "alias": "Taipei City",
+    "country": "Taiwan",
+    "code": "TW"
+  },
+  {
+    "alias": "Taipei",
+    "country": "Taiwan",
+    "code": "TW"
+  },
+  {
+    "alias": "Chinese Taipei",
+    "country": "Taiwan",
+    "code": "TW"
+  },
+  {
+    "alias": "Tainan",
+    "country": "Taiwan",
+    "code": "TW"
+  },
+  {
+    "alias": "keelung",
+    "country": "Taiwan",
+    "code": "TW"
+  },
+  {
+    "alias": "Chunghua",
+    "country": "Taiwan",
+    "code": "TW"
+  },
+  {
+    "alias": "Kaohsiung",
+    "country": "Taiwan",
+    "code": "TW"
+  },
+  {
+    "alias": "Taiwan",
+    "country": "Taiwan",
+    "code": "TW"
+  },
+  {
+    "alias": "New Taipei City",
+    "country": "Taiwan",
+    "code": "TW"
+  },
+  {
+    "alias": "Tajikistan",
+    "country": "Tajikistan",
+    "code": "TJ"
+  },
+  {
+    "alias": "Bangkok",
+    "country": "Thailand",
+    "code": "TH"
+  },
+  {
+    "alias": "THA",
+    "country": "Thailand",
+    "code": "TH"
+  },
+  {
+    "alias": "Thailand",
+    "country": "Thailand",
+    "code": "TH"
+  },
+  {
+    "alias": "Bahamas",
+    "country": "The Bahamas",
+    "code": "BS"
+  },
+  {
+    "alias": "San Salvador",
+    "country": "The Bahamas",
+    "code": "BS"
+  },
+  {
+    "alias": "Grand Bahamas",
+    "country": "The Bahamas",
+    "code": "BS"
+  },
+  {
+    "alias": "Togo",
+    "country": "Togo",
+    "code": "TG"
+  },
+  {
+    "alias": "TRI",
+    "country": "Trinidad and Tobago",
+    "code": "TT"
+  },
+  {
+    "alias": "Tunis",
+    "country": "Tunisia",
+    "code": "TN"
+  },
+  {
+    "alias": "Cartago",
+    "country": "Tunisia",
+    "code": "TN"
+  },
+  {
+    "alias": "Monastir",
+    "country": "Tunisia",
+    "code": "TN"
+  },
+  {
+    "alias": "Tunisia",
+    "country": "Tunisia",
+    "code": "TN"
+  },
+  {
+    "alias": "Antalya",
+    "country": "Turkey",
+    "code": "TR"
+  },
+  {
+    "alias": "Turkey",
+    "country": "Turkey",
+    "code": "TR"
+  },
+  {
+    "alias": "Istanbul",
+    "country": "Turkey",
+    "code": "TR"
+  },
+  {
+    "alias": "Tekirdag",
+    "country": "Turkey",
+    "code": "TR"
+  },
+  {
+    "alias": "Izmir",
+    "country": "Turkey",
+    "code": "TR"
+  },
+  {
+    "alias": "Uganda",
+    "country": "Uganda",
+    "code": "UG"
+  },
+  {
+    "alias": "Donetsk",
+    "country": "Ukraine",
+    "code": "UA"
+  },
+  {
+    "alias": "dnepropetrovsk",
+    "country": "Ukraine",
+    "code": "UA"
+  },
+  {
+    "alias": "Krivoy Rog",
+    "country": "Ukraine",
+    "code": "UA"
+  },
+  {
+    "alias": "Novaya Kakhovka",
+    "country": "Ukraine",
+    "code": "UA"
+  },
+  {
+    "alias": "Dnepropetrovsk",
+    "country": "Ukraine",
+    "code": "UA"
+  },
+  {
+    "alias": "Ukraine",
+    "country": "Ukraine",
+    "code": "UA"
+  },
+  {
+    "alias": "Kyiv",
+    "country": "Ukraine",
+    "code": "UA"
+  },
+  {
+    "alias": "Kiev",
+    "country": "Ukraine",
+    "code": "UA"
+  },
+  {
+    "alias": "Kharkiv",
+    "country": "Ukraine",
+    "code": "UA"
+  },
+  {
+    "alias": "Chernivtsi",
+    "country": "Ukraine",
+    "code": "UA"
+  },
+  {
+    "alias": "Dubai",
+    "country": "United Arab Emirates",
+    "code": "AE"
+  },
+  {
+    "alias": "United Arab Emirates",
+    "country": "United Arab Emirates",
+    "code": "AE"
+  },
+  {
+    "alias": "U.A.E.",
+    "country": "United Arab Emirates",
+    "code": "AE"
+  },
+  {
+    "alias": "Leeds",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "Norfolk",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "Norwich",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "Sunderland",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "UK",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "Scotland",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "Nottingham",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "Britain",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "Chelmsford",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "KINGSTON UPON THAMES",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "Newcastle upon Tyne",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "London",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "Redditch",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "England",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "Essex",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "Exeter",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "Wales",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "GBR",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "St Albans",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "Great Britain",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "Box Hill",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "Chichester",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "High Wycombe",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "Colchester",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "Stevenage",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "Hatfield",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "Hampstead",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "Newmarket",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "Birmingham",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "Penrith",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "AL",
+    "country": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "alias": "Paysand�",
+    "country": "Uruguay",
+    "code": "UY"
+  },
+  {
+    "alias": "Uruguay",
+    "country": "Uruguay",
+    "code": "UY"
+  },
+  {
+    "alias": "Uraguay",
+    "country": "Uruguay",
+    "code": "UY"
+  },
+  {
+    "alias": "Urugay",
+    "country": "Uruguay",
+    "code": "UY"
+  },
+  {
+    "alias": "URU",
+    "country": "Uruguay",
+    "code": "UY"
+  },
+  {
+    "alias": "Montevideo",
+    "country": "Uruguay",
+    "code": "UY"
+  },
+  {
+    "alias": "PA U.S.A.",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Irvington",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Murrieta",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Mineola",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Palo Alto",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Indianapolis",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "IN",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Illinois",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Tulsa",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Santa Cruz",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Santa Ana",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Idaho",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "New York",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "IA",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "TX",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "MS",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "U.S.A",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "U.S.A.",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Bradenton",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "New York New York",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "California",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Atlanta Ga",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Holtsville",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "New York City",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "San Juan",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Omaha",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "US",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Olney",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Hilton Head Island",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Des Moines",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "VA",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "MA",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "HI",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Hershey",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "San Jose",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Altadena",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Colorado Springs",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "MO",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Calhoun",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "WV",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Stamford",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "San Fernando",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Hackensack",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "San Diego",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Boston",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Alexandria",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Greenbrae",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Maryland",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Austin",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "San Antonio",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Princeton",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Princeton NJ",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "MN",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "PA",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Galveston",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "GA",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Spokane",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Walnut Creek",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Fresno",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Puerto Rico",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Florida",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Boca Raton",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "FL",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Fargo",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "West Palm Beach",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "CA USA",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "CA",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "WI",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "MI",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Salem",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Miami",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "CO",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "durham nc USA",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Winston Salem",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Michigan",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Irvine",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Does Moines",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "AR",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "NJ",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Santa Fe",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Olathe",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Santa Monica",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "United States",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "United S",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "OK",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Ohio",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "TN",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "OH",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Davis",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "D.C.",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "CT",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "NY",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "SC",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "KS",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Texas",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Tennessee",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Concord",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Sacramento",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "LA",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "NC",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Atlanta",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Arlington",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Taunton",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "North Carolina",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Loma linda",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Delray Beach",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Tarzana",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Chandler Arizona",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "DC",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Lithonia GA",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Kalamazoo",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "OR",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "WA",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Newport",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "USA",
+    "country": "USA",
+    "code": "US"
+  },
+  {
+    "alias": "Tashkent",
+    "country": "Uzbekistan",
+    "code": "UZ"
+  },
+  {
+    "alias": "Uzbekistan",
+    "country": "Uzbekistan",
+    "code": "UZ"
+  },
+  {
+    "alias": "Namangan",
+    "country": "Uzbekistan",
+    "code": "UZ"
+  },
+  {
+    "alias": "Uzb.",
+    "country": "Uzbekistan",
+    "code": "UZ"
+  },
+  {
+    "alias": "Nukus",
+    "country": "Uzbekistan",
+    "code": "UZ"
+  },
+  {
+    "alias": "Venezeuela",
+    "country": "Venezuela",
+    "code": "VE"
+  },
+  {
+    "alias": "Venezuela",
+    "country": "Venezuela",
+    "code": "VE"
+  },
+  {
+    "alias": "Barquisimeto",
+    "country": "Venezuela",
+    "code": "VE"
+  },
+  {
+    "alias": "Caracas",
+    "country": "Venezuela",
+    "code": "VE"
+  },
+  {
+    "alias": "Lara",
+    "country": "Venezuela",
+    "code": "VE"
+  },
+  {
+    "alias": "Vietnam",
+    "country": "Vietnam",
+    "code": "VN"
+  },
+  {
+    "alias": "Yugoslavia",
+    "country": "Yugoslavia",
+    "code": "YU"
+  },
+  {
+    "alias": "Zambia",
+    "country": "Zambia",
+    "code": "ZM"
+  },
+  {
+    "alias": "Harare",
+    "country": "Zimbabwe",
+    "code": "ZW"
+  },
+  {
+    "alias": "Zimbabwe",
+    "country": "Zimbabwe",
+    "code": "ZW"
+  }
+]);
+db.countryCodes.insertMany([
+  {
+    "Name": "Afghanistan",
+    "Code": "AF"
+  },
+  {
+    "Name": "Ã…land Islands",
+    "Code": "AX"
+  },
+  {
+    "Name": "Albania",
+    "Code": "AL"
+  },
+  {
+    "Name": "Algeria",
+    "Code": "DZ"
+  },
+  {
+    "Name": "American Samoa",
+    "Code": "AS"
+  },
+  {
+    "Name": "Andorra",
+    "Code": "AD"
+  },
+  {
+    "Name": "Angola",
+    "Code": "AO"
+  },
+  {
+    "Name": "Anguilla",
+    "Code": "AI"
+  },
+  {
+    "Name": "Antarctica",
+    "Code": "AQ"
+  },
+  {
+    "Name": "Antigua and Barbuda",
+    "Code": "AG"
+  },
+  {
+    "Name": "Argentina",
+    "Code": "AR"
+  },
+  {
+    "Name": "Armenia",
+    "Code": "AM"
+  },
+  {
+    "Name": "Aruba",
+    "Code": "AW"
+  },
+  {
+    "Name": "Australia",
+    "Code": "AU"
+  },
+  {
+    "Name": "Austria",
+    "Code": "AT"
+  },
+  {
+    "Name": "Azerbaijan",
+    "Code": "AZ"
+  },
+  {
+    "Name": "Bahamas",
+    "Code": "BS"
+  },
+  {
+    "Name": "Bahrain",
+    "Code": "BH"
+  },
+  {
+    "Name": "Bangladesh",
+    "Code": "BD"
+  },
+  {
+    "Name": "Barbados",
+    "Code": "BB"
+  },
+  {
+    "Name": "Belarus",
+    "Code": "BY"
+  },
+  {
+    "Name": "Belgium",
+    "Code": "BE"
+  },
+  {
+    "Name": "Belize",
+    "Code": "BZ"
+  },
+  {
+    "Name": "Benin",
+    "Code": "BJ"
+  },
+  {
+    "Name": "Bermuda",
+    "Code": "BM"
+  },
+  {
+    "Name": "Bhutan",
+    "Code": "BT"
+  },
+  {
+    "Name": "Bolivia, Plurinational State of",
+    "Code": "BO"
+  },
+  {
+    "Name": "Bonaire, Sint Eustatius and Saba",
+    "Code": "BQ"
+  },
+  {
+    "Name": "Bosnia and Herzegovina",
+    "Code": "BA"
+  },
+  {
+    "Name": "Botswana",
+    "Code": "BW"
+  },
+  {
+    "Name": "Bouvet Island",
+    "Code": "BV"
+  },
+  {
+    "Name": "Brazil",
+    "Code": "BR"
+  },
+  {
+    "Name": "British Indian Ocean Territory",
+    "Code": "IO"
+  },
+  {
+    "Name": "Brunei Darussalam",
+    "Code": "BN"
+  },
+  {
+    "Name": "Bulgaria",
+    "Code": "BG"
+  },
+  {
+    "Name": "Burkina Faso",
+    "Code": "BF"
+  },
+  {
+    "Name": "Burundi",
+    "Code": "BI"
+  },
+  {
+    "Name": "Cambodia",
+    "Code": "KH"
+  },
+  {
+    "Name": "Cameroon",
+    "Code": "CM"
+  },
+  {
+    "Name": "Canada",
+    "Code": "CA"
+  },
+  {
+    "Name": "Cape Verde",
+    "Code": "CV"
+  },
+  {
+    "Name": "Cayman Islands",
+    "Code": "KY"
+  },
+  {
+    "Name": "Central African Republic",
+    "Code": "CF"
+  },
+  {
+    "Name": "Chad",
+    "Code": "TD"
+  },
+  {
+    "Name": "Chile",
+    "Code": "CL"
+  },
+  {
+    "Name": "China",
+    "Code": "CN"
+  },
+  {
+    "Name": "Christmas Island",
+    "Code": "CX"
+  },
+  {
+    "Name": "Cocos (Keeling) Islands",
+    "Code": "CC"
+  },
+  {
+    "Name": "Colombia",
+    "Code": "CO"
+  },
+  {
+    "Name": "Comoros",
+    "Code": "KM"
+  },
+  {
+    "Name": "Congo",
+    "Code": "CG"
+  },
+  {
+    "Name": "Congo, the Democratic Republic of the",
+    "Code": "CD"
+  },
+  {
+    "Name": "Cook Islands",
+    "Code": "CK"
+  },
+  {
+    "Name": "Costa Rica",
+    "Code": "CR"
+  },
+  {
+    "Name": "CÃ´te d'Ivoire",
+    "Code": "CI"
+  },
+  {
+    "Name": "Croatia",
+    "Code": "HR"
+  },
+  {
+    "Name": "Cuba",
+    "Code": "CU"
+  },
+  {
+    "Name": "CuraÃ§ao",
+    "Code": "CW"
+  },
+  {
+    "Name": "Cyprus",
+    "Code": "CY"
+  },
+  {
+    "Name": "Czech Republic",
+    "Code": "CZ"
+  },
+  {
+    "Name": "Denmark",
+    "Code": "DK"
+  },
+  {
+    "Name": "Djibouti",
+    "Code": "DJ"
+  },
+  {
+    "Name": "Dominica",
+    "Code": "DM"
+  },
+  {
+    "Name": "Dominican Republic",
+    "Code": "DO"
+  },
+  {
+    "Name": "Ecuador",
+    "Code": "EC"
+  },
+  {
+    "Name": "Egypt",
+    "Code": "EG"
+  },
+  {
+    "Name": "El Salvador",
+    "Code": "SV"
+  },
+  {
+    "Name": "Equatorial Guinea",
+    "Code": "GQ"
+  },
+  {
+    "Name": "Eritrea",
+    "Code": "ER"
+  },
+  {
+    "Name": "Estonia",
+    "Code": "EE"
+  },
+  {
+    "Name": "Ethiopia",
+    "Code": "ET"
+  },
+  {
+    "Name": "Falkland Islands (Malvinas)",
+    "Code": "FK"
+  },
+  {
+    "Name": "Faroe Islands",
+    "Code": "FO"
+  },
+  {
+    "Name": "Fiji",
+    "Code": "FJ"
+  },
+  {
+    "Name": "Finland",
+    "Code": "FI"
+  },
+  {
+    "Name": "France",
+    "Code": "FR"
+  },
+  {
+    "Name": "French Guiana",
+    "Code": "GF"
+  },
+  {
+    "Name": "French Polynesia",
+    "Code": "PF"
+  },
+  {
+    "Name": "French Southern Territories",
+    "Code": "TF"
+  },
+  {
+    "Name": "Gabon",
+    "Code": "GA"
+  },
+  {
+    "Name": "Gambia",
+    "Code": "GM"
+  },
+  {
+    "Name": "Georgia",
+    "Code": "GE"
+  },
+  {
+    "Name": "Germany",
+    "Code": "DE"
+  },
+  {
+    "Name": "Ghana",
+    "Code": "GH"
+  },
+  {
+    "Name": "Gibraltar",
+    "Code": "GI"
+  },
+  {
+    "Name": "Greece",
+    "Code": "GR"
+  },
+  {
+    "Name": "Greenland",
+    "Code": "GL"
+  },
+  {
+    "Name": "Grenada",
+    "Code": "GD"
+  },
+  {
+    "Name": "Guadeloupe",
+    "Code": "GP"
+  },
+  {
+    "Name": "Guam",
+    "Code": "GU"
+  },
+  {
+    "Name": "Guatemala",
+    "Code": "GT"
+  },
+  {
+    "Name": "Guernsey",
+    "Code": "GG"
+  },
+  {
+    "Name": "Guinea",
+    "Code": "GN"
+  },
+  {
+    "Name": "Guinea-Bissau",
+    "Code": "GW"
+  },
+  {
+    "Name": "Guyana",
+    "Code": "GY"
+  },
+  {
+    "Name": "Haiti",
+    "Code": "HT"
+  },
+  {
+    "Name": "Heard Island and McDonald Islands",
+    "Code": "HM"
+  },
+  {
+    "Name": "Holy See (Vatican City State)",
+    "Code": "VA"
+  },
+  {
+    "Name": "Honduras",
+    "Code": "HN"
+  },
+  {
+    "Name": "Hong Kong",
+    "Code": "HK"
+  },
+  {
+    "Name": "Hungary",
+    "Code": "HU"
+  },
+  {
+    "Name": "Iceland",
+    "Code": "IS"
+  },
+  {
+    "Name": "India",
+    "Code": "IN"
+  },
+  {
+    "Name": "Indonesia",
+    "Code": "ID"
+  },
+  {
+    "Name": "Iran, Islamic Republic of",
+    "Code": "IR"
+  },
+  {
+    "Name": "Iraq",
+    "Code": "IQ"
+  },
+  {
+    "Name": "Ireland",
+    "Code": "IE"
+  },
+  {
+    "Name": "Isle of Man",
+    "Code": "IM"
+  },
+  {
+    "Name": "Israel",
+    "Code": "IL"
+  },
+  {
+    "Name": "Italy",
+    "Code": "IT"
+  },
+  {
+    "Name": "Jamaica",
+    "Code": "JM"
+  },
+  {
+    "Name": "Japan",
+    "Code": "JP"
+  },
+  {
+    "Name": "Jersey",
+    "Code": "JE"
+  },
+  {
+    "Name": "Jordan",
+    "Code": "JO"
+  },
+  {
+    "Name": "Kazakhstan",
+    "Code": "KZ"
+  },
+  {
+    "Name": "Kenya",
+    "Code": "KE"
+  },
+  {
+    "Name": "Kiribati",
+    "Code": "KI"
+  },
+  {
+    "Name": "Korea, Democratic People's Republic of",
+    "Code": "KP"
+  },
+  {
+    "Name": "Korea, Republic of",
+    "Code": "KR"
+  },
+  {
+    "Name": "Kuwait",
+    "Code": "KW"
+  },
+  {
+    "Name": "Kyrgyzstan",
+    "Code": "KG"
+  },
+  {
+    "Name": "Lao People's Democratic Republic",
+    "Code": "LA"
+  },
+  {
+    "Name": "Latvia",
+    "Code": "LV"
+  },
+  {
+    "Name": "Lebanon",
+    "Code": "LB"
+  },
+  {
+    "Name": "Lesotho",
+    "Code": "LS"
+  },
+  {
+    "Name": "Liberia",
+    "Code": "LR"
+  },
+  {
+    "Name": "Libya",
+    "Code": "LY"
+  },
+  {
+    "Name": "Liechtenstein",
+    "Code": "LI"
+  },
+  {
+    "Name": "Lithuania",
+    "Code": "LT"
+  },
+  {
+    "Name": "Luxembourg",
+    "Code": "LU"
+  },
+  {
+    "Name": "Macao",
+    "Code": "MO"
+  },
+  {
+    "Name": "Macedonia, the Former Yugoslav Republic of",
+    "Code": "MK"
+  },
+  {
+    "Name": "Madagascar",
+    "Code": "MG"
+  },
+  {
+    "Name": "Malawi",
+    "Code": "MW"
+  },
+  {
+    "Name": "Malaysia",
+    "Code": "MY"
+  },
+  {
+    "Name": "Maldives",
+    "Code": "MV"
+  },
+  {
+    "Name": "Mali",
+    "Code": "ML"
+  },
+  {
+    "Name": "Malta",
+    "Code": "MT"
+  },
+  {
+    "Name": "Marshall Islands",
+    "Code": "MH"
+  },
+  {
+    "Name": "Martinique",
+    "Code": "MQ"
+  },
+  {
+    "Name": "Mauritania",
+    "Code": "MR"
+  },
+  {
+    "Name": "Mauritius",
+    "Code": "MU"
+  },
+  {
+    "Name": "Mayotte",
+    "Code": "YT"
+  },
+  {
+    "Name": "Mexico",
+    "Code": "MX"
+  },
+  {
+    "Name": "Micronesia, Federated States of",
+    "Code": "FM"
+  },
+  {
+    "Name": "Moldova, Republic of",
+    "Code": "MD"
+  },
+  {
+    "Name": "Monaco",
+    "Code": "MC"
+  },
+  {
+    "Name": "Mongolia",
+    "Code": "MN"
+  },
+  {
+    "Name": "Montenegro",
+    "Code": "ME"
+  },
+  {
+    "Name": "Montserrat",
+    "Code": "MS"
+  },
+  {
+    "Name": "Morocco",
+    "Code": "MA"
+  },
+  {
+    "Name": "Mozambique",
+    "Code": "MZ"
+  },
+  {
+    "Name": "Myanmar",
+    "Code": "MM"
+  },
+  {
+    "Name": "Namibia",
+    "Code": "NA"
+  },
+  {
+    "Name": "Nauru",
+    "Code": "NR"
+  },
+  {
+    "Name": "Nepal",
+    "Code": "NP"
+  },
+  {
+    "Name": "Netherlands",
+    "Code": "NL"
+  },
+  {
+    "Name": "New Caledonia",
+    "Code": "NC"
+  },
+  {
+    "Name": "New Zealand",
+    "Code": "NZ"
+  },
+  {
+    "Name": "Nicaragua",
+    "Code": "NI"
+  },
+  {
+    "Name": "Niger",
+    "Code": "NE"
+  },
+  {
+    "Name": "Nigeria",
+    "Code": "NG"
+  },
+  {
+    "Name": "Niue",
+    "Code": "NU"
+  },
+  {
+    "Name": "Norfolk Island",
+    "Code": "NF"
+  },
+  {
+    "Name": "Northern Mariana Islands",
+    "Code": "MP"
+  },
+  {
+    "Name": "Norway",
+    "Code": "NO"
+  },
+  {
+    "Name": "Oman",
+    "Code": "OM"
+  },
+  {
+    "Name": "Pakistan",
+    "Code": "PK"
+  },
+  {
+    "Name": "Palau",
+    "Code": "PW"
+  },
+  {
+    "Name": "Palestine, State of",
+    "Code": "PS"
+  },
+  {
+    "Name": "Panama",
+    "Code": "PA"
+  },
+  {
+    "Name": "Papua New Guinea",
+    "Code": "PG"
+  },
+  {
+    "Name": "Paraguay",
+    "Code": "PY"
+  },
+  {
+    "Name": "Peru",
+    "Code": "PE"
+  },
+  {
+    "Name": "Philippines",
+    "Code": "PH"
+  },
+  {
+    "Name": "Pitcairn",
+    "Code": "PN"
+  },
+  {
+    "Name": "Poland",
+    "Code": "PL"
+  },
+  {
+    "Name": "Portugal",
+    "Code": "PT"
+  },
+  {
+    "Name": "Puerto Rico",
+    "Code": "PR"
+  },
+  {
+    "Name": "Qatar",
+    "Code": "QA"
+  },
+  {
+    "Name": "RÃ©union",
+    "Code": "RE"
+  },
+  {
+    "Name": "Romania",
+    "Code": "RO"
+  },
+  {
+    "Name": "Russian Federation",
+    "Code": "RU"
+  },
+  {
+    "Name": "Rwanda",
+    "Code": "RW"
+  },
+  {
+    "Name": "Saint BarthÃ©lemy",
+    "Code": "BL"
+  },
+  {
+    "Name": "Saint Helena, Ascension and Tristan da Cunha",
+    "Code": "SH"
+  },
+  {
+    "Name": "Saint Kitts and Nevis",
+    "Code": "KN"
+  },
+  {
+    "Name": "Saint Lucia",
+    "Code": "LC"
+  },
+  {
+    "Name": "Saint Martin (French part)",
+    "Code": "MF"
+  },
+  {
+    "Name": "Saint Pierre and Miquelon",
+    "Code": "PM"
+  },
+  {
+    "Name": "Saint Vincent and the Grenadines",
+    "Code": "VC"
+  },
+  {
+    "Name": "Samoa",
+    "Code": "WS"
+  },
+  {
+    "Name": "San Marino",
+    "Code": "SM"
+  },
+  {
+    "Name": "Sao Tome and Principe",
+    "Code": "ST"
+  },
+  {
+    "Name": "Saudi Arabia",
+    "Code": "SA"
+  },
+  {
+    "Name": "Senegal",
+    "Code": "SN"
+  },
+  {
+    "Name": "Serbia",
+    "Code": "RS"
+  },
+  {
+    "Name": "Seychelles",
+    "Code": "SC"
+  },
+  {
+    "Name": "Sierra Leone",
+    "Code": "SL"
+  },
+  {
+    "Name": "Singapore",
+    "Code": "SG"
+  },
+  {
+    "Name": "Sint Maarten (Dutch part)",
+    "Code": "SX"
+  },
+  {
+    "Name": "Slovakia",
+    "Code": "SK"
+  },
+  {
+    "Name": "Slovenia",
+    "Code": "SI"
+  },
+  {
+    "Name": "Solomon Islands",
+    "Code": "SB"
+  },
+  {
+    "Name": "Somalia",
+    "Code": "SO"
+  },
+  {
+    "Name": "South Africa",
+    "Code": "ZA"
+  },
+  {
+    "Name": "South Georgia and the South Sandwich Islands",
+    "Code": "GS"
+  },
+  {
+    "Name": "South Sudan",
+    "Code": "SS"
+  },
+  {
+    "Name": "Spain",
+    "Code": "ES"
+  },
+  {
+    "Name": "Sri Lanka",
+    "Code": "LK"
+  },
+  {
+    "Name": "Sudan",
+    "Code": "SD"
+  },
+  {
+    "Name": "Suriname",
+    "Code": "SR"
+  },
+  {
+    "Name": "Svalbard and Jan Mayen",
+    "Code": "SJ"
+  },
+  {
+    "Name": "Swaziland",
+    "Code": "SZ"
+  },
+  {
+    "Name": "Sweden",
+    "Code": "SE"
+  },
+  {
+    "Name": "Switzerland",
+    "Code": "CH"
+  },
+  {
+    "Name": "Syrian Arab Republic",
+    "Code": "SY"
+  },
+  {
+    "Name": "Taiwan, Province of China",
+    "Code": "TW"
+  },
+  {
+    "Name": "Tajikistan",
+    "Code": "TJ"
+  },
+  {
+    "Name": "Tanzania, United Republic of",
+    "Code": "TZ"
+  },
+  {
+    "Name": "Thailand",
+    "Code": "TH"
+  },
+  {
+    "Name": "Timor-Leste",
+    "Code": "TL"
+  },
+  {
+    "Name": "Togo",
+    "Code": "TG"
+  },
+  {
+    "Name": "Tokelau",
+    "Code": "TK"
+  },
+  {
+    "Name": "Tonga",
+    "Code": "TO"
+  },
+  {
+    "Name": "Trinidad and Tobago",
+    "Code": "TT"
+  },
+  {
+    "Name": "Tunisia",
+    "Code": "TN"
+  },
+  {
+    "Name": "Turkey",
+    "Code": "TR"
+  },
+  {
+    "Name": "Turkmenistan",
+    "Code": "TM"
+  },
+  {
+    "Name": "Turks and Caicos Islands",
+    "Code": "TC"
+  },
+  {
+    "Name": "Tuvalu",
+    "Code": "TV"
+  },
+  {
+    "Name": "Uganda",
+    "Code": "UG"
+  },
+  {
+    "Name": "Ukraine",
+    "Code": "UA"
+  },
+  {
+    "Name": "United Arab Emirates",
+    "Code": "AE"
+  },
+  {
+    "Name": "United Kingdom",
+    "Code": "GB"
+  },
+  {
+    "Name": "United States",
+    "Code": "US"
+  },
+  {
+    "Name": "United States Minor Outlying Islands",
+    "Code": "UM"
+  },
+  {
+    "Name": "Uruguay",
+    "Code": "UY"
+  },
+  {
+    "Name": "Uzbekistan",
+    "Code": "UZ"
+  },
+  {
+    "Name": "Vanuatu",
+    "Code": "VU"
+  },
+  {
+    "Name": "Venezuela, Bolivarian Republic of",
+    "Code": "VE"
+  },
+  {
+    "Name": "Viet Nam",
+    "Code": "VN"
+  },
+  {
+    "Name": "Virgin Islands, British",
+    "Code": "VG"
+  },
+  {
+    "Name": "Virgin Islands, U.S.",
+    "Code": "VI"
+  },
+  {
+    "Name": "Wallis and Futuna",
+    "Code": "WF"
+  },
+  {
+    "Name": "Western Sahara",
+    "Code": "EH"
+  },
+  {
+    "Name": "Yemen",
+    "Code": "YE"
+  },
+  {
+    "Name": "Zambia",
+    "Code": "ZM"
+  },
+  {
+    "Name": "Zimbabwe",
+    "Code": "ZW"
+  }
+]);
+db.games.aggregate([
+  {
+    $match: {
+      Born: {$not:/,/}
+    }
+  },
+  {
+    $group:{
+      _id:"$Born"
+    }
+  },{
+    $sample:{size:5}
+  }
+]);
+db.games.distinct("Ground");
+db.games.distinct("Hand");
+db.games.distinct("WL");
+db.games.updateMany(
+  {Location: {$in: ["TBA", "TBC", "TBD"]}},
+  {$set: {Location: null}}
+);
+db.games.aggregate([
+  {
+    $group: {
+      _id:{
+        hand: {$split: ["$Hand", ","]},
+        born: {$split: ["$Born", ","]},
+        height: "$Height",
+        linkPlayer: "$LinkPlayer",
+        playerName: "$PlayerName"
+      }
+    }
+  },{
+    $project:{
+      _id:0,
+      playerName: "$_id.playerName",
+      country: {$arrayElemAt: ["$_id.born", -1]},
+      height: "$_id.height",
+      linkPlayer: {$split: ["$_id.linkPlayer", "/"]},
+      domHand: {$arrayElemAt: ["$_id.hand", 0]},
+      backhand: {$arrayElemAt: ["$_id.hand", 1]}
+    }
+  },{
+    $set: {
+      backhand: {$cond: [
+        {$eq: ["$backhand", "Unknown Backhand"]},
+        null,
+        {$trim: {input: "$backhand"}}
+      ]},
+      domHand: {$cond: [
+        {$eq: ["$domHand", "null"]},
+        null,
+        {$trim: {input: "$domHand"}}
+      ]},
+      height: {$cond: [{$eq: ["$height", "NA"]}, 0, "$height"]},
+      country: {$cond: [{$eq: ["$country", ""]}, null, {$trim: {input: "$country"}}]},
+      linkId: {$arrayElemAt: ["$linkPlayer", 6]}
+    }
+  },{
+    $out: "players"
+  }
+]);
+db.players.find({}, {_id:0, linkPlayer: 0}).limit(5);
+db.games.aggregate([
+  {
+    $group: {
+      _id: {
+        tournament: "$Tournament",
+        location: {$split: ["$Location", ", "]},
+        date: "$Date", //TODO tratar
+        ground: "$Ground"
+      },
+      prize: { $first: "$Prize" }
+    }
+  },{
+    $project: {
+      _id: 0,
+      tournament: "$_id.tournament",
+      country: {$arrayElemAt: ["$_id.location", -1]},
+      date: "$_id.date",
+      ground: {$cond: [{$eq: ["$_id.ground", ""]}, null, "$_id.ground"]},
+      prize: "$_id.prize"
+    }
+  },{
+    $out: "tournaments"
+  }
+]);
+db.tournaments.find({}, {_id:0}).limit(5);
+db.games.aggregate([
+  {
+    $match: {
+      Oponent: {$ne: "bye"}
+    }
+  },
+  {
+    $set: {
+      winner: {$cond: [{$eq: ["$WL", "W"]}, "$PlayerName", "$Oponent"]},
+      loser: {$cond: [{$eq: ["$WL", "W"]}, "$Oponent", "$PlayerName"]},
+      winnerLink: {$cond: [
+        {$eq: ["$WL", "W"]},
+        {$split: ["$LinkPlayer", "/"]},
+        null
+      ]},
+      looserLink: {$cond: [
+        {$eq: ["$WL", "W"]},
+        null,
+        {$split: ["$LinkPlayer", "/"]}
+      ]}
+    }
+  },
+  {
+    $group: {
+      _id:["$Tournament", "$GameRound", "$Date", "$winner", "$loser", {$arrayElemAt: ["$winnerLink", 6]}, {$arrayElemAt: ["$looserLink", 6]}],
+      count: {$sum: 1},
+      sets: {$push:"$Score"}
+    }
+  },{
+    $project: {
+      _id: false,
+      tournament: {$arrayElemAt: ["$_id", 0]},
+      gameRound: {$arrayElemAt: ["$_id", 1]},
+      date: {$arrayElemAt: ["$_id", 2]},
+      winner: {$arrayElemAt: ["$_id", 3]},
+      loser: {$arrayElemAt: ["$_id", 4]},
+      winnerLinkId: {$arrayElemAt: ["$_id", 5]},
+      loserLinkId: {$arrayElemAt: ["$_id", 6]},
+      count: true,
+      sets: true
+    }
+  }, {
+    $out: "matches"
+  }
+]);
+db.matches.find({}, {_id:0}).limit(5);
+db.matches.aggregate([
+  {
+    $match: {
+      winnerLinkId: null
+    }
+  },
+  {
+    $lookup:{
+      from: "players",
+      localField: "winner",
+      foreignField: "playerName",
+      as: "winnerInfo"
+    }
+  },{
+    $set:{
+      winnerLinkId: {$arrayElemAt: ["$winnerInfo.linkId", 0]}
+    }
+  },{
+    $project: {
+      winnerInfo: false
+    }
+  },{
+    $merge: {
+      into: "matches",
+      on: "_id",
+      whenMatched: "replace",
+      whenNotMatched: "fail"
+    }
+  }
+]);
+db.matches.aggregate([
+  {
+    $match: {
+      loserLinkId: null
+    }
+  },
+  {
+    $lookup:{
+      from: "players",
+      localField: "loser",
+      foreignField: "playerName",
+      as: "loserInfo"
+    }
+  },{
+    $set:{
+      loserLinkId: {$arrayElemAt: ["$loserInfo.linkId", 0]}
+    }
+  },{
+    $project: {
+      loserInfo: false
+    }
+  },{
+    $merge: {
+      into: "matches",
+      on: "_id",
+      whenMatched: "replace",
+      whenNotMatched: "fail"
+    }
+  }
+]);
+db.countryCodes.aggregate([
+  {
+    $lookup: {
+      from: "countryAliases",
+      localField: "Code",
+      foreignField: "code",
+      as: "aliases"
+    }
+  },
+  {
+    $match: {
+      aliases: {$size: 0}
+    }
+  },{
+    $project:{
+      _id: 0,
+      alias: "$Name",
+      code: "$Code",
+      country: "$Name",
+    }
+  },{
+    $unionWith: {
+      coll: "countryAliases",
+      pipeline: [
+        {
+          $project: {
+            _id: 0,
+          }
+        }
+      ]
+    }
+  },
+  {
+    $out: "countryAliases"
+  }
+]);
+db.players.aggregate([
+  {
+    $lookup:{
+      from: "countryAliases",
+      localField: "country",
+      foreignField: "alias",
+      as: "alias"
+    }
+   },{
+   $set: {
+    countryCode: {$arrayElemAt: ["$alias.code", 0]},
+    alias: {$arrayElemAt: ["$alias.alias", 0]},
+    country: {$arrayElemAt: ["$alias.country", 0]},
+   }
+  },
+  {$out: "players"}
+]);
+db.players.find({}, {_id:0}).limit(5);
+db.tournaments.aggregate([
+  {
+    $lookup:{
+      from: "countryAliases",
+      localField: "country",
+      foreignField: "alias",
+      as: "alias"
+    }
+   },{
+   $set: {
+    countryCode: {$arrayElemAt: ["$alias.code", 0]},
+    alias: {$arrayElemAt: ["$alias.alias", 0]},
+    country: {$arrayElemAt: ["$alias.country", 0]},
+   }
+  },
+  {$out: "tournaments"}
+]);
+db.tournaments.find({}, {_id:0}).limit(5);
+
+db.countryAliases.aggregate([
+  {
+    $group:{
+      _id: ["$code", "$country"],
+      alias: {$push: "$alias"}
+    }
+    },{
+        $project:{
+            _id: 0,
+            code: {$arrayElemAt: ["$_id", 0]},
+            country: {$arrayElemAt: ["$_id", 1]},
+            alias: 1
+        }
+        },{
+        $out: "countryCodes"
+    }
+]);
+db.matches.aggregate([
+  {
+    $lookup:{
+      from: "players",
+      localField: "winner",
+      foreignField: "playerName",
+      as: "winnerInfo"
+    }
+  },{
+    $lookup:{
+      from: "players",
+      localField: "loser",
+      foreignField: "playerName",
+      as: "loserInfo"
+    }
+  },{
+    $project:{
+      _id: 0,
+      winner: 1,
+      loser: 1,
+      countWinner: { $size: "$winnerInfo" },
+      countLooser: { $size: "$loserInfo" }
+    }
+  },{
+    $match: {
+      $or: [
+        {countWinner: 0},
+        {countLooser: 0}
+      ]
+    }
+  },{
+    $project: {
+      player: {$cond: [{$eq: ["$countWinner", 0]}, "$winner", "$loser"]}
+    }
+  },
+  {
+    $group: {
+      _id: "$player",
+      count: {$sum: 1}
+    }
+  },{
+    $out: "missingPlayers"
+  }
+]);
+db.missingPlayers.find().limit(5);
+db.missingPlayers.aggregate([
+  {
+    $project: {
+      _id: 0,
+      playerName: "$_id",
+      linkId: null,
+      country: null,
+      countryCode: null,
+      alias: null
+    }
+  },
+  {
+    $unionWith: {
+      coll: "players",
+      pipeline: [
+        {
+          $project: {
+            _id: 0,
+          }
+        }
+      ]
+    },
+  },{
+    $out: "players"
+  }
+]);
+db.players.aggregate([
+  {
+    $group: {
+      _id: "$domHand"
+    }
+  },{$match: {_id: {$ne: null}}},{
+    $out: "domHands"
+  }
+]);
+db.players.aggregate([
+  {
+    $group: {
+      _id: "$backhand"
+    }
+  },{$match: {_id: {$ne: null}}},{
+    $out: "backhands"
+  }
+]);
+db.tournaments.aggregate([
+  {
+    $group: {
+      _id: "$ground"
+    }
+  },{$match: {_id: {$ne: null}}},{
+    $out: "grounds"
+  }
+]);
