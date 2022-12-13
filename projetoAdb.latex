@@ -1511,7 +1511,7 @@ Listar o top 5 de jogadores com o seu número de vitórias em quadra dura
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule()
-winnerName & count(*) \\
+winnerName & wins \\
 \midrule()
 \endhead
 Roger Federer & 801 \\

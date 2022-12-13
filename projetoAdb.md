@@ -995,7 +995,7 @@ where t.ground = 'Hard'
 group by g.winnerName, g.winnerLinkId
 order by count(*) desc limit 5;
 ```
-| winnerName | count\(\*\) |
+| winnerName | wins |
 | :--- | :--- |
 | Roger Federer | 801 |
 | Novak Djokovic | 658 |
