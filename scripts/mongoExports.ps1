@@ -22,7 +22,7 @@ mongoexport --db=atp `
   --collection=matches `
   --type=csv `
   --fields=sets,winner,winnerLinkId,loser,loserLinkId,tournament,date,gameRound `
-  --out .\data\exports\games.csv `
+  --out .\data\exports\games.csv
 mongoexport --db=atp `
   --collection=players `
   --type=csv `

@@ -1,3 +1,6 @@
+drop database if exists aluno_105289_atp;
+create database aluno_105289_atp;
+use aluno_105289_atp;
 CREATE TABLE `Games`(
     `winnerName` VARCHAR(255) NOT NULL,
     `winnerLinkId` CHAR(4) NOT NULL,

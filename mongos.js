@@ -16,6 +16,10 @@ db.games.aggregate([
 db.games.distinct("Ground");
 db.games.distinct("Hand");
 db.games.distinct("WL");
+db.games.updateMany(
+  {Location: {$in: ["TBA", "TBC", "TBD"]}},
+  {$set: {Location: null}}
+);
 db.games.aggregate([
   {
     $group: {
@@ -65,9 +69,9 @@ db.games.aggregate([
         tournament: "$Tournament",
         location: {$split: ["$Location", ", "]},
         date: "$Date", //TODO tratar
-        ground: "$Ground",
-        prize: "$Prize"
-      }
+        ground: "$Ground"
+      },
+      prize: { $first: "$Prize" }
     }
   },{
     $project: {
@@ -191,24 +195,37 @@ db.matches.aggregate([
 ]);
 db.countryCodes.aggregate([
   {
+    $lookup: {
+      from: "countryAliases",
+      localField: "Code",
+      foreignField: "code",
+      as: "aliases"
+    }
+  },
+  {
+    $match: {
+      aliases: {$size: 0}
+    }
+  },{
     $project:{
       _id: 0,
       alias: "$Name",
       code: "$Code",
-      country: "$Name"
+      country: "$Name",
     }
   },{
     $unionWith: {
       coll: "countryAliases",
       pipeline: [
         {
-          $project:{
-            _id: 0
+          $project: {
+            _id: 0,
           }
         }
       ]
     }
-  },{
+  },
+  {
     $out: "countryAliases"
   }
 ]);
@@ -311,23 +328,30 @@ db.matches.aggregate([
   }
 ]);
 db.missingPlayers.find().limit(5);
-db.players.aggregate([
+db.missingPlayers.aggregate([
   {
-    $unionWith: {
-      coll: "missingPlayers"
+    $project: {
+      _id: 0,
+      playerName: "$_id",
+      linkId: null,
+      country: null,
+      countryCode: null,
+      alias: null
     }
   },
   {
+    $unionWith: {
+      coll: "players",
+      pipeline: [
+        {
+          $project: {
+            _id: 0,
+          }
+        }
+      ]
+    },
+  },{
     $out: "players"
-  }
-]);
-db.players.aggregate([
-  {
-    $group: {
-      _id: "$domHand"
-    }
-  },{$match: {_id: {$ne: null}}},{
-    $out: "domHands"
   }
 ]);
 db.players.aggregate([

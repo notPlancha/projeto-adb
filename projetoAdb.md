@@ -1,7 +1,7 @@
 ---
 title: "TODO titulo"
 subtitle: "Trabalho elaborado no âmbito da Unidade Curricular de Armazenamento para Big Data do 2º ano da Licenciatura de Ciência de Dados do Instituto Universitário de Lisboa ISCTE"
-author: [André Plancha; 105289, Afonso Silva;105208, Tomas Ribeiro;105220]
+author: [André Plancha; 105289, Afonso Silva; 105208, Tomas Ribeiro; 105220]
 date: "07/12/2022"
 header-includes:
 - \usepackage[a4paper, total={6in, 8in}]{geometry}
@@ -47,19 +47,19 @@ db.games.find({}, {_id:0}).limit(5);
 \normalsize
 
 A coleção contém 15 colunas:
-* PlayerName: Nome do jogador do jogo
-* Born: Onde este jogador nasceu (cidade, pais)
-* Height: Altura deste jogador (cm)
-* Hand: A mão dominante do jogador, e o tipo de _backhand_ que utiliza
-* LinkPlayer: link para a página do jogador em atptour.com
-* Tournament: nome do torneio do jogo
-* Location : A cidade e país onde o torneio foi realizado
-* Date: Periodo de tempo do torneio
-* GameRound: fase do jogo no torneio
-* GameRank: _ATP Rankings_ do jogo
-* WL: Vitoria ou Derrota (W ou L)
-* Oponent: Nome do Oponente
-* Score: Sets do jogo
+- PlayerName: Nome do jogador do jogo
+- Born: Onde este jogador nasceu (cidade, pais)
+- Height: Altura deste jogador (cm)
+- Hand: A mão dominante do jogador, e o tipo de _backhand_ que utiliza
+- LinkPlayer: link para a página do jogador em atptour.com
+- Tournament: nome do torneio do jogo
+- Location : A cidade e país onde o torneio foi realizado
+- Date: Periodo de tempo do torneio
+- GameRound: fase do jogo no torneio
+- GameRank: _ATP Rankings_ do jogo
+- WL: Vitoria ou Derrota (W ou L)
+- Oponent: Nome do Oponente
+- Score: Sets do jogo
 
 # Preparar dos dados
 Para preparar os dados, nós planeámos transformar a nossa coleção em coleções diferentes, de forma a representar o modelo relacionar, para facilitar a sua transição. Para isso, desenhámos o nosso diagrama do modelo relacional pretendido:
@@ -173,6 +173,13 @@ Verificou-se que nestas na primeira e última colunas, a base de dados não cont
 
 Ainda assim, decimos separar a _Hand_ em duas colunas, porque vai ser útil para a análise futura.
 
+Por último, observámos casos de torneios com os valores 'TBA', 'TBC', e 'TBD'. Decidimos tornar esses locais como null, de forma a não interferir com os resultados, pois cada um desses valores equivale a 'To be announced', 'To be confirmed', e 'To be determined'.
+```javascript
+db.games.updateMany(
+  {Location: {$in: ["TBA", "TBC", "TBD"]}},
+  {$set: {Location: null}}
+);
+```
 # Criação das coleções
 
 Para a nossa criação das coleções, vai ser usada primariamente a função `aggregate` do MongoDB. Esta função permite executar várias _pipelines_ de operações sobre os dados, e é muito útil para a criação de coleções, devido à sua flexibilidade e ao seu desempenho. Em cada uma destas, a _pipeline_ "$out" é usada para exportar os dados da _query_ para uma nova coleção.
@@ -252,10 +259,10 @@ db.games.aggregate([
       _id: {
         tournament: "$Tournament",
         location: {$split: ["$Location", ", "]},
-        date: "$Date", //TODO perguntar se é preciso tratar
-        ground: "$Ground",
-        prize: "$Prize"
-      }
+        date: "$Date", //TODO tratar
+        ground: "$Ground"
+      },
+      prize: { $first: "$Prize" }
     }
   },{
     $project: {
@@ -422,24 +429,37 @@ Até este momento, temos duas (2) coleções que referiam aos paises dos jogador
 ```javascript
 db.countryCodes.aggregate([
   {
+    $lookup: {
+      from: "countryAliases",
+      localField: "Code",
+      foreignField: "code",
+      as: "aliases"
+    }
+  },
+  {
+    $match: {
+      aliases: {$size: 0}
+    }
+  },{
     $project:{
       _id: 0,
       alias: "$Name",
       code: "$Code",
-      country: "$Name"
+      country: "$Name",
     }
   },{
     $unionWith: {
       coll: "countryAliases",
       pipeline: [
         {
-          $project:{
-            _id: 0
+          $project: {
+            _id: 0,
           }
         }
       ]
     }
-  },{
+  },
+  {
     $out: "countryAliases"
   }
 ]);
@@ -593,13 +613,29 @@ db.missingPlayers.find().limit(5);
 Esta _query_ primeiro vai verificar os players que estão na coleção _players_ e depois vai agrupar por nome de jogador e contar o número de vezes que não aparece. O resultado é guardado na coleção _missingPlayers_. A seguir, vamos adicionar estes os jogadores à coleção _players_, usando o `$unionWith`.
 
 ```javascript
-db.players.aggregate([
+db.missingPlayers.aggregate([
   {
-    $unionWith: {
-      coll: "missingPlayers"
+    $project: {
+      _id: 0,
+      playerName: "$_id",
+      linkId: null,
+      country: null,
+      countryCode: null,
+      alias: null
     }
   },
   {
+    $unionWith: {
+      coll: "players",
+      pipeline: [
+        {
+          $project: {
+            _id: 0,
+          }
+        }
+      ]
+    },
+  },{
     $out: "players"
   }
 ]);
@@ -677,3 +713,142 @@ mongoexport --db=atp `
   --fields=countryCode,ground,prize,tournament,date `
   --out .\data\exports\tournaments.csv
 ```
+Para inserir esses csvs na base de dados relacional mysql, vamos usar a declaração `LOAD DATA LOCAL INFILE` do mysql. No entanto, é necessário criar as tabelas e as suas relações previamente, e para isso vai ser usado o diagrama acima como referência.
+```sql
+drop database if exists aluno_105289_atp;
+create database aluno_105289_atp;
+use aluno_105289_atp;
+CREATE TABLE `Games`(
+    `winnerName` VARCHAR(255) NOT NULL,
+    `winnerLinkId` CHAR(4) NOT NULL,
+    `looserName` VARCHAR(255) NOT NULL,
+    `looserLinkId` CHAR(4) NOT NULL,
+    `tournamentDate` VARCHAR(255) NOT NULL,
+    `tournamentName` VARCHAR(255) NOT NULL,
+    `round` VARCHAR(255) NOT NULL,
+    `score` VARCHAR(255) NOT NULL,
+    primary key (`winnerName`,`winnerLinkId`,`looserName`,`looserLinkId`,`tournamentDate`,`tournamentName`, `round`)
+);
+CREATE TABLE `Grounds`(`name` VARCHAR(255) NOT NULL primary key );
+CREATE TABLE `Tournaments`(
+    `name` VARCHAR(255) NOT NULL,
+    `date` VARCHAR(255) NOT NULL,
+    `countryId` CHAR(2) NULL,
+    `ground` VARCHAR(255) NULL,
+    `prize` VARCHAR(255) NULL,
+    primary key (`name`,`date`)
+);
+CREATE TABLE `Players`(
+    `name` VARCHAR(255) NOT NULL ,
+    `linkId` CHAR(4) NOT NULL DEFAULT '0000',
+    `bornCountryId` CHAR(2) NULL,
+    `domHand` VARCHAR(255) NULL,
+    `backhand` VARCHAR(255) NULL,
+    `height` INT not null default 0,
+    primary key (`name`,`linkId`)
+);
+CREATE TABLE `DomHand`(`name` VARCHAR(255) NOT NULL);
+ALTER TABLE
+    `DomHand` ADD PRIMARY KEY `domhand_name_primary`(`name`);
+CREATE TABLE `BackHand`(`name` VARCHAR(255) NOT NULL);
+ALTER TABLE
+    `BackHand` ADD PRIMARY KEY `backhand_name_primary`(`name`);
+CREATE TABLE `Countries`(
+    `id` CHAR(2) NOT NULL primary key ,
+    `name` VARCHAR(255) NOT NULL
+);
+ALTER TABLE
+    `Players` ADD CONSTRAINT `players_backhand_foreign` FOREIGN KEY(`backhand`) REFERENCES `BackHand`(`name`);
+ALTER TABLE
+    `Players` ADD CONSTRAINT `players_domhand_foreign` FOREIGN KEY(`domHand`) REFERENCES `DomHand`(`name`);
+ALTER TABLE
+    `Tournaments` ADD CONSTRAINT `tournaments_ground_foreign` FOREIGN KEY(`ground`) REFERENCES `Grounds`(`name`);
+ALTER TABLE
+    `Tournaments` ADD CONSTRAINT `tournaments_countryid_foreign` FOREIGN KEY(`countryId`) REFERENCES `Countries`(`id`);
+ALTER TABLE
+    `Players` ADD CONSTRAINT `players_borncountryid_foreign` FOREIGN KEY(`bornCountryId`) REFERENCES `Countries`(`id`);
+alter table `Games` add constraint `games_winnername_winnerlinkid_foreign` foreign key (`winnerName`,`winnerLinkId`) references `Players`(`name`,`linkId`);
+alter table `Games` add constraint `games_loosername_looserlinkid_foreign` foreign key (`looserName`,`looserLinkId`) references `Players`(`name`,`linkId`);
+alter table `Games` add constraint `games_tournamentdate_tournamentname_foreign` foreign key (`tournamentName`,`tournamentDate`) references `Tournaments`(`name`,`date`);
+```
+Agora, vamos importar os dados.
+```sql
+
+load data concurrent local infile './data/exports/backhand.csv'
+into table backhand
+    fields
+        terminated by ','
+        optionally enclosed by '"'
+    ignore 1 lines
+(name);
+show warnings;
+load data concurrent local infile './data/exports/countries.csv'
+into table countries
+    fields
+        terminated by ','
+        optionally enclosed by '"'
+    ignore 1 lines
+(id, name);
+show warnings;
+load data concurrent local infile './data/exports/domhand.csv'
+into table domhand
+    fields
+        terminated by ','
+        optionally enclosed by '"'
+    ignore 1 lines
+(name);
+show warnings;
+load data concurrent local infile './data/exports/grounds.csv'
+into table grounds
+    fields
+        terminated by ','
+        optionally enclosed by '"'
+    ignore 1 lines
+(name);
+show warnings;
+
+load data concurrent local infile './data/exports/players.csv'
+into table players
+    fields
+        terminated by ','
+        optionally enclosed by '"'
+    ignore 1 lines
+(@vBornCountryId, @vDomHand, @vbackhand, @vHeight, name, @vLinkId)
+set
+    BornCountryId = NULLIF(@vBornCountryId, ''),
+    backhand = NULLIF(@vbackhand, ''),
+    domhand = NULLIF(@vDomHand, ''),
+    linkId = IF(@vLinkId= '' OR ISNULL(@vLinkId), '0000', @vLinkId),
+    height = IF(@vHeight= '' OR ISNULL(@vHeight), 0, @vHeight)
+;
+show warnings;
+load data concurrent local infile './data/exports/tournaments.csv'
+into table tournaments
+    fields
+        terminated by ','
+        optionally enclosed by '"'
+    ignore 1 lines
+(@vCountryId, @vGround, prize, name, date)
+set
+    Ground = NULLIF(@vGround, ''),
+    CountryId = NULLIF(@vCountryId, '');
+;
+show warnings;
+
+load data concurrent local infile './data/exports/games.csv'
+into table games
+    fields
+        terminated by ','
+        optionally enclosed by '"'
+    ignore 1 lines
+(score, winnerName, @vWinnerLinkId, looserName, @vLooserLinkId, tournamentName, tournamentDate, round)
+set
+    WinnerLinkId = IF(@vWinnerLinkId= '' OR ISNULL(@vWinnerLinkId), '0000', @vWinnerLinkId),
+    LooserLinkId = IF(@vLooserLinkId= '' OR ISNULL(@vLooserLinkId), '0000', @vLooserLinkId);
+show warnings;
+```
+Em cada um destes processos, duas coisas crucias estão a acontecer: 
+- Campos vazios no csv estão a ser substituidos pelos seus valores default
+- A cada execução do comando, segue-se um comando _show warnings_, que mostra os erros que ocorreram durante a execução do comando anterior.
+
+Os warnings apresentados são nas tabelas 

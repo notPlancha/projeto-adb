@@ -1,0 +1,6 @@
+drop mongoDatabase
+mongoimport
+run mongosjs
+mongoexport
+importMySql
+check warnings

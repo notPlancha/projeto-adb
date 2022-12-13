@@ -7,4 +7,5 @@ scoop install pandoc
 scoop install 7zip
 scoop install mongosh
 scoop install mongodb-database-tools
+scoop install mariadb
 7z x .\data\atpplayers.7z
