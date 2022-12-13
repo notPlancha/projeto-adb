@@ -357,6 +357,15 @@ db.missingPlayers.aggregate([
 db.players.aggregate([
   {
     $group: {
+      _id: "$domHand"
+    }
+  },{$match: {_id: {$ne: null}}},{
+    $out: "domHands"
+  }
+]);
+db.players.aggregate([
+  {
+    $group: {
       _id: "$backhand"
     }
   },{$match: {_id: {$ne: null}}},{

@@ -117,13 +117,13 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
-  pdftitle={TODO titulo},
-  pdfauthor={André Plancha; 105289; Afonso Silva; 105208; Tomas Ribeiro; 105220},
+  pdftitle={Estudo da base de dados ATP},
+  pdfauthor={André Plancha; 105289; Afonso Silva; 105208; Tomás Ribeiro; 105220},
   pdflang={pt-pt},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
-\title{TODO titulo}
+\title{Estudo da base de dados ATP}
 \usepackage{etoolbox}
 \makeatletter
 \providecommand{\subtitle}[1]{% add subtitle to \maketitle
@@ -133,9 +133,9 @@
 \subtitle{Trabalho elaborado no âmbito da Unidade Curricular de
 Armazenamento para Big Data do 2º ano da Licenciatura de Ciência de
 Dados do Instituto Universitário de Lisboa ISCTE}
-\author{André Plancha; 105289 \and Afonso Silva; 105208 \and Tomas
+\author{André Plancha; 105289 \and Afonso Silva; 105208 \and Tomás
 Ribeiro; 105220}
-\date{07/12/2022}
+\date{13/12/2022; Versão 1.0}
 
 \begin{document}
 \maketitle
@@ -634,7 +634,15 @@ Japan & 2017.09.11 - 2017.09.17 & Hard & & JPN vs.~BRA WG Play-Off \\
 \NormalTok{  \}}\OperatorTok{,}
 \NormalTok{  \{}
     \DataTypeTok{$group}\OperatorTok{:}\NormalTok{ \{}
-      \DataTypeTok{\_id}\OperatorTok{:}\NormalTok{[}\StringTok{"$Tournament"}\OperatorTok{,} \StringTok{"$GameRound"}\OperatorTok{,} \StringTok{"$Date"}\OperatorTok{,} \StringTok{"$winner"}\OperatorTok{,} \StringTok{"$loser"}\OperatorTok{,}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$winnerLink"}\OperatorTok{,} \DecValTok{6}\NormalTok{]\}}\OperatorTok{,}\NormalTok{ \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$looserLink"}\OperatorTok{,} \DecValTok{6}\NormalTok{]\}]}\OperatorTok{,}
+      \DataTypeTok{\_id}\OperatorTok{:}\NormalTok{[}
+        \StringTok{"$Tournament"}\OperatorTok{,} 
+        \StringTok{"$GameRound"}\OperatorTok{,} 
+        \StringTok{"$Date"}\OperatorTok{,} 
+        \StringTok{"$winner"}\OperatorTok{,} 
+        \StringTok{"$loser"}\OperatorTok{,} 
+\NormalTok{        \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$winnerLink"}\OperatorTok{,} \DecValTok{6}\NormalTok{]\}}\OperatorTok{,} 
+\NormalTok{        \{}\DataTypeTok{$arrayElemAt}\OperatorTok{:}\NormalTok{ [}\StringTok{"$looserLink"}\OperatorTok{,} \DecValTok{6}\NormalTok{]\}}
+\NormalTok{      ]}\OperatorTok{,}
       \DataTypeTok{count}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$sum}\OperatorTok{:} \DecValTok{1}\NormalTok{\}}\OperatorTok{,}
       \DataTypeTok{sets}\OperatorTok{:}\NormalTok{ \{}\DataTypeTok{$push}\OperatorTok{:}\StringTok{"$Score"}\NormalTok{\}}
 \NormalTok{    \}}
@@ -1186,7 +1194,9 @@ vai ser usado o diagrama acima como referência.
 \NormalTok{    \textasciigrave{}tournamentName\textasciigrave{} }\DataTypeTok{VARCHAR}\NormalTok{(}\DecValTok{255}\NormalTok{) }\KeywordTok{NOT} \KeywordTok{NULL}\NormalTok{,}
 \NormalTok{    \textasciigrave{}round\textasciigrave{} }\DataTypeTok{VARCHAR}\NormalTok{(}\DecValTok{255}\NormalTok{) }\KeywordTok{NOT} \KeywordTok{NULL}\NormalTok{,}
 \NormalTok{    \textasciigrave{}score\textasciigrave{} }\DataTypeTok{VARCHAR}\NormalTok{(}\DecValTok{255}\NormalTok{) }\KeywordTok{NOT} \KeywordTok{NULL}\NormalTok{,}
-    \KeywordTok{primary} \KeywordTok{key}\NormalTok{ (\textasciigrave{}winnerName\textasciigrave{},\textasciigrave{}winnerLinkId\textasciigrave{},\textasciigrave{}looserName\textasciigrave{},\textasciigrave{}looserLinkId\textasciigrave{},\textasciigrave{}tournamentDate\textasciigrave{},\textasciigrave{}tournamentName\textasciigrave{}, \textasciigrave{}round\textasciigrave{})}
+    \KeywordTok{primary} \KeywordTok{key} 
+\NormalTok{    (\textasciigrave{}winnerName\textasciigrave{},\textasciigrave{}winnerLinkId\textasciigrave{},\textasciigrave{}looserName\textasciigrave{},}
+\NormalTok{     \textasciigrave{}looserLinkId\textasciigrave{},\textasciigrave{}tournamentDate\textasciigrave{},\textasciigrave{}tournamentName\textasciigrave{}, \textasciigrave{}round\textasciigrave{})}
 \NormalTok{);}
 \KeywordTok{CREATE} \KeywordTok{TABLE}\NormalTok{ \textasciigrave{}Grounds\textasciigrave{}(\textasciigrave{}name\textasciigrave{} }\DataTypeTok{VARCHAR}\NormalTok{(}\DecValTok{255}\NormalTok{) }\KeywordTok{NOT} \KeywordTok{NULL} \KeywordTok{primary} \KeywordTok{key}\NormalTok{ );}
 \KeywordTok{CREATE} \KeywordTok{TABLE}\NormalTok{ \textasciigrave{}Tournaments\textasciigrave{}(}
@@ -1217,18 +1227,39 @@ vai ser usado o diagrama acima como referência.
 \NormalTok{    \textasciigrave{}name\textasciigrave{} }\DataTypeTok{VARCHAR}\NormalTok{(}\DecValTok{255}\NormalTok{) }\KeywordTok{NOT} \KeywordTok{NULL}
 \NormalTok{);}
 \KeywordTok{ALTER} \KeywordTok{TABLE}
-\NormalTok{    \textasciigrave{}Players\textasciigrave{} }\KeywordTok{ADD} \KeywordTok{CONSTRAINT}\NormalTok{ \textasciigrave{}players\_backhand\_foreign\textasciigrave{} }\KeywordTok{FOREIGN} \KeywordTok{KEY}\NormalTok{(\textasciigrave{}backhand\textasciigrave{}) }\KeywordTok{REFERENCES}\NormalTok{ \textasciigrave{}BackHand\textasciigrave{}(\textasciigrave{}name\textasciigrave{});}
+\NormalTok{    \textasciigrave{}Players\textasciigrave{} }\KeywordTok{ADD} \KeywordTok{CONSTRAINT} 
+\NormalTok{    \textasciigrave{}players\_backhand\_foreign\textasciigrave{} }\KeywordTok{FOREIGN} \KeywordTok{KEY}\NormalTok{(\textasciigrave{}backhand\textasciigrave{}) }
+        \KeywordTok{REFERENCES}\NormalTok{ \textasciigrave{}BackHand\textasciigrave{}(\textasciigrave{}name\textasciigrave{});}
 \KeywordTok{ALTER} \KeywordTok{TABLE}
-\NormalTok{    \textasciigrave{}Players\textasciigrave{} }\KeywordTok{ADD} \KeywordTok{CONSTRAINT}\NormalTok{ \textasciigrave{}players\_domhand\_foreign\textasciigrave{} }\KeywordTok{FOREIGN} \KeywordTok{KEY}\NormalTok{(\textasciigrave{}domHand\textasciigrave{}) }\KeywordTok{REFERENCES}\NormalTok{ \textasciigrave{}DomHand\textasciigrave{}(\textasciigrave{}name\textasciigrave{});}
+\NormalTok{    \textasciigrave{}Players\textasciigrave{} }\KeywordTok{ADD} \KeywordTok{CONSTRAINT} 
+\NormalTok{    \textasciigrave{}players\_domhand\_foreign\textasciigrave{} }
+    \KeywordTok{FOREIGN} \KeywordTok{KEY}\NormalTok{(\textasciigrave{}domHand\textasciigrave{}) }
+        \KeywordTok{REFERENCES}\NormalTok{ \textasciigrave{}DomHand\textasciigrave{}(\textasciigrave{}name\textasciigrave{});}
 \KeywordTok{ALTER} \KeywordTok{TABLE}
-\NormalTok{    \textasciigrave{}Tournaments\textasciigrave{} }\KeywordTok{ADD} \KeywordTok{CONSTRAINT}\NormalTok{ \textasciigrave{}tournaments\_ground\_foreign\textasciigrave{} }\KeywordTok{FOREIGN} \KeywordTok{KEY}\NormalTok{(\textasciigrave{}ground\textasciigrave{}) }\KeywordTok{REFERENCES}\NormalTok{ \textasciigrave{}Grounds\textasciigrave{}(\textasciigrave{}name\textasciigrave{});}
+\NormalTok{    \textasciigrave{}Tournaments\textasciigrave{} }\KeywordTok{ADD} \KeywordTok{CONSTRAINT} 
+\NormalTok{    \textasciigrave{}tournaments\_ground\_foreign\textasciigrave{} }
+    \KeywordTok{FOREIGN} \KeywordTok{KEY}\NormalTok{(\textasciigrave{}ground\textasciigrave{})}
+        \KeywordTok{REFERENCES}\NormalTok{ \textasciigrave{}Grounds\textasciigrave{}(\textasciigrave{}name\textasciigrave{});}
 \KeywordTok{ALTER} \KeywordTok{TABLE}
-\NormalTok{    \textasciigrave{}Tournaments\textasciigrave{} }\KeywordTok{ADD} \KeywordTok{CONSTRAINT}\NormalTok{ \textasciigrave{}tournaments\_countryid\_foreign\textasciigrave{} }\KeywordTok{FOREIGN} \KeywordTok{KEY}\NormalTok{(\textasciigrave{}countryId\textasciigrave{}) }\KeywordTok{REFERENCES}\NormalTok{ \textasciigrave{}Countries\textasciigrave{}(\textasciigrave{}id\textasciigrave{});}
+\NormalTok{    \textasciigrave{}Tournaments\textasciigrave{} }\KeywordTok{ADD} \KeywordTok{CONSTRAINT} 
+\NormalTok{    \textasciigrave{}tournaments\_countryid\_foreign\textasciigrave{} }
+        \KeywordTok{FOREIGN} \KeywordTok{KEY}\NormalTok{(\textasciigrave{}countryId\textasciigrave{}) }\KeywordTok{REFERENCES}\NormalTok{ \textasciigrave{}Countries\textasciigrave{}(\textasciigrave{}id\textasciigrave{});}
 \KeywordTok{ALTER} \KeywordTok{TABLE}
-\NormalTok{    \textasciigrave{}Players\textasciigrave{} }\KeywordTok{ADD} \KeywordTok{CONSTRAINT}\NormalTok{ \textasciigrave{}players\_borncountryid\_foreign\textasciigrave{} }\KeywordTok{FOREIGN} \KeywordTok{KEY}\NormalTok{(\textasciigrave{}bornCountryId\textasciigrave{}) }\KeywordTok{REFERENCES}\NormalTok{ \textasciigrave{}Countries\textasciigrave{}(\textasciigrave{}id\textasciigrave{});}
-\KeywordTok{alter} \KeywordTok{table}\NormalTok{ \textasciigrave{}Games\textasciigrave{} }\KeywordTok{add} \KeywordTok{constraint}\NormalTok{ \textasciigrave{}games\_winnername\_winnerlinkid\_foreign\textasciigrave{} }\KeywordTok{foreign} \KeywordTok{key}\NormalTok{ (\textasciigrave{}winnerName\textasciigrave{},\textasciigrave{}winnerLinkId\textasciigrave{}) }\KeywordTok{references}\NormalTok{ \textasciigrave{}Players\textasciigrave{}(\textasciigrave{}name\textasciigrave{},\textasciigrave{}linkId\textasciigrave{});}
-\KeywordTok{alter} \KeywordTok{table}\NormalTok{ \textasciigrave{}Games\textasciigrave{} }\KeywordTok{add} \KeywordTok{constraint}\NormalTok{ \textasciigrave{}games\_loosername\_looserlinkid\_foreign\textasciigrave{} }\KeywordTok{foreign} \KeywordTok{key}\NormalTok{ (\textasciigrave{}looserName\textasciigrave{},\textasciigrave{}looserLinkId\textasciigrave{}) }\KeywordTok{references}\NormalTok{ \textasciigrave{}Players\textasciigrave{}(\textasciigrave{}name\textasciigrave{},\textasciigrave{}linkId\textasciigrave{});}
-\KeywordTok{alter} \KeywordTok{table}\NormalTok{ \textasciigrave{}Games\textasciigrave{} }\KeywordTok{add} \KeywordTok{constraint}\NormalTok{ \textasciigrave{}games\_tournamentdate\_tournamentname\_foreign\textasciigrave{} }\KeywordTok{foreign} \KeywordTok{key}\NormalTok{ (\textasciigrave{}tournamentName\textasciigrave{},\textasciigrave{}tournamentDate\textasciigrave{}) }\KeywordTok{references}\NormalTok{ \textasciigrave{}Tournaments\textasciigrave{}(\textasciigrave{}name\textasciigrave{},\textasciigrave{}date\textasciigrave{});}
+\NormalTok{    \textasciigrave{}Players\textasciigrave{} }\KeywordTok{ADD} \KeywordTok{CONSTRAINT} 
+\NormalTok{    \textasciigrave{}players\_borncountryid\_foreign\textasciigrave{} }
+        \KeywordTok{FOREIGN} \KeywordTok{KEY}\NormalTok{(\textasciigrave{}bornCountryId\textasciigrave{}) }\KeywordTok{REFERENCES}\NormalTok{ \textasciigrave{}Countries\textasciigrave{}(\textasciigrave{}id\textasciigrave{});}
+\KeywordTok{alter} \KeywordTok{table}\NormalTok{ \textasciigrave{}Games\textasciigrave{} }\KeywordTok{add} \KeywordTok{constraint} 
+\NormalTok{    \textasciigrave{}games\_winnername\_winnerlinkid\_foreign\textasciigrave{} }
+    \KeywordTok{foreign} \KeywordTok{key}\NormalTok{ (\textasciigrave{}winnerName\textasciigrave{},\textasciigrave{}winnerLinkId\textasciigrave{}) }
+        \KeywordTok{references}\NormalTok{ \textasciigrave{}Players\textasciigrave{}(\textasciigrave{}name\textasciigrave{},\textasciigrave{}linkId\textasciigrave{});}
+\KeywordTok{alter} \KeywordTok{table}\NormalTok{ \textasciigrave{}Games\textasciigrave{} }\KeywordTok{add} \KeywordTok{constraint} 
+\NormalTok{    \textasciigrave{}games\_loosername\_looserlinkid\_foreign\textasciigrave{} }
+    \KeywordTok{foreign} \KeywordTok{key}\NormalTok{ (\textasciigrave{}looserName\textasciigrave{},\textasciigrave{}looserLinkId\textasciigrave{}) }
+        \KeywordTok{references}\NormalTok{ \textasciigrave{}Players\textasciigrave{}(\textasciigrave{}name\textasciigrave{},\textasciigrave{}linkId\textasciigrave{});}
+\KeywordTok{alter} \KeywordTok{table}\NormalTok{ \textasciigrave{}Games\textasciigrave{} }\KeywordTok{add} \KeywordTok{constraint} 
+\NormalTok{    \textasciigrave{}games\_tournamentdate\_tournamentname\_foreign\textasciigrave{} }
+    \KeywordTok{foreign} \KeywordTok{key}\NormalTok{ (\textasciigrave{}tournamentName\textasciigrave{},\textasciigrave{}tournamentDate\textasciigrave{}) }
+        \KeywordTok{references}\NormalTok{ \textasciigrave{}Tournaments\textasciigrave{}(\textasciigrave{}name\textasciigrave{},\textasciigrave{}date\textasciigrave{});}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1304,7 +1335,8 @@ Agora, vamos importar os dados.
 \NormalTok{        terminated }\KeywordTok{by} \StringTok{\textquotesingle{},\textquotesingle{}}
 \NormalTok{        optionally enclosed }\KeywordTok{by} \StringTok{\textquotesingle{}"\textquotesingle{}}
 \NormalTok{    ignore }\DecValTok{1}\NormalTok{ lines}
-\NormalTok{(score, winnerName, @vWinnerLinkId, looserName, @vLooserLinkId, tournamentName, tournamentDate, }\FunctionTok{round}\NormalTok{)}
+\NormalTok{(score, winnerName, @vWinnerLinkId, }
+\NormalTok{    looserName, @vLooserLinkId, tournamentName, tournamentDate, }\FunctionTok{round}\NormalTok{)}
 \KeywordTok{set}
 \NormalTok{    WinnerLinkId }\OperatorTok{=} \ControlFlowTok{IF}\NormalTok{(@vWinnerLinkId}\OperatorTok{=} \StringTok{\textquotesingle{}\textquotesingle{}} \KeywordTok{OR}\NormalTok{ ISNULL(@vWinnerLinkId), }\StringTok{\textquotesingle{}0000\textquotesingle{}}\NormalTok{, @vWinnerLinkId),}
 \NormalTok{    LooserLinkId }\OperatorTok{=} \ControlFlowTok{IF}\NormalTok{(@vLooserLinkId}\OperatorTok{=} \StringTok{\textquotesingle{}\textquotesingle{}} \KeywordTok{OR}\NormalTok{ ISNULL(@vLooserLinkId), }\StringTok{\textquotesingle{}0000\textquotesingle{}}\NormalTok{, @vLooserLinkId);}
@@ -1312,12 +1344,218 @@ Agora, vamos importar os dados.
 \end{Highlighting}
 \end{Shaded}
 
-Em cada um destes processos, duas coisas crucias estão a acontecer: -
+Em cada um destes processos, duas coisas cruciais estão a acontecer: -
 Campos vazios no csv estão a ser substituidos pelos seus valores default
 - A cada execução do comando, segue-se um comando \emph{show warnings},
 que mostra os erros que ocorreram durante a execução do comando
 anterior.
 
-Os warnings apresentados são nas tabelas
+Os warnings apresentados são nas tabelas \emph{tournaments} e
+\emph{games} e são devido a alguns valores duplicados da nossa base de
+dados não limpos antes da passagem para o modelo relacional. A boa
+formatação do modelo relacional garante que não haverá duplicados na
+base de dados relacional.
+
+\hypertarget{queries}{%
+\section{\texorpdfstring{\emph{Queries}}{Queries}}\label{queries}}
+
+\hypertarget{section}{%
+\subsection{1.}\label{section}}
+
+\begin{quote}
+Para cada país, mostrar número de torneios e de jogos, e o número de
+jogadores nascidos nesse país.
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select}
+\NormalTok{    c.name }\KeywordTok{as}\NormalTok{ country,}
+    \FunctionTok{count}\NormalTok{(}\KeywordTok{distinct}\NormalTok{ t.name) }\KeywordTok{as}\NormalTok{ tournaments,}
+    \FunctionTok{count}\NormalTok{(}\KeywordTok{distinct}\NormalTok{ g.winnerName, g.winnerLinkId, g.looserName, g.looserLinkId) }\KeywordTok{as}\NormalTok{ games,}
+    \FunctionTok{count}\NormalTok{(}\KeywordTok{distinct}\NormalTok{ p.name, p.linkId) }\KeywordTok{as}\NormalTok{ players}
+\KeywordTok{from}\NormalTok{ Countries c}
+    \KeywordTok{left} \KeywordTok{join}\NormalTok{ Tournaments t }\KeywordTok{on}\NormalTok{ c.}\KeywordTok{id} \OperatorTok{=}\NormalTok{ t.countryId}
+    \KeywordTok{left} \KeywordTok{join}\NormalTok{ Games g }\KeywordTok{on}\NormalTok{ t.name }\OperatorTok{=}\NormalTok{ g.tournamentName }\KeywordTok{and}\NormalTok{ t.}\DataTypeTok{date} \OperatorTok{=}\NormalTok{ g.tournamentDate}
+    \KeywordTok{left} \KeywordTok{join}\NormalTok{ Players P }\KeywordTok{on}\NormalTok{ P.bornCountryId }\OperatorTok{=}\NormalTok{ c.}\KeywordTok{id}
+\KeywordTok{group} \KeywordTok{by}
+\NormalTok{    c.name}
+\KeywordTok{order} \KeywordTok{by}\NormalTok{ c.name;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule()
+country & tournaments & games & players \\
+\midrule()
+\endhead
+Afghanistan & 0 & 0 & 0 \\
+Albania & 0 & 0 & 0 \\
+Algeria & 9 & 878 & 3 \\
+American Samoa & 0 & 0 & 0 \\
+Andorra & 3 & 348 & 0 \\
+Angola & 0 & 0 & 0 \\
+Anguilla & 0 & 0 & 0 \\
+Antarctica & 0 & 0 & 0 \\
+Antigua and Barbuda & 0 & 0 & 1 \\
+Argentina & 110 & 10341 & 174 \\
+\ldots{} & \ldots{} & \ldots{} & \ldots{} \\
+USA & 419 & 72774 & 468 \\
+Uzbekistan & 41 & 5613 & 17 \\
+Vanuatu & 0 & 0 & 0 \\
+Venezuela & 49 & 2650 & 12 \\
+Vietnam & 15 & 1585 & 2 \\
+Virgin Islands, British & 0 & 0 & 0 \\
+Virgin Islands, U.S. & 0 & 0 & 0 \\
+Wallis and Futuna & 0 & 0 & 0 \\
+Western Sahara & 0 & 0 & 0 \\
+Yemen & 0 & 0 & 0 \\
+Yugoslavia & 29 & 734 & 5 \\
+Zambia & 0 & 0 & 1 \\
+Zimbabwe & 27 & 610 & 11 \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{section-1}{%
+\subsection{2.}\label{section-1}}
+
+\begin{quote}
+Lista o top 10 de jogadores com maior rácio de vitórias (em
+percentagem), ordenado por esse rácio.
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select} 
+\NormalTok{  p.name,}
+\NormalTok{  WG.winCount }\KeywordTok{as}\NormalTok{ WinCount, }
+\NormalTok{  LG.looseCount }\KeywordTok{as}\NormalTok{ LooseCount, }
+\NormalTok{  WG.winCount}\OperatorTok{*}\DecValTok{100}\OperatorTok{/}\NormalTok{(WG.winCount}\OperatorTok{+}\NormalTok{ LG.looseCount) }\KeywordTok{as}\NormalTok{ winRate }
+\KeywordTok{from}\NormalTok{ players p}
+    \KeywordTok{left} \KeywordTok{join}\NormalTok{(}
+      \KeywordTok{select}\NormalTok{ p.name, P.linkId, }\FunctionTok{count}\NormalTok{(}\OperatorTok{*}\NormalTok{) }\KeywordTok{as}\NormalTok{ winCount }
+      \KeywordTok{from}\NormalTok{ players p }
+        \KeywordTok{right} \KeywordTok{join}\NormalTok{ games g }\KeywordTok{on}\NormalTok{ p.name }\OperatorTok{=}\NormalTok{ g.winnerName }
+        \KeywordTok{and}\NormalTok{ p.linkId }\OperatorTok{=}\NormalTok{ g.winnerLinkId }
+      \KeywordTok{group} \KeywordTok{by}\NormalTok{ p.name, p.linkId}
+\NormalTok{    ) WG }\KeywordTok{on}\NormalTok{ WG.name }\OperatorTok{=}\NormalTok{ p.name }\KeywordTok{and}\NormalTok{ WG.linkId }\OperatorTok{=}\NormalTok{ p.linkId}
+    \KeywordTok{left} \KeywordTok{join}\NormalTok{(}
+      \KeywordTok{select}\NormalTok{ p.name, P.linkId, }\FunctionTok{count}\NormalTok{(}\OperatorTok{*}\NormalTok{) }\KeywordTok{as}\NormalTok{ looseCount }
+      \KeywordTok{from}\NormalTok{ players p }
+        \KeywordTok{right} \KeywordTok{join}\NormalTok{ games g }\KeywordTok{on}\NormalTok{ p.name }\OperatorTok{=}\NormalTok{ g.looserName }
+        \KeywordTok{and}\NormalTok{ p.linkId }\OperatorTok{=}\NormalTok{ g.looserLinkId }
+      \KeywordTok{group} \KeywordTok{by}\NormalTok{ p.name, p.linkId}
+\NormalTok{    ) LG }\KeywordTok{on}\NormalTok{ LG.name }\OperatorTok{=}\NormalTok{ p.name }\KeywordTok{and}\NormalTok{ LG.linkId }\OperatorTok{=}\NormalTok{ p.linkId}
+\KeywordTok{order} \KeywordTok{by}\NormalTok{ WG.winCount}\OperatorTok{*}\DecValTok{100}\OperatorTok{/}\NormalTok{(WG.winCount}\OperatorTok{+}\NormalTok{ LG.looseCount) }\KeywordTok{desc} \KeywordTok{limit} \DecValTok{10}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule()
+name & WinCount & LooseCount & winRate \\
+\midrule()
+\endhead
+Rocky Royer & 5 & 1 & 83.3333 \\
+Rafael Nadal & 1130 & 230 & 83.0882 \\
+Novak Djokovic & 1059 & 218 & 82.9287 \\
+Bjorn Borg & 659 & 146 & 81.8634 \\
+Roger Federer & 1281 & 287 & 81.6964 \\
+Ivan Lendl & 1079 & 243 & 81.6188 \\
+John McEnroe & 891 & 202 & 81.5188 \\
+Jimmy Connors & 1281 & 303 & 80.8712 \\
+Reinhart Probst & 4 & 1 & 80.0000 \\
+James Tracy & 4 & 1 & 80.0000 \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{section-2}{%
+\subsection{3.}\label{section-2}}
+
+\begin{quote}
+Lista o top 10 de jogadores esquedirnos com maior rácio de vitórias (em
+percentagem) dos seus jogos de Grand Slam, ordenado por esse rácio.
+\end{quote}
+
+Os jogos de Grand Slam são os Australian Open, French Open, Wimbledon e
+US Open.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select}
+\NormalTok{  p.name, }
+\NormalTok{  WG.winCount }\KeywordTok{as}\NormalTok{ WinCount, }
+\NormalTok{  LG.looseCount }\KeywordTok{as}\NormalTok{ LooseCount, }
+\NormalTok{  WG.winCount}\OperatorTok{*}\DecValTok{100}\OperatorTok{/}\NormalTok{(WG.winCount}\OperatorTok{+}\NormalTok{ LG.looseCount) }\KeywordTok{as}\NormalTok{ winRate }
+\KeywordTok{from}\NormalTok{ players p}
+    \KeywordTok{left} \KeywordTok{join}\NormalTok{( }
+      \KeywordTok{select}\NormalTok{ p.name, P.linkId, }\FunctionTok{count}\NormalTok{(}\OperatorTok{*}\NormalTok{) }\KeywordTok{as}\NormalTok{ winCount }
+      \KeywordTok{from}\NormalTok{ players p }
+        \KeywordTok{right} \KeywordTok{join}\NormalTok{ games g }\KeywordTok{on}\NormalTok{ p.name }\OperatorTok{=}\NormalTok{ g.winnerName }
+        \KeywordTok{and}\NormalTok{ p.linkId }\OperatorTok{=}\NormalTok{ g.winnerLinkId }
+      \KeywordTok{where} 
+\NormalTok{        g.tournamentName REGEXP }\StringTok{\textquotesingle{}us open|australian open|roland garros|wimbledon\textquotesingle{}} 
+        \KeywordTok{and}\NormalTok{ p.domHand }\OperatorTok{=} \StringTok{\textquotesingle{}Left{-}Handed\textquotesingle{}} 
+      \KeywordTok{group} \KeywordTok{by}\NormalTok{ p.name, p.linkId) WG }\KeywordTok{on}\NormalTok{ WG.name }\OperatorTok{=}\NormalTok{ p.name }\KeywordTok{and}\NormalTok{ WG.linkId }\OperatorTok{=}\NormalTok{ p.linkId}
+    \KeywordTok{left} \KeywordTok{join}\NormalTok{(}
+        \KeywordTok{select}\NormalTok{ p.name, P.linkId, }\FunctionTok{count}\NormalTok{(}\OperatorTok{*}\NormalTok{) }\KeywordTok{as}\NormalTok{ looseCount }
+        \KeywordTok{from}\NormalTok{ players p }
+            \KeywordTok{right} \KeywordTok{join}\NormalTok{ games g }\KeywordTok{on}\NormalTok{ p.name }\OperatorTok{=}\NormalTok{ g.looserName }
+            \KeywordTok{and}\NormalTok{ p.linkId }\OperatorTok{=}\NormalTok{ g.looserLinkId }
+        \KeywordTok{where} 
+\NormalTok{            g.tournamentName REGEXP }\StringTok{\textquotesingle{}us open|australian open|roland garros|wimbledon\textquotesingle{}} 
+            \KeywordTok{and}\NormalTok{ p.domHand }\OperatorTok{=} \StringTok{\textquotesingle{}Left{-}Handed\textquotesingle{}} 
+        \KeywordTok{group} \KeywordTok{by}\NormalTok{ p.name, p.linkId) LG }\KeywordTok{on}\NormalTok{ LG.name }\OperatorTok{=}\NormalTok{ p.name }\KeywordTok{and}\NormalTok{ LG.linkId }\OperatorTok{=}\NormalTok{ p.linkId}
+\KeywordTok{order} \KeywordTok{by}\NormalTok{ WG.winCount}\OperatorTok{*}\DecValTok{100}\OperatorTok{/}\NormalTok{(WG.winCount}\OperatorTok{+}\NormalTok{ LG.looseCount) }\KeywordTok{desc} \KeywordTok{limit} \DecValTok{10}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule()
+name & WinCount & LooseCount & winRate \\
+\midrule()
+\endhead
+Rafael Nadal & 299 & 42 & 87.6833 \\
+Jimmy Connors & 233 & 50 & 82.3322 \\
+John McEnroe & 169 & 39 & 81.2500 \\
+Guillermo Vilas & 140 & 45 & 75.6757 \\
+Alex Molcan & 8 & 3 & 72.7273 \\
+Goran Ivanisevic & 110 & 50 & 68.7500 \\
+Thomas Muster & 78 & 38 & 67.2414 \\
+Andres Gomez & 62 & 31 & 66.6667 \\
+Marcelo Rios & 51 & 26 & 66.2338 \\
+Henri Leconte & 81 & 44 & 64.8000 \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{section-3}{%
+\subsection{4.}\label{section-3}}
+
+\begin{quote}
+Listar o top 5 de jogadores com o seu número de vitórias em quadra dura
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select}\NormalTok{ g.winnerName, }\FunctionTok{count}\NormalTok{(}\OperatorTok{*}\NormalTok{) }\KeywordTok{as}\NormalTok{ wins }\KeywordTok{from}\NormalTok{ games g}
+    \KeywordTok{left} \KeywordTok{join}\NormalTok{ players p }\KeywordTok{on}\NormalTok{ g.winnerName }\OperatorTok{=}\NormalTok{ p.name }\KeywordTok{and}\NormalTok{ g.winnerLinkId }\OperatorTok{=}\NormalTok{ p.linkId}
+    \KeywordTok{left} \KeywordTok{join}\NormalTok{ tournaments t }\KeywordTok{on}\NormalTok{ g.tournamentName }\OperatorTok{=}\NormalTok{ t.name }\KeywordTok{and}\NormalTok{ g.tournamentDate }\OperatorTok{=}\NormalTok{ t.}\DataTypeTok{date}
+\KeywordTok{where}\NormalTok{ t.ground }\OperatorTok{=} \StringTok{\textquotesingle{}Hard\textquotesingle{}}
+\KeywordTok{group} \KeywordTok{by}\NormalTok{ g.winnerName, g.winnerLinkId}
+\KeywordTok{order} \KeywordTok{by} \FunctionTok{count}\NormalTok{(}\OperatorTok{*}\NormalTok{) }\KeywordTok{desc} \KeywordTok{limit} \DecValTok{5}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule()
+winnerName & wins \\
+\midrule()
+\endhead
+Roger Federer & 801 \\
+Novak Djokovic & 658 \\
+Ti Chen & 609 \\
+Andre Agassi & 608 \\
+Yen-Hsun Lu & 562 \\
+\bottomrule()
+\end{longtable}
 
 \end{document}
