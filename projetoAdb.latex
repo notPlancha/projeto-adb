@@ -135,7 +135,7 @@ Armazenamento para Big Data do 2º ano da Licenciatura de Ciência de
 Dados do Instituto Universitário de Lisboa ISCTE}
 \author{André Plancha; 105289 \and Afonso Silva; 105208 \and Tomás
 Ribeiro; 105220}
-\date{07/12/2022}
+\date{13/12/2022; Versão 1.0}
 
 \begin{document}
 \maketitle
@@ -1194,7 +1194,8 @@ vai ser usado o diagrama acima como referência.
 \NormalTok{    \textasciigrave{}round\textasciigrave{} }\DataTypeTok{VARCHAR}\NormalTok{(}\DecValTok{255}\NormalTok{) }\KeywordTok{NOT} \KeywordTok{NULL}\NormalTok{,}
 \NormalTok{    \textasciigrave{}score\textasciigrave{} }\DataTypeTok{VARCHAR}\NormalTok{(}\DecValTok{255}\NormalTok{) }\KeywordTok{NOT} \KeywordTok{NULL}\NormalTok{,}
     \KeywordTok{primary} \KeywordTok{key} 
-\NormalTok{    (\textasciigrave{}winnerName\textasciigrave{},\textasciigrave{}winnerLinkId\textasciigrave{},\textasciigrave{}looserName\textasciigrave{},\textasciigrave{}looserLinkId\textasciigrave{},\textasciigrave{}tournamentDate\textasciigrave{},\textasciigrave{}tournamentName\textasciigrave{}, \textasciigrave{}round\textasciigrave{})}
+\NormalTok{    (\textasciigrave{}winnerName\textasciigrave{},\textasciigrave{}winnerLinkId\textasciigrave{},\textasciigrave{}looserName\textasciigrave{},}
+\NormalTok{     \textasciigrave{}looserLinkId\textasciigrave{},\textasciigrave{}tournamentDate\textasciigrave{},\textasciigrave{}tournamentName\textasciigrave{}, \textasciigrave{}round\textasciigrave{})}
 \NormalTok{);}
 \KeywordTok{CREATE} \KeywordTok{TABLE}\NormalTok{ \textasciigrave{}Grounds\textasciigrave{}(\textasciigrave{}name\textasciigrave{} }\DataTypeTok{VARCHAR}\NormalTok{(}\DecValTok{255}\NormalTok{) }\KeywordTok{NOT} \KeywordTok{NULL} \KeywordTok{primary} \KeywordTok{key}\NormalTok{ );}
 \KeywordTok{CREATE} \KeywordTok{TABLE}\NormalTok{ \textasciigrave{}Tournaments\textasciigrave{}(}
@@ -1424,11 +1425,26 @@ percentagem), ordenado por esse rácio.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{select}\NormalTok{ p.name, WG.winCount }\KeywordTok{as}\NormalTok{ WinCount, LG.looseCount }\KeywordTok{as}\NormalTok{ LooseCount, WG.winCount}\OperatorTok{*}\DecValTok{100}\OperatorTok{/}\NormalTok{(WG.winCount}\OperatorTok{+}\NormalTok{ LG.looseCount) }\KeywordTok{as}\NormalTok{ winRate }\KeywordTok{from}\NormalTok{ players p}
-    \KeywordTok{left} \KeywordTok{join}
-\NormalTok{        (}\KeywordTok{select}\NormalTok{ p.name, P.linkId, }\FunctionTok{count}\NormalTok{(}\OperatorTok{*}\NormalTok{) }\KeywordTok{as}\NormalTok{ winCount }\KeywordTok{from}\NormalTok{ players p }\KeywordTok{right} \KeywordTok{join}\NormalTok{ games g }\KeywordTok{on}\NormalTok{ p.name }\OperatorTok{=}\NormalTok{ g.winnerName }\KeywordTok{and}\NormalTok{ p.linkId }\OperatorTok{=}\NormalTok{ g.winnerLinkId }\KeywordTok{group} \KeywordTok{by}\NormalTok{ p.name, p.linkId) WG }\KeywordTok{on}\NormalTok{ WG.name }\OperatorTok{=}\NormalTok{ p.name }\KeywordTok{and}\NormalTok{ WG.linkId }\OperatorTok{=}\NormalTok{ p.linkId}
-    \KeywordTok{left} \KeywordTok{join}
-\NormalTok{        (}\KeywordTok{select}\NormalTok{ p.name, P.linkId, }\FunctionTok{count}\NormalTok{(}\OperatorTok{*}\NormalTok{) }\KeywordTok{as}\NormalTok{ looseCount }\KeywordTok{from}\NormalTok{ players p }\KeywordTok{right} \KeywordTok{join}\NormalTok{ games g }\KeywordTok{on}\NormalTok{ p.name }\OperatorTok{=}\NormalTok{ g.looserName }\KeywordTok{and}\NormalTok{ p.linkId }\OperatorTok{=}\NormalTok{ g.looserLinkId }\KeywordTok{group} \KeywordTok{by}\NormalTok{ p.name, p.linkId) LG }\KeywordTok{on}\NormalTok{ LG.name }\OperatorTok{=}\NormalTok{ p.name }\KeywordTok{and}\NormalTok{ LG.linkId }\OperatorTok{=}\NormalTok{ p.linkId}
+\KeywordTok{select} 
+\NormalTok{  p.name,}
+\NormalTok{  WG.winCount }\KeywordTok{as}\NormalTok{ WinCount, }
+\NormalTok{  LG.looseCount }\KeywordTok{as}\NormalTok{ LooseCount, }
+\NormalTok{  WG.winCount}\OperatorTok{*}\DecValTok{100}\OperatorTok{/}\NormalTok{(WG.winCount}\OperatorTok{+}\NormalTok{ LG.looseCount) }\KeywordTok{as}\NormalTok{ winRate }
+\KeywordTok{from}\NormalTok{ players p}
+    \KeywordTok{left} \KeywordTok{join}\NormalTok{(}
+      \KeywordTok{select}\NormalTok{ p.name, P.linkId, }\FunctionTok{count}\NormalTok{(}\OperatorTok{*}\NormalTok{) }\KeywordTok{as}\NormalTok{ winCount }
+      \KeywordTok{from}\NormalTok{ players p }
+        \KeywordTok{right} \KeywordTok{join}\NormalTok{ games g }\KeywordTok{on}\NormalTok{ p.name }\OperatorTok{=}\NormalTok{ g.winnerName }
+        \KeywordTok{and}\NormalTok{ p.linkId }\OperatorTok{=}\NormalTok{ g.winnerLinkId }
+      \KeywordTok{group} \KeywordTok{by}\NormalTok{ p.name, p.linkId}
+\NormalTok{    ) WG }\KeywordTok{on}\NormalTok{ WG.name }\OperatorTok{=}\NormalTok{ p.name }\KeywordTok{and}\NormalTok{ WG.linkId }\OperatorTok{=}\NormalTok{ p.linkId}
+    \KeywordTok{left} \KeywordTok{join}\NormalTok{(}
+      \KeywordTok{select}\NormalTok{ p.name, P.linkId, }\FunctionTok{count}\NormalTok{(}\OperatorTok{*}\NormalTok{) }\KeywordTok{as}\NormalTok{ looseCount }
+      \KeywordTok{from}\NormalTok{ players p }
+        \KeywordTok{right} \KeywordTok{join}\NormalTok{ games g }\KeywordTok{on}\NormalTok{ p.name }\OperatorTok{=}\NormalTok{ g.looserName }
+        \KeywordTok{and}\NormalTok{ p.linkId }\OperatorTok{=}\NormalTok{ g.looserLinkId }
+      \KeywordTok{group} \KeywordTok{by}\NormalTok{ p.name, p.linkId}
+\NormalTok{    ) LG }\KeywordTok{on}\NormalTok{ LG.name }\OperatorTok{=}\NormalTok{ p.name }\KeywordTok{and}\NormalTok{ LG.linkId }\OperatorTok{=}\NormalTok{ p.linkId}
 \KeywordTok{order} \KeywordTok{by}\NormalTok{ WG.winCount}\OperatorTok{*}\DecValTok{100}\OperatorTok{/}\NormalTok{(WG.winCount}\OperatorTok{+}\NormalTok{ LG.looseCount) }\KeywordTok{desc} \KeywordTok{limit} \DecValTok{10}\NormalTok{;}
 \end{Highlighting}
 \end{Shaded}
@@ -1464,11 +1480,30 @@ US Open.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{select}\NormalTok{ p.name, WG.winCount }\KeywordTok{as}\NormalTok{ WinCount, LG.looseCount }\KeywordTok{as}\NormalTok{ LooseCount, WG.winCount}\OperatorTok{*}\DecValTok{100}\OperatorTok{/}\NormalTok{(WG.winCount}\OperatorTok{+}\NormalTok{ LG.looseCount) }\KeywordTok{as}\NormalTok{ winRate }\KeywordTok{from}\NormalTok{ players p}
-    \KeywordTok{left} \KeywordTok{join}
-\NormalTok{        (}\KeywordTok{select}\NormalTok{ p.name, P.linkId, }\FunctionTok{count}\NormalTok{(}\OperatorTok{*}\NormalTok{) }\KeywordTok{as}\NormalTok{ winCount }\KeywordTok{from}\NormalTok{ players p }\KeywordTok{right} \KeywordTok{join}\NormalTok{ games g }\KeywordTok{on}\NormalTok{ p.name }\OperatorTok{=}\NormalTok{ g.winnerName }\KeywordTok{and}\NormalTok{ p.linkId }\OperatorTok{=}\NormalTok{ g.winnerLinkId }\KeywordTok{where}\NormalTok{ g.tournamentName REGEXP }\StringTok{\textquotesingle{}us open|australian open|roland garros|wimbledon\textquotesingle{}} \KeywordTok{and}\NormalTok{ p.domHand }\OperatorTok{=} \StringTok{\textquotesingle{}Left{-}Handed\textquotesingle{}} \KeywordTok{group} \KeywordTok{by}\NormalTok{ p.name, p.linkId) WG }\KeywordTok{on}\NormalTok{ WG.name }\OperatorTok{=}\NormalTok{ p.name }\KeywordTok{and}\NormalTok{ WG.linkId }\OperatorTok{=}\NormalTok{ p.linkId}
-    \KeywordTok{left} \KeywordTok{join}
-\NormalTok{        (}\KeywordTok{select}\NormalTok{ p.name, P.linkId, }\FunctionTok{count}\NormalTok{(}\OperatorTok{*}\NormalTok{) }\KeywordTok{as}\NormalTok{ looseCount }\KeywordTok{from}\NormalTok{ players p }\KeywordTok{right} \KeywordTok{join}\NormalTok{ games g }\KeywordTok{on}\NormalTok{ p.name }\OperatorTok{=}\NormalTok{ g.looserName }\KeywordTok{and}\NormalTok{ p.linkId }\OperatorTok{=}\NormalTok{ g.looserLinkId }\KeywordTok{where}\NormalTok{ g.tournamentName REGEXP }\StringTok{\textquotesingle{}us open|australian open|roland garros|wimbledon\textquotesingle{}} \KeywordTok{and}\NormalTok{ p.domHand }\OperatorTok{=} \StringTok{\textquotesingle{}Left{-}Handed\textquotesingle{}} \KeywordTok{group} \KeywordTok{by}\NormalTok{ p.name, p.linkId) LG }\KeywordTok{on}\NormalTok{ LG.name }\OperatorTok{=}\NormalTok{ p.name }\KeywordTok{and}\NormalTok{ LG.linkId }\OperatorTok{=}\NormalTok{ p.linkId}
+\KeywordTok{select}
+\NormalTok{  p.name, }
+\NormalTok{  WG.winCount }\KeywordTok{as}\NormalTok{ WinCount, }
+\NormalTok{  LG.looseCount }\KeywordTok{as}\NormalTok{ LooseCount, }
+\NormalTok{  WG.winCount}\OperatorTok{*}\DecValTok{100}\OperatorTok{/}\NormalTok{(WG.winCount}\OperatorTok{+}\NormalTok{ LG.looseCount) }\KeywordTok{as}\NormalTok{ winRate }
+\KeywordTok{from}\NormalTok{ players p}
+    \KeywordTok{left} \KeywordTok{join}\NormalTok{( }
+      \KeywordTok{select}\NormalTok{ p.name, P.linkId, }\FunctionTok{count}\NormalTok{(}\OperatorTok{*}\NormalTok{) }\KeywordTok{as}\NormalTok{ winCount }
+      \KeywordTok{from}\NormalTok{ players p }
+        \KeywordTok{right} \KeywordTok{join}\NormalTok{ games g }\KeywordTok{on}\NormalTok{ p.name }\OperatorTok{=}\NormalTok{ g.winnerName }
+        \KeywordTok{and}\NormalTok{ p.linkId }\OperatorTok{=}\NormalTok{ g.winnerLinkId }
+      \KeywordTok{where} 
+\NormalTok{        g.tournamentName REGEXP }\StringTok{\textquotesingle{}us open|australian open|roland garros|wimbledon\textquotesingle{}} 
+        \KeywordTok{and}\NormalTok{ p.domHand }\OperatorTok{=} \StringTok{\textquotesingle{}Left{-}Handed\textquotesingle{}} 
+      \KeywordTok{group} \KeywordTok{by}\NormalTok{ p.name, p.linkId) WG }\KeywordTok{on}\NormalTok{ WG.name }\OperatorTok{=}\NormalTok{ p.name }\KeywordTok{and}\NormalTok{ WG.linkId }\OperatorTok{=}\NormalTok{ p.linkId}
+    \KeywordTok{left} \KeywordTok{join}\NormalTok{(}
+        \KeywordTok{select}\NormalTok{ p.name, P.linkId, }\FunctionTok{count}\NormalTok{(}\OperatorTok{*}\NormalTok{) }\KeywordTok{as}\NormalTok{ looseCount }
+        \KeywordTok{from}\NormalTok{ players p }
+            \KeywordTok{right} \KeywordTok{join}\NormalTok{ games g }\KeywordTok{on}\NormalTok{ p.name }\OperatorTok{=}\NormalTok{ g.looserName }
+            \KeywordTok{and}\NormalTok{ p.linkId }\OperatorTok{=}\NormalTok{ g.looserLinkId }
+        \KeywordTok{where} 
+\NormalTok{            g.tournamentName REGEXP }\StringTok{\textquotesingle{}us open|australian open|roland garros|wimbledon\textquotesingle{}} 
+            \KeywordTok{and}\NormalTok{ p.domHand }\OperatorTok{=} \StringTok{\textquotesingle{}Left{-}Handed\textquotesingle{}} 
+        \KeywordTok{group} \KeywordTok{by}\NormalTok{ p.name, p.linkId) LG }\KeywordTok{on}\NormalTok{ LG.name }\OperatorTok{=}\NormalTok{ p.name }\KeywordTok{and}\NormalTok{ LG.linkId }\OperatorTok{=}\NormalTok{ p.linkId}
 \KeywordTok{order} \KeywordTok{by}\NormalTok{ WG.winCount}\OperatorTok{*}\DecValTok{100}\OperatorTok{/}\NormalTok{(WG.winCount}\OperatorTok{+}\NormalTok{ LG.looseCount) }\KeywordTok{desc} \KeywordTok{limit} \DecValTok{10}\NormalTok{;}
 \end{Highlighting}
 \end{Shaded}

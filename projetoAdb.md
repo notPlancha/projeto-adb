@@ -2,7 +2,7 @@
 title: "Estudo da base de dados ATP"
 subtitle: "Trabalho elaborado no âmbito da Unidade Curricular de Armazenamento para Big Data do 2º ano da Licenciatura de Ciência de Dados do Instituto Universitário de Lisboa ISCTE"
 author: [André Plancha; 105289, Afonso Silva; 105208, Tomás Ribeiro; 105220]
-date: "07/12/2022"
+date: "13/12/2022; Versão 1.0"
 header-includes:
 - \usepackage[a4paper, total={6in, 8in}]{geometry}
 - \usepackage{float}
@@ -736,7 +736,8 @@ CREATE TABLE `Games`(
     `round` VARCHAR(255) NOT NULL,
     `score` VARCHAR(255) NOT NULL,
     primary key 
-    (`winnerName`,`winnerLinkId`,`looserName`,`looserLinkId`,`tournamentDate`,`tournamentName`, `round`)
+    (`winnerName`,`winnerLinkId`,`looserName`,
+     `looserLinkId`,`tournamentDate`,`tournamentName`, `round`)
 );
 CREATE TABLE `Grounds`(`name` VARCHAR(255) NOT NULL primary key );
 CREATE TABLE `Tournaments`(
@@ -936,11 +937,26 @@ order by c.name;
 > Lista o top 10 de jogadores com maior rácio de vitórias (em percentagem), ordenado por esse rácio.
 
 ```sql
-select p.name, WG.winCount as WinCount, LG.looseCount as LooseCount, WG.winCount*100/(WG.winCount+ LG.looseCount) as winRate from players p
-    left join
-        (select p.name, P.linkId, count(*) as winCount from players p right join games g on p.name = g.winnerName and p.linkId = g.winnerLinkId group by p.name, p.linkId) WG on WG.name = p.name and WG.linkId = p.linkId
-    left join
-        (select p.name, P.linkId, count(*) as looseCount from players p right join games g on p.name = g.looserName and p.linkId = g.looserLinkId group by p.name, p.linkId) LG on LG.name = p.name and LG.linkId = p.linkId
+select 
+  p.name,
+  WG.winCount as WinCount, 
+  LG.looseCount as LooseCount, 
+  WG.winCount*100/(WG.winCount+ LG.looseCount) as winRate 
+from players p
+    left join(
+      select p.name, P.linkId, count(*) as winCount 
+      from players p 
+        right join games g on p.name = g.winnerName 
+        and p.linkId = g.winnerLinkId 
+      group by p.name, p.linkId
+    ) WG on WG.name = p.name and WG.linkId = p.linkId
+    left join(
+      select p.name, P.linkId, count(*) as looseCount 
+      from players p 
+        right join games g on p.name = g.looserName 
+        and p.linkId = g.looserLinkId 
+      group by p.name, p.linkId
+    ) LG on LG.name = p.name and LG.linkId = p.linkId
 order by WG.winCount*100/(WG.winCount+ LG.looseCount) desc limit 10;
 ```
 | name | WinCount | LooseCount | winRate |
@@ -963,11 +979,30 @@ order by WG.winCount*100/(WG.winCount+ LG.looseCount) desc limit 10;
 Os jogos de Grand Slam são os Australian Open, French Open, Wimbledon e US Open.
 
 ```sql
-select p.name, WG.winCount as WinCount, LG.looseCount as LooseCount, WG.winCount*100/(WG.winCount+ LG.looseCount) as winRate from players p
-    left join
-        (select p.name, P.linkId, count(*) as winCount from players p right join games g on p.name = g.winnerName and p.linkId = g.winnerLinkId where g.tournamentName REGEXP 'us open|australian open|roland garros|wimbledon' and p.domHand = 'Left-Handed' group by p.name, p.linkId) WG on WG.name = p.name and WG.linkId = p.linkId
-    left join
-        (select p.name, P.linkId, count(*) as looseCount from players p right join games g on p.name = g.looserName and p.linkId = g.looserLinkId where g.tournamentName REGEXP 'us open|australian open|roland garros|wimbledon' and p.domHand = 'Left-Handed' group by p.name, p.linkId) LG on LG.name = p.name and LG.linkId = p.linkId
+select
+  p.name, 
+  WG.winCount as WinCount, 
+  LG.looseCount as LooseCount, 
+  WG.winCount*100/(WG.winCount+ LG.looseCount) as winRate 
+from players p
+    left join( 
+      select p.name, P.linkId, count(*) as winCount 
+      from players p 
+        right join games g on p.name = g.winnerName 
+        and p.linkId = g.winnerLinkId 
+      where 
+        g.tournamentName REGEXP 'us open|australian open|roland garros|wimbledon' 
+        and p.domHand = 'Left-Handed' 
+      group by p.name, p.linkId) WG on WG.name = p.name and WG.linkId = p.linkId
+    left join(
+        select p.name, P.linkId, count(*) as looseCount 
+        from players p 
+            right join games g on p.name = g.looserName 
+            and p.linkId = g.looserLinkId 
+        where 
+            g.tournamentName REGEXP 'us open|australian open|roland garros|wimbledon' 
+            and p.domHand = 'Left-Handed' 
+        group by p.name, p.linkId) LG on LG.name = p.name and LG.linkId = p.linkId
 order by WG.winCount*100/(WG.winCount+ LG.looseCount) desc limit 10;
 ```
 | name | WinCount | LooseCount | winRate |
