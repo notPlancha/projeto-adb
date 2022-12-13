@@ -1,7 +1,7 @@
 ---
-title: "TODO titulo"
+title: "Estudo da base de dados ATP"
 subtitle: "Trabalho elaborado no âmbito da Unidade Curricular de Armazenamento para Big Data do 2º ano da Licenciatura de Ciência de Dados do Instituto Universitário de Lisboa ISCTE"
-author: [André Plancha; 105289, Afonso Silva; 105208, Tomas Ribeiro; 105220]
+author: [André Plancha; 105289, Afonso Silva; 105208, Tomás Ribeiro; 105220]
 date: "07/12/2022"
 header-includes:
 - \usepackage[a4paper, total={6in, 8in}]{geometry}
@@ -318,7 +318,15 @@ db.games.aggregate([
   },
   {
     $group: {
-      _id:["$Tournament", "$GameRound", "$Date", "$winner", "$loser", {$arrayElemAt: ["$winnerLink", 6]}, {$arrayElemAt: ["$looserLink", 6]}],
+      _id:[
+        "$Tournament", 
+        "$GameRound", 
+        "$Date", 
+        "$winner", 
+        "$loser", 
+        {$arrayElemAt: ["$winnerLink", 6]}, 
+        {$arrayElemAt: ["$looserLink", 6]}
+      ],
       count: {$sum: 1},
       sets: {$push:"$Score"}
     }
@@ -727,7 +735,8 @@ CREATE TABLE `Games`(
     `tournamentName` VARCHAR(255) NOT NULL,
     `round` VARCHAR(255) NOT NULL,
     `score` VARCHAR(255) NOT NULL,
-    primary key (`winnerName`,`winnerLinkId`,`looserName`,`looserLinkId`,`tournamentDate`,`tournamentName`, `round`)
+    primary key 
+    (`winnerName`,`winnerLinkId`,`looserName`,`looserLinkId`,`tournamentDate`,`tournamentName`, `round`)
 );
 CREATE TABLE `Grounds`(`name` VARCHAR(255) NOT NULL primary key );
 CREATE TABLE `Tournaments`(
@@ -758,18 +767,39 @@ CREATE TABLE `Countries`(
     `name` VARCHAR(255) NOT NULL
 );
 ALTER TABLE
-    `Players` ADD CONSTRAINT `players_backhand_foreign` FOREIGN KEY(`backhand`) REFERENCES `BackHand`(`name`);
+    `Players` ADD CONSTRAINT 
+    `players_backhand_foreign` FOREIGN KEY(`backhand`) 
+        REFERENCES `BackHand`(`name`);
 ALTER TABLE
-    `Players` ADD CONSTRAINT `players_domhand_foreign` FOREIGN KEY(`domHand`) REFERENCES `DomHand`(`name`);
+    `Players` ADD CONSTRAINT 
+    `players_domhand_foreign` 
+    FOREIGN KEY(`domHand`) 
+        REFERENCES `DomHand`(`name`);
 ALTER TABLE
-    `Tournaments` ADD CONSTRAINT `tournaments_ground_foreign` FOREIGN KEY(`ground`) REFERENCES `Grounds`(`name`);
+    `Tournaments` ADD CONSTRAINT 
+    `tournaments_ground_foreign` 
+    FOREIGN KEY(`ground`)
+        REFERENCES `Grounds`(`name`);
 ALTER TABLE
-    `Tournaments` ADD CONSTRAINT `tournaments_countryid_foreign` FOREIGN KEY(`countryId`) REFERENCES `Countries`(`id`);
+    `Tournaments` ADD CONSTRAINT 
+    `tournaments_countryid_foreign` 
+        FOREIGN KEY(`countryId`) REFERENCES `Countries`(`id`);
 ALTER TABLE
-    `Players` ADD CONSTRAINT `players_borncountryid_foreign` FOREIGN KEY(`bornCountryId`) REFERENCES `Countries`(`id`);
-alter table `Games` add constraint `games_winnername_winnerlinkid_foreign` foreign key (`winnerName`,`winnerLinkId`) references `Players`(`name`,`linkId`);
-alter table `Games` add constraint `games_loosername_looserlinkid_foreign` foreign key (`looserName`,`looserLinkId`) references `Players`(`name`,`linkId`);
-alter table `Games` add constraint `games_tournamentdate_tournamentname_foreign` foreign key (`tournamentName`,`tournamentDate`) references `Tournaments`(`name`,`date`);
+    `Players` ADD CONSTRAINT 
+    `players_borncountryid_foreign` 
+        FOREIGN KEY(`bornCountryId`) REFERENCES `Countries`(`id`);
+alter table `Games` add constraint 
+    `games_winnername_winnerlinkid_foreign` 
+    foreign key (`winnerName`,`winnerLinkId`) 
+        references `Players`(`name`,`linkId`);
+alter table `Games` add constraint 
+    `games_loosername_looserlinkid_foreign` 
+    foreign key (`looserName`,`looserLinkId`) 
+        references `Players`(`name`,`linkId`);
+alter table `Games` add constraint 
+    `games_tournamentdate_tournamentname_foreign` 
+    foreign key (`tournamentName`,`tournamentDate`) 
+        references `Tournaments`(`name`,`date`);
 ```
 Agora, vamos importar os dados.
 ```sql
@@ -841,14 +871,134 @@ into table games
         terminated by ','
         optionally enclosed by '"'
     ignore 1 lines
-(score, winnerName, @vWinnerLinkId, looserName, @vLooserLinkId, tournamentName, tournamentDate, round)
+(score, winnerName, @vWinnerLinkId, 
+    looserName, @vLooserLinkId, tournamentName, tournamentDate, round)
 set
     WinnerLinkId = IF(@vWinnerLinkId= '' OR ISNULL(@vWinnerLinkId), '0000', @vWinnerLinkId),
     LooserLinkId = IF(@vLooserLinkId= '' OR ISNULL(@vLooserLinkId), '0000', @vLooserLinkId);
 show warnings;
 ```
-Em cada um destes processos, duas coisas crucias estão a acontecer: 
+Em cada um destes processos, duas coisas cruciais estão a acontecer: 
 - Campos vazios no csv estão a ser substituidos pelos seus valores default
 - A cada execução do comando, segue-se um comando _show warnings_, que mostra os erros que ocorreram durante a execução do comando anterior.
 
-Os warnings apresentados são nas tabelas 
+Os warnings apresentados são nas tabelas _tournaments_ e _games_ e são devido a alguns valores duplicados da nossa base de dados não limpos antes da passagem para o modelo relacional. A boa formatação do modelo relacional garante que não haverá duplicados na base de dados relacional.
+
+# _Queries_
+
+## 1.
+
+> Para cada país, mostrar número de torneios e de jogos, e o número de jogadores nascidos nesse país.
+
+```sql
+select
+    c.name as country,
+    count(distinct t.name) as tournaments,
+    count(distinct g.winnerName, g.winnerLinkId, g.looserName, g.looserLinkId) as games,
+    count(distinct p.name, p.linkId) as players
+from Countries c
+    left join Tournaments t on c.id = t.countryId
+    left join Games g on t.name = g.tournamentName and t.date = g.tournamentDate
+    left join Players P on P.bornCountryId = c.id
+group by
+    c.name
+order by c.name;
+```
+| country                 | tournaments | games | players |
+|:------------------------|:------------|:------|:--------|
+| Afghanistan             | 0           | 0     | 0       |
+| Albania                 | 0           | 0     | 0       |
+| Algeria                 | 9           | 878   | 3       |
+| American Samoa          | 0           | 0     | 0       |
+| Andorra                 | 3           | 348   | 0       |
+| Angola                  | 0           | 0     | 0       |
+| Anguilla                | 0           | 0     | 0       |
+| Antarctica              | 0           | 0     | 0       |
+| Antigua and Barbuda     | 0           | 0     | 1       |
+| Argentina               | 110         | 10341 | 174     |
+| ...                     | ...         | ...   | ...     |
+| USA                     | 419         | 72774 | 468     |
+| Uzbekistan              | 41          | 5613  | 17      |
+| Vanuatu                 | 0           | 0     | 0       |
+| Venezuela               | 49          | 2650  | 12      |
+| Vietnam                 | 15          | 1585  | 2       |
+| Virgin Islands, British | 0           | 0     | 0       |
+| Virgin Islands, U.S.    | 0           | 0     | 0       |
+| Wallis and Futuna       | 0           | 0     | 0       |
+| Western Sahara          | 0           | 0     | 0       |
+| Yemen                   | 0           | 0     | 0       |
+| Yugoslavia              | 29          | 734   | 5       |
+| Zambia                  | 0           | 0     | 1       |
+| Zimbabwe                | 27          | 610   | 11      |
+
+## 2. 
+
+> Lista o top 10 de jogadores com maior rácio de vitórias (em percentagem), ordenado por esse rácio.
+
+```sql
+select p.name, WG.winCount as WinCount, LG.looseCount as LooseCount, WG.winCount*100/(WG.winCount+ LG.looseCount) as winRate from players p
+    left join
+        (select p.name, P.linkId, count(*) as winCount from players p right join games g on p.name = g.winnerName and p.linkId = g.winnerLinkId group by p.name, p.linkId) WG on WG.name = p.name and WG.linkId = p.linkId
+    left join
+        (select p.name, P.linkId, count(*) as looseCount from players p right join games g on p.name = g.looserName and p.linkId = g.looserLinkId group by p.name, p.linkId) LG on LG.name = p.name and LG.linkId = p.linkId
+order by WG.winCount*100/(WG.winCount+ LG.looseCount) desc limit 10;
+```
+| name | WinCount | LooseCount | winRate |
+| :--- | :--- | :--- | :--- |
+| Rocky Royer | 5 | 1 | 83.3333 |
+| Rafael Nadal | 1130 | 230 | 83.0882 |
+| Novak Djokovic | 1059 | 218 | 82.9287 |
+| Bjorn Borg | 659 | 146 | 81.8634 |
+| Roger Federer | 1281 | 287 | 81.6964 |
+| Ivan Lendl | 1079 | 243 | 81.6188 |
+| John McEnroe | 891 | 202 | 81.5188 |
+| Jimmy Connors | 1281 | 303 | 80.8712 |
+| Reinhart Probst | 4 | 1 | 80.0000 |
+| James Tracy | 4 | 1 | 80.0000 |
+
+## 3.
+
+> Lista o top 10 de jogadores esquedirnos com maior rácio de vitórias (em percentagem) dos seus jogos de Grand Slam, ordenado por esse rácio.
+
+Os jogos de Grand Slam são os Australian Open, French Open, Wimbledon e US Open.
+
+```sql
+select p.name, WG.winCount as WinCount, LG.looseCount as LooseCount, WG.winCount*100/(WG.winCount+ LG.looseCount) as winRate from players p
+    left join
+        (select p.name, P.linkId, count(*) as winCount from players p right join games g on p.name = g.winnerName and p.linkId = g.winnerLinkId where g.tournamentName REGEXP 'us open|australian open|roland garros|wimbledon' and p.domHand = 'Left-Handed' group by p.name, p.linkId) WG on WG.name = p.name and WG.linkId = p.linkId
+    left join
+        (select p.name, P.linkId, count(*) as looseCount from players p right join games g on p.name = g.looserName and p.linkId = g.looserLinkId where g.tournamentName REGEXP 'us open|australian open|roland garros|wimbledon' and p.domHand = 'Left-Handed' group by p.name, p.linkId) LG on LG.name = p.name and LG.linkId = p.linkId
+order by WG.winCount*100/(WG.winCount+ LG.looseCount) desc limit 10;
+```
+| name | WinCount | LooseCount | winRate |
+| :--- | :--- | :--- | :--- |
+| Rafael Nadal | 299 | 42 | 87.6833 |
+| Jimmy Connors | 233 | 50 | 82.3322 |
+| John McEnroe | 169 | 39 | 81.2500 |
+| Guillermo Vilas | 140 | 45 | 75.6757 |
+| Alex Molcan | 8 | 3 | 72.7273 |
+| Goran Ivanisevic | 110 | 50 | 68.7500 |
+| Thomas Muster | 78 | 38 | 67.2414 |
+| Andres Gomez | 62 | 31 | 66.6667 |
+| Marcelo Rios | 51 | 26 | 66.2338 |
+| Henri Leconte | 81 | 44 | 64.8000 |
+
+## 4. 
+
+> Listar o top 5 de jogadores com o seu número de vitórias em quadra dura
+
+```sql
+select g.winnerName, count(*) as wins from games g
+    left join players p on g.winnerName = p.name and g.winnerLinkId = p.linkId
+    left join tournaments t on g.tournamentName = t.name and g.tournamentDate = t.date
+where t.ground = 'Hard'
+group by g.winnerName, g.winnerLinkId
+order by count(*) desc limit 5;
+```
+| winnerName | count\(\*\) |
+| :--- | :--- |
+| Roger Federer | 801 |
+| Novak Djokovic | 658 |
+| Ti Chen | 609 |
+| Andre Agassi | 608 |
+| Yen-Hsun Lu | 562 |
