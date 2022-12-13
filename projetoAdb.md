@@ -10,10 +10,10 @@ header-includes:
 
 ---
 # Introdução
-A Associação de Tenistas Profissionais (_ATP_) é um órgão de ténis profisional masculino, organizando torneios do desporto globalmente. A organização contém na sua base de dados um conjunto de jogos e jogadores que participaram em torneios pelo menos desde 1914, e incluem todos os grandes torneios do circuito masculino, incluindo os torneios de Grand Slam. O objetivo deste trabalho será limpar e preparar os dados de um modelo não-relacional para um modelo-relacional, para que possa ser utilizado em análises posteriores.
+A Associação de Tenistas Profissionais (_ATP_) é um órgão de ténis profisional masculino, que organiza torneios de desporto a nível global. A organização contém na sua base de dados um conjunto de jogos e jogadores que participaram em torneios pelo menos desde 1914, e incluem todos os grandes torneios do circuito masculino, incluindo os torneios de Grand Slam. O objetivo deste trabalho será limpar e preparar os dados de um modelo não-relacional para um modelo-relacional, para que este possa ser utilizado em análises posteriores.
 
 # Importação dos dados
-Para o nosso projeto foi-nos provisionado o ficheiro _atpplayers.json_, que contém os jogos feito pelos jogadores. Para importar este ficheiro, foi utilizado o comando `mongoimport`:
+Para o nosso projeto foi-nos provisionado o ficheiro _atpplayers.json_, que contém os jogos feitos pelos jogadores. Para importar este ficheiro foi utilizado o comando `mongoimport`:
 ```bash
 mongoimport `
     --db atp `
@@ -62,11 +62,11 @@ A coleção contém 15 colunas:
 - Score: Sets do jogo
 
 # Preparar dos dados
-Para preparar os dados, nós planeámos transformar a nossa coleção em coleções diferentes, de forma a representar o modelo relacionar, para facilitar a sua transição. Para isso, desenhámos o nosso diagrama do modelo relacional pretendido:
+Para preparar os dados planeámos transformar a nossa coleção em coleções diferentes, com vista a melhorar a organização da base de dados e ter uma representação mais próxima do modelo relacional para facilitar a sua transição. Para esse efeito desenhámos um diagrama do modelo relacional pretendido:
 
 ![Diagrama do modelo relacional](figures/sqlDiagram.png)
 
-Antes de começar a transformar os dados, foi necessário verificar a integridade deles. 
+Antes de começar a transformar os dados foi necessário verificar sua integridade. 
 
 Primeiro, verificámos se a coluna _Born_ e _Location_ mantinha o formato "cidade, pais" para todos os jogadores. Mais precisamente, como para os nossos propósitos, apenas precisamos do país, verificámos se os países estavam sempre no final da string.
 ```javascript
@@ -110,7 +110,7 @@ Uruguaiana,Brazil,BR
 Uruguay,Uruguay,UY
 ...
 ```
-A partir deste ficheiro, cada pais pode ser associado o seu código usando a _pipeline_ `$lookup` quando for feita a exportação destes dados, depois de importar o ficheiro para a base de dados.
+A partir deste ficheiro, cada pais pode ser associado ao seu código usando a _pipeline_ `$lookup` quando for feita a exportação destes dados, depois de importar o ficheiro para a base de dados.
 
 ```bash
 mongoimport `
